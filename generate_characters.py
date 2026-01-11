@@ -1,11 +1,13 @@
 from google import genai
 from google.genai import types
 from PIL import Image
+from dotenv import load_dotenv
 import io
 import os
 import time
 
-API_KEY = "AIzaSyCoq0WSHODplyBPufTPUr5j28CcvF04M_0"
+load_dotenv()
+API_KEY = os.environ.get('GEMINI_API_KEY')
 OUTPUT_DIR = r"C:\Users\DESKTOP\Documents\AIToyProject\client\public\images\characters"
 
 client = genai.Client(api_key=API_KEY)
@@ -14,37 +16,37 @@ characters = [
     {
         "id": "messiah",
         "name": "메시아 죄수",
-        "prompt": "Anime style portrait of a male prisoner with a serene, enlightened expression. He has long flowing hair, gentle wise eyes, and wears an orange prison jumpsuit. He has a calm, almost divine aura about him. Clean light gray background, bust shot, high quality anime art style similar to visual novel character portrait."
+        "prompt": "Anime style headshot portrait of a male prisoner with a serene, enlightened expression. He has long flowing hair, gentle wise eyes, and wears an orange prison jumpsuit. He has a calm, almost divine aura about him. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
     },
     {
         "id": "arsonist",
         "name": "방화범 죄수",
-        "prompt": "Anime style portrait of a male prisoner with wild, excited eyes and messy spiky red hair. He has burn scars on his face and wears an orange prison jumpsuit. His expression shows chaotic enthusiasm. Clean light gray background, bust shot, high quality anime art style similar to visual novel character portrait."
+        "prompt": "Anime style headshot portrait of a male prisoner with wild, excited eyes and messy spiky red hair. He has burn scars on his face and wears an orange prison jumpsuit. His expression shows chaotic enthusiasm. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
     },
     {
         "id": "groper",
         "name": "치한 죄수",
-        "prompt": "Anime style portrait of a nervous-looking male prisoner with greasy slicked-back dark hair and shifty eyes. He wears an orange prison jumpsuit and has a suspicious expression. Clean light gray background, bust shot, high quality anime art style similar to visual novel character portrait."
+        "prompt": "Anime style headshot portrait of a nervous-looking male prisoner with greasy slicked-back dark hair and shifty eyes. He wears an orange prison jumpsuit and has a suspicious expression. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
     },
     {
         "id": "fraudster",
         "name": "사기꾼 죄수",
-        "prompt": "Anime style portrait of a charming, well-groomed male prisoner with slick hair and a confident smirk. He wears an orange prison jumpsuit but maintains an air of sophistication. His eyes are calculating and clever. Clean light gray background, bust shot, high quality anime art style similar to visual novel character portrait."
+        "prompt": "Anime style headshot portrait of a charming, well-groomed male prisoner with slick hair and a confident smirk. He wears an orange prison jumpsuit but maintains an air of sophistication. His eyes are calculating and clever. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
     },
     {
         "id": "political",
         "name": "정치범 죄수",
-        "prompt": "Anime style portrait of an intellectual-looking male prisoner with glasses and neat short hair. He has a dignified, defiant expression and wears an orange prison jumpsuit. He looks like a former politician or activist. Clean light gray background, bust shot, high quality anime art style similar to visual novel character portrait."
+        "prompt": "Anime style headshot portrait of an intellectual-looking male prisoner with glasses and neat short hair. He has a dignified, defiant expression and wears an orange prison jumpsuit. He looks like a former politician or activist. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
     },
     {
         "id": "wifekiller",
         "name": "아내 살인범 죄수",
-        "prompt": "Anime style portrait of a middle-aged male prisoner with a haunted, emotionless expression. He has tired eyes with dark circles, receding hairline, and wears an orange prison jumpsuit. His face shows deep regret. Clean light gray background, bust shot, high quality anime art style similar to visual novel character portrait."
+        "prompt": "Anime style headshot portrait of a middle-aged male prisoner with a haunted, emotionless expression. He has tired eyes with dark circles, receding hairline, and wears an orange prison jumpsuit. His face shows deep regret. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
     },
     {
         "id": "pedophile",
         "name": "소아성폭력범 죄수",
-        "prompt": "Anime style portrait of a balding, overweight male prisoner with thick glasses and a meek expression. He wears an orange prison jumpsuit and looks uncomfortable. Clean light gray background, bust shot, high quality anime art style similar to visual novel character portrait."
+        "prompt": "Anime style headshot portrait of a balding, overweight male prisoner with thick glasses and a meek expression. He wears an orange prison jumpsuit and looks uncomfortable. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
     }
 ]
 
