@@ -104,7 +104,7 @@ function renderDescription(description) {
   return null;
 }
 
-function GameScreen({ gameState, onAction, onSave, onRestart, isLoading, message }) {
+function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading, message }) {
   const { title, description, actions, inventory, isEnding } = gameState;
 
   return (
@@ -113,10 +113,13 @@ function GameScreen({ gameState, onAction, onSave, onRestart, isLoading, message
         <h2>{title}</h2>
         <div className="header-buttons">
           <button className="btn btn-secondary" onClick={onSave} disabled={isLoading}>
-            Save
+            저장
           </button>
           <button className="btn btn-secondary" onClick={onRestart} disabled={isLoading}>
-            Restart
+            재시작
+          </button>
+          <button className="btn btn-secondary" onClick={onLoad} disabled={isLoading}>
+            불러오기
           </button>
         </div>
       </div>

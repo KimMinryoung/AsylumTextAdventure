@@ -88,6 +88,7 @@ function App() {
           gameState={gameState}
           onAction={performAction}
           onSave={saveGame}
+          onLoad={loadGame}
           onRestart={startGame}
           isLoading={isLoading}
           message={message}
