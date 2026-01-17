@@ -1,15 +1,19 @@
 import React from 'react';
 
 const speakerInfo = {
-  guard: { name: "간수", image: "/images/characters/guard.png" },
-  messiah: { name: "메시아 죄수", image: "/images/characters/messiah.png" },
-  arsonist: { name: "방화범 죄수", image: "/images/characters/arsonist.png" },
-  groper: { name: "치한 죄수", image: "/images/characters/groper.png" },
-  fraudster: { name: "사기꾼 죄수", image: "/images/characters/fraudster.png" },
-  political: { name: "정치범 죄수", image: "/images/characters/political.png" },
-  wifekiller: { name: "아내 살인범 죄수", image: "/images/characters/wifekiller.png" },
-  pedophile: { name: "소아성폭력범 죄수", image: "/images/characters/pedophile.png" }
+  guard: { name: "간수", image: "guard.png" },
+  messiah: { name: "메시아 죄수", image: "messiah.png" },
+  arsonist: { name: "방화범 죄수", image: "arsonist.png" },
+  groper: { name: "치한 죄수", image: "groper.png" },
+  fraudster: { name: "사기꾼 죄수", image: "fraudster.png" },
+  political: { name: "정치범 죄수", image: "political.png" },
+  wifekiller: { name: "아내 살인범 죄수", image: "wifekiller.png" },
+  pedophile: { name: "소아성폭력범 죄수", image: "pedophile.png" }
 };
+
+function getImagePath(filename) {
+  return `${process.env.PUBLIC_URL}/images/characters/${filename}`;
+}
 
 function parseFormattedText(text) {
   // 복합 패턴을 먼저 처리, 그 다음 단일 패턴 처리
@@ -81,7 +85,7 @@ function renderDescription(description) {
           <div key={index} className="dialogue">
             <div className="dialogue-icon">
               {speaker.image ? (
-                <img src={speaker.image} alt={speaker.name} className="speaker-image" />
+                <img src={getImagePath(speaker.image)} alt={speaker.name} className="speaker-image" />
               ) : (
                 <span className="speaker-default">💬</span>
               )}
