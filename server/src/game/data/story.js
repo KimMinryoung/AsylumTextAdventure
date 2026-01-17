@@ -184,12 +184,17 @@ const gameData = {
         {
           id: "insult",
           text: "\"살인범한테 설교를 듣고 싶진 않았는데.\"",
-          nextScene: "first_night"
+          nextScene: "gameover_wifekiller_rage"
         },
         {
           id: "ask_his_story",
           text: "\"당신 이야기를 듣고 싶어요.\"",
           nextScene: "wifekiller_story"
+        },
+        {
+          id: "leave_quietly",
+          text: "조용히 물러난다.",
+          nextScene: "first_night"
         }
       ]
     },
@@ -296,6 +301,7 @@ const gameData = {
         {
           id: "approach_groper",
           text: "구석의 치한에게 다가간다.",
+          conditions: [{ type: "flagNotSet", flag: "groperEnemy" }],
           nextScene: "talk_groper"
         },
         {
@@ -331,7 +337,7 @@ const gameData = {
         },
         {
           id: "trust_messiah",
-          text: "\"믿겠습니다.\" (메시아 루트)",
+          text: "\"믿겠습니다.\"",
           nextScene: "messiah_trust",
           effects: [{ type: "setFlag", flag: "messiahRoute" }]
         },
@@ -409,7 +415,6 @@ const gameData = {
         { type: "dialogue", speaker: "messiah", text: "현명한 선택이야, 형제여. 너는 구원받을 자격이 있어." },
         { type: "narration", text: "그가 당신의 손을 꼭 잡습니다. 차가운 손입니다." },
         { type: "dialogue", speaker: "messiah", text: "3일 후 새벽, **환기구**가 열리는 시간이 있어. 그때 움직인다. 그 전까지 아무에게도 말하지 마라." },
-        { type: "narration", text: "[메시아 루트 활성화] - 새로운 선택지가 열립니다." }
       ],
       actions: [
         {
@@ -444,13 +449,17 @@ const gameData = {
     messiah_reject: {
       title: "거부",
       description: [
-        { type: "narration", text: "메시아의 눈빛이 차갑게 식습니다." },
-        { type: "dialogue", speaker: "messiah", text: "...안타깝군. 불신자는 결국 어둠 속에서 헤매게 될 텐데." },
-        { type: "narration", text: "그가 돌아서며 중얼거립니다." },
-        { type: "dialogue", speaker: "messiah", text: "나중에 후회해도 소용없다. 구원의 방주는 정해진 자만 태우니까." },
-        { type: "narration", text: "메시아가 멀어지자, 옆에서 지켜보던 사기꾼이 슬쩍 다가옵니다." },
-        { type: "dialogue", speaker: "fraudster", text: "잘했어. 저 미친놈한테 휘말리면 안 돼. 나한테 더 좋은 방법이 있는데... 관심 있어?" }
+        { type: "narration", text: "메시아의 눈빛이 순간 얼어붙습니다. 그의 얼굴에 광기 어린 분노가 스칩니다." },
+        { type: "dialogue", speaker: "messiah", text: "...사이비... 교주...?" },
+        { type: "narration", text: "그가 한 발짝 다가옵니다. 주변의 공기가 차갑게 변합니다." },
+        { type: "dialogue", speaker: "messiah", text: "나는 수천 명을 구원한 자다. 네가 감히... 날 모욕해?" },
+        { type: "narration", text: "잠시 후, 그의 표정이 다시 차분해집니다. 하지만 그 눈 속의 광기는 사라지지 않았습니다." },
+        { type: "dialogue", speaker: "messiah", text: "좋아... 좋아. 불신자는 스스로 지옥을 선택하는 법이지. 후회하게 될 거야." },
+        { type: "narration", text: "그가 돌아서며 추종자들에게 무언가를 속삭입니다. 불길한 예감이 듭니다." },
+        { type: "narration", text: "사기꾼이 슬쩍 다가옵니다." },
+        { type: "dialogue", speaker: "fraudster", text: "야... 너 진짜 대담하다. 저 미친놈한테 그런 말을 하다니. 조심해. 저놈 추종자가 꽤 있어." }
       ],
+      effects: [{ type: "setFlag", flag: "messiahEnemy" }],
       actions: [
         {
           id: "listen_fraudster",
@@ -616,7 +625,6 @@ const gameData = {
         { type: "narration", text: "사기꾼이 주위를 살피며 목소리를 낮춥니다." },
         { type: "dialogue", speaker: "fraudster", text: "내일 면회 시간에 방법을 알려줄게. 일단 네 사람한테 연락만 닿으면 돼. 나머지는 내가 알아서 할 테니까." },
         { type: "dialogue", speaker: "fraudster", text: "성공하면 우리 둘 다 여기서 나갈 수 있어. 어때, 나쁘지 않지?" },
-        { type: "narration", text: "[사기꾼 루트 활성화] - 새로운 선택지가 열립니다." }
       ],
       actions: [
         {
@@ -768,7 +776,6 @@ const gameData = {
         { type: "dialogue", speaker: "political", text: "여기서 10년을 보내면서 많이 봤어. **지하 3층에 하수도 통로**가 있다는 건 알려줬지?" },
         { type: "dialogue", speaker: "political", text: "그리고 하나 더. **간수장 정 대위**... 그 놈은 매주 수요일 밤에 {{의무실}}에서 뭔가를 한다. 뒷거래인 것 같은데, 그때 **보안이 느슨해져**." },
         { type: "dialogue", speaker: "political", text: "그 정보가 도움이 되길 바라. 그리고... 부디 살아서 나가." },
-        { type: "narration", text: "[정보: 수요일 밤 보안 공백] 획득, [정치범과의 유대] 형성" }
       ],
       effects: [
         { type: "setFlag", flag: "knowWednesdayGap" },
@@ -846,8 +853,33 @@ const gameData = {
           nextScene: "groper_info"
         },
         {
+          id: "insult_groper",
+          text: "\"역겨운 놈. 귀 하나로 끝난 게 다행이다.\"",
+          nextScene: "groper_threat"
+        },
+        {
           id: "leave_groper",
-          text: "역겹다는 듯 자리를 뜬다.",
+          text: "말없이 자리를 뜬다.",
+          nextScene: "cell_observe"
+        }
+      ]
+    },
+
+    groper_threat: {
+      title: "위협",
+      description: [
+        { type: "narration", text: "치한의 얼굴이 순간 일그러집니다. 히죽거리던 웃음이 사라지고 싸늘한 눈빛이 드러납니다." },
+        { type: "dialogue", speaker: "groper", text: "...뭐라고?" },
+        { type: "narration", text: "그가 천천히 일어섭니다. 생각보다 키가 큽니다." },
+        { type: "dialogue", speaker: "groper", text: "너... 날 무시해? 별로 다를 것도 없는 주제에!" },
+        { type: "narration", text: "화를 내려던 그는 주변의 눈치를 보고선 목소리를 낮춰 음침하게 중얼거립니다." },
+        { type: "dialogue", speaker: "groper", text: "좋아... 좋아. 기억해주지. 히히히..." },
+      ],
+      effects: [{ type: "setFlag", flag: "groperEnemy" }],
+      actions: [
+        {
+          id: "leave_scared",
+          text: "불안한 마음으로 자리를 뜬다.",
           nextScene: "cell_observe"
         }
       ]
@@ -883,12 +915,11 @@ const gameData = {
       title: "치한의 정보",
       description: [
         { type: "narration", text: "치한이 주위를 두리번거립니다." },
-        { type: "dialogue", speaker: "groper", text: "정보? 헤헤... 나한테 잘 보이려는 거야? 그래, 좋아. 알려줄게." },
+        { type: "dialogue", speaker: "groper", text: "정보? 헤헤... 그래, 좋아. 알려줄게." },
         { type: "dialogue", speaker: "groper", text: "난 밤에 잘 못 자거든. 그래서 많이 봐. 많이 들어." },
         { type: "narration", text: "그가 목소리를 낮춥니다." },
         { type: "dialogue", speaker: "groper", text: "**간수들 중에 하나**가 있어. 새벽 2시에 혼자 순찰 도는 놈. 그 놈, 항상 **의무실**에서 한 시간씩 사라져." },
         { type: "dialogue", speaker: "groper", text: "거기서 뭘 하는지는 모르겠어. 근데 그 한 시간 동안은... 복도가 텅 비어. 알겠어?" },
-        { type: "narration", text: "[정보: 간수 순찰 공백] 획득" }
       ],
       effects: [{ type: "setFlag", flag: "knowPatrolGap" }],
       actions: [
@@ -996,7 +1027,6 @@ const gameData = {
         { type: "dialogue", speaker: "arsonist", text: "너... 괜찮은 놈인 것 같아. 다른 놈들은 다 도망가거든." },
         { type: "narration", text: "그가 당신을 빤히 바라봅니다." },
         { type: "dialogue", speaker: "arsonist", text: "내가 이 수용소를 태울 거야. 언젠가. 그때 같이 나갈래? ...생각해봐." },
-        { type: "narration", text: "[방화범과의 유대] - 그가 당신을 신뢰하기 시작했습니다." }
       ],
       effects: [{ type: "setFlag", flag: "arsonistTrust" }],
       actions: [
@@ -1043,7 +1073,7 @@ const gameData = {
         { type: "dialogue", speaker: "messiah", text: "평화의 사도로군. 네 말이 맞아, 형제여. 지금은 때가 아니지." },
         { type: "narration", text: "방화범이 코웃음을 치며 물러납니다." },
         { type: "dialogue", speaker: "arsonist", text: "...다음에 보자. 둘 다." },
-        { type: "narration", text: "[갈등 중재] - 두 사람 모두에게 인상을 남겼습니다." }
+        { type: "narration", text: "갈등 중재해서 두 사람 모두에게 인상을 남겼습니다." }
       ],
       effects: [{ type: "setFlag", flag: "conflictMediator" }],
       actions: [
@@ -1110,7 +1140,6 @@ const gameData = {
         { type: "dialogue", speaker: "unknown", text: "...쳇. 다음에 보자." },
         { type: "narration", text: "죄수들이 흩어집니다. 소아성폭력범이 피투성이로 당신을 올려다봅니다." },
         { type: "dialogue", speaker: "pedophile", text: "왜... 왜 날 도와줘...?" },
-        { type: "narration", text: "[위험한 선택] - 다른 죄수들에게 찍혔지만, 소아성폭력범에게 빚을 졌습니다." }
       ],
       effects: [{ type: "setFlag", flag: "helpedPedophile" }],
       actions: [
@@ -1128,7 +1157,7 @@ const gameData = {
         { type: "narration", text: "당신은 눈을 돌립니다. 이 지옥에서 남을 도울 여유 따위는 없습니다." },
         { type: "narration", text: "비명이 점점 작아지다가, 결국 멈춥니다." },
         { type: "narration", text: "한참 후, 간수가 와서 축 늘어진 소아성폭력범을 끌고 나갑니다." },
-        { type: "dialogue", speaker: "guard", text: "또 '자해'냐... 귀찮게스리." },
+        { type: "dialogue", speaker: "guard", text: "또 자해냐... 귀찮게스리." },
         { type: "narration", text: "의무실로 끌려가는 그의 얼굴은 피투성이입니다. 숨은 붙어 있는 것 같습니다." },
         { type: "narration", text: "다른 죄수들이 아무 일 없다는 듯 침대로 돌아갑니다." },
         { type: "dialogue", speaker: "political", text: "...이곳의 일상이야. 익숙해져." }
@@ -1150,17 +1179,17 @@ const gameData = {
         { type: "narration", text: "여기저기서 코 고는 소리, 잠꼬대, 그리고 가끔씩 들리는 누군가의 흐느낌..." },
         { type: "narration", text: "오늘 만난 죄수들의 얼굴이 떠오릅니다. 광기 어린 메시아, 능글맞은 사기꾼, 불에 미친 방화범, 슬픔을 안은 정치범과 아내 살인범..." },
         { type: "narration", text: "당신은 생각합니다. 이곳에서 **어떻게 살아남을 것인가**. 아니, 어떻게 **탈출할 것인가**." },
-        { type: "narration", text: "갑자기 옆 침대에서 속삭이는 소리가 들립니다." }
       ],
       actions: [
         {
           id: "listen",
-          text: "귀를 기울인다.",
+          text: "귀를 귀울인다.",
+          conditions: [{ type: "flagSet", flag: "arsonistTrust" }],
           nextScene: "night_whisper"
         },
         {
           id: "ignore_sleep",
-          text: "무시하고 잠을 청한다.",
+          text: "잠을 청한다.",
           nextScene: "day_two_morning"
         }
       ]
@@ -1169,6 +1198,7 @@ const gameData = {
     night_whisper: {
       title: "밤의 속삭임",
       description: [
+        { type: "narration", text: "갑자기 옆 침대에서 속삭이는 소리가 들립니다." },
         { type: "narration", text: "어둠 속에서 누군가 당신의 침대 옆으로 다가옵니다." },
         { type: "dialogue", speaker: "arsonist", text: "...자? 안 자지?" },
         { type: "narration", text: "방화범입니다. 그의 눈이 어둠 속에서 이상하게 빛납니다." },
@@ -1178,7 +1208,7 @@ const gameData = {
       actions: [
         {
           id: "agree_arsonist",
-          text: "\"...알겠어. 도와줄게.\"",
+          text: "\"알겠어! 도와줄게.\"",
           nextScene: "arsonist_agree",
           effects: [{ type: "setFlag", flag: "arsonistRoute" }]
         },
@@ -1199,10 +1229,10 @@ const gameData = {
       title: "방화 계획",
       description: [
         { type: "narration", text: "방화범의 얼굴에 광기 어린 미소가 번집니다." },
-        { type: "dialogue", speaker: "arsonist", text: "좋아, 좋아... 역시 넌 알아보는 눈이 있어." },
+        { type: "dialogue", speaker: "arsonist", text: "좋아, 좋아... 역시 넌 말을 잘 알아먹을 것 같았어." },
         { type: "dialogue", speaker: "arsonist", text: "작업장에 가면 기계에 쓰는 기름이 있어. 그거 좀 빼돌려 줘. 나머지는 내가 할게." },
         { type: "dialogue", speaker: "arsonist", text: "아름다울 거야... 이 썩은 곳이 불타는 모습. 히히..." },
-        { type: "narration", text: "그가 어둠 속으로 사라집니다. [방화범 루트 활성화]" }
+        { type: "narration", text: "그가 어둠 속으로 사라집니다." }
       ],
       actions: [
         {
@@ -1218,9 +1248,11 @@ const gameData = {
       description: [
         { type: "dialogue", speaker: "arsonist", text: "죽어? 하하... 그게 뭐가 문제야? 여기 있는 놈들 다 죽어 마땅한 쓰레기들인데." },
         { type: "narration", text: "방화범의 눈빛이 차갑게 변합니다." },
-        { type: "dialogue", speaker: "arsonist", text: "넌 모르는 거야. 불의 정화를... 뭐, 싫으면 할 수 없지. 대신 내 계획 방해하면 넌 제일 먼저 태워버릴 거야." },
-        { type: "narration", text: "그가 자신의 침대로 돌아갑니다. 등골이 서늘해집니다." }
+        { type: "dialogue", speaker: "arsonist", text: "넌 모르는 거야. 불의 정화를... 뭐, 싫으면 가만히 있으라고."},
+        { type: "dialogue", speaker: "arsonist", text: "만약 방해하면 넌 통구이 일순위다." },
+        { type: "narration", text: "그가 자신의 침대로 돌아갑니다. 등골이 서늘해집니다." },
       ],
+      effects: [{ type: "setFlag", flag: "arsonistEnemy" }],
       actions: [
         {
           id: "sleep",
@@ -1279,21 +1311,32 @@ const gameData = {
       ],
       actions: [
         {
+          id: "groper_revenge",
+          text: "작업에 집중한다.",
+          conditions: [{ type: "flagSet", flag: "groperEnemy" }],
+          nextScene: "gameover_groper_trap"
+        },
+        {
           id: "steal_oil",
           text: "기름을 몰래 빼돌린다.",
-          conditions: [{ type: "flagSet", flag: "arsonistRoute" }],
+          conditions: [
+            { type: "flagSet", flag: "arsonistRoute" },
+            { type: "flagNotSet", flag: "groperEnemy" }
+          ],
           nextScene: "workshop_steal_oil",
           effects: [{ type: "addItem", item: "라이터 기름" }]
         },
         {
           id: "steal_tool",
           text: "작은 공구를 숨긴다.",
+          conditions: [{ type: "flagNotSet", flag: "groperEnemy" }],
           nextScene: "workshop_steal_tool",
           effects: [{ type: "addItem", item: "작은 드라이버" }]
         },
         {
           id: "work_normally",
           text: "묵묵히 작업만 한다.",
+          conditions: [{ type: "flagNotSet", flag: "groperEnemy" }],
           nextScene: "workshop_normal"
         }
       ]
@@ -1388,7 +1431,6 @@ const gameData = {
         { type: "narration", text: "그가 주위를 살피며 목소리를 낮춥니다." },
         { type: "dialogue", speaker: "wifekiller", text: "네가 탈출을 계획하고 있다면... 도와줄 수 있어. 난 밖에 나가도 의미없지만, 네가 성공하는 건 보고 싶거든." },
         { type: "dialogue", speaker: "wifekiller", text: "난 이 수용소에서 10년을 보냈어. **구조와 경비 패턴**을 다 알고 있지. 필요하면 말해." },
-        { type: "narration", text: "[우호: 아내 살인범] 관계가 형성되었습니다." }
       ],
       actions: [
         {
@@ -1405,12 +1447,24 @@ const gameData = {
         { type: "narration", text: "운동장은 높은 담벼락으로 둘러싸여 있습니다. 하늘이 보이는 유일한 장소입니다." },
         { type: "narration", text: "여기저기서 죄수들이 운동을 하거나 무리 지어 이야기를 나누고 있습니다." },
         { type: "narration", text: "구석에서 **메시아**가 몇몇 추종자들에게 무언가를 설교하고 있습니다." },
-        { type: "narration", text: "반대편에서는 **소아성폭력범**이 혼자 웅크리고 앉아 있습니다. 다른 죄수들이 그를 피하는 게 보입니다." }
+        { type: "narration", text: "반대편에서는 **소아성폭력범**이 혼자 웅크리고 앉아 있습니다. 다른 죄수들이 그를 피하는 게 보입니다." },
+        { type: "narration", text: "간수 한 명이 당신을 유독 노려보며 다가옵니다." },
+        { type: "dialogue", speaker: "guard", text: "야, 변태 새끼. 뭘 빤히 쳐다봐? 눈깔 빼버릴까?" }
       ],
       actions: [
         {
+          id: "insult_guard",
+          text: "\"당신이나 거울 좀 보시지.\"",
+          nextScene: "gameover_guard_murder"
+        },
+        {
+          id: "bow_guard",
+          text: "고개를 숙이고 사과한다.",
+          nextScene: "yard_bow_guard"
+        },
+        {
           id: "join_messiah",
-          text: "메시아의 설교를 듣는다.",
+          text: "조용히 메시아 쪽으로 피한다.",
           nextScene: "yard_messiah"
         },
         {
@@ -1421,6 +1475,24 @@ const gameData = {
         {
           id: "walk_alone",
           text: "혼자 운동장을 걷는다.",
+          nextScene: "yard_walk"
+        }
+      ]
+    },
+
+    yard_bow_guard: {
+      title: "굴복",
+      description: [
+        { type: "narration", text: "당신은 재빨리 고개를 숙입니다." },
+        { type: "dialogue", speaker: "player", text: "죄송합니다..." },
+        { type: "dialogue", speaker: "guard", text: "흥. 그래도 예의는 아는군. 다음엔 눈을 어디에 두는지 조심해." },
+        { type: "narration", text: "간수가 코웃음을 치며 돌아섭니다. 등에서 식은땀이 흐릅니다." },
+        { type: "narration", text: "굴욕적이지만, 목숨을 건졌습니다." }
+      ],
+      actions: [
+        {
+          id: "continue_yard",
+          text: "운동장에서 시간을 보낸다.",
           nextScene: "yard_walk"
         }
       ]
@@ -1552,7 +1624,6 @@ const gameData = {
         { type: "dialogue", speaker: "pedophile", text: "알아, 알아... 내가 아는 거 다 말해줄게. 난 여기서 오래 있었어. 아무도 신경 안 쓰니까 많이 들었어." },
         { type: "dialogue", speaker: "pedophile", text: "**지하 2층 창고**... 거기 환기 덕트가 외부로 연결돼 있어. 작은 사람은 빠져나갈 수 있을지도 몰라." },
         { type: "dialogue", speaker: "pedophile", text: "그리고... **간수장이 여자 문제**로 협박당하고 있어. 누가 그 증거를 갖고 있는지는 모르겠지만..." },
-        { type: "narration", text: "[정보: 환기 덕트], [정보: 간수장 약점] 획득" }
       ],
       effects: [
         { type: "setFlag", flag: "knowVentDuct" },
@@ -1595,7 +1666,6 @@ const gameData = {
         { type: "narration", text: "몸을 숙여 스트레칭하는 척하며 균열을 살펴봅니다." },
         { type: "narration", text: "균열은 생각보다 깊습니다. 손가락을 넣으면 콘크리트 조각이 부서져 나옵니다." },
         { type: "narration", text: "시간을 들여 파면... 어쩌면 담벼락을 뚫을 수 있을지도 모릅니다. 하지만 혼자서는 무리입니다." },
-        { type: "narration", text: "[정보: 벽의 균열] 획득 - 이 정보는 나중에 유용할 수 있습니다." }
       ],
       actions: [
         {
@@ -1658,7 +1728,6 @@ const gameData = {
         { type: "narration", text: "그가 책을 내려놓고 속삭입니다." },
         { type: "dialogue", speaker: "political", text: "내가 알려준 정보... 쓸모가 있을 거야. 특히 **수요일 밤**을 기억해. 내일이 바로 수요일이야." },
         { type: "dialogue", speaker: "political", text: "간수장이 의무실에 가는 시간... 그때가 유일한 틈이야." },
-        { type: "narration", text: "[정보 강화: 수요일 밤 타이밍 확인]" }
       ],
       effects: [{ type: "setFlag", flag: "wednesdayConfirmed" }],
       actions: [
@@ -1675,7 +1744,7 @@ const gameData = {
       title: "셋째 날 아침",
       description: [
         { type: "narration", text: "사이렌 소리에 눈을 뜹니다. 몸이 무겁습니다." },
-        { type: "narration", text: "오늘은 **수요일**입니다. 정치범이 말한 그 날." },
+        { type: "narration", text: "오늘은 **수요일**입니다." },
         { type: "dialogue", speaker: "guard", text: "기상! 오늘은 전원 작업장이다! 움직여!" },
         { type: "narration", text: "간수의 고함에 죄수들이 하나둘 일어납니다." }
       ],
@@ -1818,7 +1887,7 @@ const gameData = {
       description: [
         { type: "narration", text: "간수가 졸고 있는 틈을 타 기름통에 다가갑니다." },
         { type: "narration", text: "작은 병에 기름을 조금씩 옮겨 담습니다. 심장이 터질 것 같습니다." },
-        { type: "narration", text: "다행히 아무도 눈치채지 못했습니다. [아이템: 라이터 기름] 획득" }
+        { type: "narration", text: "다행히 아무도 눈치채지 못했습니다. 라이터 기름을 얻었습니다." }
       ],
       effects: [{ type: "addItem", item: "라이터 기름" }],
       actions: [
@@ -1864,7 +1933,7 @@ const gameData = {
         { type: "narration", text: "환기구를 여는 건 **카드키**일 것입니다." },
         { type: "narration", text: "간수장이 기계를 점검하러 허리를 숙인 순간, 당신은 능숙하게 카드키만 빼돌립니다." },
         { type: "narration", text: "열쇠 꾸러미 전체가 아니라 하나만 빠졌으니 금방 눈치채지 못할 것입니다." },
-        { type: "narration", text: "[아이템: 환기구 카드키] 획득" }
+        { type: "narration", text: "**환기구 카드키**를 획득했습니다." }
       ],
       effects: [
         { type: "addItem", item: "환기구 카드키" },
@@ -1946,7 +2015,7 @@ const gameData = {
         { type: "narration", text: "그 틈에 당신은 간수장의 책상에서 **여분의 카드키**를 발견하고 집어 듭니다." },
         { type: "dialogue", speaker: "pedophile", text: "(먼 곳에서) 괜찮아... 그냥 스친 거야..." },
         { type: "narration", text: "그가 당신을 힐끗 보며 미소 짓습니다. 빚을 갚은 것입니다." },
-        { type: "narration", text: "[아이템: 환기구 카드키] 획득" }
+        { type: "narration", text: "**환기구 카드키**를 획득했습니다." }
       ],
       effects: [
         { type: "addItem", item: "환기구 카드키" },
@@ -2010,10 +2079,10 @@ const gameData = {
     arsonist_disappointed: {
       title: "실망",
       description: [
-        { type: "dialogue", speaker: "arsonist", text: "...뭐? 왜 못 구해? 네가 도와준다면서?" },
+        { type: "dialogue", speaker: "arsonist", text: "...뭐? 왜 못 구해? 도와준다면서?" },
         { type: "narration", text: "방화범의 얼굴이 일그러집니다." },
         { type: "dialogue", speaker: "arsonist", text: "쓸모없는 놈... 됐어, 내가 알아서 할게. 대신 네 몫은 없어." },
-        { type: "narration", text: "그가 돌아섭니다. 방화범 루트에서 이탈했습니다." }
+        { type: "narration", text: "그가 돌아섭니다." }
       ],
       effects: [{ type: "setFlag", flag: "arsonistAbandoned" }],
       actions: [
@@ -2034,7 +2103,6 @@ const gameData = {
         { type: "dialogue", speaker: "arsonist", text: "고아원 아이들... 그때도 그냥 건물을 태우고 싶었을 뿐인데... 죽을 줄은..." },
         { type: "narration", text: "방화범이 당신을 신뢰하기에 귀를 기울입니다." },
         { type: "dialogue", speaker: "arsonist", text: "...알았어. 불을 줄일게. 동쪽 창고만 태울 거야. 거긴 사람이 없으니까." },
-        { type: "narration", text: "[방화 계획 수정] - 피해를 최소화하기로 했습니다." }
       ],
       effects: [{ type: "setFlag", flag: "arsonistMinimized" }],
       actions: [
@@ -2124,7 +2192,6 @@ const gameData = {
         { type: "dialogue", speaker: "wifekiller", text: "오늘 밤 뭔가 일어날 것 같아. 공기가 이상해." },
         { type: "dialogue", speaker: "wifekiller", text: "네가 움직일 거라면... **지하 창고 옆 비상구**를 기억해. 거긴 열쇠가 없어도 안에서 열 수 있어." },
         { type: "dialogue", speaker: "wifekiller", text: "난 여기 남을 거야. 하지만 네가 성공하면... 언젠가 내 아들한테 편지 좀 전해줘." },
-        { type: "narration", text: "[정보: 비상구 위치] 획득" }
       ],
       effects: [{ type: "setFlag", flag: "knowEmergencyExit" }],
       actions: [
@@ -2177,7 +2244,6 @@ const gameData = {
         { type: "narration", text: "메시아의 눈이 환하게 빛납니다." },
         { type: "dialogue", speaker: "messiah", text: "해냈구나, 형제여... 이것으로 구원의 문이 열릴 것이다." },
         { type: "dialogue", speaker: "messiah", text: "오늘 밤 2시, 환기구 앞에서 만나자. 구원이 가까워졌다..." },
-        { type: "narration", text: "[메시아 루트 강화] - 탈출 확률이 높아졌습니다." }
       ],
       effects: [{ type: "setFlag", flag: "messiahKeyDelivered" }],
       actions: [
@@ -2200,7 +2266,6 @@ const gameData = {
         { type: "dialogue", speaker: "player", text: "오늘 밤, 지하 비상구를 열어주시면 아무 말 안 하겠습니다. 아니면..." },
         { type: "narration", text: "간수장이 이를 악뭅니다. 한참을 노려보다가..." },
         { type: "dialogue", speaker: "warden", text: "...좋아. 새벽 3시에 지하 비상구. 한 번뿐이야. 그 후엔 니가 어떻게 되든 난 몰라." },
-        { type: "narration", text: "[비상구 루트 활성화]" }
       ],
       effects: [{ type: "setFlag", flag: "wardenBlackmailed" }],
       actions: [
@@ -2243,6 +2308,29 @@ const gameData = {
         { type: "narration", text: "당신은 어떤 길을 선택하시겠습니까?" }
       ],
       actions: [
+        {
+          id: "wait_night_messiah_enemy",
+          text: "밤을 기다린다.",
+          conditions: [
+            { type: "flagSet", flag: "messiahEnemy" },
+            { type: "flagNotSet", flag: "fraudsterTrusted" },
+            { type: "flagNotSet", flag: "arsonistRoute" },
+            { type: "flagNotSet", flag: "wifekillerFriend" }
+          ],
+          nextScene: "gameover_messiah_followers"
+        },
+        {
+          id: "wait_night_arsonist_enemy",
+          text: "밤을 기다린다.",
+          conditions: [
+            { type: "flagSet", flag: "arsonistEnemy" },
+            { type: "flagNotSet", flag: "messiahRoute" },
+            { type: "flagNotSet", flag: "fraudsterTrusted" },
+            { type: "flagNotSet", flag: "wifekillerFriend" },
+            { type: "flagNotSet", flag: "knowEmergencyExit" }
+          ],
+          nextScene: "gameover_burned_alive"
+        },
         {
           id: "wait_night",
           text: "밤을 기다린다.",
@@ -2374,7 +2462,7 @@ const gameData = {
         { type: "narration", text: "방화범이 동쪽 창고에만 불을 지릅니다. 약속대로 피해를 최소화했습니다." },
         { type: "narration", text: "화재 경보가 울리고 간수들이 몰려갑니다. 그 틈에 당신과 방화범은 담벼락을 넘습니다." },
         { type: "narration", text: "돌아보니 창고만 불타고 있습니다. 다른 건물들은 무사합니다." },
-        { type: "dialogue", speaker: "arsonist", text: "...네 말이 맞았어. 이 정도로도 충분히 아름다워." },
+        { type: "dialogue", speaker: "arsonist", text: "...네 말이 맞네. 이 정도로도 충분히 아름다워." },
         { type: "narration", text: "방화범의 눈에 광기 대신 평온함이 어립니다." },
         { type: "narration", text: "**[엔딩 C+: 구원받은 불꽃]** - 방화범의 광기를 누그러뜨리고 함께 탈출했습니다. 희생자 없이." }
       ],
@@ -2919,6 +3007,166 @@ const gameData = {
         { type: "narration", text: "그리고 당신은... 여전히 여기 있습니다." },
         { type: "narration", text: "10년 후, 형기를 마치고 나왔을 때, 세상은 완전히 변해 있었습니다. 당신의 자리는 어디에도 없었습니다." },
         { type: "narration", text: "**[엔딩 E: 잃어버린 시간]** - 살아남았지만, 삶의 의미를 잃어버렸습니다." }
+      ],
+      isEnding: true,
+      actions: [
+        {
+          id: "restart",
+          text: "다시 시작하기",
+          nextScene: "entrance",
+          effects: [{ type: "resetGame" }]
+        }
+      ]
+    },
+
+    // ===== 게임오버 씬들 =====
+    gameover_wifekiller_rage: {
+      title: "치명적 실수",
+      description: [
+        { type: "narration", text: "아내 살인범의 눈빛이 순간적으로 변합니다. 깊은 슬픔이 살의로 바뀝니다." },
+        { type: "dialogue", speaker: "wifekiller", text: "...뭐라고 했어?" },
+        { type: "narration", text: "그가 천천히 일어섭니다. 10년간 노동으로 단련된 근육이 팽팽해집니다." },
+        { type: "dialogue", speaker: "wifekiller", text: "네가... 날... 설교한다고?" },
+        { type: "narration", text: "당신이 물러서려 하지만 이미 늦었습니다. 그의 주먹이 번개처럼 날아옵니다." },
+        { type: "narration", text: "!!크악!!—첫 번째 타격에 코뼈가 부러지는 소리가 들립니다." },
+        { type: "narration", text: "바닥에 쓰러진 당신의 위로 그의 발길질이 쏟아집니다. 갈비뼈가 부러지고, 숨을 쉴 수 없습니다." },
+        { type: "dialogue", speaker: "wifekiller", text: "내 아들을... 지키려고... 그랬는데... 너 같은 놈이...!!" },
+        { type: "narration", text: "다른 죄수들이 말리려 하지만, 그의 분노는 멈추지 않습니다." },
+        { type: "narration", text: "시야가 흐려집니다. 마지막으로 들리는 건 멀리서 달려오는 간수들의 발소리..." },
+        { type: "narration", text: "**[GAME OVER: 말을 함부로 하면 안 됩니다]**" },
+        { type: "narration", text: "수용소에서는 누가 어떤 상처를 안고 있는지 모릅니다. 함부로 건드렸다가 목숨을 잃을 수 있습니다." }
+      ],
+      isEnding: true,
+      actions: [
+        {
+          id: "restart",
+          text: "다시 시작하기",
+          nextScene: "entrance",
+          effects: [{ type: "resetGame" }]
+        }
+      ]
+    },
+
+    gameover_burned_alive: {
+      title: "화염 속에서",
+      description: [
+        { type: "narration", text: "한밤중, 굉음과 함께 눈이 번쩍 떠집니다." },
+        { type: "narration", text: "**불이다!!** 감방 복도가 이미 화염에 휩싸여 있습니다." },
+        { type: "dialogue", speaker: "arsonist", text: "히히히... 아름답지 않아?" },
+        { type: "narration", text: "연기 사이로 방화범의 목소리가 들립니다. 그가 정말로 해냈습니다." },
+        { type: "narration", text: "당신은 철창을 잡아당겨 봅니다. 잠겨 있습니다. 간수들은 보이지 않습니다." },
+        { type: "dialogue", speaker: "arsonist", text: "내가 경고했지? 내 계획을 방해하면 통구이행이라고..." },
+        { type: "narration", text: "방화범이 당신의 감방 앞에 섭니다. 그의 손에 들린 열쇠가 반짝입니다." },
+        { type: "dialogue", speaker: "arsonist", text: "넌 거부했어. 그러니까... 여기서 정화되는 거야." },
+        { type: "narration", text: "그가 열쇠를 주머니에 넣고 사라집니다. 화염이 점점 가까워옵니다." },
+        { type: "narration", text: "연기가 폐를 채웁니다. 피부가 타들어가는 고통이... 마지막 순간까지 계속됩니다." },
+        { type: "narration", text: "**[GAME OVER: 불타는 감방]**" },
+        { type: "narration", text: "방화범의 계획을 거부했다면, 그가 복수할 것을 대비했어야 합니다." }
+      ],
+      isEnding: true,
+      actions: [
+        {
+          id: "restart",
+          text: "다시 시작하기",
+          nextScene: "entrance",
+          effects: [{ type: "resetGame" }]
+        }
+      ]
+    },
+
+    gameover_messiah_followers: {
+      title: "이단자의 최후",
+      description: [
+        { type: "narration", text: "며칠 후, 셋째 날 밤." },
+        { type: "narration", text: "잠든 당신의 위로 여러 개의 그림자가 드리웁니다." },
+        { type: "narration", text: "눈을 떴을 때, 이미 입이 막혀 있습니다. 누군가 당신의 팔다리를 붙잡고 있습니다." },
+        { type: "dialogue", speaker: "messiah", text: "안타깝구나, 불신자여..." },
+        { type: "narration", text: "메시아가 침대 옆에 서 있습니다. 그의 뒤로 추종자 다섯 명이 보입니다." },
+        { type: "dialogue", speaker: "messiah", text: "너는 나를 '사이비 교주'라 불렀지. 구원의 손길을 뿌리치고, 모욕까지 했어." },
+        { type: "narration", text: "그의 손에 날카롭게 갈린 숟가락이 들려 있습니다." },
+        { type: "dialogue", speaker: "messiah", text: "불신자는 정화되어야 해. 이건 벌이 아니야. 구원이야." },
+        { type: "narration", text: "당신의 비명은 막힌 입 밖으로 새어나오지 못합니다." },
+        { type: "narration", text: "다음 날 아침, 간수들이 발견한 건 피투성이가 된 시체뿐이었습니다." },
+        { type: "narration", text: "**[GAME OVER: 이단자 처형]**" },
+        { type: "narration", text: "광신자를 모욕하는 것은 죽음을 자초하는 일입니다." }
+      ],
+      isEnding: true,
+      actions: [
+        {
+          id: "restart",
+          text: "다시 시작하기",
+          nextScene: "entrance",
+          effects: [{ type: "resetGame" }]
+        }
+      ]
+    },
+
+    gameover_guard_murder: {
+      title: "본보기",
+      description: [
+        { type: "narration", text: "간수의 얼굴이 핏빛으로 물듭니다." },
+        { type: "dialogue", speaker: "guard", text: "...이 새끼가 지금 뭐라고 했어?" },
+        { type: "narration", text: "주변의 다른 간수들이 다가옵니다. 죄수들은 벽으로 물러섭니다." },
+        { type: "dialogue", speaker: "guard", text: "야, 이리 와봐. 이 변태 새끼가 반항을 하네?" },
+        { type: "narration", text: "몽둥이가 날아옵니다. 첫 번째, 두 번째, 세 번째—" },
+        { type: "narration", text: "바닥에 쓰러진 당신을 간수들이 둘러쌉니다." },
+        { type: "dialogue", speaker: "guard", text: "여기가 어딘 줄 알아? 너 같은 쓰레기가 깝칠 곳이 아니야." },
+        { type: "narration", text: "구둣발이 얼굴을, 갈비뼈를, 온 몸을 짓밟습니다." },
+        { type: "dialogue", speaker: "guard", text: "이놈으로 본보기를 보여줘야겠어. 독방에서 **특별 관리** 받게 해." },
+        { type: "narration", text: "끌려가는 동안 의식이 희미해집니다. 독방에 던져진 후..." },
+        { type: "narration", text: "물도 음식도 없이 3일. 당신의 몸은 버티지 못했습니다." },
+        { type: "narration", text: "**[GAME OVER: 반항의 대가]**" },
+        { type: "narration", text: "수용소에서 간수에게 대드는 것은 자살 행위입니다." }
+      ],
+      isEnding: true,
+      actions: [
+        {
+          id: "restart",
+          text: "다시 시작하기",
+          nextScene: "entrance",
+          effects: [{ type: "resetGame" }]
+        }
+      ]
+    },
+
+    gameover_groper_trap: {
+      title: "덫",
+      description: [
+        { type: "narration", text: "한참 작업에 집중하고 있는데 어디선가 중얼거리는 소리가 들립니다." },
+        { type: "dialogue", speaker: "groper", text: "히히... 네가 그렇게 나온다? 좋아, 좋아..." },
+        { type: "narration", text: "갑자기 누군가가 당신을 밀칩니다." },
+        { type: "narration", text: "균형을 잃고 넘어지는 순간, 프레스 기계의 날이 내려옵니다." },
+        { type: "narration", text: "!!으아악!!—" },
+        { type: "narration", text: "팔 하나가 잘려나갑니다. 피가 분수처럼 솟구칩니다." },
+        { type: "dialogue", speaker: "groper", text: "앗, 이런. 산업재해네? 히히히..." },
+        { type: "narration", text: "과다출혈로 의식이 흐려집니다. 간수들이 달려오지만 이미 늦었습니다." },
+        { type: "narration", text: "**[GAME OVER: 산업재해]**" },
+        { type: "narration", text: "교활한 자를 함부로 적으로 만들면 언제 어디서 복수당할지 모릅니다." }
+      ],
+      isEnding: true,
+      actions: [
+        {
+          id: "restart",
+          text: "다시 시작하기",
+          nextScene: "entrance",
+          effects: [{ type: "resetGame" }]
+        }
+      ]
+    },
+
+    gameover_solitary_madness: {
+      title: "독방의 끝",
+      description: [
+        { type: "narration", text: "독방에 갇힌 지 며칠이 지났는지 알 수 없습니다." },
+        { type: "narration", text: "빛도, 소리도, 아무것도 없습니다. 오직 어둠과 침묵뿐." },
+        { type: "narration", text: "처음엔 버틸 수 있다고 생각했습니다. 하지만 시간이 지날수록..." },
+        { type: "narration", text: "벽이 좁아지는 것 같습니다. 숨이 막힙니다. 목소리가 들립니다." },
+        { type: "dialogue", speaker: "player", text: "제발... 누구 없어요...? 제발..." },
+        { type: "narration", text: "아무도 대답하지 않습니다. 당신은 벽을 긁기 시작합니다. 손톱이 벗겨져도 멈출 수 없습니다." },
+        { type: "narration", text: "일주일 후, 간수가 독방을 열었을 때..." },
+        { type: "narration", text: "거기엔 벽에 핏자국으로 무언가를 끄적이며 웃고 있는 폐인만이 있었습니다." },
+        { type: "narration", text: "**[GAME OVER: 정신붕괴]**" },
+        { type: "narration", text: "고독은 가장 잔인한 형벌입니다." }
       ],
       isEnding: true,
       actions: [
