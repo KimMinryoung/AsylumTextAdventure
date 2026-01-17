@@ -48,10 +48,13 @@ function getLocationFromScene(sceneId) {
   // Endings - map to their respective locations
   if (sceneId === 'ending_messiah_route' ||
       sceneId === 'ending_fraudster_route' ||
-      sceneId === 'ending_arsonist_route') return 'yard';
+      sceneId === 'ending_arsonist_route' ||
+      sceneId === 'ending_solo_daring' ||
+      sceneId === 'ending_solo_redemption' ||
+      sceneId === 'ending_solo_success' ||
+      sceneId === 'ending_solo_lucky') return null;
   if (sceneId === 'ending_solo_lucky') return 'duct';
-  if (sceneId === 'ending_solo_daring') return 'roof';
-  if (sceneId === 'ending_solo_redemption' || sceneId === 'ending_solo_despair') return 'solitary';
+  if (sceneId === 'ending_solo_despair') return 'solitary';
   if (sceneId === 'ending_surrender') return 'cell';
 
   // Solo escape scenes
@@ -84,6 +87,9 @@ const locationNames = {
 
 function Minimap({ sceneId }) {
   const currentLocation = getLocationFromScene(sceneId);
+
+  if(!sceneId)
+    return;
 
   // Special case for duct - it spans multiple areas
   const isDuct = currentLocation === 'duct';

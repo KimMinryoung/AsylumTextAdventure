@@ -1743,8 +1743,7 @@ const gameData = {
         {
           id: "execute_plan",
           text: "계획을 실행한다.",
-          nextScene: "solo_escape_execution",
-          effects: [{ type: "resetGame" }]
+          nextScene: "solo_escape_execution"
         }
       ]
     },
@@ -1838,17 +1837,19 @@ const gameData = {
         { type: "narration", text: "지하 3층으로 내려가려 하지만... **철문이 잠겨 있습니다**." },
         { type: "narration", text: "드라이버로는 열 수 없는 전자 잠금장치입니다." },
         { type: "dialogue", speaker: "player", text: "젠장... 다른 방법을 찾아야 해." },
-        { type: "narration", text: "보일러실을 뒤지다가 {{환기 덕트}}를 발견합니다. 좁지만 들어갈 수 있을 것 같습니다." }
       ],
       actions: [
         {
           id: "enter_duct",
-          text: "환기 덕트로 들어간다.",
+          text: "환기 덕트를 찾는다.",
+          conditions:  [
+            { type: "flagSet", flag: "knowVentDuct" }
+          ],
           nextScene: "solo_partial_duct"
         },
         {
           id: "go_back",
-          text: "위험하다. 돌아간다.",
+          text: "생각이 나지 않는다. 돌아간다.",
           nextScene: "solo_escape_caught"
         }
       ]
@@ -1857,17 +1858,17 @@ const gameData = {
     solo_partial_duct: {
       title: "환기 덕트",
       description: [
+        { type: "narration", text: "소아성폭력범이 지하 2층에 있다고 말한 {{환기 덕트}}가 생각납니다."},
+        { type: "narration", text: "보일러실을 뒤지니 말해준대로 그것이 있습니다. 좁지만 들어갈 수 있을 것 같습니다." },
         { type: "narration", text: "좁은 환기 덕트를 기어갑니다. 금속 벽이 삐걱거립니다." },
         { type: "narration", text: "앞이 보이지 않습니다. 그저 앞으로, 앞으로..." },
         { type: "narration", text: "갑자기 덕트가 아래로 꺾입니다. 미끄러집니다!" },
-        { type: "narration", text: "쿵! 어딘가에 떨어집니다. 충격에 정신이 아득해집니다." },
-        { type: "narration", text: "...눈을 뜨니 **수용소 밖**입니다. 쓰레기 처리장 같은 곳에 떨어진 것 같습니다." },
-        { type: "narration", text: "온몸이 아프지만, 자유입니다. 운이 좋았습니다." }
+        { type: "narration", text: "쿵! 어딘가에 떨어집니다. 충격에 정신이 아득해집니다." }
       ],
       actions: [
         {
           id: "escape",
-          text: "서둘러 도망친다.",
+          text: "눈을 뜬다.",
           nextScene: "ending_solo_lucky"
         }
       ]
@@ -1876,6 +1877,8 @@ const gameData = {
     ending_solo_lucky: {
       title: "운 좋은 탈출",
       description: [
+        { type: "narration", text: "...눈을 뜨니 **수용소 밖**입니다. 쓰레기 처리장 같은 곳에 떨어진 것 같습니다." },
+        { type: "narration", text: "온몸이 아프지만, 자유입니다. 운이 좋았습니다." },
         { type: "narration", text: "당신은 절뚝거리며 어둠 속으로 사라집니다." },
         { type: "narration", text: "계획대로는 아니었지만... 결과적으로 탈출에 성공했습니다." },
         { type: "narration", text: "아내 살인범에게 감사해야 할 것 같습니다. 그의 정보가 아니었다면 지하로 갈 생각도 못 했을 것입니다." },
@@ -2063,7 +2066,7 @@ const gameData = {
       title: "하수도",
       description: [
         { type: "narration", text: "며칠에 걸쳐 구멍을 넓힙니다. 손은 피투성이가 되고, 손톱은 빠지지만..." },
-        { type: "narration", text: "마침내 사람이 빠져나갈 수 있는 크기가 됩니다." }
+        { type: "narration", text: "마침내 사람이 빠져나갈 수 있는 크기가 됩니다." },
         { type: "narration", text: "당신은 하수도를 기어갑니다. 악취와 어둠 속에서 몇 시간을..." },
         { type: "narration", text: "그리고 마침내, **빛**이 보입니다." }
       ],
