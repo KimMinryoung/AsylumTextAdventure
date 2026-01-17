@@ -2020,19 +2020,19 @@ const gameData = {
         { type: "narration", text: "캄캄한 독방에 던져집니다. 문이 닫히고 완전한 어둠이 찾아옵니다." },
         { type: "narration", text: "시간이 흐릅니다. 하루? 이틀? 알 수 없습니다." },
         { type: "narration", text: "배가 고프고, 목이 마릅니다. 하지만 그보다 **절망**이 더 큽니다." },
-        { type: "narration", text: "...그때, 바닥에서 이상한 소리가 들립니다. 물 흐르는 소리?" },
-        { type: "narration", text: "손으로 바닥을 더듬어봅니다. 구석에 **금이 간 콘크리트**가 있습니다." }
+        { type: "narration", text: "바닥에서는 물이 흐르는 듯한 이상한 소리가 들립니다. " }
       ],
       actions: [
-        {
-          id: "investigate",
-          text: "금을 파본다.",
-          nextScene: "solitary_discovery"
-        },
         {
           id: "give_up_solitary",
           text: "포기하고 벽에 기댄다.",
           nextScene: "ending_solo_despair"
+        },
+        {
+          id: "investigate",
+          text: "금을 파본다.",
+          conditions: [{ type: "flagSet", flag: "knowWallCrack" }],
+          nextScene: "solitary_discovery"
         }
       ]
     },
@@ -2040,17 +2040,37 @@ const gameData = {
     solitary_discovery: {
       title: "발견",
       description: [
+        { type: "narration", text: "손으로 바닥을 더듬어봅니다. 구석에 **금이 간 콘크리트**가 있습니다." },
         { type: "narration", text: "손톱으로 콘크리트를 긁어냅니다. 손가락에서 피가 나지만 멈출 수 없습니다." },
         { type: "narration", text: "조금씩, 조금씩... 구멍이 커집니다." },
-        { type: "narration", text: "마침내, 손이 빠질 만큼의 구멍이 뚫렸습니다. 아래에서 **물 냄새**가 올라옵니다." },
-        { type: "narration", text: "정치범이 말했던 그것입니다. **하수도로 연결되는 통로**." },
-        { type: "narration", text: "며칠에 걸쳐 구멍을 넓힙니다. 손은 피투성이가 되고, 손톱은 빠지지만..." },
-        { type: "narration", text: "마침내 사람이 빠져나갈 수 있는 크기가 됩니다." }
+        { type: "narration", text: "마침내, 손이 빠질 만큼의 구멍이 뚫렸습니다. 아래에서 **물 냄새**가 올라옵니다." }
       ],
       actions: [
         {
           id: "escape_sewer",
-          text: "하수도로 빠져나간다.",
+          text: "구멍을 더 넓힌다.",
+          nextScene: "sewer_escape"
+        },
+        {
+          id: "give_up_solitary",
+          text: "포기하고 쉰다.",
+          nextScene: "ending_solo_despair"
+        }
+      ]
+    },
+
+    sewer_escape: {
+      title: "하수도",
+      description: [
+        { type: "narration", text: "며칠에 걸쳐 구멍을 넓힙니다. 손은 피투성이가 되고, 손톱은 빠지지만..." },
+        { type: "narration", text: "마침내 사람이 빠져나갈 수 있는 크기가 됩니다." }
+        { type: "narration", text: "당신은 하수도를 기어갑니다. 악취와 어둠 속에서 몇 시간을..." },
+        { type: "narration", text: "그리고 마침내, **빛**이 보입니다." }
+      ],
+      actions: [
+        {
+          id: "escape_from_sewer",
+          text: "밖으로 나선다.",
           nextScene: "ending_solo_redemption"
         }
       ]
@@ -2059,11 +2079,9 @@ const gameData = {
     ending_solo_redemption: {
       title: "구원",
       description: [
-        { type: "narration", text: "당신은 하수도를 기어갑니다. 악취와 어둠 속에서 몇 시간을..." },
-        { type: "narration", text: "그리고 마침내, **빛**이 보입니다." },
         { type: "narration", text: "하수도 출구로 기어나옵니다. 숲속입니다. 새가 지저귀고, 햇빛이 따사롭습니다." },
         { type: "narration", text: "당신은 피투성이의 손을 바라봅니다. 이 손으로 자유를 쟁취했습니다." },
-        { type: "narration", text: "실패했지만 포기하지 않았습니다. 그것이 당신을 구원했습니다." },
+        { type: "narration", text: "첫 시도는 실패했지만 포기하지 않았습니다. 그것이 당신을 구원했습니다." },
         { type: "narration", text: "**[엔딩 I: 불굴의 의지]** - 실패 후에도 포기하지 않고, 결국 혼자의 힘으로 탈출에 성공했습니다." }
       ],
       isEnding: true,

@@ -23,7 +23,7 @@ function getLocationFromScene(sceneId) {
   if (sceneId === 'solo_partial_basement') return 'basement';
 
   // Sewer
-  if (sceneId === 'solo_escape_sewer' || sceneId === 'ending_solo_success') return 'sewer';
+  if (sceneId === 'solo_escape_sewer' || sceneId === 'ending_solo_success' || sceneId === 'sewer_escape') return 'sewer';
 
   // Duct (inside building, show as current building location)
   if (sceneId === 'solo_partial_duct') return 'duct';
