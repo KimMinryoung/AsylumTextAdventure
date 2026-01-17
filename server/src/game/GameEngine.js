@@ -13,6 +13,12 @@ class GameEngine {
     this.flags = { ...(this.gameData.startFlags || {}) };
     this.history = [];
 
+    // Execute scene effects on start
+    const scene = this.gameData.scenes[this.currentScene];
+    if (scene && scene.effects) {
+      this.executeEffects(scene.effects);
+    }
+
     return this.getState();
   }
 
@@ -102,6 +108,12 @@ class GameEngine {
     // Move to next scene
     if (action.nextScene) {
       this.currentScene = action.nextScene;
+
+      // Execute scene effects when entering new scene
+      const nextScene = this.gameData.scenes[this.currentScene];
+      if (nextScene && nextScene.effects) {
+        this.executeEffects(nextScene.effects);
+      }
     }
 
     return {
