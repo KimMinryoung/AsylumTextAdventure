@@ -306,3 +306,92 @@
   padding: 20px;
   color: #ffd700;
 }
+
+/* Minimap */
+.minimap {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: rgba(0, 0, 0, 0.85);
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  border-radius: 10px;
+  padding: 12px;
+  z-index: 100;
+  min-width: 150px;
+}
+
+.minimap-title {
+  text-align: center;
+  color: #ffd700;
+  font-size: 0.85rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.minimap-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.minimap-row {
+  display: flex;
+  gap: 3px;
+  justify-content: center;
+}
+
+.minimap-cell {
+  width: 48px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  background: rgba(100, 100, 120, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+.minimap-cell.empty {
+  background: transparent;
+  border: none;
+}
+
+.minimap-cell.current {
+  background: rgba(255, 215, 0, 0.6);
+  border-color: #ffd700;
+  box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+}
+
+.minimap-cell.duct-overlay {
+  background: repeating-linear-gradient(
+    45deg,
+    rgba(100, 100, 120, 0.5),
+    rgba(100, 100, 120, 0.5) 4px,
+    rgba(255, 215, 0, 0.3) 4px,
+    rgba(255, 215, 0, 0.3) 8px
+  );
+}
+
+.minimap-label {
+  font-size: 0.6rem;
+  color: #e8e8e8;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.minimap-cell.current .minimap-label {
+  color: #1a1a2e;
+  font-weight: bold;
+}
+
+.minimap-current {
+  text-align: center;
+  color: #b8b8b8;
+  font-size: 0.75rem;
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 215, 0, 0.3);
+}

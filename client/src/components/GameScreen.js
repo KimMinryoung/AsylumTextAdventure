@@ -1,4 +1,5 @@
 import React from 'react';
+import Minimap from './Minimap';
 
 const speakerInfo = {
   guard: { name: "간수", image: "guard.png" },
@@ -105,7 +106,7 @@ function renderDescription(description) {
 }
 
 function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading, message }) {
-  const { title, description, actions, inventory, isEnding } = gameState;
+  const { title, description, actions, inventory, isEnding, sceneId } = gameState;
 
   return (
     <div className="game-screen">
@@ -173,6 +174,8 @@ function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading,
           )}
         </div>
       </div>
+
+      <Minimap sceneId={sceneId} />
     </div>
   );
 }
