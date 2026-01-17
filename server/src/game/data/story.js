@@ -182,14 +182,14 @@ const gameData = {
       ],
       actions: [
         {
+          id: "insult",
+          text: "\"살인범한테 설교를 듣고 싶진 않았는데.\"",
+          nextScene: "first_night"
+        },
+        {
           id: "ask_his_story",
           text: "\"당신 이야기를 듣고 싶어요.\"",
           nextScene: "wifekiller_story"
-        },
-        {
-          id: "apologize_leave",
-          text: "\"...미안해요.\" 물러난다.",
-          nextScene: "first_night"
         }
       ]
     },
@@ -217,7 +217,7 @@ const gameData = {
         },
         {
           id: "silent_respect",
-          text: "말없이 고개를 숙인다.",
+          text: "의심하는 눈길로 쳐다본다.",
           nextScene: "first_night"
         }
       ]
@@ -1606,32 +1606,716 @@ const gameData = {
       ]
     },
 
-    // ===== 6장: 둘째 날 저녁 - 선택의 분기 =====
+    // ===== 6장: 둘째 날 저녁 =====
     day_two_evening: {
       title: "둘째 날 저녁",
       description: [
         { type: "narration", text: "저녁 식사 시간입니다. 맛없는 죽과 딱딱한 빵이 배급됩니다." },
         { type: "narration", text: "당신은 지금까지 모은 정보들을 정리합니다. 탈출의 기회는 있어 보입니다." },
-        { type: "narration", text: "하지만 어떤 길을 선택할지 결정해야 합니다. 시간은 많지 않습니다." }
+        { type: "narration", text: "하지만 아직 시간이 있습니다. 내일 더 많은 정보를 모을 수 있을지도 모릅니다." }
       ],
       actions: [
         {
+          id: "sleep_early",
+          text: "일찍 잠자리에 든다.",
+          nextScene: "day_three_morning"
+        },
+        {
+          id: "night_activity",
+          text: "밤에 감방을 살펴본다.",
+          nextScene: "day_two_night_explore"
+        }
+      ]
+    },
+
+    day_two_night_explore: {
+      title: "밤의 탐색",
+      description: [
+        { type: "narration", text: "다른 죄수들이 잠든 틈을 타 감방 안을 조용히 살펴봅니다." },
+        { type: "narration", text: "창살 사이로 복도를 내다봅니다. 간수의 발소리가 규칙적으로 들립니다." },
+        { type: "narration", text: "순찰 간격을 세어봅니다. 대략 **15분**마다 지나가는 것 같습니다." }
+      ],
+      actions: [
+        {
+          id: "talk_political_night",
+          text: "아직 깨어있는 정치범에게 말을 건다.",
+          conditions: [{ type: "flagSet", flag: "politicalFriend" }],
+          nextScene: "political_night_talk"
+        },
+        {
+          id: "sleep",
+          text: "정보를 머릿속에 새기고 잠을 청한다.",
+          nextScene: "day_three_morning"
+        }
+      ]
+    },
+
+    political_night_talk: {
+      title: "정치범과의 밤 대화",
+      description: [
+        { type: "narration", text: "정치범이 책을 읽다 말고 당신을 바라봅니다." },
+        { type: "dialogue", speaker: "political", text: "잠이 안 와? 나도 그래. 이곳에서 처음 몇 년은 매일 밤 악몽을 꿨지." },
+        { type: "narration", text: "그가 책을 내려놓고 속삭입니다." },
+        { type: "dialogue", speaker: "political", text: "내가 알려준 정보... 쓸모가 있을 거야. 특히 **수요일 밤**을 기억해. 내일이 바로 수요일이야." },
+        { type: "dialogue", speaker: "political", text: "간수장이 의무실에 가는 시간... 그때가 유일한 틈이야." },
+        { type: "narration", text: "[정보 강화: 수요일 밤 타이밍 확인]" }
+      ],
+      effects: [{ type: "setFlag", flag: "wednesdayConfirmed" }],
+      actions: [
+        {
+          id: "thank_sleep",
+          text: "감사를 표하고 잠자리에 든다.",
+          nextScene: "day_three_morning"
+        }
+      ]
+    },
+
+    // ===== 7장: 셋째 날 - 결정의 날 =====
+    day_three_morning: {
+      title: "셋째 날 아침",
+      description: [
+        { type: "narration", text: "사이렌 소리에 눈을 뜹니다. 몸이 무겁습니다." },
+        { type: "narration", text: "오늘은 **수요일**입니다. 정치범이 말한 그 날." },
+        { type: "dialogue", speaker: "guard", text: "기상! 오늘은 전원 작업장이다! 움직여!" },
+        { type: "narration", text: "간수의 고함에 죄수들이 하나둘 일어납니다." }
+      ],
+      actions: [
+        {
+          id: "go_workshop_day3",
+          text: "작업장으로 향한다.",
+          nextScene: "day_three_workshop"
+        }
+      ]
+    },
+
+    day_three_workshop: {
+      title: "작업장 - 셋째 날",
+      description: [
+        { type: "narration", text: "작업장의 기름 냄새가 익숙해졌습니다. 당신은 프레스 기계 앞에 섭니다." },
+        { type: "narration", text: "오늘따라 긴장감이 감돕니다. 여러 죄수들이 당신을 힐끗힐끗 바라봅니다." }
+      ],
+      actions: [
+        {
+          id: "mediator_advantage",
+          text: "메시아와 방화범 양쪽에 접근한다. (중재자의 이점)",
+          conditions: [{ type: "flagSet", flag: "conflictMediator" }],
+          nextScene: "day_three_mediator"
+        },
+        {
+          id: "messiah_key_mission",
+          text: "간수장의 열쇠를 노린다. (메시아 임무)",
+          conditions: [{ type: "flagSet", flag: "messiahKeyMission" }],
+          nextScene: "day_three_key_heist"
+        },
+        {
+          id: "arsonist_final_prep",
+          text: "방화범에게 마지막 확인을 한다.",
+          conditions: [{ type: "flagSet", flag: "arsonistRoute" }],
+          nextScene: "day_three_arsonist_prep"
+        },
+        {
+          id: "fraudster_check",
+          text: "사기꾼의 계획 진행 상황을 확인한다.",
+          conditions: [{ type: "flagSet", flag: "fraudsterRoute" }],
+          nextScene: "day_three_fraudster_check"
+        },
+        {
+          id: "work_observe",
+          text: "일하면서 주변을 관찰한다.",
+          nextScene: "day_three_observe"
+        }
+      ]
+    },
+
+    day_three_mediator: {
+      title: "중재자의 이점",
+      description: [
+        { type: "narration", text: "당신이 첫날 메시아와 방화범 사이의 갈등을 중재한 것을 양쪽 모두 기억하고 있습니다." },
+        { type: "narration", text: "메시아가 먼저 다가옵니다." },
+        { type: "dialogue", speaker: "messiah", text: "평화의 사도여, 네가 우리 사이를 중재해준 것... 잊지 않았다." },
+        { type: "dialogue", speaker: "messiah", text: "오늘 밤 우리의 탈출 계획에 함께해도 좋다. 원한다면." },
+        { type: "narration", text: "방화범도 멀리서 당신을 바라보며 고개를 끄덕입니다. 그도 당신을 인정하는 것 같습니다." },
+        { type: "narration", text: "두 가지 계획에 모두 접근할 수 있게 되었습니다." }
+      ],
+      effects: [
+        { type: "setFlag", flag: "messiahRoute" },
+        { type: "setFlag", flag: "arsonistRoute" }
+      ],
+      actions: [
+        {
+          id: "choose_messiah",
+          text: "메시아의 계획에 대해 더 듣는다.",
+          nextScene: "mediator_messiah_detail"
+        },
+        {
+          id: "choose_arsonist",
+          text: "방화범의 계획에 대해 더 듣는다.",
+          nextScene: "mediator_arsonist_detail"
+        },
+        {
+          id: "keep_options",
+          text: "둘 다 열어두고 관찰한다.",
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    mediator_messiah_detail: {
+      title: "메시아의 계획",
+      description: [
+        { type: "narration", text: "메시아가 당신을 구석으로 데려갑니다." },
+        { type: "dialogue", speaker: "messiah", text: "오늘 밤 정전이 일어날 거야. 밖에 있는 내 신도들이 준비했지." },
+        { type: "dialogue", speaker: "messiah", text: "문제는 환기구 잠금장치야. 간수장의 카드키가 필요해." },
+        { type: "dialogue", speaker: "messiah", text: "네가 그걸 구해줄 수 있다면... 우리의 구원은 확실해진다." },
+        { type: "narration", text: "[메시아 열쇠 임무 활성화]" }
+      ],
+      effects: [{ type: "setFlag", flag: "messiahKeyMission" }],
+      actions: [
+        {
+          id: "accept",
+          text: "열쇠를 구해보겠다고 한다.",
+          nextScene: "day_three_key_heist"
+        },
+        {
+          id: "consider",
+          text: "다른 방법도 살펴본다.",
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    mediator_arsonist_detail: {
+      title: "방화범의 계획",
+      description: [
+        { type: "narration", text: "방화범이 기계 뒤로 당신을 부릅니다." },
+        { type: "dialogue", speaker: "arsonist", text: "넌 날 무섭다고 도망가지 않았어. 그래서 믿을 수 있어." },
+        { type: "dialogue", speaker: "arsonist", text: "오늘 밤 이 곳을 태울 거야. 불이 나면 혼란이 생기고, 그 틈에 도망치는 거지." },
+        { type: "dialogue", speaker: "arsonist", text: "기름이 필요해. 작업장에 있잖아. 구해줄 수 있어?" },
+        { type: "narration", text: "당신이 그를 중재했기에 그도 당신의 의견을 들을 것 같습니다." }
+      ],
+      effects: [{ type: "setFlag", flag: "arsonistTrust" }],
+      actions: [
+        {
+          id: "get_oil",
+          text: "기름을 구하러 간다.",
+          nextScene: "workshop_steal_oil_mediator"
+        },
+        {
+          id: "convince_safe",
+          text: "피해를 줄이도록 설득한다.",
+          nextScene: "arsonist_reconsider"
+        },
+        {
+          id: "consider",
+          text: "다른 방법도 살펴본다.",
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    workshop_steal_oil_mediator: {
+      title: "기름 확보",
+      description: [
+        { type: "narration", text: "간수가 졸고 있는 틈을 타 기름통에 다가갑니다." },
+        { type: "narration", text: "작은 병에 기름을 조금씩 옮겨 담습니다. 심장이 터질 것 같습니다." },
+        { type: "narration", text: "다행히 아무도 눈치채지 못했습니다. [아이템: 라이터 기름] 획득" }
+      ],
+      effects: [{ type: "addItem", item: "라이터 기름" }],
+      actions: [
+        {
+          id: "continue",
+          text: "기름을 숨기고 자리로 돌아간다.",
+          nextScene: "day_three_arsonist_prep"
+        }
+      ]
+    },
+
+    day_three_key_heist: {
+      title: "열쇠 작전",
+      description: [
+        { type: "narration", text: "메시아의 임무를 수행할 때입니다. 간수장의 열쇠를 손에 넣어야 합니다." },
+        { type: "narration", text: "점심시간, 간수장이 작업장을 순시합니다. 허리춤에 열쇠 꾸러미가 달랑거립니다." }
+      ],
+      actions: [
+        {
+          id: "use_key_knowledge",
+          text: "열쇠 구조 지식을 활용해 기회를 노린다.",
+          conditions: [{ type: "flagSet", flag: "knowKeyStructure" }],
+          nextScene: "key_heist_success"
+        },
+        {
+          id: "direct_steal",
+          text: "직접 훔치려 한다.",
+          nextScene: "key_heist_risky"
+        },
+        {
+          id: "ask_help_pedophile",
+          text: "소아성폭력범에게 주의를 끌어달라고 부탁한다.",
+          conditions: [{ type: "flagSet", flag: "helpedPedophile" }],
+          nextScene: "key_heist_distraction"
+        }
+      ]
+    },
+
+    key_heist_success: {
+      title: "완벽한 작전",
+      description: [
+        { type: "narration", text: "입소 첫날 관찰한 정보가 떠오릅니다. 큰 녹슨 열쇠, 작고 반짝이는 열쇠 둘, 그리고 카드키." },
+        { type: "narration", text: "환기구를 여는 건 **카드키**일 것입니다." },
+        { type: "narration", text: "간수장이 기계를 점검하러 허리를 숙인 순간, 당신은 능숙하게 카드키만 빼돌립니다." },
+        { type: "narration", text: "열쇠 꾸러미 전체가 아니라 하나만 빠졌으니 금방 눈치채지 못할 것입니다." },
+        { type: "narration", text: "[아이템: 환기구 카드키] 획득" }
+      ],
+      effects: [
+        { type: "addItem", item: "환기구 카드키" },
+        { type: "setFlag", flag: "hasVentKey" }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "태연하게 작업을 계속한다.",
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    key_heist_risky: {
+      title: "위험한 시도",
+      description: [
+        { type: "narration", text: "간수장이 다른 곳을 볼 때, 열쇠 꾸러미에 손을 뻗습니다." },
+        { type: "narration", text: "손가락이 열쇠에 닿는 순간—" },
+        { type: "dialogue", speaker: "warden", text: "뭐야, 이 새끼가?!" },
+        { type: "narration", text: "간수장이 당신의 손목을 낚아챕니다. 들켰습니다!" }
+      ],
+      actions: [
+        {
+          id: "excuse_leg",
+          text: "\"다리가 아파서 넘어질 뻔했습니다...\"",
+          conditions: [{ type: "flagSet", flag: "hurtLeg" }],
+          nextScene: "key_heist_excuse_success"
+        },
+        {
+          id: "excuse_normal",
+          text: "변명을 시도한다.",
+          nextScene: "key_heist_caught"
+        }
+      ]
+    },
+
+    key_heist_excuse_success: {
+      title: "위기 모면",
+      description: [
+        { type: "narration", text: "당신은 다리를 절뚝거리며 고통스러운 표정을 짓습니다." },
+        { type: "dialogue", speaker: "player", text: "죄송합니다... 첫날 맞은 다리가 아직도..." },
+        { type: "narration", text: "간수장이 당신의 절뚝거리는 모습을 보며 코웃음을 칩니다." },
+        { type: "dialogue", speaker: "warden", text: "쳇, 병신 같은 놈. 꺼져." },
+        { type: "narration", text: "위기를 넘겼습니다. 하지만 열쇠는 구하지 못했습니다." }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "조용히 물러난다.",
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    key_heist_caught: {
+      title: "발각",
+      description: [
+        { type: "narration", text: "간수장의 눈이 차갑게 빛납니다." },
+        { type: "dialogue", speaker: "warden", text: "열쇠를 노렸어? 이 새끼 탈옥 시도야. 독방행이다!" },
+        { type: "narration", text: "간수들이 달려와 당신을 제압합니다. 계획이 무너졌습니다." }
+      ],
+      actions: [
+        {
+          id: "to_solitary",
+          text: "독방으로 끌려간다.",
+          nextScene: "solitary_cell"
+        }
+      ]
+    },
+
+    key_heist_distraction: {
+      title: "주의 분산",
+      description: [
+        { type: "narration", text: "당신이 눈짓을 보내자, 소아성폭력범이 알아챕니다." },
+        { type: "narration", text: "그가 고개를 끄덕이고는 갑자기 기계에 손을 넣습니다." },
+        { type: "dialogue", speaker: "pedophile", text: "으아아악!!" },
+        { type: "narration", text: "비명소리에 모든 시선이 그에게로 쏠립니다. 간수장도 달려갑니다." },
+        { type: "narration", text: "그 틈에 당신은 간수장의 책상에서 **여분의 카드키**를 발견하고 집어 듭니다." },
+        { type: "dialogue", speaker: "pedophile", text: "(먼 곳에서) 괜찮아... 그냥 스친 거야..." },
+        { type: "narration", text: "그가 당신을 힐끗 보며 미소 짓습니다. 빚을 갚은 것입니다." },
+        { type: "narration", text: "[아이템: 환기구 카드키] 획득" }
+      ],
+      effects: [
+        { type: "addItem", item: "환기구 카드키" },
+        { type: "setFlag", flag: "hasVentKey" }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "소아성폭력범에게 감사의 눈빛을 보내고 자리로 돌아간다.",
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    day_three_arsonist_prep: {
+      title: "방화범의 준비",
+      description: [
+        { type: "narration", text: "방화범이 기계 뒤에서 당신을 기다리고 있습니다." },
+        { type: "dialogue", speaker: "arsonist", text: "기름은 가져왔어? 오늘 밤이야. 오늘 밤 이 지옥을 태울 거야." },
+        { type: "narration", text: "그의 눈이 광기로 빛납니다." }
+      ],
+      actions: [
+        {
+          id: "give_oil",
+          text: "기름을 건네준다.",
+          conditions: [{ type: "hasItem", item: "라이터 기름" }],
+          nextScene: "arsonist_ready"
+        },
+        {
+          id: "no_oil",
+          text: "\"아직 구하지 못했어...\"",
+          nextScene: "arsonist_disappointed"
+        },
+        {
+          id: "warn_arsonist",
+          text: "\"사람들이 다칠 수 있어. 다시 생각해봐.\"",
+          conditions: [{ type: "flagSet", flag: "arsonistTrust" }],
+          nextScene: "arsonist_reconsider"
+        }
+      ]
+    },
+
+    arsonist_ready: {
+      title: "준비 완료",
+      description: [
+        { type: "narration", text: "방화범이 기름을 받아들고 환하게 웃습니다." },
+        { type: "dialogue", speaker: "arsonist", text: "완벽해... 오늘 밤, 자정쯤에 시작할 거야. 불이 나면 동쪽 담벼락으로 와. 거기서 만나자." },
+        { type: "narration", text: "그의 손이 기름병을 쓰다듬습니다. 광기 어린 애정으로." },
+        { type: "dialogue", speaker: "arsonist", text: "아름다울 거야..." }
+      ],
+      effects: [{ type: "setFlag", flag: "arsonistReady" }],
+      actions: [
+        {
+          id: "continue",
+          text: "고개를 끄덕이고 자리로 돌아간다.",
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    arsonist_disappointed: {
+      title: "실망",
+      description: [
+        { type: "dialogue", speaker: "arsonist", text: "...뭐? 왜 못 구해? 네가 도와준다면서?" },
+        { type: "narration", text: "방화범의 얼굴이 일그러집니다." },
+        { type: "dialogue", speaker: "arsonist", text: "쓸모없는 놈... 됐어, 내가 알아서 할게. 대신 네 몫은 없어." },
+        { type: "narration", text: "그가 돌아섭니다. 방화범 루트에서 이탈했습니다." }
+      ],
+      effects: [{ type: "setFlag", flag: "arsonistAbandoned" }],
+      actions: [
+        {
+          id: "continue",
+          text: "찜찜하지만 자리로 돌아간다.",
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    arsonist_reconsider: {
+      title: "재고",
+      description: [
+        { type: "narration", text: "당신의 말에 방화범이 멈칫합니다. 눈빛이 흔들립니다." },
+        { type: "dialogue", speaker: "arsonist", text: "...다치라고? 난 그냥 이 곳을 태우고 싶은 건데..." },
+        { type: "narration", text: "그가 머리를 감싸쥡니다." },
+        { type: "dialogue", speaker: "arsonist", text: "고아원 아이들... 그때도 그냥 건물을 태우고 싶었을 뿐인데... 죽을 줄은..." },
+        { type: "narration", text: "방화범이 당신을 신뢰하기에 귀를 기울입니다." },
+        { type: "dialogue", speaker: "arsonist", text: "...알았어. 불을 줄일게. 동쪽 창고만 태울 거야. 거긴 사람이 없으니까." },
+        { type: "narration", text: "[방화 계획 수정] - 피해를 최소화하기로 했습니다." }
+      ],
+      effects: [{ type: "setFlag", flag: "arsonistMinimized" }],
+      actions: [
+        {
+          id: "continue",
+          text: "고맙다고 말하고 자리로 돌아간다.",
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    day_three_fraudster_check: {
+      title: "사기꾼의 진행 상황",
+      description: [
+        { type: "narration", text: "사기꾼이 눈짓으로 당신을 구석으로 부릅니다." },
+        { type: "dialogue", speaker: "fraudster", text: "좋은 소식이야. 박 간수가 넘어왔어. 오늘 밤 11시에 뒷문을 열어주기로 했어." },
+        { type: "narration", text: "그가 능글맞게 웃습니다." },
+        { type: "dialogue", speaker: "fraudster", text: "내 조직에서 차를 보내기로 했어. 우리 둘 다 태워갈 거야. 완벽하지?" }
+      ],
+      actions: [
+        {
+          id: "ask_catch",
+          text: "\"대가가 뭔데? 공짜는 없잖아.\"",
+          conditions: [{ type: "flagSet", flag: "knowPrisoners" }],
+          nextScene: "fraudster_catch_revealed"
+        },
+        {
+          id: "accept",
+          text: "\"좋아, 믿을게.\"",
+          nextScene: "day_three_afternoon",
+          effects: [{ type: "setFlag", flag: "fraudsterTrusted" }]
+        }
+      ]
+    },
+
+    fraudster_catch_revealed: {
+      title: "숨겨진 조건",
+      description: [
+        { type: "narration", text: "정치범이 알려준 정보가 떠오릅니다. '영악한 놈이야. 말은 못 믿지만...'" },
+        { type: "narration", text: "사기꾼의 미소가 살짝 굳어집니다." },
+        { type: "dialogue", speaker: "fraudster", text: "...영리하네. 그래, 조건이 있어. 우리 조직에서 네 능력이 필요하대." },
+        { type: "dialogue", speaker: "fraudster", text: "게임 만들던 놈이잖아. 우리 조직에서 **위조 문서**랑 **온라인 사기** 쪽 일을 시키려고 해." },
+        { type: "dialogue", speaker: "fraudster", text: "싫으면... 뭐, 혼자 알아서 나가든가. 어때?" }
+      ],
+      actions: [
+        {
+          id: "accept_anyway",
+          text: "\"...알았어. 일단 나가는 게 먼저야.\"",
+          nextScene: "day_three_afternoon",
+          effects: [{ type: "setFlag", flag: "fraudsterTrusted" }]
+        },
+        {
+          id: "refuse_fraud",
+          text: "\"사기는 더 이상 안 해. 다른 방법을 찾을게.\"",
+          nextScene: "day_three_afternoon",
+          effects: [{ type: "setFlag", flag: "fraudsterRefused" }]
+        }
+      ]
+    },
+
+    day_three_observe: {
+      title: "관찰",
+      description: [
+        { type: "narration", text: "당신은 묵묵히 일하면서 주변을 살핍니다." },
+        { type: "narration", text: "간수들의 움직임, 죄수들 사이의 긴장감, 그리고 탈출 루트가 될 수 있는 곳들..." },
+        { type: "narration", text: "오늘 밤이 중요할 것 같습니다. 여러 계획들이 동시에 진행되고 있는 것 같습니다." }
+      ],
+      actions: [
+        {
+          id: "talk_wifekiller_day3",
+          text: "아내 살인범에게 다가간다.",
+          conditions: [{ type: "flagSet", flag: "wifekillerFriend" }],
+          nextScene: "wifekiller_final_help"
+        },
+        {
+          id: "continue_work",
+          text: "계속 관찰하며 일한다.",
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    wifekiller_final_help: {
+      title: "아내 살인범의 마지막 도움",
+      description: [
+        { type: "narration", text: "아내 살인범이 당신 옆에서 일하며 낮은 목소리로 말합니다." },
+        { type: "dialogue", speaker: "wifekiller", text: "오늘 밤 뭔가 일어날 것 같아. 공기가 이상해." },
+        { type: "dialogue", speaker: "wifekiller", text: "네가 움직일 거라면... **지하 창고 옆 비상구**를 기억해. 거긴 열쇠가 없어도 안에서 열 수 있어." },
+        { type: "dialogue", speaker: "wifekiller", text: "난 여기 남을 거야. 하지만 네가 성공하면... 언젠가 내 아들한테 편지 좀 전해줘." },
+        { type: "narration", text: "[정보: 비상구 위치] 획득" }
+      ],
+      effects: [{ type: "setFlag", flag: "knowEmergencyExit" }],
+      actions: [
+        {
+          id: "promise",
+          text: "약속한다.",
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    day_three_afternoon: {
+      title: "셋째 날 오후",
+      description: [
+        { type: "narration", text: "오후 운동 시간입니다. 하늘에 먹구름이 끼어 있습니다." },
+        { type: "narration", text: "운동장에서 죄수들이 삼삼오오 모여 있습니다. 긴장감이 느껴집니다." },
+        { type: "narration", text: "메시아가 추종자들과 무언가를 속삭이고 있고, 방화범은 혼자 벽을 바라보며 중얼거리고 있습니다." }
+      ],
+      actions: [
+        {
+          id: "meet_messiah",
+          text: "메시아에게 열쇠를 전달한다.",
+          conditions: [{ type: "flagSet", flag: "hasVentKey" }],
+          nextScene: "messiah_key_delivery"
+        },
+        {
+          id: "use_warden_weakness",
+          text: "간수장의 약점을 이용해 협박한다.",
+          conditions: [{ type: "flagSet", flag: "knowWardenWeakness" }],
+          nextScene: "warden_blackmail"
+        },
+        {
+          id: "check_wall",
+          text: "담벼락의 균열을 다시 확인한다.",
+          conditions: [{ type: "flagSet", flag: "knowWallCrack" }],
+          nextScene: "wall_crack_plan"
+        },
+        {
+          id: "rest_prepare",
+          text: "오늘 밤을 위해 휴식을 취한다.",
+          nextScene: "day_three_evening"
+        }
+      ]
+    },
+
+    messiah_key_delivery: {
+      title: "열쇠 전달",
+      description: [
+        { type: "narration", text: "메시아에게 다가가 몰래 카드키를 전달합니다." },
+        { type: "narration", text: "메시아의 눈이 환하게 빛납니다." },
+        { type: "dialogue", speaker: "messiah", text: "해냈구나, 형제여... 이것으로 구원의 문이 열릴 것이다." },
+        { type: "dialogue", speaker: "messiah", text: "오늘 밤 2시, 환기구 앞에서 만나자. 구원이 가까워졌다..." },
+        { type: "narration", text: "[메시아 루트 강화] - 탈출 확률이 높아졌습니다." }
+      ],
+      effects: [{ type: "setFlag", flag: "messiahKeyDelivered" }],
+      actions: [
+        {
+          id: "continue",
+          text: "고개를 끄덕이고 물러난다.",
+          nextScene: "day_three_evening"
+        }
+      ]
+    },
+
+    warden_blackmail: {
+      title: "협박",
+      description: [
+        { type: "narration", text: "운동 시간이 끝날 무렵, 간수장이 혼자 있는 틈을 노립니다." },
+        { type: "narration", text: "당신은 그에게 조용히 다가가 속삭입니다." },
+        { type: "dialogue", speaker: "player", text: "정 대위... 의무실에서 뭘 하시는지 알고 있습니다. 여자 문제라고요?" },
+        { type: "narration", text: "간수장의 얼굴이 창백해집니다." },
+        { type: "dialogue", speaker: "warden", text: "뭐, 뭔 소리야 이 새끼가...!" },
+        { type: "dialogue", speaker: "player", text: "오늘 밤, 지하 비상구를 열어주시면 아무 말 안 하겠습니다. 아니면..." },
+        { type: "narration", text: "간수장이 이를 악뭅니다. 한참을 노려보다가..." },
+        { type: "dialogue", speaker: "warden", text: "...좋아. 새벽 3시에 지하 비상구. 한 번뿐이야. 그 후엔 니가 어떻게 되든 난 몰라." },
+        { type: "narration", text: "[비상구 루트 활성화]" }
+      ],
+      effects: [{ type: "setFlag", flag: "wardenBlackmailed" }],
+      actions: [
+        {
+          id: "continue",
+          text: "조용히 자리를 뜬다.",
+          nextScene: "day_three_evening"
+        }
+      ]
+    },
+
+    wall_crack_plan: {
+      title: "균열 확인",
+      description: [
+        { type: "narration", text: "담벼락 구석의 균열을 다시 살펴봅니다." },
+        { type: "narration", text: "어제보다 더 벌어진 것 같습니다. 비가 오면 더 약해질지도 모릅니다." },
+        { type: "narration", text: "하늘을 올려다봅니다. 먹구름이 잔뜩 끼어 있습니다. 오늘 밤 비가 올 것 같습니다." }
+      ],
+      actions: [
+        {
+          id: "plan_wall",
+          text: "밤에 균열을 파볼 계획을 세운다.",
+          nextScene: "day_three_evening",
+          effects: [{ type: "setFlag", flag: "wallEscapePlan" }]
+        },
+        {
+          id: "continue",
+          text: "다른 방법을 생각한다.",
+          nextScene: "day_three_evening"
+        }
+      ]
+    },
+
+    day_three_evening: {
+      title: "셋째 날 저녁",
+      description: [
+        { type: "narration", text: "저녁 식사 시간입니다. 밖에서 천둥소리가 들려옵니다." },
+        { type: "narration", text: "비가 내리기 시작합니다. 창밖으로 번개가 번쩍입니다." },
+        { type: "narration", text: "오늘 밤이 결정의 밤입니다. 여러 계획들이 교차하고 있습니다." },
+        { type: "narration", text: "당신은 어떤 길을 선택하시겠습니까?" }
+      ],
+      actions: [
+        {
+          id: "wait_night",
+          text: "밤을 기다린다.",
+          nextScene: "day_four_final"
+        }
+      ]
+    },
+
+    // ===== 8장: 넷째 날 새벽 - 최종 결정 =====
+    day_four_final: {
+      title: "넷째 날 새벽",
+      description: [
+        { type: "narration", text: "깊은 밤, 폭풍우가 몰아칩니다. 번개가 하늘을 가릅니다." },
+        { type: "narration", text: "감방 안은 긴장감으로 가득합니다. 모두가 깨어 있는 것 같습니다." },
+        { type: "narration", text: "지금이 탈출의 순간입니다. 어떤 길을 선택하시겠습니까?" }
+      ],
+      actions: [
+        {
+          id: "messiah_path_enhanced",
+          text: "메시아의 계획을 따른다. (열쇠 전달 완료)",
+          conditions: [{ type: "flagSet", flag: "messiahKeyDelivered" }],
+          nextScene: "ending_messiah_enhanced"
+        },
+        {
           id: "messiah_path",
           text: "메시아의 계획을 따른다. (환기구 탈출)",
-          conditions: [{ type: "flagSet", flag: "messiahRoute" }],
+          conditions: [
+            { type: "flagSet", flag: "messiahRoute" },
+            { type: "flagNotSet", flag: "messiahKeyDelivered" }
+          ],
           nextScene: "ending_messiah_route"
         },
         {
           id: "fraudster_path",
           text: "사기꾼과 함께 간수를 매수한다.",
-          conditions: [{ type: "flagSet", flag: "fraudsterRoute" }],
+          conditions: [
+            { type: "flagSet", flag: "fraudsterTrusted" },
+            { type: "flagNotSet", flag: "fraudsterRefused" }
+          ],
           nextScene: "ending_fraudster_route"
+        },
+        {
+          id: "arsonist_path_safe",
+          text: "방화범의 계획에 참여한다. (피해 최소화)",
+          conditions: [{ type: "flagSet", flag: "arsonistMinimized" }],
+          nextScene: "ending_arsonist_safe"
         },
         {
           id: "arsonist_path",
           text: "방화범의 계획에 참여한다. (화재 혼란)",
-          conditions: [{ type: "flagSet", flag: "arsonistRoute" }],
+          conditions: [
+            { type: "flagSet", flag: "arsonistReady" },
+            { type: "flagNotSet", flag: "arsonistMinimized" }
+          ],
           nextScene: "ending_arsonist_route"
+        },
+        {
+          id: "warden_path",
+          text: "간수장이 열어준 비상구로 탈출한다.",
+          conditions: [{ type: "flagSet", flag: "wardenBlackmailed" }],
+          nextScene: "ending_warden_route"
+        },
+        {
+          id: "wall_path",
+          text: "폭풍우를 틈타 담벼락 균열을 파고 나간다.",
+          conditions: [{ type: "flagSet", flag: "wallEscapePlan" }],
+          nextScene: "ending_wall_route"
+        },
+        {
+          id: "emergency_exit_path",
+          text: "아내 살인범이 알려준 비상구로 탈출한다.",
+          conditions: [{ type: "flagSet", flag: "knowEmergencyExit" }],
+          nextScene: "ending_emergency_route"
         },
         {
           id: "solo_path_prepared",
@@ -1657,6 +2341,114 @@ const gameData = {
           id: "give_up",
           text: "탈출을 포기하고 형기를 채우기로 한다.",
           nextScene: "ending_surrender"
+        }
+      ]
+    },
+
+    // ===== 새로운 엔딩들 =====
+    ending_messiah_enhanced: {
+      title: "완벽한 구원",
+      description: [
+        { type: "narration", text: "당신이 전달한 카드키로 메시아가 환기구를 엽니다." },
+        { type: "dialogue", speaker: "messiah", text: "형제여, 네 믿음이 우리 모두를 구원했다!" },
+        { type: "narration", text: "정전과 폭풍우의 혼란 속에서, 당신과 메시아, 그리고 추종자들이 환기구로 빠져나갑니다." },
+        { type: "narration", text: "카드키 덕분에 한 번의 걸림도 없이 탈출에 성공합니다." },
+        { type: "narration", text: "새벽녘, 산속 외딴 건물에 도착합니다. 메시아의 신도들이 기다리고 있습니다." },
+        { type: "dialogue", speaker: "messiah", text: "새로운 삶이 시작된다, 형제여. 너는 이제 우리 가족이야." },
+        { type: "narration", text: "**[엔딩 A+: 선택받은 자]** - 메시아의 가장 신뢰받는 조력자가 되어 탈출했습니다." }
+      ],
+      isEnding: true,
+      actions: [
+        {
+          id: "restart",
+          text: "다시 시작하기",
+          nextScene: "entrance",
+          effects: [{ type: "resetGame" }]
+        }
+      ]
+    },
+
+    ending_arsonist_safe: {
+      title: "통제된 불꽃",
+      description: [
+        { type: "narration", text: "방화범이 동쪽 창고에만 불을 지릅니다. 약속대로 피해를 최소화했습니다." },
+        { type: "narration", text: "화재 경보가 울리고 간수들이 몰려갑니다. 그 틈에 당신과 방화범은 담벼락을 넘습니다." },
+        { type: "narration", text: "돌아보니 창고만 불타고 있습니다. 다른 건물들은 무사합니다." },
+        { type: "dialogue", speaker: "arsonist", text: "...네 말이 맞았어. 이 정도로도 충분히 아름다워." },
+        { type: "narration", text: "방화범의 눈에 광기 대신 평온함이 어립니다." },
+        { type: "narration", text: "**[엔딩 C+: 구원받은 불꽃]** - 방화범의 광기를 누그러뜨리고 함께 탈출했습니다. 희생자 없이." }
+      ],
+      isEnding: true,
+      actions: [
+        {
+          id: "restart",
+          text: "다시 시작하기",
+          nextScene: "entrance",
+          effects: [{ type: "resetGame" }]
+        }
+      ]
+    },
+
+    ending_warden_route: {
+      title: "약점의 대가",
+      description: [
+        { type: "narration", text: "새벽 3시, 간수장이 약속대로 지하 비상구를 열어줍니다." },
+        { type: "dialogue", speaker: "warden", text: "...꺼져. 다시는 내 앞에 나타나지 마." },
+        { type: "narration", text: "당신은 빗속으로 달려나갑니다. 뒤에서 문이 닫히는 소리가 들립니다." },
+        { type: "narration", text: "아무도 추격하지 않습니다. 간수장이 입막음을 한 것입니다." },
+        { type: "narration", text: "새벽빛이 밝아옵니다. 당신은 자유입니다. 누군가의 비밀을 이용한 더러운 방법이었지만." },
+        { type: "narration", text: "**[엔딩 J: 어둠의 거래]** - 협박으로 탈출에 성공했습니다. 양심은 찔리지만, 살아남았습니다." }
+      ],
+      isEnding: true,
+      actions: [
+        {
+          id: "restart",
+          text: "다시 시작하기",
+          nextScene: "entrance",
+          effects: [{ type: "resetGame" }]
+        }
+      ]
+    },
+
+    ending_wall_route: {
+      title: "폭풍의 밤",
+      description: [
+        { type: "narration", text: "폭풍우가 몰아치는 밤, 당신은 담벼락 균열 앞에 섭니다." },
+        { type: "narration", text: "비에 젖은 콘크리트가 부서지기 쉬워졌습니다. 맨손으로 파헤칩니다." },
+        { type: "narration", text: "손톱이 빠지고 피가 나지만 멈추지 않습니다. 천둥소리가 작업 소리를 가려줍니다." },
+        { type: "narration", text: "마침내 사람이 빠져나갈 수 있는 구멍이 뚫립니다." },
+        { type: "narration", text: "당신은 폭풍우 속으로 뛰어나갑니다. 번개가 길을 비춰줍니다." },
+        { type: "narration", text: "**[엔딩 K: 폭풍을 뚫고]** - 폭풍우의 밤, 오직 의지로 담벼락을 뚫고 탈출했습니다." }
+      ],
+      isEnding: true,
+      actions: [
+        {
+          id: "restart",
+          text: "다시 시작하기",
+          nextScene: "entrance",
+          effects: [{ type: "resetGame" }]
+        }
+      ]
+    },
+
+    ending_emergency_route: {
+      title: "친구의 선물",
+      description: [
+        { type: "narration", text: "아내 살인범이 알려준 비상구로 향합니다." },
+        { type: "narration", text: "지하 창고 옆, 낡은 철문이 있습니다. 안쪽에서 여는 건 쉽습니다." },
+        { type: "narration", text: "문을 열자 빗줄기가 쏟아집니다. 바깥세상입니다." },
+        { type: "narration", text: "뒤를 돌아봅니다. 감방에 남아있을 아내 살인범을 생각합니다." },
+        { type: "narration", text: "'언젠가 내 아들한테 편지 좀 전해줘.' 그의 말이 떠오릅니다." },
+        { type: "narration", text: "당신은 폭풍우 속으로 뛰어나갑니다. 그의 부탁을 가슴에 새기며." },
+        { type: "narration", text: "**[엔딩 L: 약속의 무게]** - 친구의 도움으로 탈출했습니다. 이제 그 약속을 지켜야 합니다." }
+      ],
+      isEnding: true,
+      actions: [
+        {
+          id: "restart",
+          text: "다시 시작하기",
+          nextScene: "entrance",
+          effects: [{ type: "resetGame" }]
         }
       ]
     },
@@ -2027,15 +2819,15 @@ const gameData = {
       ],
       actions: [
         {
-          id: "give_up_solitary",
-          text: "포기하고 벽에 기댄다.",
-          nextScene: "ending_solo_despair"
-        },
-        {
           id: "investigate",
           text: "금을 파본다.",
           conditions: [{ type: "flagSet", flag: "knowWallCrack" }],
           nextScene: "solitary_discovery"
+        },
+        {
+          id: "give_up_solitary",
+          text: "포기하고 벽에 기댄다.",
+          nextScene: "ending_solo_despair"
         }
       ]
     },
