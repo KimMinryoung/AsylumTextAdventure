@@ -7,7 +7,7 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-  origin: 'https://asylumtextadventure.onrender.com',
+  origin: ['https://asylumtextadventure.onrender.com', 'http://localhost:3000'],
   methods: ['GET', 'POST']
 }));
 app.use(express.json());

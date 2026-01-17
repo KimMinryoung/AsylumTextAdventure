@@ -8,6 +8,7 @@ const gameData = {
     // ===== 1장: 입소 =====
     entrance: {
       title: "수용소 입소",
+      location: "corridor",
       description: [
         { type: "narration", text: "무겁고 녹슨 **철문**이 비명 같은 쇳소리를 내며 열립니다." },
         { type: "narration", text: "사방은 습기 찬 콘크리트 냄새와 정체 모를 **소독약** 냄새로 가득합니다." },
@@ -40,6 +41,7 @@ const gameData = {
 
     entrance_beg: {
       title: "굴욕",
+      location: "corridor",
       description: [
         { type: "narration", text: "당신은 고개를 깊이 숙이며 용서를 구합니다." },
         { type: "dialogue", speaker: "guard", text: "크하하! 이것 봐라. 밖에서 그렇게 잘난 척하더니 여기선 벌써 꼬리를 내리는군." },
@@ -58,6 +60,7 @@ const gameData = {
 
     entrance_stare: {
       title: "반항",
+      location: "corridor",
       description: [
         { type: "narration", text: "당신은 아무 말 없이 간수의 눈을 똑바로 쏘아봅니다." },
         { type: "dialogue", speaker: "guard", text: "...이 새끼가 눈깔이 살아있네?" },
@@ -77,6 +80,7 @@ const gameData = {
 
     entrance_key: {
       title: "관찰",
+      location: "corridor",
       description: [
         { type: "narration", text: "간수가 당신의 죄목을 읊으며 훈계하는 동안, 당신은 고개를 숙인 척하며 그의 허리춤을 주시합니다." },
         { type: "narration", text: "낡은 가죽 벨트에 {{열쇠 꾸러미}}가 달려 있습니다. 크고 녹슨 열쇠 하나, 작고 반짝이는 열쇠 둘, 그리고 특이한 형태의 **카드키** 하나." },
@@ -97,6 +101,7 @@ const gameData = {
     // ===== 2장: 감방 도착 - 죄수들과의 첫 만남 =====
     cell_arrival: {
       title: "7번 감방",
+      location: "cell",
       description: [
         { type: "narration", text: "축축한 복도를 지나 **7번 감방** 앞에 도착합니다. 녹슨 철창 너머로 여러 개의 시선이 느껴집니다." },
         { type: "narration", text: "간수가 철창을 열고 당신을 안으로 밀어 넣습니다. 쾅, 하는 소리와 함께 철창이 닫힙니다." },
@@ -127,6 +132,7 @@ const gameData = {
 
     cell_introduction: {
       title: "자기소개",
+      location: "cell",
       description: [
         { type: "narration", text: "당신은 목소리를 가다듬고 자신을 소개합니다. 감방 안에 묘한 침묵이 흐릅니다." },
         { type: "dialogue", speaker: "arsonist", text: "아, 그 게임 만든 놈? 뉴스에서 봤어. 꽤 큰 뉴스였지. 아이들을... 그런 내용이었다며." },
@@ -171,6 +177,7 @@ const gameData = {
 
     talk_wifekiller_intro: {
       title: "아내 살인범",
+      location: "cell",
       description: [
         { type: "narration", text: "당신은 돌아선 아내 살인범을 따라갑니다. 그가 감방 구석 창문 앞에 서 있습니다." },
         { type: "dialogue", speaker: "player", text: "저기... 아까 왜 그렇게 말했어요?" },
@@ -201,6 +208,7 @@ const gameData = {
 
     wifekiller_story: {
       title: "아내 살인범의 진실",
+      location: "cell",
       description: [
         { type: "narration", text: "당신의 말에 아내 살인범이 잠시 멈칫합니다." },
         { type: "dialogue", speaker: "wifekiller", text: "...내 이야기?" },
@@ -230,6 +238,7 @@ const gameData = {
 
     wifekiller_bond: {
       title: "유대",
+      location: "cell",
       description: [
         { type: "narration", text: "당신의 진심 어린 반응에 아내 살인범의 표정이 조금 누그러집니다." },
         { type: "dialogue", speaker: "wifekiller", text: "...너, 생각보다 나쁜 놈은 아닌 것 같군." },
@@ -253,6 +262,7 @@ const gameData = {
 
     cell_silent: {
       title: "침묵",
+      location: "cell",
       description: [
         { type: "narration", text: "당신은 아무 말 없이 감방 구석의 빈 침대로 향합니다." },
         { type: "dialogue", speaker: "groper", text: "야, 쟤 왜 저래? 잘난 척이야 뭐야?" },
@@ -277,6 +287,7 @@ const gameData = {
 
     cell_observe: {
       title: "관찰",
+      location: "cell",
       description: [
         { type: "narration", text: "당신은 눈을 가늘게 뜨고 감방 안의 죄수들을 하나하나 살핍니다." },
         { type: "narration", text: "**사기꾼** - 말쑥한 인상에 끊임없이 웃음 짓는 남자. 손가락이 쉴 새 없이 움직이며 보이지 않는 동전을 굴리는 듯합니다. 눈빛은 차갑지만 입술에는 항상 미소가 걸려 있습니다." },
@@ -320,6 +331,7 @@ const gameData = {
     // ===== 3장: 개별 죄수들과의 대화 =====
     talk_messiah: {
       title: "메시아와의 대화",
+      location: "cell",
       description: [
         { type: "dialogue", speaker: "messiah", text: "나에게 관심이 있는가, 새로운 양이여?" },
         { type: "narration", text: "가까이서 보니 그의 눈동자가 묘하게 흔들리고 있습니다. 광신도의 눈빛이지만, 그 안에 묘한 카리스마가 있습니다." },
@@ -356,6 +368,7 @@ const gameData = {
 
     messiah_origin: {
       title: "메시아의 기원",
+      location: "cell",
       description: [
         { type: "narration", text: "메시아의 눈빛이 머나먼 곳을 바라봅니다. 광기 속에 찰나의 슬픔이 스칩니다." },
         { type: "dialogue", speaker: "messiah", text: "나는... 원래 평범한 의사였어. 작은 마을 병원의 외과의." },
@@ -382,6 +395,7 @@ const gameData = {
 
     messiah_origin_2: {
       title: "메시아의 탄생",
+      location: "cell",
       description: [
         { type: "dialogue", speaker: "messiah", text: "그 후로... 매일 밤 목소리가 들렸어. 잠을 잘 수가 없었지." },
         { type: "dialogue", speaker: "messiah", text: "병원을 그만뒀어. 환자를 볼 때마다... 누가 살고 누가 죽을지 '보이기' 시작했거든." },
@@ -410,6 +424,7 @@ const gameData = {
 
     messiah_trust: {
       title: "메시아의 신뢰",
+      location: "cell",
       description: [
         { type: "narration", text: "메시아의 얼굴에 환한 미소가 번집니다." },
         { type: "dialogue", speaker: "messiah", text: "현명한 선택이야, 형제여. 너는 구원받을 자격이 있어." },
@@ -427,6 +442,7 @@ const gameData = {
 
     messiah_doubt: {
       title: "유보",
+      location: "cell",
       description: [
         { type: "dialogue", speaker: "messiah", text: "의심은 지혜의 시작이지... 하지만 너무 오래 망설이면 기회는 사라진다." },
         { type: "narration", text: "메시아가 어깨를 으쓱하며 물러납니다." },
@@ -448,6 +464,7 @@ const gameData = {
 
     messiah_reject: {
       title: "거부",
+      location: "cell",
       description: [
         { type: "narration", text: "메시아의 눈빛이 순간 얼어붙습니다. 그의 얼굴에 광기 어린 분노가 스칩니다." },
         { type: "dialogue", speaker: "messiah", text: "...사이비... 교주...?" },
@@ -476,6 +493,7 @@ const gameData = {
 
     talk_fraudster: {
       title: "사기꾼과의 대화",
+      location: "cell",
       description: [
         { type: "narration", text: "사기꾼이 능글맞은 미소를 지으며 당신에게 다가옵니다. 말쑥한 인상에 눈빛은 날카롭습니다." },
         { type: "dialogue", speaker: "fraudster", text: "오, 새 친구. 반가워. 여기선 '김 사장'이라고 불러. 밖에서도 그렇게 불렸거든." },
@@ -513,6 +531,7 @@ const gameData = {
 
     fraudster_past: {
       title: "사기꾼의 과거",
+      location: "cell",
       description: [
         { type: "narration", text: "사기꾼의 미소가 잠시 굳어집니다. 눈빛에 찰나의 어둠이 스칩니다." },
         { type: "dialogue", speaker: "fraudster", text: "...내가 왜 사기꾼이 됐는지 궁금해? 재밌는 이야기는 아닌데." },
@@ -539,6 +558,7 @@ const gameData = {
 
     fraudster_past_2: {
       title: "사기꾼의 성장",
+      location: "cell",
       description: [
         { type: "dialogue", speaker: "fraudster", text: "처음 100만 원 뜯었을 때... 손이 떨렸어. 죄책감에 잠을 못 잤고." },
         { type: "dialogue", speaker: "fraudster", text: "근데 두 번째는 괜찮더라. 세 번째는 쉬웠고. 열 번째쯤 되니까... **아무렇지도 않았어**." },
@@ -567,6 +587,7 @@ const gameData = {
 
     fraudster_guilt: {
       title: "죄책감",
+      location: "cell",
       description: [
         { type: "narration", text: "사기꾼이 잠시 멈칫합니다. 미소가 살짝 흔들립니다." },
         { type: "dialogue", speaker: "fraudster", text: "...미안하냐고?" },
@@ -595,6 +616,7 @@ const gameData = {
 
     fraudster_deal_talk: {
       title: "사기꾼의 제안",
+      location: "cell",
       description: [
         { type: "dialogue", speaker: "fraudster", text: "좋아, 핵심만 말해줄게." },
         { type: "narration", text: "그가 주위를 살피며 목소리를 낮춥니다." },
@@ -620,6 +642,7 @@ const gameData = {
 
     fraudster_deal: {
       title: "거래",
+      location: "cell",
       description: [
         { type: "dialogue", speaker: "fraudster", text: "오, 그래? 그럼 이야기가 되네." },
         { type: "narration", text: "사기꾼이 주위를 살피며 목소리를 낮춥니다." },
@@ -637,6 +660,7 @@ const gameData = {
 
     fraudster_reject: {
       title: "거절",
+      location: "cell",
       description: [
         { type: "dialogue", speaker: "fraudster", text: "그래? 안됐네. 뭐, 다른 방법을 찾아봐야지." },
         { type: "narration", text: "사기꾼이 아쉬운 표정을 짓다가 곧 다시 능글맞은 미소를 띕니다." },
@@ -658,6 +682,7 @@ const gameData = {
 
     fraudster_suspicious: {
       title: "의심",
+      location: "cell",
       description: [
         { type: "narration", text: "사기꾼이 킥킥 웃습니다." },
         { type: "dialogue", speaker: "fraudster", text: "하하, 날카롭네. 그래, 내가 사기꾼인 건 맞아. 근데 말이야..." },
@@ -682,6 +707,7 @@ const gameData = {
 
     talk_political: {
       title: "정치범과의 대화",
+      location: "cell",
       description: [
         { type: "narration", text: "책을 읽던 남자가 고개를 들어 당신을 바라봅니다. 지적이고 차분한 눈빛이지만, 그 안에 깊은 피로가 서려 있습니다." },
         { type: "dialogue", speaker: "political", text: "새로 왔군. 나는... 뭐, 정치범이라고 불러. 원래 기자였어. 《진실의 목소리》라는 지하 신문을 만들었지." },
@@ -719,6 +745,7 @@ const gameData = {
 
     political_family: {
       title: "정치범의 가족",
+      location: "cell",
       description: [
         { type: "narration", text: "정치범의 얼굴에 고통스러운 그림자가 드리웁니다." },
         { type: "dialogue", speaker: "political", text: "...내가 체포되던 날, 비밀경찰이 새벽에 집에 들이닥쳤어." },
@@ -745,6 +772,7 @@ const gameData = {
 
     political_request: {
       title: "정치범의 부탁",
+      location: "cell",
       description: [
         { type: "narration", text: "정치범이 주머니에서 낡은 종이를 꺼냅니다. 접고 또 접어 닳아버린 편지입니다." },
         { type: "dialogue", speaker: "political", text: "이건... 민아한테 쓴 편지야. 5년 동안 부치지 못했어. 면회도 안 되고, 편지도 검열당하니까." },
@@ -769,6 +797,7 @@ const gameData = {
 
     political_grateful: {
       title: "약속",
+      location: "cell",
       description: [
         { type: "narration", text: "정치범의 눈에서 눈물이 흐릅니다. 그가 당신의 손을 꽉 잡습니다." },
         { type: "dialogue", speaker: "political", text: "고마워... 정말 고마워. 네가 이 지옥에서 나갈 수 있도록 내가 아는 모든 걸 알려줄게." },
@@ -792,6 +821,7 @@ const gameData = {
 
     political_advice: {
       title: "조언",
+      location: "cell",
       description: [
         { type: "narration", text: "정치범이 목소리를 낮춥니다." },
         { type: "dialogue", speaker: "political", text: "직접 도와줄 수는 없어. 난 여기서 튀면 가족이 위험해지거든." },
@@ -811,6 +841,7 @@ const gameData = {
 
     political_info: {
       title: "정보",
+      location: "cell",
       description: [
         { type: "narration", text: "정치범이 다른 죄수들을 힐끗 바라봅니다." },
         { type: "dialogue", speaker: "political", text: "좋아, 알려줄게." },
@@ -833,6 +864,7 @@ const gameData = {
     // ===== 치한과의 대화 =====
     talk_groper: {
       title: "치한과의 대화",
+      location: "cell",
       description: [
         { type: "narration", text: "당신이 다가가자, 치한이 경계하는 눈빛으로 올려다봅니다. 반쯤 잘린 오른쪽 귀가 눈에 들어옵니다." },
         { type: "dialogue", speaker: "groper", text: "뭐야... 뭘 봐? 나한테 뭔 볼일이야?" },
@@ -867,6 +899,7 @@ const gameData = {
 
     groper_threat: {
       title: "위협",
+      location: "cell",
       description: [
         { type: "narration", text: "치한의 얼굴이 순간 일그러집니다. 히죽거리던 웃음이 사라지고 싸늘한 눈빛이 드러납니다." },
         { type: "dialogue", speaker: "groper", text: "...뭐라고?" },
@@ -887,6 +920,7 @@ const gameData = {
 
     groper_past: {
       title: "치한의 과거",
+      location: "cell",
       description: [
         { type: "narration", text: "치한이 음습하게 웃으며 과거를 회상합니다." },
         { type: "dialogue", speaker: "groper", text: "나? 나는 지하철에서 일했어... 아니, '활동'했다고 해야 하나? 헤헤." },
@@ -913,6 +947,7 @@ const gameData = {
 
     groper_info: {
       title: "치한의 정보",
+      location: "cell",
       description: [
         { type: "narration", text: "치한이 주위를 두리번거립니다." },
         { type: "dialogue", speaker: "groper", text: "정보? 헤헤... 그래, 좋아. 알려줄게." },
@@ -934,6 +969,7 @@ const gameData = {
     // ===== 방화범과의 낮 대화 =====
     talk_arsonist_day: {
       title: "방화범과의 대화",
+      location: "cell",
       description: [
         { type: "narration", text: "방화범이 멍하니 허공을 바라보고 있습니다. 가까이 다가가자 그가 천천히 고개를 돌립니다." },
         { type: "narration", text: "얼굴 왼편의 화상 자국이 처참합니다. 녹아내린 것처럼 일그러진 피부가 눈 아래까지 퍼져 있습니다." },
@@ -964,6 +1000,7 @@ const gameData = {
 
     arsonist_scar: {
       title: "방화범의 상처",
+      location: "cell",
       description: [
         { type: "narration", text: "방화범이 일그러진 얼굴을 손으로 쓸어내립니다. 눈빛이 묘하게 그리워하는 듯합니다." },
         { type: "dialogue", speaker: "arsonist", text: "이거? 내 첫 번째 작품에서 받은 선물이야." },
@@ -992,6 +1029,7 @@ const gameData = {
 
     arsonist_crime: {
       title: "방화범의 죄",
+      location: "cell",
       description: [
         { type: "narration", text: "방화범의 눈이 반짝입니다. 마치 가장 자랑스러운 이야기를 꺼내는 것처럼." },
         { type: "dialogue", speaker: "arsonist", text: "내가 왜 여기 있는지 알아? 공장 세 개, 아파트 한 동, 그리고... 고아원 하나." },
@@ -1020,6 +1058,7 @@ const gameData = {
 
     arsonist_calm: {
       title: "진정",
+      location: "cell",
       description: [
         { type: "narration", text: "당신이 조심스럽게 어깨를 터치하자, 방화범이 멈칫합니다." },
         { type: "dialogue", speaker: "arsonist", text: "...미안. 가끔 이래. 목소리가... 들려서." },
@@ -1041,6 +1080,7 @@ const gameData = {
     // ===== 캐릭터 갈등 씬 =====
     conflict_messiah_arsonist: {
       title: "대립",
+      location: "cell",
       description: [
         { type: "narration", text: "갑자기 감방 안에 긴장감이 흐릅니다. 메시아가 방화범 앞에 서 있습니다." },
         { type: "dialogue", speaker: "messiah", text: "형제여, 네 안의 불꽃은 파괴가 아니라 정화를 위해 있어야 해. 내 말을 들어." },
@@ -1066,6 +1106,7 @@ const gameData = {
 
     conflict_mediate: {
       title: "중재",
+      location: "cell",
       description: [
         { type: "narration", text: "당신이 둘 사이에 끼어듭니다." },
         { type: "dialogue", speaker: "player", text: "그만해요. 둘 다. 간수들한테 들리면 어쩌려고." },
@@ -1087,6 +1128,7 @@ const gameData = {
 
     conflict_watch: {
       title: "관망",
+      location: "cell",
       description: [
         { type: "narration", text: "당신은 한 발 뒤로 물러서서 상황을 지켜봅니다." },
         { type: "dialogue", speaker: "political", text: "..." },
@@ -1107,6 +1149,7 @@ const gameData = {
     // ===== 소아성폭력범 린치 씬 =====
     pedophile_attack: {
       title: "린치",
+      location: "cell",
       description: [
         { type: "narration", text: "갑자기 감방 구석에서 소란이 일어납니다. 몇몇 죄수들이 소아성폭력범을 둘러싸고 있습니다." },
         { type: "dialogue", speaker: "unknown", text: "이 더러운 새끼... 죽여버려!" },
@@ -1131,6 +1174,7 @@ const gameData = {
 
     pedophile_help: {
       title: "구출",
+      location: "cell",
       description: [
         { type: "narration", text: "당신이 끼어들어 소아성폭력범을 가립니다." },
         { type: "dialogue", speaker: "player", text: "그만해! 죽일 셈이야?!" },
@@ -1153,6 +1197,7 @@ const gameData = {
 
     pedophile_ignore: {
       title: "외면",
+      location: "cell",
       description: [
         { type: "narration", text: "당신은 눈을 돌립니다. 이 지옥에서 남을 도울 여유 따위는 없습니다." },
         { type: "narration", text: "비명이 점점 작아지다가, 결국 멈춥니다." },
@@ -1174,6 +1219,7 @@ const gameData = {
     // ===== 4장: 첫째 날 밤 =====
     first_night: {
       title: "첫째 날 밤",
+      location: "cell",
       description: [
         { type: "narration", text: "소등 시간이 되자 감방이 어둠에 잠깁니다. 차가운 침대에 누워 천장을 바라봅니다." },
         { type: "narration", text: "여기저기서 코 고는 소리, 잠꼬대, 그리고 가끔씩 들리는 누군가의 흐느낌..." },
@@ -1197,6 +1243,7 @@ const gameData = {
 
     night_whisper: {
       title: "밤의 속삭임",
+      location: "cell",
       description: [
         { type: "narration", text: "갑자기 옆 침대에서 속삭이는 소리가 들립니다." },
         { type: "narration", text: "어둠 속에서 누군가 당신의 침대 옆으로 다가옵니다." },
@@ -1227,6 +1274,7 @@ const gameData = {
 
     arsonist_agree: {
       title: "방화 계획",
+      location: "cell",
       description: [
         { type: "narration", text: "방화범의 얼굴에 광기 어린 미소가 번집니다." },
         { type: "dialogue", speaker: "arsonist", text: "좋아, 좋아... 역시 넌 말을 잘 알아먹을 것 같았어." },
@@ -1245,6 +1293,7 @@ const gameData = {
 
     arsonist_refuse: {
       title: "거부",
+      location: "cell",
       description: [
         { type: "dialogue", speaker: "arsonist", text: "죽어? 하하... 그게 뭐가 문제야? 여기 있는 놈들 다 죽어 마땅한 쓰레기들인데." },
         { type: "narration", text: "방화범의 눈빛이 차갑게 변합니다." },
@@ -1264,6 +1313,7 @@ const gameData = {
 
     arsonist_ignore: {
       title: "무시",
+      location: "cell",
       description: [
         { type: "narration", text: "당신은 눈을 꼭 감고 자는 척합니다." },
         { type: "dialogue", speaker: "arsonist", text: "...쳇. 재미없는 놈." },
@@ -1281,6 +1331,7 @@ const gameData = {
     // ===== 5장: 둘째 날 =====
     day_two_morning: {
       title: "둘째 날 아침",
+      location: "cell",
       description: [
         { type: "narration", text: "새벽을 알리는 사이렌 소리에 눈을 뜹니다." },
         { type: "dialogue", speaker: "guard", text: "기상! 5분 안에 점호다!" },
@@ -1304,6 +1355,7 @@ const gameData = {
 
     workshop: {
       title: "작업장",
+      location: "workshop",
       description: [
         { type: "narration", text: "작업장은 기름 냄새와 금속 소리로 가득합니다. 죄수들이 기계 앞에서 단순 작업을 반복하고 있습니다." },
         { type: "narration", text: "당신은 프레스 기계 앞에 배치됩니다. 단조로운 작업이지만, 주변을 살펴볼 기회가 있습니다." },
@@ -1344,6 +1396,7 @@ const gameData = {
 
     workshop_steal_oil: {
       title: "기름 확보",
+      location: "workshop",
       description: [
         { type: "narration", text: "간수가 졸고 있는 틈을 타 기름통에 다가갑니다." },
         { type: "narration", text: "주머니에 숨겨온 작은 병에 기름을 조금씩 옮겨 담습니다. 심장이 터질 것 같습니다." },
@@ -1362,6 +1415,7 @@ const gameData = {
 
     workshop_steal_tool: {
       title: "공구 확보",
+      location: "workshop",
       description: [
         { type: "narration", text: "공구 벽 앞을 지나가는 척하며 작은 드라이버 하나를 소매 안에 숨깁니다." },
         { type: "narration", text: "심장이 빠르게 뜁니다. 하지만 아무도 눈치채지 못한 것 같습니다." },
@@ -1378,6 +1432,7 @@ const gameData = {
 
     workshop_normal: {
       title: "평범한 작업",
+      location: "workshop",
       description: [
         { type: "narration", text: "당신은 위험을 감수하지 않기로 합니다. 묵묵히 기계를 작동시키며 시간을 보냅니다." },
         { type: "narration", text: "옆에서 일하던 아내 살인범이 말없이 당신을 힐끗 봅니다." },
@@ -1400,6 +1455,7 @@ const gameData = {
 
     talk_wifekiller: {
       title: "아내 살인범과의 대화",
+      location: "workshop",
       description: [
         { type: "narration", text: "당신이 말을 걸자, 그는 잠시 망설이다 입을 엽니다." },
         { type: "dialogue", speaker: "wifekiller", text: "...사람들은 나를 '아내 살인범'이라고 불러. 하지만 진실은 달라." },
@@ -1425,6 +1481,7 @@ const gameData = {
 
     wifekiller_sympathy: {
       title: "동정",
+      location: "workshop",
       description: [
         { type: "narration", text: "당신의 말에 그가 놀란 표정을 짓습니다." },
         { type: "dialogue", speaker: "wifekiller", text: "...고맙군. 여기서 그런 말을 들을 줄은 몰랐어." },
@@ -1443,6 +1500,7 @@ const gameData = {
 
     yard: {
       title: "운동장",
+      location: "yard",
       description: [
         { type: "narration", text: "운동장은 높은 담벼락으로 둘러싸여 있습니다. 하늘이 보이는 유일한 장소입니다." },
         { type: "narration", text: "여기저기서 죄수들이 운동을 하거나 무리 지어 이야기를 나누고 있습니다." },
@@ -1482,6 +1540,7 @@ const gameData = {
 
     yard_bow_guard: {
       title: "굴복",
+      location: "yard",
       description: [
         { type: "narration", text: "당신은 재빨리 고개를 숙입니다." },
         { type: "dialogue", speaker: "player", text: "죄송합니다..." },
@@ -1500,6 +1559,7 @@ const gameData = {
 
     yard_messiah: {
       title: "메시아의 설교",
+      location: "yard",
       description: [
         { type: "narration", text: "메시아가 당신이 다가오는 것을 보고 미소 짓습니다." },
         { type: "dialogue", speaker: "messiah", text: "새로운 양이 왔군. 어서 와라, 형제여." },
@@ -1530,6 +1590,7 @@ const gameData = {
 
     messiah_plan_detail: {
       title: "계획의 상세",
+      location: "yard",
       description: [
         { type: "narration", text: "메시아가 당신을 옆으로 데려가 낮은 목소리로 속삭입니다." },
         { type: "dialogue", speaker: "messiah", text: "네가 나를 믿기로 했으니 알려주지." },
@@ -1554,6 +1615,7 @@ const gameData = {
 
     messiah_mission_accept: {
       title: "임무 수락",
+      location: "yard",
       description: [
         { type: "dialogue", speaker: "messiah", text: "훌륭해, 형제여. 네 믿음은 반드시 보상받을 것이다." },
         { type: "dialogue", speaker: "messiah", text: "간수장은 매일 저녁 **의무실**에 들른다고 해. 그때가 기회일 거야." },
@@ -1571,6 +1633,7 @@ const gameData = {
 
     yard_pedophile: {
       title: "소아성폭력범",
+      location: "yard",
       description: [
         { type: "narration", text: "당신이 다가가자, 왜소한 남자가 겁먹은 눈으로 올려다봅니다." },
         { type: "dialogue", speaker: "pedophile", text: "뭐, 뭐야... 나한테 뭔 일이야...?" },
@@ -1599,6 +1662,7 @@ const gameData = {
 
     pedophile_kind: {
       title: "연민",
+      location: "yard",
       description: [
         { type: "narration", text: "당신이 옆에 앉자, 그는 당황한 표정을 짓습니다." },
         { type: "dialogue", speaker: "pedophile", text: "왜... 왜 그래? 뭐가 필요한 거야...?" },
@@ -1618,6 +1682,7 @@ const gameData = {
 
     pedophile_deal: {
       title: "거래 제안",
+      location: "yard",
       description: [
         { type: "narration", text: "당신의 제안에 그의 눈이 반짝입니다." },
         { type: "dialogue", speaker: "pedophile", text: "정, 정말...? 날 보호해 준다고...?" },
@@ -1640,6 +1705,7 @@ const gameData = {
 
     yard_walk: {
       title: "산책",
+      location: "yard",
       description: [
         { type: "narration", text: "당신은 혼자 운동장 가장자리를 걷습니다. 높은 담벼락 위로 철조망이 보입니다." },
         { type: "narration", text: "감시탑에서 간수가 망원경으로 이쪽을 보고 있습니다. 도망칠 틈은 없어 보입니다." },
@@ -1662,6 +1728,7 @@ const gameData = {
 
     yard_crack: {
       title: "벽의 균열",
+      location: "yard",
       description: [
         { type: "narration", text: "몸을 숙여 스트레칭하는 척하며 균열을 살펴봅니다." },
         { type: "narration", text: "균열은 생각보다 깊습니다. 손가락을 넣으면 콘크리트 조각이 부서져 나옵니다." },
@@ -1679,6 +1746,7 @@ const gameData = {
     // ===== 6장: 둘째 날 저녁 =====
     day_two_evening: {
       title: "둘째 날 저녁",
+      location: "cell",
       description: [
         { type: "narration", text: "저녁 식사 시간입니다. 맛없는 죽과 딱딱한 빵이 배급됩니다." },
         { type: "narration", text: "당신은 지금까지 모은 정보들을 정리합니다. 탈출의 기회는 있어 보입니다." },
@@ -1700,6 +1768,7 @@ const gameData = {
 
     day_two_night_explore: {
       title: "밤의 탐색",
+      location: "cell",
       description: [
         { type: "narration", text: "다른 죄수들이 잠든 틈을 타 감방 안을 조용히 살펴봅니다." },
         { type: "narration", text: "창살 사이로 복도를 내다봅니다. 간수의 발소리가 규칙적으로 들립니다." },
@@ -1722,6 +1791,7 @@ const gameData = {
 
     political_night_talk: {
       title: "정치범과의 밤 대화",
+      location: "cell",
       description: [
         { type: "narration", text: "정치범이 책을 읽다 말고 당신을 바라봅니다." },
         { type: "dialogue", speaker: "political", text: "잠이 안 와? 나도 그래. 이곳에서 처음 몇 년은 매일 밤 악몽을 꿨지." },
@@ -1742,6 +1812,7 @@ const gameData = {
     // ===== 7장: 셋째 날 - 결정의 날 =====
     day_three_morning: {
       title: "셋째 날 아침",
+      location: "cell",
       description: [
         { type: "narration", text: "사이렌 소리에 눈을 뜹니다. 몸이 무겁습니다." },
         { type: "narration", text: "오늘은 **수요일**입니다." },
@@ -1759,6 +1830,7 @@ const gameData = {
 
     day_three_workshop: {
       title: "작업장 - 셋째 날",
+      location: "workshop",
       description: [
         { type: "narration", text: "작업장의 기름 냄새가 익숙해졌습니다. 당신은 프레스 기계 앞에 섭니다." },
         { type: "narration", text: "오늘따라 긴장감이 감돕니다. 여러 죄수들이 당신을 힐끗힐끗 바라봅니다." }
@@ -1798,6 +1870,7 @@ const gameData = {
 
     day_three_mediator: {
       title: "중재자의 이점",
+      location: "workshop",
       description: [
         { type: "narration", text: "당신이 첫날 메시아와 방화범 사이의 갈등을 중재한 것을 양쪽 모두 기억하고 있습니다." },
         { type: "narration", text: "메시아가 먼저 다가옵니다." },
@@ -1831,6 +1904,7 @@ const gameData = {
 
     mediator_messiah_detail: {
       title: "메시아의 계획",
+      location: "workshop",
       description: [
         { type: "narration", text: "메시아가 당신을 구석으로 데려갑니다." },
         { type: "dialogue", speaker: "messiah", text: "오늘 밤 정전이 일어날 거야. 밖에 있는 내 신도들이 준비했지." },
@@ -1855,6 +1929,7 @@ const gameData = {
 
     mediator_arsonist_detail: {
       title: "방화범의 계획",
+      location: "workshop",
       description: [
         { type: "narration", text: "방화범이 기계 뒤로 당신을 부릅니다." },
         { type: "dialogue", speaker: "arsonist", text: "넌 날 무섭다고 도망가지 않았어. 그래서 믿을 수 있어." },
@@ -1884,6 +1959,7 @@ const gameData = {
 
     workshop_steal_oil_mediator: {
       title: "기름 확보",
+      location: "workshop",
       description: [
         { type: "narration", text: "간수가 졸고 있는 틈을 타 기름통에 다가갑니다." },
         { type: "narration", text: "작은 병에 기름을 조금씩 옮겨 담습니다. 심장이 터질 것 같습니다." },
@@ -1901,6 +1977,7 @@ const gameData = {
 
     day_three_key_heist: {
       title: "열쇠 작전",
+      location: "workshop",
       description: [
         { type: "narration", text: "메시아의 임무를 수행할 때입니다. 간수장의 열쇠를 손에 넣어야 합니다." },
         { type: "narration", text: "점심시간, 간수장이 작업장을 순시합니다. 허리춤에 열쇠 꾸러미가 달랑거립니다." }
@@ -1928,6 +2005,7 @@ const gameData = {
 
     key_heist_success: {
       title: "완벽한 작전",
+      location: "workshop",
       description: [
         { type: "narration", text: "입소 첫날 관찰한 정보가 떠오릅니다. 큰 녹슨 열쇠, 작고 반짝이는 열쇠 둘, 그리고 카드키." },
         { type: "narration", text: "환기구를 여는 건 **카드키**일 것입니다." },
@@ -1950,6 +2028,7 @@ const gameData = {
 
     key_heist_risky: {
       title: "위험한 시도",
+      location: "workshop",
       description: [
         { type: "narration", text: "간수장이 다른 곳을 볼 때, 열쇠 꾸러미에 손을 뻗습니다." },
         { type: "narration", text: "손가락이 열쇠에 닿는 순간—" },
@@ -1973,6 +2052,7 @@ const gameData = {
 
     key_heist_excuse_success: {
       title: "위기 모면",
+      location: "workshop",
       description: [
         { type: "narration", text: "당신은 다리를 절뚝거리며 고통스러운 표정을 짓습니다." },
         { type: "dialogue", speaker: "player", text: "죄송합니다... 첫날 맞은 다리가 아직도..." },
@@ -1991,6 +2071,7 @@ const gameData = {
 
     key_heist_caught: {
       title: "발각",
+      location: "workshop",
       description: [
         { type: "narration", text: "간수장의 눈이 차갑게 빛납니다." },
         { type: "dialogue", speaker: "warden", text: "열쇠를 노렸어? 이 새끼 탈옥 시도야. 독방행이다!" },
@@ -2007,6 +2088,7 @@ const gameData = {
 
     key_heist_distraction: {
       title: "주의 분산",
+      location: "workshop",
       description: [
         { type: "narration", text: "당신이 눈짓을 보내자, 소아성폭력범이 알아챕니다." },
         { type: "narration", text: "그가 고개를 끄덕이고는 갑자기 기계에 손을 넣습니다." },
@@ -2032,6 +2114,7 @@ const gameData = {
 
     day_three_arsonist_prep: {
       title: "방화범의 준비",
+      location: "workshop",
       description: [
         { type: "narration", text: "방화범이 기계 뒤에서 당신을 기다리고 있습니다." },
         { type: "dialogue", speaker: "arsonist", text: "기름은 가져왔어? 오늘 밤이야. 오늘 밤 이 지옥을 태울 거야." },
@@ -2060,6 +2143,7 @@ const gameData = {
 
     arsonist_ready: {
       title: "준비 완료",
+      location: "workshop",
       description: [
         { type: "narration", text: "방화범이 기름을 받아들고 환하게 웃습니다." },
         { type: "dialogue", speaker: "arsonist", text: "완벽해... 오늘 밤, 자정쯤에 시작할 거야. 불이 나면 동쪽 담벼락으로 와. 거기서 만나자." },
@@ -2078,6 +2162,7 @@ const gameData = {
 
     arsonist_disappointed: {
       title: "실망",
+      location: "workshop",
       description: [
         { type: "dialogue", speaker: "arsonist", text: "...뭐? 왜 못 구해? 도와준다면서?" },
         { type: "narration", text: "방화범의 얼굴이 일그러집니다." },
@@ -2096,6 +2181,7 @@ const gameData = {
 
     arsonist_reconsider: {
       title: "재고",
+      location: "workshop",
       description: [
         { type: "narration", text: "당신의 말에 방화범이 멈칫합니다. 눈빛이 흔들립니다." },
         { type: "dialogue", speaker: "arsonist", text: "...다치라고? 난 그냥 이 곳을 태우고 싶은 건데..." },
@@ -2116,6 +2202,7 @@ const gameData = {
 
     day_three_fraudster_check: {
       title: "사기꾼의 진행 상황",
+      location: "workshop",
       description: [
         { type: "narration", text: "사기꾼이 눈짓으로 당신을 구석으로 부릅니다." },
         { type: "dialogue", speaker: "fraudster", text: "좋은 소식이야. 박 간수가 넘어왔어. 오늘 밤 11시에 뒷문을 열어주기로 했어." },
@@ -2140,6 +2227,7 @@ const gameData = {
 
     fraudster_catch_revealed: {
       title: "숨겨진 조건",
+      location: "workshop",
       description: [
         { type: "narration", text: "정치범이 알려준 정보가 떠오릅니다. '영악한 놈이야. 말은 못 믿지만...'" },
         { type: "narration", text: "사기꾼의 미소가 살짝 굳어집니다." },
@@ -2165,6 +2253,7 @@ const gameData = {
 
     day_three_observe: {
       title: "관찰",
+      location: "workshop",
       description: [
         { type: "narration", text: "당신은 묵묵히 일하면서 주변을 살핍니다." },
         { type: "narration", text: "간수들의 움직임, 죄수들 사이의 긴장감, 그리고 탈출 루트가 될 수 있는 곳들..." },
@@ -2187,6 +2276,7 @@ const gameData = {
 
     wifekiller_final_help: {
       title: "아내 살인범의 마지막 도움",
+      location: "workshop",
       description: [
         { type: "narration", text: "아내 살인범이 당신 옆에서 일하며 낮은 목소리로 말합니다." },
         { type: "dialogue", speaker: "wifekiller", text: "오늘 밤 뭔가 일어날 것 같아. 공기가 이상해." },
@@ -2205,6 +2295,7 @@ const gameData = {
 
     day_three_afternoon: {
       title: "셋째 날 오후",
+      location: "yard",
       description: [
         { type: "narration", text: "오후 운동 시간입니다. 하늘에 먹구름이 끼어 있습니다." },
         { type: "narration", text: "운동장에서 죄수들이 삼삼오오 모여 있습니다. 긴장감이 느껴집니다." },
@@ -2239,6 +2330,7 @@ const gameData = {
 
     messiah_key_delivery: {
       title: "열쇠 전달",
+      location: "yard",
       description: [
         { type: "narration", text: "메시아에게 다가가 몰래 카드키를 전달합니다." },
         { type: "narration", text: "메시아의 눈이 환하게 빛납니다." },
@@ -2257,6 +2349,7 @@ const gameData = {
 
     warden_blackmail: {
       title: "협박",
+      location: "yard",
       description: [
         { type: "narration", text: "운동 시간이 끝날 무렵, 간수장이 혼자 있는 틈을 노립니다." },
         { type: "narration", text: "당신은 그에게 조용히 다가가 속삭입니다." },
@@ -2279,6 +2372,7 @@ const gameData = {
 
     wall_crack_plan: {
       title: "균열 확인",
+      location: "yard",
       description: [
         { type: "narration", text: "담벼락 구석의 균열을 다시 살펴봅니다." },
         { type: "narration", text: "어제보다 더 벌어진 것 같습니다. 비가 오면 더 약해질지도 모릅니다." },
@@ -2301,6 +2395,7 @@ const gameData = {
 
     day_three_evening: {
       title: "셋째 날 저녁",
+      location: "cell",
       description: [
         { type: "narration", text: "저녁 식사 시간입니다. 밖에서 천둥소리가 들려옵니다." },
         { type: "narration", text: "비가 내리기 시작합니다. 창밖으로 번개가 번쩍입니다." },
@@ -2342,6 +2437,7 @@ const gameData = {
     // ===== 8장: 넷째 날 새벽 - 최종 결정 =====
     day_four_final: {
       title: "넷째 날 새벽",
+      location: "cell",
       description: [
         { type: "narration", text: "깊은 밤, 폭풍우가 몰아칩니다. 번개가 하늘을 가릅니다." },
         { type: "narration", text: "감방 안은 긴장감으로 가득합니다. 모두가 깨어 있는 것 같습니다." },
@@ -2612,6 +2708,7 @@ const gameData = {
     // ===== 솔로 탈출 루트 =====
     solo_escape_prepared: {
       title: "완벽한 계획",
+      location: "cell",
       description: [
         { type: "narration", text: "당신은 혼자 탈출을 시도하기로 합니다. 하지만 이번엔 **준비가 되어 있습니다**." },
         { type: "narration", text: "치한에게서 들은 정보가 떠오릅니다. 새벽 2시, 간수가 의무실에서 한 시간 동안 사라진다." },
@@ -2630,6 +2727,7 @@ const gameData = {
 
     solo_escape_execution: {
       title: "탈출 실행",
+      location: "corridor",
       description: [
         { type: "narration", text: "작은 드라이버로 감방 자물쇠를 딴다. 손이 떨리지만, 침착하게." },
         { type: "narration", text: "째깍... 철컥. 자물쇠가 열립니다." },
@@ -2649,6 +2747,7 @@ const gameData = {
 
     solo_escape_sewer: {
       title: "하수도",
+      location: "sewer",
       description: [
         { type: "narration", text: "악취 나는 하수도를 기어갑니다. 어둠 속에서 손으로 벽을 더듬으며 나아갑니다." },
         { type: "narration", text: "얼마나 갔을까. 한 시간? 두 시간? 시간 감각이 사라집니다." },
@@ -2689,6 +2788,7 @@ const gameData = {
 
     solo_escape_partial: {
       title: "불완전한 계획",
+      location: "cell",
       description: [
         { type: "narration", text: "당신은 혼자 탈출을 시도하기로 합니다." },
         { type: "narration", text: "아내 살인범이 알려준 정보가 있습니다. 수용소의 구조와 순찰 패턴." },
@@ -2711,6 +2811,7 @@ const gameData = {
 
     solo_partial_basement: {
       title: "지하 탐색",
+      location: "basement",
       description: [
         { type: "narration", text: "아내 살인범이 말한 대로, 지하로 내려갑니다." },
         { type: "narration", text: "지하 1층... 창고가 있습니다. 지하 2층... 보일러실입니다." },
@@ -2737,6 +2838,7 @@ const gameData = {
 
     solo_partial_duct: {
       title: "환기 덕트",
+      location: "basement",
       description: [
         { type: "narration", text: "소아성폭력범이 지하 2층에 있다고 말한 {{환기 덕트}}가 생각납니다."},
         { type: "narration", text: "보일러실을 뒤지니 말해준대로 그것이 있습니다. 좁지만 들어갈 수 있을 것 같습니다." },
@@ -2778,6 +2880,7 @@ const gameData = {
 
     solo_partial_roof: {
       title: "옥상",
+      location: "roof",
       description: [
         { type: "narration", text: "계단을 올라 옥상으로 향합니다." },
         { type: "narration", text: "옥상 문이 잠겨 있지만, 드라이버로 경첩을 풀어냅니다." },
@@ -2801,6 +2904,7 @@ const gameData = {
 
     solo_roof_wire: {
       title: "위험한 도박",
+      location: "roof",
       description: [
         { type: "narration", text: "전선을 양손으로 잡고 건너갑니다. 아래는 까마득한 어둠입니다." },
         { type: "narration", text: "팔이 떨립니다. 전선이 흔들립니다. 한 발, 한 발..." },
@@ -2824,6 +2928,7 @@ const gameData = {
 
     solo_roof_gamble: {
       title: "도박",
+      location: "roof",
       description: [
         { type: "narration", text: "당신은 전선을 미친 듯이 타고 갑니다. 총성이 들립니다!" },
         { type: "narration", text: "탕! 탕! 총알이 옆을 스쳐갑니다." },
@@ -2862,6 +2967,7 @@ const gameData = {
 
     solo_escape_unprepared: {
       title: "무모한 시도",
+      location: "cell",
       description: [
         { type: "narration", text: "당신은 혼자 탈출을 시도하기로 합니다. 아무도 믿을 수 없으니까요." },
         { type: "narration", text: "하지만... 탈출 경로도 모르고, 간수들의 순찰 패턴도 모릅니다." },
@@ -2881,6 +2987,7 @@ const gameData = {
 
     solo_escape_caught: {
       title: "발각",
+      location: "corridor",
       description: [
         { type: "narration", text: "복도에 발을 내딛는 순간, 손전등 불빛이 당신을 비춥니다." },
         { type: "dialogue", speaker: "guard", text: "이 새끼가... 어디 가려고?" },
@@ -2899,6 +3006,7 @@ const gameData = {
 
     solitary_cell: {
       title: "독방",
+      location: "solitary",
       description: [
         { type: "narration", text: "캄캄한 독방에 던져집니다. 문이 닫히고 완전한 어둠이 찾아옵니다." },
         { type: "narration", text: "시간이 흐릅니다. 하루? 이틀? 알 수 없습니다." },
@@ -2922,6 +3030,7 @@ const gameData = {
 
     solitary_discovery: {
       title: "발견",
+      location: "solitary",
       description: [
         { type: "narration", text: "손으로 바닥을 더듬어봅니다. 구석에 **금이 간 콘크리트**가 있습니다." },
         { type: "narration", text: "손톱으로 콘크리트를 긁어냅니다. 손가락에서 피가 나지만 멈출 수 없습니다." },
@@ -2944,6 +3053,7 @@ const gameData = {
 
     sewer_escape: {
       title: "하수도",
+      location: "sewer",
       description: [
         { type: "narration", text: "며칠에 걸쳐 구멍을 넓힙니다. 손은 피투성이가 되고, 손톱은 빠지지만..." },
         { type: "narration", text: "마침내 사람이 빠져나갈 수 있는 크기가 됩니다." },
@@ -2980,6 +3090,7 @@ const gameData = {
 
     ending_solo_despair: {
       title: "절망",
+      location: "solitary",
       description: [
         { type: "narration", text: "당신은 벽에 기대어 앉습니다. 더 이상 힘이 없습니다." },
         { type: "narration", text: "어둠 속에서 시간이 흘러갑니다. 의식이 흐려집니다." },
@@ -3000,6 +3111,7 @@ const gameData = {
 
     ending_surrender: {
       title: "체념",
+      location: "cell",
       description: [
         { type: "narration", text: "당신은 탈출을 포기합니다. 어차피 밖에 나가봤자 뭐가 달라지겠습니까." },
         { type: "narration", text: "날이 가고, 달이 가고, 해가 갑니다. 당신은 수용소의 일부가 되어갑니다." },
@@ -3022,6 +3134,7 @@ const gameData = {
     // ===== 게임오버 씬들 =====
     gameover_wifekiller_rage: {
       title: "치명적 실수",
+      location: "cell",
       description: [
         { type: "narration", text: "아내 살인범의 눈빛이 순간적으로 변합니다. 깊은 슬픔이 살의로 바뀝니다." },
         { type: "dialogue", speaker: "wifekiller", text: "...뭐라고 했어?" },
@@ -3049,6 +3162,7 @@ const gameData = {
 
     gameover_burned_alive: {
       title: "화염 속에서",
+      location: "cell",
       description: [
         { type: "narration", text: "한밤중, 굉음과 함께 눈이 번쩍 떠집니다." },
         { type: "narration", text: "**불이다!!** 감방 복도가 이미 화염에 휩싸여 있습니다." },
@@ -3076,6 +3190,7 @@ const gameData = {
 
     gameover_messiah_followers: {
       title: "이단자의 최후",
+      location: "cell",
       description: [
         { type: "narration", text: "며칠 후, 셋째 날 밤." },
         { type: "narration", text: "잠든 당신의 위로 여러 개의 그림자가 드리웁니다." },
@@ -3103,6 +3218,7 @@ const gameData = {
 
     gameover_guard_murder: {
       title: "본보기",
+      location: "yard",
       description: [
         { type: "narration", text: "간수의 얼굴이 핏빛으로 물듭니다." },
         { type: "dialogue", speaker: "guard", text: "...이 새끼가 지금 뭐라고 했어?" },
@@ -3131,6 +3247,7 @@ const gameData = {
 
     gameover_groper_trap: {
       title: "덫",
+      location: "workshop",
       description: [
         { type: "narration", text: "한참 작업에 집중하고 있는데 어디선가 중얼거리는 소리가 들립니다." },
         { type: "dialogue", speaker: "groper", text: "히히... 네가 그렇게 나온다? 좋아, 좋아..." },
@@ -3156,6 +3273,7 @@ const gameData = {
 
     gameover_solitary_madness: {
       title: "독방의 끝",
+      location: "solitary",
       description: [
         { type: "narration", text: "독방에 갇힌 지 며칠이 지났는지 알 수 없습니다." },
         { type: "narration", text: "빛도, 소리도, 아무것도 없습니다. 오직 어둠과 침묵뿐." },

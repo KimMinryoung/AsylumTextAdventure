@@ -39,6 +39,7 @@ class GameEngine {
       description: this.processText(scene.description),
       actions: availableActions,
       inventory: this.inventory,
+      location: scene.location || null,
       isEnding: scene.isEnding || false
     };
   }

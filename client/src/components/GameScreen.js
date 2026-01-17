@@ -106,7 +106,7 @@ function renderDescription(description) {
 }
 
 function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading, message }) {
-  const { title, description, actions, inventory, isEnding, sceneId } = gameState;
+  const { title, description, actions, inventory, isEnding, location } = gameState;
 
   return (
     <div className="game-screen">
@@ -175,7 +175,7 @@ function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading,
         </div>
       </div>
 
-      <Minimap sceneId={sceneId} />
+      <Minimap location={location} />
     </div>
   );
 }
