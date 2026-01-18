@@ -46,7 +46,7 @@ const gameData = {
         { type: "narration", text: "당신은 고개를 깊이 숙이며 용서를 구한다." },
         { type: "dialogue", speaker: "guard", text: "크하하! 이것 봐라. 밖에서 그렇게 잘난 척하더니 여기선 벌써 꼬리를 내리는군." },
         { type: "narration", text: "간수가 당신의 등을 발로 밟아 바닥에 엎드리게 한다. 굴욕적이지만, 그는 당신의 비굴한 태도에 흥미를 잃은 듯 코웃음을 치며 물러난다." },
-        { type: "dialogue", speaker: "guard", text: "재미없는 놈. 7번 감방으로 꺼져. 거기서 네 새 '가족'들을 만나봐라." },
+        { type: "dialogue", speaker: "guard", text: "재미없는 년. 7번 감방으로 꺼져. 거기서 네 새 '가족'들을 만나봐라." },
         { type: "narration", text: "잔뜩 긴장했지만 다행히 신체적 피해는 피했다." }
       ],
       actions: [
@@ -107,7 +107,7 @@ const gameData = {
         { type: "narration", text: "간수의 발소리가 멀어지자, 감방 안의 7명의 죄수들이 당신을 둘러싼다." },
         { type: "dialogue", speaker: "fraudster", text: "어이어이, 뉴페이스잖아. 뭘로 들어왔어? 여기 우리 모두 각자의 '사연'이 있거든." },
         { type: "dialogue", speaker: "political", text: "그냥 내버려둬. 첫날은 다들 멍하니까." },
-        { type: "narration", text: "구석에서 누군가 당신을 유심히 바라보고 있다. 창백한 얼굴의 남자가 알 수 없는 미소를 짓고 있다." }
+        { type: "narration", text: "구석에서 누군가 당신을 유심히 바라보고 있다. 창백한 얼굴의 죄수가 알 수 없는 미소를 짓고 있다." }
       ],
       actions: [
         {
@@ -133,15 +133,15 @@ const gameData = {
       location: "cell",
       description: [
         { type: "narration", text: "당신은 목소리를 가다듬고 자신을 소개한다. 감방 안에 묘한 침묵이 흐른다." },
-        { type: "dialogue", speaker: "arsonist", text: "아, 그 게임 만든 놈? 뉴스에서 봤어. 꽤 큰 뉴스였지. 아이들을... 그런 내용이었다며." },
+        { type: "dialogue", speaker: "arsonist", text: "아, 그 게임 만든 여자? 뉴스에서 봤어. 꽤 큰 뉴스였지. 아이들을... 그런 내용이었다며." },
         { type: "narration", text: "방화범이 손가락을 튕기며 당신을 훑어본다." },
         { type: "dialogue", speaker: "groper", text: "헤헤... 동류를 만나니 반갑네. 나도 뭐, 비슷한 취급 받고 있으니까. 히히." },
         { type: "dialogue", speaker: "wifekiller", text: "...역겹군." },
-        { type: "narration", text: "아내 살인범이라 불리는 근육질 남자가 차갑게 내뱉고 돌아선다. 그의 눈에 깊은 슬픔과 혐오가 공존한다." },
+        { type: "narration", text: "아내 살인범이라 불리는 여자가 차갑게 내뱉고 돌아선다. 그의 눈에 깊은 슬픔과 혐오가 공존한다." },
         { type: "dialogue", speaker: "fraudster", text: "야야, 다들 그러지 마. 여기 천사 있어? 다들 각자 사연 있잖아." },
         { type: "narration", text: "사기꾼이 능글맞게 웃으며 분위기를 누그러뜨린다." },
         { type: "dialogue", speaker: "messiah", text: "심판하지 마라, 형제들이여. 우리 모두는 이 지옥에서 구원을 기다리는 죄인들이니." },
-        { type: "narration", text: "창백한 얼굴의 남자가 천천히 다가온다. 그의 눈빛이 묘하게 빛난다. 광기와 카리스마가 공존하는 눈." },
+        { type: "narration", text: "창백한 얼굴의 죄수가 천천히 다가온다. 그의 눈빛이 묘하게 빛난다. 광기와 카리스마가 공존하는 눈." },
         { type: "dialogue", speaker: "messiah", text: "나는 이곳의 **메시아**라 불리지. 언젠가 우리 모두를 이끌고 이 지옥을 탈출할 자... 환영한다, 새로운 양이여." }
       ],
       actions: [
@@ -177,10 +177,10 @@ const gameData = {
       title: "아내 살인범",
       location: "cell",
       description: [
-        { type: "narration", text: "당신은 돌아선 아내 살인범을 따라간다. 그가 감방 구석 창문 앞에 서 있다." },
+        { type: "narration", text: "당신은 돌아선 아내 살인범을 따라간다. 감방 구석 창문 앞에 선 그는 육체노동으로 단련된 건장한 몸을 갖고 있다." },
         { type: "dialogue", speaker: "player", text: "저기... 아까 왜 그렇게 말했어요?" },
         { type: "narration", text: "그가 천천히 돌아본다. 차가운 눈빛이지만, 그 안에 깊은 고통이 보인다." },
-        { type: "dialogue", speaker: "wifekiller", text: "...넌 아이들을 망친 놈이잖아. 내가 왜 너한테 친절해야 하지?" },
+        { type: "dialogue", speaker: "wifekiller", text: "...넌 아이들을 망친 변태잖아. 내가 왜 너한테 친절해야 하지?" },
         { type: "narration", text: "그의 손이 주먹을 쥔다. 손등에 오래된 방어상 흉터가 보인다." },
         { type: "dialogue", speaker: "wifekiller", text: "난 내 아이를 지키다가 여기 왔어. 넌 남의 아이를 망쳤고. 우리가 같아 보여?" },
         { type: "dialogue", speaker: "wifekiller", text: "...가. 눈에 안 띄게 살아. 그게 여기서 살아남는 방법이야." }
@@ -239,7 +239,7 @@ const gameData = {
       location: "cell",
       description: [
         { type: "narration", text: "당신의 진심 어린 반응에 아내 살인범의 표정이 조금 누그러진다." },
-        { type: "dialogue", speaker: "wifekiller", text: "...너, 생각보다 나쁜 놈은 아닌 것 같군." },
+        { type: "dialogue", speaker: "wifekiller", text: "...너, 생각보다 나쁜 사람은 아닌 것 같군." },
         { type: "narration", text: "그가 한숨을 쉰다." },
         { type: "dialogue", speaker: "wifekiller", text: "네 죄가 뭔진 모르겠어. 근데 여기선 다들 나름의 이유가 있어. 변명이든 진짜든." },
         { type: "dialogue", speaker: "wifekiller", text: "난... 여기서 10년을 보냈어. 이 수용소를 손바닥처럼 알지. 구조도, 간수들 순찰 시간도, 숨겨진 통로도." },
@@ -266,12 +266,12 @@ const gameData = {
         { type: "dialogue", speaker: "political", text: "내버려둬. 적응할 시간이 필요한 거야." },
         { type: "narration", text: "당신은 침대에 누워 천장을 바라본다. 금이 간 콘크리트 사이로 물이 새어나오고 있다." },
         { type: "dialogue", speaker: "messiah", text: "고요함 속에도 답이 있는 법... 현명한 선택일지도 모르지." },
-        { type: "narration", text: "창백한 얼굴의 남자가 당신의 침대 옆을 지나가며 중얼거린다." }
+        { type: "narration", text: "창백한 얼굴의 죄수가 당신의 침대 옆을 지나가며 중얼거린다." }
       ],
       actions: [
         {
           id: "ask_messiah",
-          text: "방금 지나간 남자에게 말을 건다.",
+          text: "방금 지나간 죄수에게 말을 건다.",
           nextScene: "talk_messiah"
         },
         {
@@ -287,12 +287,12 @@ const gameData = {
       location: "cell",
       description: [
         { type: "narration", text: "당신은 눈을 가늘게 뜨고 감방 안의 죄수들을 하나하나 살핀다." },
-        { type: "narration", text: "**사기꾼** - 말쑥한 인상에 끊임없이 웃음 짓는 남자. 손가락이 쉴 새 없이 움직이며 보이지 않는 동전을 굴리는 듯하다. 눈빛은 차갑지만 입술에는 항상 미소가 걸려 있다." },
-        { type: "narration", text: "**방화범** - 얼굴 왼편에 끔찍한 화상 자국이 있다. 멍하니 허공을 바라보다가 가끔 혼잣말을 중얼거린다. 손가락을 튕길 때마다 눈빛이 이상하게 빛난다." },
-        { type: "narration", text: "**치한** - 구석에 쪼그려 앉아 음침한 눈빛으로 주위를 살핀다. 연신 입술을 핥으며 히죽거리는 모습이 역겹다. 오른쪽 귀가 반쯤 잘려나간 것이 보인다." },
-        { type: "narration", text: "**정치범** - 지적인 인상의 중년 남자. 낡은 책을 읽고 있지만 눈빛에는 깊은 피로가 서려 있다. 왼손 약지에 결혼반지 자국이 희미하게 남아 있다." },
-        { type: "narration", text: "**아내 살인범** - 근육질의 과묵한 남자. 벽만 바라보며 미동도 않는다. 손등에 방어상 같은 오래된 흉터가 여럿 보인다." },
-        { type: "narration", text: "**소아성폭력범** - 감방 가장 구석에서 웅크리고 있는 왜소한 남자. 얼굴 곳곳에 멍 자국이 있고, 다른 죄수들이 그를 노골적으로 피한다." },
+        { type: "narration", text: "**사기꾼** - 말쑥한 인상에 입술에는 항상 미소가 걸려 있다." },
+        { type: "narration", text: "**방화범** - 얼굴 한편에 끔찍한 화상 자국이 있다. 멍하니 허공을 바라보다 가끔 혼잣말을 중얼거린다. 손가락을 튕길 때마다 눈빛이 이상하게 빛난다." },
+        { type: "narration", text: "**치한** - 구석에 쪼그려 앉아 음침한 눈빛으로 주위를 살핀다. 연신 입술을 핥으며 히죽거린다. 오른쪽 귀가 반쯤 잘려나간 것이 보인다." },
+        { type: "narration", text: "**정치범** - 지적이고 진지한 인상. 낡은 책을 읽고 있고 눈빛은 예리하다. 왼손 약지에 결혼반지 자국이 희미하게 남아 있다." },
+        { type: "narration", text: "**아내 살인범** - 과묵하고 벽만 바라보며 미동도 않는다. 손등에 방어상 같은 오래된 흉터가 여럿 보인다." },
+        { type: "narration", text: "**소아성폭력범** - 감방 가장 구석에 웅크리고 있는 왜소한 안경잡이. 다른 죄수들이 그를 노골적으로 피한다." },
         { type: "narration", text: "**메시아** - 창백한 얼굴에 광기 어린 눈빛. 하지만 그 광기 속에 묘한 카리스마가 있다. 당신과 눈이 마주치자 알 수 없는 미소를 짓는다." }
       ],
       actions: [
@@ -303,7 +303,7 @@ const gameData = {
         },
         {
           id: "approach_messiah",
-          text: "메시아라 불리는 남자에게 다가간다.",
+          text: "메시아라 불리는 자에게 다가간다.",
           nextScene: "talk_messiah"
         },
         {
@@ -471,7 +471,7 @@ const gameData = {
         { type: "dialogue", speaker: "messiah", text: "좋아... 좋아. 불신자는 스스로 지옥을 선택하는 법이지. 후회하게 될 거야." },
         { type: "narration", text: "그가 돌아서며 추종자들에게 무언가를 속삭인다. 불길한 예감이 든다." },
         { type: "narration", text: "사기꾼이 슬쩍 다가온다." },
-        { type: "dialogue", speaker: "fraudster", text: "야... 너 진짜 대담하다. 저 미친놈한테 그런 말을 하다니. 조심해. 저놈 추종자가 꽤 있어." }
+        { type: "dialogue", speaker: "fraudster", text: "야... 너 진짜 대담하다. 저 미친년한테 그런 말을 하다니. 조심해. 저거 추종자가 꽤 있어." }
       ],
       effects: [{ type: "setFlag", flag: "messiahEnemy" }],
       actions: [
@@ -685,7 +685,7 @@ const gameData = {
         { type: "dialogue", speaker: "fraudster", text: "하하, 날카롭네. 그래, 내가 사기꾼인 건 맞아. 근데 말이야..." },
         { type: "narration", text: "그가 진지한 표정으로 바뀐다." },
         { type: "dialogue", speaker: "fraudster", text: "여기서 나가고 싶은 마음은 진심이야. 그리고 나는 **거래**에는 정직하거든. 사기는 호구한테나 치는 거지, 파트너한테 치는 게 아니니까." },
-        { type: "dialogue", speaker: "fraudster", text: "생각해봐. 여기서 믿을 놈이 누가 있겠어? 서로 이용하는 게 가장 솔직한 관계 아니야?" }
+        { type: "dialogue", speaker: "fraudster", text: "생각해봐. 여기서 믿을 년이 누가 있겠어? 서로 이용하는 게 가장 솔직한 관계 아니야?" }
       ],
       actions: [
         {
@@ -706,10 +706,10 @@ const gameData = {
       title: "정치범과의 대화",
       location: "cell",
       description: [
-        { type: "narration", text: "책을 읽던 남자가 고개를 들어 당신을 바라본다. 지적이고 차분한 눈빛이지만, 그 안에 깊은 피로가 서려 있다." },
+        { type: "narration", text: "책을 읽던 여자가 고개를 들어 당신을 바라본다. 지적이고 차분한 눈빛이지만, 그 안에 깊은 피로가 서려 있다." },
         { type: "dialogue", speaker: "political", text: "새로 왔군. 나는... 뭐, 정치범이라고 불러. 원래 기자였어. 《진실의 목소리》라는 지하 신문을 만들었지." },
         { type: "narration", text: "그가 왼손 약지의 희미한 반지 자국을 무의식적으로 만진다." },
-        { type: "dialogue", speaker: "political", text: "정부의 비리, 고위층의 범죄... 다 폭로했어. 그리고 대가를 치렀지. 내 아내와 딸은..." },
+        { type: "dialogue", speaker: "political", text: "정부의 비리, 고위층의 범죄... 다 폭로했어. 그리고 대가를 치렀지. 내 남편과 딸은..." },
         { type: "narration", text: "그가 잠시 말을 멈춘다. 눈빛이 흔들린다." },
         { type: "dialogue", speaker: "political", text: "...미안. 네 죄목은 들었어. 뭐, 여기선 다들 각자의 사연이 있으니까 판단은 안 하겠어." },
         { type: "narration", text: "그가 책을 내려놓고 한숨을 쉰다." },
@@ -746,7 +746,7 @@ const gameData = {
       description: [
         { type: "narration", text: "정치범의 얼굴에 고통스러운 그림자가 드리운다." },
         { type: "dialogue", speaker: "political", text: "...내가 체포되던 날, 비밀경찰이 새벽에 집에 들이닥쳤어." },
-        { type: "dialogue", speaker: "political", text: "아내 수진이는... 나를 숨기려다가 총을 맞았어. 눈앞에서. 내 딸 아이 앞에서." },
+        { type: "dialogue", speaker: "political", text: "남편 현수는... 나를 숨기려다가 총을 맞았어. 눈앞에서. 내 딸 아이 앞에서." },
         { type: "narration", text: "그의 손이 떨린다." },
         { type: "dialogue", speaker: "political", text: "딸 민아는... 열두 살이었어. 그 애가 엄마 피를 보면서 비명을 지르던 것이... 아직도 매일 밤 꿈에 나와." },
         { type: "dialogue", speaker: "political", text: "민아는 지금 고모 집에 있어. 나를 면회 오려고 했대. 근데 정부가 막았어. 5년 동안 딸 얼굴을 못 봤어." },
@@ -775,7 +775,7 @@ const gameData = {
         { type: "dialogue", speaker: "political", text: "이건... 민아한테 쓴 편지야. 5년 동안 부치지 못했어. 면회도 안 되고, 편지도 검열당하니까." },
         { type: "dialogue", speaker: "political", text: "네가 나가면... 이거 좀 전해줄 수 있어? 주소는 외우고 있어. **서문구 행복로 127번지, 김정희 씨 댁**." },
         { type: "narration", text: "그의 눈에 간절함이 어린다." },
-        { type: "dialogue", speaker: "political", text: "이 편지에... 내 모든 마음이 담겨 있어. 아빠가 왜 이런 일을 했는지, 왜 가족을 지키지 못했는지... 미안하다고..." },
+        { type: "dialogue", speaker: "political", text: "이 편지에... 내 모든 마음이 담겨 있어. 엄마가 왜 이런 일을 했는지, 왜 가족을 지키지 못했는지... 미안하다고..." },
         { type: "dialogue", speaker: "political", text: "부탁이야. 제발..." },
         { type: "narration", text: "당신은 정치범의 편지를 받는다." }
       ],
@@ -842,9 +842,9 @@ const gameData = {
         { type: "narration", text: "정치범이 다른 죄수들을 힐끗 바라본다." },
         { type: "dialogue", speaker: "political", text: "좋아, 알려줄게." },
         { type: "dialogue", speaker: "political", text: "**메시아** - 사이비 교주 출신. 카리스마는 있는데 머리가 좀 돌았어. 그를 따르는 신도들이 밖에서 뭔가 준비 중이라는 소문이 있어." },
-        { type: "dialogue", speaker: "political", text: "**사기꾼** - 영악한 놈이야. 말은 못 믿지만, 간수들이랑 뭔가 거래를 하고 있는 것 같더라." },
-        { type: "dialogue", speaker: "political", text: "**방화범** - 불에 미친 놈. 언젠가 이 수용소를 불태울 거라고 혼잣말하더라. 위험해." },
-        { type: "dialogue", speaker: "political", text: "**아내 살인범** - 사실 그 남자, 아내를 죽인 게 아니야. 정당방위였는데 판사가 매수당한 거래. 불쌍한 놈이지." },
+        { type: "dialogue", speaker: "political", text: "**사기꾼** - 영악한 사람이야. 말은 못 믿지만, 간수들이랑 뭔가 거래를 하고 있는 것 같더라." },
+        { type: "dialogue", speaker: "political", text: "**방화범** - 불에 미친 여자. 언젠가 이 수용소를 불태울 거라고 혼잣말하더라. 위험해." },
+        { type: "dialogue", speaker: "political", text: "**아내 살인범** - 사실 그 여자, 아내를 죽인 게 아니야. 정당방위였는데 판사가 매수당한 거래. 불쌍한 사람이지." },
         { type: "dialogue", speaker: "political", text: "나머지는... 굳이 알 필요 없을 거야. 가까이 하지 마." }
       ],
       actions: [
@@ -882,7 +882,7 @@ const gameData = {
         },
         {
           id: "insult_groper",
-          text: "\"역겨운 놈. 귀 하나로 끝난 게 다행이다.\"",
+          text: "\"역겹네. 귀 하나로 끝난 게 다행이다.\"",
           nextScene: "groper_threat"
         },
         {
@@ -971,7 +971,7 @@ const gameData = {
         { type: "narration", text: "얼굴 왼편의 화상 자국이 처참하다. 녹아내린 것처럼 일그러진 피부가 눈 아래까지 퍼져 있다." },
         { type: "dialogue", speaker: "arsonist", text: "...뭐야. 뭘 봐." },
         { type: "narration", text: "그의 눈빛이 순간 날카롭게 빛나다가, 이내 흐릿해진다." },
-        { type: "dialogue", speaker: "arsonist", text: "아... 새로 온 놈이구나. 게임 만든 놈." },
+        { type: "dialogue", speaker: "arsonist", text: "아... 새로 온 녀석이구나. 이상한 게임 만든." },
         { type: "narration", text: "그가 손가락을 튕긴다. 마치 성냥에 불을 붙이는 동작처럼." },
         { type: "dialogue", speaker: "arsonist", text: "불... 좋아해? 난 좋아해. 세상에서 제일 아름다운 게 불이야." }
       ],
@@ -1059,7 +1059,7 @@ const gameData = {
         { type: "narration", text: "당신이 조심스럽게 어깨를 터치하자, 방화범이 멈칫한다." },
         { type: "dialogue", speaker: "arsonist", text: "...미안. 가끔 이래. 목소리가... 들려서." },
         { type: "narration", text: "그가 숨을 고르며 진정한다." },
-        { type: "dialogue", speaker: "arsonist", text: "너... 괜찮은 놈인 것 같아. 다른 놈들은 다 도망가거든." },
+        { type: "dialogue", speaker: "arsonist", text: "너... 괜찮은 녀석인 것 같아. 다른 것들은 다 도망가거든." },
         { type: "narration", text: "그가 당신을 빤히 바라본다." },
         { type: "dialogue", speaker: "arsonist", text: "내가 이 수용소를 태울 거야. 언젠가. 그때 같이 나갈래? ...생각해봐." },
       ],
@@ -1079,8 +1079,8 @@ const gameData = {
       location: "cell",
       description: [
         { type: "narration", text: "갑자기 감방 안에 긴장감이 흐른다. 메시아가 방화범 앞에 서 있다." },
-        { type: "dialogue", speaker: "messiah", text: "형제여, 네 안의 불꽃은 파괴가 아니라 정화를 위해 있어야 해. 내 말을 들어." },
-        { type: "dialogue", speaker: "arsonist", text: "닥쳐. 난 네 '형제'가 아니야. 네 사이비 개소리 듣기 싫어." },
+        { type: "dialogue", speaker: "messiah", text: "자매여, 네 안의 불꽃은 파괴가 아니라 정화를 위해 있어야 해. 내 말을 들어." },
+        { type: "dialogue", speaker: "arsonist", text: "닥쳐. 난 네 '자매'가 아니야. 네 사이비 개소리 듣기 싫어." },
         { type: "narration", text: "방화범의 눈에 위험한 빛이 번쩍인다." },
         { type: "dialogue", speaker: "arsonist", text: "너도 태워버릴 거야. 언젠가. 네 그 거짓 예언자 같은 얼굴이 녹아내리는 걸 볼 거야." },
         { type: "dialogue", speaker: "messiah", text: "...불쌍한 영혼. 구원받지 못할 자는 스스로 불길 속에 뛰어들게 되어 있지." },
@@ -1107,7 +1107,7 @@ const gameData = {
         { type: "narration", text: "당신이 둘 사이에 끼어든다." },
         { type: "dialogue", speaker: "player", text: "그만해요. 둘 다. 간수들한테 들리면 어쩌려고." },
         { type: "narration", text: "메시아가 미소를 짓는다." },
-        { type: "dialogue", speaker: "messiah", text: "평화의 사도로군. 네 말이 맞아, 형제여. 지금은 때가 아니지." },
+        { type: "dialogue", speaker: "messiah", text: "평화의 사도로군. 네 말이 맞아, 자매여. 지금은 때가 아니지." },
         { type: "narration", text: "방화범이 코웃음을 치며 물러난다." },
         { type: "dialogue", speaker: "arsonist", text: "...다음에 보자. 둘 다." },
         { type: "narration", text: "갈등을 중재해서 두 사람 모두에게 인상을 남겼다." }
@@ -1291,7 +1291,7 @@ const gameData = {
       title: "거부",
       location: "cell",
       description: [
-        { type: "dialogue", speaker: "arsonist", text: "죽어? 하하... 그게 뭐가 문제야? 여기 있는 놈들 다 죽어 마땅한 쓰레기들인데." },
+        { type: "dialogue", speaker: "arsonist", text: "죽어? 하하... 그게 뭐가 문제야? 여기 있는 년들 다 죽어 마땅한 쓰레기들인데." },
         { type: "narration", text: "방화범의 눈빛이 차갑게 변한다." },
         { type: "dialogue", speaker: "arsonist", text: "넌 모르는 거야. 불의 정화를... 뭐, 싫으면 가만히 있으라고."},
         { type: "dialogue", speaker: "arsonist", text: "만약 방해하면 넌 통구이 일순위다." },
@@ -1312,7 +1312,7 @@ const gameData = {
       location: "cell",
       description: [
         { type: "narration", text: "당신은 눈을 꼭 감고 자는 척한다." },
-        { type: "dialogue", speaker: "arsonist", text: "...쳇. 재미없는 놈." },
+        { type: "dialogue", speaker: "arsonist", text: "...쳇. 재미없는 년." },
         { type: "narration", text: "방화범이 투덜거리며 돌아간다. 한참이 지나서야 심장 박동이 가라앉는다." }
       ],
       actions: [
@@ -1558,9 +1558,9 @@ const gameData = {
       location: "yard",
       description: [
         { type: "narration", text: "메시아가 당신이 다가오는 것을 보고 미소 짓는다." },
-        { type: "dialogue", speaker: "messiah", text: "새로운 양이 왔군. 어서 와라, 형제여." },
+        { type: "dialogue", speaker: "messiah", text: "새로운 양이 왔군. 어서 와라, 자매여." },
         { type: "narration", text: "그의 주변에는 다섯 명 정도의 죄수들이 경건한 표정으로 앉아 있다." },
-        { type: "dialogue", speaker: "messiah", text: "우리는 곧 이 지옥에서 벗어날 것이다. 밖에 있는 우리 형제들이 준비를 마치면... 구원의 날이 올 것이니." },
+        { type: "dialogue", speaker: "messiah", text: "우리는 곧 이 지옥에서 벗어날 것이다. 밖에 있는 우리 형제자매들이 준비를 마치면... 구원의 날이 올 것이니." },
         { type: "dialogue", speaker: "messiah", text: "불신자들은 이곳에 남겨질 것이고, 믿는 자들만이 새로운 세상을 맞이하리라." },
         { type: "narration", text: "광기일까, 아니면 정말 무언가를 알고 있는 걸까?" }
       ],
@@ -1592,7 +1592,7 @@ const gameData = {
         { type: "dialogue", speaker: "messiah", text: "네가 나를 믿기로 했으니 알려주지." },
         { type: "dialogue", speaker: "messiah", text: "**내일 밤**, 밖에서 우리 신도들이 움직인다. 정전을 일으키고, 그 혼란 속에서 **환기구**를 통해 탈출하는 거야." },
         { type: "dialogue", speaker: "messiah", text: "문제는 환기구 잠금장치야. 내부에서 열어야 하는데... {{특수 열쇠}}가 필요해. 간수장이 가지고 있지." },
-        { type: "dialogue", speaker: "messiah", text: "그 열쇠를 구할 방법을 찾아야 해. 도울 수 있겠나, 형제여?" }
+        { type: "dialogue", speaker: "messiah", text: "그 열쇠를 구할 방법을 찾아야 해. 도울 수 있겠나, 자매여?" }
       ],
       actions: [
         {
@@ -1613,7 +1613,7 @@ const gameData = {
       title: "임무 수락",
       location: "yard",
       description: [
-        { type: "dialogue", speaker: "messiah", text: "훌륭해, 형제여. 네 믿음은 반드시 보상받을 것이다." },
+        { type: "dialogue", speaker: "messiah", text: "훌륭해, 자매여. 네 믿음은 반드시 보상받을 것이다." },
         { type: "dialogue", speaker: "messiah", text: "간수장은 매일 저녁 **의무실**에 들른다고 해. 그때가 기회일 거야." },
         { type: "narration", text: "메시아가 당신의 어깨를 두드린다." },
         { type: "dialogue", speaker: "messiah", text: "내일 저녁까지 열쇠를 구해와. 구원은 가까워졌다..." }
@@ -1631,10 +1631,10 @@ const gameData = {
       title: "소아성폭력범",
       location: "yard",
       description: [
-        { type: "narration", text: "당신이 다가가자, 왜소한 남자가 겁먹은 눈으로 올려다본다." },
+        { type: "narration", text: "당신이 다가가자, 왜소한 안경잡이가 겁먹은 눈으로 올려다본다." },
         { type: "dialogue", speaker: "pedophile", text: "뭐, 뭐야... 나한테 뭔 일이야...?" },
         { type: "narration", text: "그의 얼굴에는 멍 자국이 가득하다. 다른 죄수들에게 맞은 흔적이다." },
-        { type: "dialogue", speaker: "pedophile", text: "너도... 나 때리러 온 거야? 모두가 나를 때려... 간수들도, 죄수들도..." },
+        { type: "dialogue", speaker: "pedophile", text: "너도... 나 괴롭히러 온 거야? 모두가 나를 때려... 간수들도, 죄수들도..." },
         { type: "narration", text: "수용소에서 가장 천대받는 존재. 죄수들 사이에도 위계가 있고, 그는 가장 밑바닥이다." }
       ],
       actions: [
@@ -2053,7 +2053,7 @@ const gameData = {
         { type: "narration", text: "당신은 다리를 절뚝거리며 고통스러운 표정을 짓는다." },
         { type: "dialogue", speaker: "player", text: "죄송합니다... 첫날 맞은 다리가 아직도..." },
         { type: "narration", text: "간수장이 당신의 절뚝거리는 모습을 보며 코웃음을 친다." },
-        { type: "dialogue", speaker: "warden", text: "쳇, 병신 같은 놈. 꺼져." },
+        { type: "dialogue", speaker: "warden", text: "쳇, 병신 같은 년. 꺼져." },
         { type: "narration", text: "위기를 넘겼다. 하지만 열쇠는 구하지 못했다." }
       ],
       actions: [
@@ -2162,7 +2162,7 @@ const gameData = {
       description: [
         { type: "dialogue", speaker: "arsonist", text: "...뭐? 왜 못 구해? 도와준다면서?" },
         { type: "narration", text: "방화범의 얼굴이 일그러진다." },
-        { type: "dialogue", speaker: "arsonist", text: "쓸모없는 놈... 됐어, 내가 알아서 할게. 대신 네 몫은 없어." },
+        { type: "dialogue", speaker: "arsonist", text: "쓸모없는 년... 됐어, 내가 알아서 할게. 대신 네 몫은 없어." },
         { type: "narration", text: "그가 돌아선다." }
       ],
       effects: [{ type: "setFlag", flag: "arsonistAbandoned" }],
@@ -2225,10 +2225,10 @@ const gameData = {
       title: "숨겨진 조건",
       location: "workshop",
       description: [
-        { type: "narration", text: "정치범이 알려준 정보가 떠오른다. '영악한 놈이야. 말은 못 믿지만...'" },
+        { type: "narration", text: "정치범이 알려준 정보가 떠오른다. '영악한 년이야. 말은 못 믿지만...'" },
         { type: "narration", text: "사기꾼의 미소가 살짝 굳어진다." },
         { type: "dialogue", speaker: "fraudster", text: "...영리하네. 그래, 조건이 있어. 우리 조직에서 네 능력이 필요하대." },
-        { type: "dialogue", speaker: "fraudster", text: "게임 만들던 놈이잖아. 우리 조직에서 **위조 문서**랑 **온라인 사기** 쪽 일을 시키려고 해." },
+        { type: "dialogue", speaker: "fraudster", text: "게임 만들던 년이잖아. 우리 조직에서 **문서 위조**랑 **온라인 피싱** 쪽 일을 시키려고 해." },
         { type: "dialogue", speaker: "fraudster", text: "싫으면... 뭐, 혼자 알아서 나가든가. 어때?" }
       ],
       actions: [
@@ -3139,7 +3139,7 @@ const gameData = {
         { type: "narration", text: "당신이 물러서려 하지만 이미 늦었다. 그의 주먹이 번개처럼 날아온다." },
         { type: "narration", text: "!!크악!!—첫 번째 타격에 코뼈가 부러지는 소리가 들린다." },
         { type: "narration", text: "바닥에 쓰러진 당신의 위로 그의 발길질이 쏟아진다. 갈비뼈가 부러지고, 숨을 쉴 수 없다." },
-        { type: "dialogue", speaker: "wifekiller", text: "내 아들을... 지키려고... 그랬는데... 너 같은 놈이...!!" },
+        { type: "dialogue", speaker: "wifekiller", text: "내 아들을... 지키려고... 그랬는데... 너 따위 변태가...!!" },
         { type: "narration", text: "다른 죄수들이 말리려 하지만, 그의 분노는 멈추지 않는다." },
         { type: "narration", text: "시야가 흐려진다. 마지막으로 들리는 건 멀리서 달려오는 간수들의 발소리..." },
         { type: "narration", text: "**[GAME OVER: 말을 함부로 하면 안 됩니다]**" },
@@ -3224,7 +3224,7 @@ const gameData = {
         { type: "narration", text: "바닥에 쓰러진 당신을 간수들이 둘러싼다." },
         { type: "dialogue", speaker: "guard", text: "여기가 어딘 줄 알아? 너 같은 쓰레기가 깝칠 곳이 아니야." },
         { type: "narration", text: "구둣발이 얼굴을, 갈비뼈를, 온 몸을 짓밟는다." },
-        { type: "dialogue", speaker: "guard", text: "이놈으로 본보기를 보여줘야겠어. 독방에서 **특별 관리** 받게 해." },
+        { type: "dialogue", speaker: "guard", text: "이년으로 본보기를 보여줘야겠어. 독방에서 **특별 관리** 받게 해." },
         { type: "narration", text: "끌려가는 동안 의식이 희미해진다. 독방에 던져진 후..." },
         { type: "narration", text: "물도 음식도 없이 3일. 당신의 몸은 버티지 못했다." },
         { type: "narration", text: "**[GAME OVER: 반항의 대가]**" },
