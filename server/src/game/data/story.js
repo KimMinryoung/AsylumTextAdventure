@@ -309,11 +309,11 @@ const gameData = {
       description: [
         { type: "narration", text: "당신은 눈을 가늘게 뜨고 감방 안의 죄수들을 하나하나 살핀다." },
         { type: "narration", text: "**사기꾼** - 말쑥한 인상에 입술에는 항상 미소가 걸려 있다." },
-        { type: "narration", text: "**방화범** - 얼굴 한편에 끔찍한 화상 자국이 있다. 멍하니 허공을 바라보다 가끔 혼잣말을 중얼거린다. 손가락을 튕길 때마다 눈빛이 이상하게 빛난다." },
+        { type: "narration", text: "**방화범** - 얼굴 한편에 끔찍한 화상 자국이 있다. 멍하니 허공을 바라보다 가끔 혼잣말을 중얼거린다." },
         { type: "narration", text: "**치한** - 구석에 쪼그려 앉아 음침한 눈빛으로 주위를 살핀다. 연신 입술을 핥으며 히죽거린다. 오른쪽 귀가 반쯤 잘려나간 것이 보인다." },
         { type: "narration", text: "**정치범** - 지적이고 진지한 인상. 낡은 책을 읽고 있고 눈빛은 예리하다. 왼손 약지에 결혼반지 자국이 희미하게 남아 있다." },
         { type: "narration", text: "**아내 살인범** - 과묵하고 벽만 바라보며 미동도 않는다. 손등에 방어상 같은 오래된 흉터가 여럿 보인다." },
-        { type: "narration", text: "**소아성폭력범** - 감방 가장 구석에 웅크리고 있는 왜소한 안경잡이. 다른 죄수들이 그를 노골적으로 피한다." },
+        { type: "narration", text: "**소아성폭력범** - 감방 구석에 웅크린 왜소한 안경잡이. 가끔 눈이 마주칠 때면 살기 어린 독기가 스치지만, 이내 고개를 떨구며 숨을 죽인다." },
         { type: "narration", text: "**메시아** - 창백한 얼굴에 광기 어린 눈빛. 하지만 그 광기 속에 묘한 카리스마가 있다. 당신과 눈이 마주치자 알 수 없는 미소를 짓는다." }
       ],
       actions: [
@@ -1085,7 +1085,8 @@ const gameData = {
         {
           id: "calm_down",
           text: "진정시키려 한다.",
-          nextScene: "arsonist_calm_day3"
+          effects: [{ type: "increaseRelation", target: "arsonist" }],
+          nextScene: "arsonist_calm"
         },
         {
           id: "back_away",
@@ -1095,41 +1096,20 @@ const gameData = {
       ]
     },
 
-    arsonist_calm_day3: {
+    arsonist_calm: {
       title: "진정",
       location: "workshop",
       description: [
         { type: "narration", text: "당신이 조심스럽게 어깨를 터치하자, 방화범이 멈칫한다." },
         { type: "dialogue", speaker: "arsonist", text: "...미안. 가끔 이래. 목소리가... 들려서." },
         { type: "narration", text: "그가 숨을 고르며 진정한다." },
-        { type: "dialogue", speaker: "arsonist", text: "넌... 나한테 기름을 줬잖아. 그러니까 동료야. 오늘 밤, 잊지 마." }
+        { type: "dialogue", speaker: "arsonist", text: "너는 정말 괜찮은 녀석이야. 다른 것들은 다 도망가거든." }
       ],
       actions: [
         {
           id: "continue",
           text: "고개를 끄덕인다.",
           nextScene: "day_three_afternoon"
-        }
-      ]
-    },
-
-    arsonist_calm: {
-      title: "진정",
-      location: "cell",
-      description: [
-        { type: "narration", text: "당신이 조심스럽게 어깨를 터치하자, 방화범이 멈칫한다." },
-        { type: "dialogue", speaker: "arsonist", text: "...미안. 가끔 이래. 목소리가... 들려서." },
-        { type: "narration", text: "그가 숨을 고르며 진정한다." },
-        { type: "dialogue", speaker: "arsonist", text: "너... 괜찮은 녀석인 것 같아. 다른 것들은 다 도망가거든." },
-        { type: "narration", text: "그가 당신을 빤히 바라본다." },
-        { type: "dialogue", speaker: "arsonist", text: "내가 이 수용소를 태울 거야. 언젠가. 그때 같이 나갈래? ...생각해봐." },
-      ],
-      effects: [{ type: "increaseRelation", target: "arsonist" }],
-      actions: [
-        {
-          id: "rest",
-          text: "고개를 끄덕이고 침대로 간다.",
-          nextScene: "first_night"
         }
       ]
     },
@@ -1193,76 +1173,6 @@ const gameData = {
         { type: "dialogue", speaker: "political", text: "저 둘은 원래 저래. 메시아가 방화범을 '구원'하겠다고 집착하거든. 방화범은 그게 싫고." },
         { type: "dialogue", speaker: "political", text: "언젠가 폭발할 거야. 그때 끼어들지 마. 다칠 뿐이니까." },
         { type: "narration", text: "결국 간수의 호루라기 소리에 둘은 물러난다." }
-      ],
-      actions: [
-        {
-          id: "continue",
-          text: "침대로 돌아간다.",
-          nextScene: "first_night"
-        }
-      ]
-    },
-
-    // ===== 소아성폭력범 린치 씬 =====
-    pedophile_attack: {
-      title: "린치",
-      location: "cell",
-      description: [
-        { type: "narration", text: "갑자기 감방 구석에서 소란이 일어난다. 몇몇 죄수들이 소아성폭력범을 둘러싸고 있다." },
-        { type: "dialogue", speaker: "unknown", text: "이 더러운 새끼... 죽여버려!" },
-        { type: "narration", text: "주먹과 발길이 날아온다. 소아성폭력범이 비명을 지르며 쓰러진다." },
-        { type: "dialogue", speaker: "pedophile", text: "으악! 제발... 제발 그만!!" },
-        { type: "narration", text: "간수들은 보이지 않는다. 일부러 눈감아주는 것 같다." },
-        { type: "narration", text: "피가 콘크리트 바닥에 번진다." }
-      ],
-      actions: [
-        {
-          id: "help_pedophile",
-          text: "말리려 한다.",
-          nextScene: "pedophile_help"
-        },
-        {
-          id: "ignore_attack",
-          text: "모른 척한다.",
-          nextScene: "pedophile_ignore"
-        }
-      ]
-    },
-
-    pedophile_help: {
-      title: "구출",
-      location: "cell",
-      description: [
-        { type: "narration", text: "당신이 끼어들어 소아성폭력범을 가린다." },
-        { type: "dialogue", speaker: "player", text: "그만해! 죽일 셈이야?!" },
-        { type: "narration", text: "죄수들이 당신을 노려본다." },
-        { type: "dialogue", speaker: "unknown", text: "뭐야? 너도 그 패거리야? 아동 성범죄자 편 드는 거야?" },
-        { type: "narration", text: "긴장된 대치가 이어진다. 다행히 그때 간수의 발소리가 들려온다." },
-        { type: "dialogue", speaker: "unknown", text: "...쳇. 다음에 보자." },
-        { type: "narration", text: "죄수들이 흩어진다. 소아성폭력범이 피투성이로 당신을 올려다본다." },
-        { type: "dialogue", speaker: "pedophile", text: "왜... 왜 날 도와줘...?" },
-      ],
-      effects: [{ type: "setFlag", flag: "helpedPedophile" }],
-      actions: [
-        {
-          id: "continue",
-          text: "아무 말 없이 자리를 뜬다.",
-          nextScene: "first_night"
-        }
-      ]
-    },
-
-    pedophile_ignore: {
-      title: "외면",
-      location: "cell",
-      description: [
-        { type: "narration", text: "당신은 눈을 돌린다. 이 지옥에서 남을 도울 여유 따위는 없다." },
-        { type: "narration", text: "비명이 점점 작아지다가, 결국 멈춘다." },
-        { type: "narration", text: "한참 후, 간수가 와서 축 늘어진 소아성폭력범을 끌고 나간다." },
-        { type: "dialogue", speaker: "guard", text: "또 자해냐... 귀찮게스리." },
-        { type: "narration", text: "의무실로 끌려가는 그의 얼굴은 피투성이이다. 숨은 붙어 있는 것 같다." },
-        { type: "narration", text: "다른 죄수들이 아무 일 없다는 듯 침대로 돌아간다." },
-        { type: "dialogue", speaker: "political", text: "...이곳의 일상이야. 익숙해져." }
       ],
       actions: [
         {
@@ -1731,28 +1641,14 @@ const gameData = {
       title: "소아성폭력범",
       location: "yard",
       description: [
-        { type: "narration", text: "당신이 다가가자, 왜소한 안경잡이가 겁먹은 눈으로 올려다본다." },
-        { type: "dialogue", speaker: "pedophile", text: "뭐, 뭐야... 나한테 뭔 일이야...?" },
-        { type: "narration", text: "그의 얼굴에는 멍 자국이 가득하다. 다른 죄수들에게 맞은 흔적이다." },
-        { type: "dialogue", speaker: "pedophile", text: "너도... 나 괴롭히러 온 거야? 모두가 나를 때려... 간수들도, 죄수들도..." },
-        { type: "narration", text: "수용소에서 가장 천대받는 존재. 죄수들 사이에도 위계가 있고, 그는 가장 밑바닥이다." }
+        { type: "narration", text: "당신이 다가가자, 왜소한 안경잡이가 웅크린 몸을 일으키며 위협적인 자세를 취한다. 하지만 이내 주변 간수들의 눈치를 보며 어깨를 움츠린다." },
+        { type: "dialogue", speaker: "pedophile", text: "뭐야, 또 시비 걸러 왔어? 나도 참는 데 한계가 있다고." },
+        { type: "narration", text: "그의 눈에는 여전히 피어오르지 못한 불꽃이 일렁인다. 린치로 인해 억눌려 있지만, 기회만 있다면 누구든 물어뜯을 기세다." }
       ],
       actions: [
-        {
-          id: "show_kindness",
-          text: "괜찮다며 옆에 앉는다.",
-          nextScene: "pedophile_kind"
-        },
-        {
-          id: "leave_disgust",
-          text: "역겹다는 듯 돌아선다.",
-          nextScene: "yard"
-        },
-        {
-          id: "ask_info",
-          text: "정보를 대가로 보호해주겠다고 제안한다.",
-          nextScene: "pedophile_deal"
-        }
+        { id: "show_kindness", text: "괜찮다며 옆에 앉는다.", nextScene: "pedophile_kind" },
+        { id: "leave_disgust", text: "역겹다는 듯 돌아선다.", nextScene: "yard" },
+        { id: "ask_info", text: "정보를 대가로 보호해주겠다고 제안한다.", nextScene: "pedophile_deal" }
       ]
     },
 
@@ -1760,12 +1656,12 @@ const gameData = {
       title: "연민",
       location: "yard",
       description: [
-        { type: "narration", text: "당신이 옆에 앉자, 그는 당황한 표정을 짓는다." },
-        { type: "dialogue", speaker: "pedophile", text: "왜... 왜 그래? 뭐가 필요한 거야...?" },
-        { type: "narration", text: "그는 경계를 풀지 못한다. 이곳에서 친절은 항상 대가를 요구하니까." },
-        { type: "dialogue", speaker: "pedophile", text: "...나, 밖에서 교사였어. 아이들을... 건드렸지. 난 !!괴물!!이야. 알아." },
-        { type: "dialogue", speaker: "pedophile", text: "여기서 죽는 게... 당연한 벌인지도 몰라..." },
-        { type: "narration", text: "그의 눈에 눈물이 맺힌다. 동정해야 할지, 경멸해야 할지 복잡한 감정이 든다." }
+        { type: "narration", text: "당신이 옆에 앉자, 그의 어깨 근육이 눈에 띄게 경직된다. 몸은 본능적으로 타격에 대비하듯 웅크려지지만, 눈빛만은 짐승처럼 날카롭게 당신을 훑는다." },
+        { type: "dialogue", speaker: "pedophile", text: "어이, 적당히 해. 나도 언제까지고 처맞고만 있을 생각 없으니까. 용건 없으면 꺼져." },
+        { type: "narration", text: "그는 침을 뱉으며 주먹을 꽉 쥔다." },
+        { type: "dialogue", speaker: "pedophile", text: "...나? 그래, 뉴스에서 봤겠지.  내 앞길은 창창했고, 난 내가 원하는 건 뭐든 가질 자격이 있다고 믿었어. 그게 아이들이었을 뿐이지." },
+        { type: "dialogue", speaker: "pedophile", text: "괴물? 하, 밖에서는 다들 내 앞에서 고개를 조아렸어. 여기 들어오자마자 이 꼴이 됐지만... 젠장, 이 빚은 언젠가 반드시 이 수용소 놈들 목구멍에 돌려줄 거야." },
+        { type: "narration", text: "그의 눈에는 후회 대신 억눌린 분노와 뒤틀린 자부심이 일렁인다." }
       ],
       actions: [
         {
@@ -1780,15 +1676,16 @@ const gameData = {
       title: "거래 제안",
       location: "yard",
       description: [
-        { type: "narration", text: "당신의 제안에 그의 눈이 반짝인다." },
-        { type: "dialogue", speaker: "pedophile", text: "정, 정말...? 날 보호해 준다고...?" },
-        { type: "dialogue", speaker: "pedophile", text: "알아, 알아... 내가 아는 거 다 말해줄게. 난 여기서 오래 있었어. 아무도 신경 안 쓰니까 많이 들었어." },
-        { type: "dialogue", speaker: "pedophile", text: "**지하 2층 창고**... 거기 환기 덕트가 외부로 연결돼 있어. 작은 사람은 빠져나갈 수 있을지도 몰라." },
-        { type: "dialogue", speaker: "pedophile", text: "그리고... **간수장이 여자 문제**로 협박당하고 있어. 누가 그 증거를 갖고 있는지는 모르겠지만..." },
+        { type: "narration", text: "당신의 제안에 그가 코웃음을 친다. 하지만 눈빛은 예리하게 빛난다." },
+        { type: "dialogue", speaker: "pedophile", text: "보호? 웃기지 마. 여긴 누구도 믿을 수 없어. 하지만... 네가 쓸모 있는 놈이라면 이야기는 달라지지." },
+        { type: "dialogue", speaker: "pedophile", text: "좋아, 비즈니스라고 치지. 내가 본 게 꽤 많거든. 아무도 나를 사람 취급 안 하니까 오히려 편하더라고." },
+        { type: "narration", text: "그는 낮고 거친 목소리로 수용소의 비밀을 털어놓기 시작한다." },
+        { type: "dialogue", speaker: "pedophile", text: "**지하 2층 창고**... 거기 환기 덕트가 외부로 연결돼 있어. 작은 사람은 빠져나갈 수 있을지도 몰라." }
       ],
       effects: [
+        { type: "setFlag", flag: "helpedPedophile" },
+        { type: "increaseRelation", target: "pedophile" },
         { type: "setFlag", flag: "knowVentDuct" },
-        { type: "setFlag", flag: "knowWardenWeakness" }
       ],
       actions: [
         {
@@ -1910,14 +1807,80 @@ const gameData = {
       title: "셋째 날 아침",
       location: "cell",
       description: [
-        { type: "narration", text: "사이렌 소리에 눈을 뜬다. 몸이 무겁다." },
-        { type: "narration", text: "오늘은 **수요일**이다." },
-        { type: "dialogue", speaker: "guard", text: "기상! 오늘은 전원 작업장이다! 움직여!" },
-        { type: "narration", text: "간수의 고함에 죄수들이 하나둘 일어난다." }
+        { type: "narration", text: "새벽을 찢는 사이렌 소리에 눈을 뜬다." },
+        { type: "narration", text: "오늘은 **수요일**이다. 폭풍우의 전조인지 습한 공기가 피부에 들러붙는다." },
+        { type: "dialogue", speaker: "guard", text: "기상! 오늘은 전원 작업장이다! 낙오자는 국물도 없을 줄 알아!" },
+        { type: "narration", text: "간수들의 고함과 함께 죄수들이 좀비처럼 몸을 일으킨다." }
       ],
       actions: [
         {
-          id: "go_workshop_day3",
+          id: "go_workshop_event",
+          text: "작업장으로 향한다.",
+          conditions: [{ type: "flagSet", flag: "helpedPedophile" }],
+          nextScene: "pedophile_attack"
+        },
+        {
+          id: "go_workshop_normal",
+          text: "작업장으로 향한다.",
+          conditions: [{ type: "flagNotSet", flag: "helpedPedophile" }],
+          nextScene: "day_three_workshop"
+        }
+      ]
+    },
+
+    pedophile_attack: {
+      title: "린치",
+      location: "cell",
+      description: [
+        { type: "narration", text: "갑자기 감방 구석에서 소란이 일어난다. 몇몇 죄수들이 소아성폭력범을 둘러싸고 있다." },
+        { type: "dialogue", speaker: "unknown", text: "이 새끼, 아직도 눈깔 안 깔아? 확 뽑아버려!" },
+        { type: "narration", text: "주먹과 발길이 날아온다. 그는 짐승 같은 신음 소리를 내며 악착같이 버티려 하지만, 숫자에 밀려 바닥으로 고꾸라진다." },
+        { type: "dialogue", speaker: "pedophile", text: "죽여봐... 죽여보라고! 이 비겁한 새끼들아!" },
+        { type: "narration", text: "그의 반항에 분노한 죄수들이 더 거세게 짓밟는다. 피가 콘크리트 바닥에 번진다." }
+      ],
+      actions: [
+        { id: "help_pedophile", text: "말리려 한다.", nextScene: "pedophile_help" },
+        { id: "ignore_attack", text: "모른 척한다.", nextScene: "pedophile_ignore" }
+      ]
+    },
+
+    pedophile_help: {
+      title: "구출",
+      location: "cell",
+      description: [
+        { type: "narration", text: "당신이 끼어들어 소아성폭력범을 가린다." },
+        { type: "dialogue", speaker: "player", text: "그만해! 진짜 죽일 셈이야?!" },
+        { type: "narration", text: "죄수들이 당신을 노려보다 간수의 발소리에 흩어진다." },
+        { type: "narration", text: "소아성폭력범이 입가에 고인 피를 닦으며 당신을 올려다본다." },
+        { type: "dialogue", speaker: "pedophile", text: "약속은 잘 지키는 친구네. 고마워." },
+        { type: "narration", text: "그는 말을 잇는다." },
+        { type: "dialogue", speaker: "pedophile", text: "보답으로 정보를 하나 더 주지." },
+        { type: "dialogue", speaker: "pedophile", text: "**간수장이 여자 문제**로 협박당하고 있어. 누가 그 증거를 갖고 있는지는 모르겠지만...." },
+      ],
+      effects: [{ type: "increaseRelation", target: "pedophile", amount: 2 },
+                { type: "setFlag", flag: "knowWardenWeakness" }],
+      actions: [
+        { id: "continue", text: "작업장으로 향한다.", nextScene: "day_three_workshop" }
+      ]
+    },
+
+    pedophile_ignore: {
+      title: "외면",
+      location: "cell",
+      description: [
+        { type: "narration", text: "당신은 눈을 돌린다. 이 지옥에서 남을 도울 여유 따위는 없다." },
+        { type: "dialogue", speaker: "pedophile", text: "너, 지켜주겠다고 했잖아. 이 비겁한 새끼야! 으아악!" },
+        { type: "narration", text: "비명이 점점 작아지다가, 결국 멈춘다." },
+        { type: "narration", text: "한참 후, 간수가 와서 축 늘어진 소아성폭력범을 끌고 나간다." },
+        { type: "dialogue", speaker: "guard", text: "또 자해냐... 귀찮게스리." },
+        { type: "narration", text: "의무실로 끌려가는 그의 얼굴은 피투성이이다. 숨은 붙어 있는 것 같다." },
+        { type: "narration", text: "다른 죄수들이 아무 일 없다는 듯 침대로 돌아간다." },
+        { type: "dialogue", speaker: "political", text: "...이곳의 일상이야. 익숙해져." }
+      ],
+      effects: [{ type: "decreaseRelation", target: "pedophile", amount: 4 }],
+      actions: [
+        {
+          id: "continue",
           text: "작업장으로 향한다.",
           nextScene: "day_three_workshop"
         }
@@ -2248,7 +2211,7 @@ const gameData = {
         { type: "narration", text: "그가 당신을 빤히 바라본다. 평소와 다른, 기묘하게 맑은 눈빛이다." },
         { type: "dialogue", speaker: "arsonist", text: "...넌 날 도와줬어. 그러니까 이제 동료야. 뭐 궁금한 거 있어?" }
       ],
-      effects: [{ type: "setFlag", flag: "arsonistReady" }],
+      effects: [{ type: "setFlag", flag: "arsonistReady"} , { type: "increaseRelation", target: "arsonist", amount: 2 }],
       actions: [
         {
           id: "ask_scar",
@@ -2507,13 +2470,12 @@ const gameData = {
       description: [
         { type: "narration", text: "저녁 식사 시간이다. 밖에서 천둥소리가 들려온다." },
         { type: "narration", text: "비가 내리기 시작한다. 창밖으로 번개가 번쩍인다." },
-        { type: "narration", text: "오늘 밤이 결정의 밤이다. 여러 계획들이 교차하고 있다." },
-        { type: "narration", text: "당신은 어떤 길을 선택하시겠는가?" }
+        { type: "narration", text: "오늘 밤이 결정의 밤이다. 여러 계획들이 교차하고 있다." }
       ],
       actions: [
         {
           id: "wait_night_messiah_enemy",
-          text: "밤을 기다린다.",
+          text: "곤히 잠든다.",
           conditions: [
             { type: "flagSet", flag: "messiahEnemy" },
             { type: "flagNotSet", flag: "fraudsterTrusted" },
@@ -2524,7 +2486,7 @@ const gameData = {
         },
         {
           id: "wait_night_arsonist_enemy",
-          text: "밤을 기다린다.",
+          text: "곤히 잠든다.",
           conditions: [
             { type: "flagSet", flag: "arsonistEnemy" },
             { type: "flagNotSet", flag: "messiahRoute" },
@@ -2536,7 +2498,7 @@ const gameData = {
         },
         {
           id: "wait_night",
-          text: "밤을 기다린다.",
+          text: "잠시 눈을 붙인다.",
           nextScene: "day_four_final"
         }
       ]
@@ -3300,7 +3262,7 @@ const gameData = {
       title: "이단자의 최후",
       location: "cell",
       description: [
-        { type: "narration", text: "며칠 후, 셋째 날 밤." },
+        { type: "narration", text: "그날 밤." },
         { type: "narration", text: "잠든 당신의 위로 여러 개의 그림자가 드리운다." },
         { type: "narration", text: "눈을 떴을 때, 이미 입이 막혀 있다. 누군가 당신의 팔다리를 붙잡고 있다." },
         { type: "dialogue", speaker: "messiah", text: "안타깝구나, 불신자여..." },

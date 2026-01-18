@@ -159,14 +159,10 @@ class GameEngine {
           this.flags[effect.flag] = false;
           break;
         case 'increaseRelation':
-          if (this.relations.hasOwnProperty(effect.target)) {
-            this.relations[effect.target] += (effect.amount || 1);
-          }
+          this.relations[effect.target] += (effect.amount || 1);
           break;
         case 'decreaseRelation':
-          if (this.relations.hasOwnProperty(effect.target)) {
-            this.relations[effect.target] -= (effect.amount || 1);
-          }
+          this.relations[effect.target] -= (effect.amount || 1);
           break;
         case 'resetGame':
           this.inventory = [];
