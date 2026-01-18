@@ -16,37 +16,37 @@ characters = [
     {
         "id": "messiah",
         "name": "메시아 죄수",
-        "prompt": "Anime style headshot portrait of a male prisoner with a serene, enlightened expression. He has long flowing hair, gentle wise eyes, and wears an orange prison jumpsuit. He has a calm, almost divine aura about him. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
+        "prompt": "A cult leader with a serene, enlightened expression. She has long flowing hair, gentle wise eyes, and a calm, almost divine aura about her."
     },
     {
         "id": "arsonist",
         "name": "방화범 죄수",
-        "prompt": "Anime style headshot portrait of a male prisoner with wild, excited eyes and messy spiky red hair. He has burn scars on his face and wears an orange prison jumpsuit. His expression shows chaotic enthusiasm. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
+        "prompt": "A prisoner with wild, excited eyes and messy long red hair. She has burn scars on her face and her expression shows chaotic enthusiasm."
     },
     {
         "id": "groper",
         "name": "치한 죄수",
-        "prompt": "Anime style headshot portrait of a nervous-looking male prisoner with greasy slicked-back dark hair and shifty eyes. He wears an orange prison jumpsuit and has a suspicious expression. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
+        "prompt": "A nervous-looking prisoner with greasy slicked-back dark hair and shifty eyes. She has a suspicious expression and dark shadow under her eyes, which represents her perverted desire."
     },
     {
         "id": "fraudster",
         "name": "사기꾼 죄수",
-        "prompt": "Anime style headshot portrait of a charming, well-groomed male prisoner with slick hair and a confident smirk. He wears an orange prison jumpsuit but maintains an air of sophistication. His eyes are calculating and clever. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
+        "prompt": "Well-groomed beautiful prisoner with slick hair and a confident smirk. She maintains an air of sophistication and her eyes are calculating and clever."
     },
     {
         "id": "political",
         "name": "정치범 죄수",
-        "prompt": "Anime style headshot portrait of an intellectual-looking male prisoner with glasses and neat short hair. He has a dignified, defiant expression and wears an orange prison jumpsuit. He looks like a former politician or activist. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
+        "prompt": "an intellectual-looking prisoner with glasses and neat short hair. She has a dignified, defiant expression and looks like a former political activist."
     },
     {
         "id": "wifekiller",
         "name": "아내 살인범 죄수",
-        "prompt": "Anime style headshot portrait of a middle-aged male prisoner with a haunted, emotionless expression. He has tired eyes with dark circles, receding hairline, and wears an orange prison jumpsuit. His face shows deep regret. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
+        "prompt": "A bereaved prisoner with a haunted, emotionless expression. She has tired eyes with deep sadness. She killed her crazy wife to save her son."
     },
     {
         "id": "pedophile",
         "name": "소아성폭력범 죄수",
-        "prompt": "Anime style headshot portrait of a balding, overweight male prisoner with thick glasses and a meek expression. He wears an orange prison jumpsuit and looks uncomfortable. Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait."
+        "prompt": "prisoner with glasses and a meek expression. The eyes are dead, and the mouth is twisted with dissatisfied desire."
     }
 ]
 
@@ -56,7 +56,7 @@ def generate_image_gemini(character, max_retries=3):
         try:
             response = client.models.generate_content(
                 model="gemini-2.5-flash-image",
-                contents=character['prompt'],
+                contents= "Anime style 2d girl headshot portrait of prisoner in blue prison jumpsuit, " + character['prompt'] + "Clean light gray background, Head and Shoulders Portrait, high quality anime art style similar to visual novel character portrait.",
                 config=types.GenerateContentConfig(
                     response_modalities=['Text', 'Image']
                 )
