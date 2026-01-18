@@ -4,6 +4,7 @@ class GameEngine {
     this.currentScene = null;
     this.inventory = [];
     this.flags = {};
+    this.relations = {};
     this.history = [];
   }
 
@@ -11,6 +12,15 @@ class GameEngine {
     this.currentScene = this.gameData.startScene;
     this.inventory = [...(this.gameData.startInventory || [])];
     this.flags = { ...(this.gameData.startFlags || {}) };
+    this.relations = { ...(this.gameData.startRelations || {
+      messiah: 0,
+      fraudster: 0,
+      wifekiller: 0,
+      groper: 0,
+      arsonist: 0,
+      pedophile: 0,
+      political: 0
+    }) };
     this.history = [];
 
     // Execute scene effects on start
@@ -39,6 +49,7 @@ class GameEngine {
       description: this.processText(scene.description),
       actions: availableActions,
       inventory: this.inventory,
+      relations: this.relations,
       location: scene.location || null,
       isEnding: scene.isEnding || false
     };
@@ -71,6 +82,12 @@ class GameEngine {
           break;
         case 'flagNotSet':
           if (this.flags[condition.flag]) return false;
+          break;
+        case 'relationMin':
+          if ((this.relations[condition.target] || 0) < condition.value) return false;
+          break;
+        case 'relationMax':
+          if ((this.relations[condition.target] || 0) > condition.value) return false;
           break;
         default:
           break;
@@ -141,9 +158,28 @@ class GameEngine {
         case 'clearFlag':
           this.flags[effect.flag] = false;
           break;
+        case 'increaseRelation':
+          if (this.relations.hasOwnProperty(effect.target)) {
+            this.relations[effect.target] += (effect.amount || 1);
+          }
+          break;
+        case 'decreaseRelation':
+          if (this.relations.hasOwnProperty(effect.target)) {
+            this.relations[effect.target] -= (effect.amount || 1);
+          }
+          break;
         case 'resetGame':
           this.inventory = [];
           this.flags = {};
+          this.relations = { ...(this.gameData.startRelations || {
+            messiah: 0,
+            fraudster: 0,
+            wifekiller: 0,
+            groper: 0,
+            arsonist: 0,
+            pedophile: 0,
+            political: 0
+          }) };
           this.history = [];
           break;
         default:
@@ -188,6 +224,7 @@ class GameEngine {
       currentScene: this.currentScene,
       inventory: [...this.inventory],
       flags: { ...this.flags },
+      relations: { ...this.relations },
       history: [...this.history],
       savedAt: Date.now()
     };
@@ -205,6 +242,15 @@ class GameEngine {
     this.currentScene = saveData.currentScene;
     this.inventory = saveData.inventory || [];
     this.flags = saveData.flags || {};
+    this.relations = saveData.relations || { ...(this.gameData.startRelations || {
+      messiah: 0,
+      fraudster: 0,
+      wifekiller: 0,
+      groper: 0,
+      arsonist: 0,
+      pedophile: 0,
+      political: 0
+    }) };
     this.history = saveData.history || [];
 
     return { success: true };

@@ -4,7 +4,7 @@ import React from 'react';
 const mapLayout = [
   [null, 'roof', null],
   ['yard', 'corridor', 'workshop'],
-  [null, 'cell', null],
+  ['cafeteria', 'cell', null],
   [null, 'basement', 'solitary'],
   ['sewer1', 'sewer2', 'sewer3'],
 ];
@@ -15,6 +15,7 @@ const locationNames = {
   corridor: '복도',
   workshop: '작업장',
   cell: '감방',
+  cafeteria: '식당',
   solitary: '독방',
   basement: '지하실',
   sewer1: '하수도',

@@ -30,3 +30,6 @@ npm-debug.log*
 
 # Misc
 NVIDIA Corporation/
+
+# Development docs (local only)
+/server/develop_docs/*

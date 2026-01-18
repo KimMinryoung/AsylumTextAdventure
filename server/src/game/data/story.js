@@ -194,8 +194,29 @@ const gameData = {
         {
           id: "ask_his_story",
           text: "\"당신 이야기를 듣고 싶어요.\"",
-          nextScene: "wifekiller_story"
+          nextScene: "wifekiller_reject_story",
+          effects: [{ type: "increaseRelation", target: "wifekiller" }]
         },
+        {
+          id: "leave_quietly",
+          text: "조용히 물러난다.",
+          nextScene: "first_night"
+        }
+      ]
+    },
+
+    wifekiller_reject_story: {
+      title: "거절",
+      location: "cell",
+      description: [
+        { type: "narration", text: "아내 살인범이 잠시 멈칫한다. 그의 눈에 복잡한 감정이 스친다." },
+        { type: "dialogue", speaker: "wifekiller", text: "...내 이야기?" },
+        { type: "narration", text: "그가 고개를 돌린다." },
+        { type: "dialogue", speaker: "wifekiller", text: "처음 보는 놈한테 할 이야기 아니야. 그리고 넌 아직 믿을 수 없고." },
+        { type: "narration", text: "하지만 그의 목소리에서 적대감은 조금 누그러져 있다." },
+        { type: "dialogue", speaker: "wifekiller", text: "...가서 자. 내일부터 바빠질 거야." }
+      ],
+      actions: [
         {
           id: "leave_quietly",
           text: "조용히 물러난다.",
@@ -979,12 +1000,14 @@ const gameData = {
         {
           id: "ask_arsonist_face",
           text: "얼굴 상처에 대해 묻는다.",
-          nextScene: "arsonist_scar"
+          nextScene: "arsonist_reject_talk",
+          effects: [{ type: "increaseRelation", target: "arsonist" }]
         },
         {
           id: "ask_arsonist_crime",
           text: "무슨 죄로 들어왔는지 묻는다.",
-          nextScene: "arsonist_crime"
+          nextScene: "arsonist_reject_talk",
+          effects: [{ type: "increaseRelation", target: "arsonist" }]
         },
         {
           id: "leave_arsonist",
@@ -994,9 +1017,29 @@ const gameData = {
       ]
     },
 
+    arsonist_reject_talk: {
+      title: "거부",
+      location: "cell",
+      description: [
+        { type: "narration", text: "방화범의 눈빛이 차갑게 변한다." },
+        { type: "dialogue", speaker: "arsonist", text: "...처음 보는 년이 참 궁금한 게 많네." },
+        { type: "narration", text: "그가 손가락으로 당신을 가리킨다." },
+        { type: "dialogue", speaker: "arsonist", text: "내 얘기가 듣고 싶어? 그럼 뭔가 줘. 세상에 공짜는 없어." },
+        { type: "narration", text: "그가 다시 허공을 바라본다. 하지만 당신에게 관심을 갖긴 한 모양이다." }
+      ],
+      actions: [
+        {
+          id: "leave",
+          text: "자리를 뜬다.",
+          nextScene: "cell_observe"
+        }
+      ]
+    },
+
+    // 기름 전달 후에만 접근 가능한 방화범 이야기 장면들
     arsonist_scar: {
       title: "방화범의 상처",
-      location: "cell",
+      location: "workshop",
       description: [
         { type: "narration", text: "방화범이 일그러진 얼굴을 손으로 쓸어내린다. 눈빛이 묘하게 그리워하는 듯하다." },
         { type: "dialogue", speaker: "arsonist", text: "이거? 내 첫 번째 작품에서 받은 선물이야." },
@@ -1018,14 +1061,14 @@ const gameData = {
         {
           id: "leave_scared",
           text: "소름이 끼쳐 자리를 뜬다.",
-          nextScene: "first_night"
+          nextScene: "day_three_afternoon"
         }
       ]
     },
 
     arsonist_crime: {
       title: "방화범의 죄",
-      location: "cell",
+      location: "workshop",
       description: [
         { type: "narration", text: "방화범의 눈이 반짝인다. 마치 가장 자랑스러운 이야기를 꺼내는 것처럼." },
         { type: "dialogue", speaker: "arsonist", text: "내가 왜 여기 있는지 알아? 공장 세 개, 아파트 한 동, 그리고... 고아원 하나." },
@@ -1036,18 +1079,36 @@ const gameData = {
         { type: "dialogue", speaker: "arsonist", text: "그때부터 가끔 꿈을 꿔. 아이들이 불타면서... 나를 부르는 꿈." },
         { type: "narration", text: "그가 머리를 세게 흔든다." },
         { type: "dialogue", speaker: "arsonist", text: "!!닥쳐!! 시끄럽다고... 시끄럽다고!!" },
-        { type: "narration", text: "그가 갑자기 소리를 지르며 머리를 쥐어뜯는다. 다른 죄수들이 힐끗 쳐다본다." }
+        { type: "narration", text: "그가 갑자기 소리를 지르며 머리를 쥐어뜯는다." }
       ],
       actions: [
         {
           id: "calm_down",
           text: "진정시키려 한다.",
-          nextScene: "arsonist_calm"
+          nextScene: "arsonist_calm_day3"
         },
         {
           id: "back_away",
           text: "조용히 물러난다.",
-          nextScene: "first_night"
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    arsonist_calm_day3: {
+      title: "진정",
+      location: "workshop",
+      description: [
+        { type: "narration", text: "당신이 조심스럽게 어깨를 터치하자, 방화범이 멈칫한다." },
+        { type: "dialogue", speaker: "arsonist", text: "...미안. 가끔 이래. 목소리가... 들려서." },
+        { type: "narration", text: "그가 숨을 고르며 진정한다." },
+        { type: "dialogue", speaker: "arsonist", text: "넌... 나한테 기름을 줬잖아. 그러니까 동료야. 오늘 밤, 잊지 마." }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "고개를 끄덕인다.",
+          nextScene: "day_three_afternoon"
         }
       ]
     },
@@ -1063,7 +1124,7 @@ const gameData = {
         { type: "narration", text: "그가 당신을 빤히 바라본다." },
         { type: "dialogue", speaker: "arsonist", text: "내가 이 수용소를 태울 거야. 언젠가. 그때 같이 나갈래? ...생각해봐." },
       ],
-      effects: [{ type: "setFlag", flag: "arsonistTrust" }],
+      effects: [{ type: "increaseRelation", target: "arsonist" }],
       actions: [
         {
           id: "rest",
@@ -1226,7 +1287,7 @@ const gameData = {
         {
           id: "listen",
           text: "귀를 귀울인다.",
-          conditions: [{ type: "flagSet", flag: "arsonistTrust" }],
+          conditions: [{ type: "relationMin", target: "arsonist", value: 1 }],
           nextScene: "night_whisper"
         },
         {
@@ -1453,23 +1514,62 @@ const gameData = {
       title: "아내 살인범과의 대화",
       location: "workshop",
       description: [
-        { type: "narration", text: "당신이 말을 걸자, 그는 잠시 망설이다 입을 연다." },
-        { type: "dialogue", speaker: "wifekiller", text: "...사람들은 나를 '아내 살인범'이라고 불러. 하지만 진실은 달라." },
-        { type: "dialogue", speaker: "wifekiller", text: "그녀가... 먼저 칼을 들었어. 난 살려고 발버둥 쳤을 뿐인데..." },
-        { type: "narration", text: "그의 눈에 깊은 슬픔이 어린다." },
-        { type: "dialogue", speaker: "wifekiller", text: "판사가 돈을 받았대. 그녀의 가족한테서. 내 진술은 무시당했고, 여기 오게 됐지." },
-        { type: "dialogue", speaker: "wifekiller", text: "...탈출? 그런 건 포기했어. 어차피 밖에 나가도 갈 곳이 없으니까." }
+        { type: "narration", text: "당신이 말을 걸자, 그가 잠시 손을 멈추고 당신을 본다." },
+        { type: "dialogue", speaker: "wifekiller", text: "...뭐야. 또 왔어?" },
+        { type: "narration", text: "말투는 퉁명스럽지만, 어제보다 경계심이 덜하다." }
       ],
       actions: [
         {
+          id: "ask_story_deep",
+          text: "\"그날 밤 무슨 일이 있었는지... 들어도 될까요?\"",
+          nextScene: "wifekiller_story_day2",
+          conditions: [{ type: "relationMin", target: "wifekiller", value: 2 }],
+          effects: [{ type: "increaseRelation", target: "wifekiller" }]
+        },
+        {
           id: "sympathize",
-          text: "그에게 동정을 표한다.",
+          text: "\"억울한 일을 당했다는 건 알겠어요.\"",
           nextScene: "wifekiller_sympathy",
-          effects: [{ type: "setFlag", flag: "wifekillerFriend" }]
+          effects: [
+            { type: "setFlag", flag: "wifekillerFriend" },
+            { type: "increaseRelation", target: "wifekiller" }
+          ]
         },
         {
           id: "leave",
-          text: "할 말이 없어 자리를 피한다.",
+          text: "\"아무것도 아니에요.\" 자리를 피한다.",
+          nextScene: "day_two_evening"
+        }
+      ]
+    },
+
+    wifekiller_story_day2: {
+      title: "아내 살인범의 진실",
+      location: "workshop",
+      description: [
+        { type: "narration", text: "그가 잠시 주위를 살핀다. 아무도 듣고 있지 않다는 걸 확인한 후, 낮은 목소리로 말하기 시작한다." },
+        { type: "dialogue", speaker: "wifekiller", text: "...왜 알고 싶어?" },
+        { type: "narration", text: "당신이 대답하기 전에, 그가 먼저 입을 연다." },
+        { type: "dialogue", speaker: "wifekiller", text: "난 평범한 가장이었어. 작은 식당을 했지. 아내와 다섯 살 아들이 있었고." },
+        { type: "dialogue", speaker: "wifekiller", text: "아내가... 변했어. 술을 마시기 시작했고, 날 때리기 시작했어. 나중엔 아들도." },
+        { type: "narration", text: "그의 손이 떨린다." },
+        { type: "dialogue", speaker: "wifekiller", text: "어느 날 밤... 아내가 칼을 들고 아들 방에 들어갔어. '네가 없으면 다 해결돼'라고 소리치면서." },
+        { type: "dialogue", speaker: "wifekiller", text: "난... 뛰어들었어. 칼을 막다가 손을 베였고, 아내를 밀쳤어. 그녀가 넘어지면서... 머리를 부딪혔어." },
+        { type: "narration", text: "그가 손등의 오래된 흉터를 내려다본다." },
+        { type: "dialogue", speaker: "wifekiller", text: "정당방위였어. 분명히. 근데 아내 집안이 부자였고, 판사를 샀어. 난... 살인범이 됐지." },
+        { type: "dialogue", speaker: "wifekiller", text: "아들은 지금 아내 부모 밑에서 자라고 있어. 날 살인자라고 배우면서. 면회도 못 오게 해." },
+        { type: "narration", text: "긴 침묵이 흐른다." },
+        { type: "dialogue", speaker: "wifekiller", text: "...왜 네한테 이런 얘기를 했는지 모르겠군. 네가 물어봐서? 아니면..." },
+        { type: "narration", text: "그가 당신을 빤히 바라본다." },
+        { type: "dialogue", speaker: "wifekiller", text: "넌 다른 놈들과 달라. 여기서 10년을 보내면 사람 보는 눈이 생겨." },
+        { type: "dialogue", speaker: "wifekiller", text: "네가 탈출하고 싶다면... 도와줄 수 있어. 난 여기서 나가도 갈 곳이 없지만, 네가 성공하는 건 보고 싶거든." },
+        { type: "dialogue", speaker: "wifekiller", text: "필요하면 말해. **지하 구조도**를 그려줄 수 있어." }
+      ],
+      effects: [{ type: "setFlag", flag: "wifekillerFriend" }],
+      actions: [
+        {
+          id: "thank",
+          text: "진심으로 감사를 표한다.",
           nextScene: "day_two_evening"
         }
       ]
@@ -1479,8 +1579,8 @@ const gameData = {
       title: "동정",
       location: "workshop",
       description: [
-        { type: "narration", text: "당신의 말에 그가 놀란 표정을 짓는다." },
-        { type: "dialogue", speaker: "wifekiller", text: "...고맙군. 여기서 그런 말을 들을 줄은 몰랐어." },
+        { type: "narration", text: "당신의 말에 그가 잠시 멈춘다." },
+        { type: "dialogue", speaker: "wifekiller", text: "...억울하다고? 그래, 억울하지." },
         { type: "narration", text: "그가 주위를 살피며 목소리를 낮춘다." },
         { type: "dialogue", speaker: "wifekiller", text: "네가 탈출을 계획하고 있다면... 도와줄 수 있어. 난 밖에 나가도 의미없지만, 네가 성공하는 건 보고 싶거든." },
         { type: "dialogue", speaker: "wifekiller", text: "난 이 수용소에서 10년을 보냈어. **구조와 경비 패턴**을 다 알고 있지. 필요하면 말해." },
@@ -1933,7 +2033,7 @@ const gameData = {
         { type: "dialogue", speaker: "arsonist", text: "기름이 필요해. 작업장에 있잖아. 구해줄 수 있어?" },
         { type: "narration", text: "당신이 그를 중재했기에 그도 당신의 의견을 들을 것 같다." }
       ],
-      effects: [{ type: "setFlag", flag: "arsonistTrust" }],
+      effects: [{ type: "increaseRelation", target: "arsonist" }],
       actions: [
         {
           id: "get_oil",
@@ -2131,7 +2231,7 @@ const gameData = {
         {
           id: "warn_arsonist",
           text: "\"사람들이 다칠 수 있어. 다시 생각해봐.\"",
-          conditions: [{ type: "flagSet", flag: "arsonistTrust" }],
+          conditions: [{ type: "relationMin", target: "arsonist", value: 1 }],
           nextScene: "arsonist_reconsider"
         }
       ]
@@ -2144,13 +2244,25 @@ const gameData = {
         { type: "narration", text: "방화범이 기름을 받아들고 환하게 웃는다." },
         { type: "dialogue", speaker: "arsonist", text: "완벽해... 오늘 밤, 자정쯤에 시작할 거야. 불이 나면 동쪽 담벼락으로 와. 거기서 만나자." },
         { type: "narration", text: "그의 손이 기름병을 쓰다듬는다. 광기 어린 애정으로." },
-        { type: "dialogue", speaker: "arsonist", text: "아름다울 거야..." }
+        { type: "dialogue", speaker: "arsonist", text: "아름다울 거야..." },
+        { type: "narration", text: "그가 당신을 빤히 바라본다. 평소와 다른, 기묘하게 맑은 눈빛이다." },
+        { type: "dialogue", speaker: "arsonist", text: "...넌 날 도와줬어. 그러니까 이제 동료야. 뭐 궁금한 거 있어?" }
       ],
       effects: [{ type: "setFlag", flag: "arsonistReady" }],
       actions: [
         {
+          id: "ask_scar",
+          text: "\"그 상처... 어떻게 생긴 거야?\"",
+          nextScene: "arsonist_scar"
+        },
+        {
+          id: "ask_crime",
+          text: "\"왜 여기 들어온 거야?\"",
+          nextScene: "arsonist_crime"
+        },
+        {
           id: "continue",
-          text: "고개를 끄덕이고 자리로 돌아간다.",
+          text: "\"아무것도. 오늘 밤에 보자.\"",
           nextScene: "day_three_afternoon"
         }
       ]
