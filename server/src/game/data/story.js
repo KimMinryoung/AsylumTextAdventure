@@ -363,6 +363,7 @@ const gameData = {
         {
           id: "ask_messiah_past",
           text: "\"당신은 어떻게 메시아가 됐나요?\"",
+          conditions: [{ type: "relationMin", target: "messiah", value: 3 }],
           nextScene: "messiah_origin"
         },
         {
@@ -741,6 +742,7 @@ const gameData = {
         {
           id: "ask_family",
           text: "\"가족이 어떻게 됐나요?\"",
+          conditions: [{ type: "relationMin", target: "political", value: 1 }],
           nextScene: "political_family"
         },
         {
@@ -846,8 +848,17 @@ const gameData = {
         { type: "dialogue", speaker: "political", text: "하지만 정보는 줄 수 있지. 이 수용소는 **지하 3층**까지 있어. 지하 3층에 하수도로 연결되는 통로가 있다는 소문이 있어." },
         { type: "dialogue", speaker: "political", text: "문제는 지하 3층은 **독방 구역**이야. 거기 가려면 중징계를 받거나... 아니면 다른 방법을 찾아야 해." },
       ],
-      effects: [{ type: "setFlag", flag: "knowSewerPath" }],
+      effects: [
+        { type: "setFlag", flag: "knowSewerPath" },
+        { type: "increaseRelation", target: "political" }
+      ],
       actions: [
+        {
+          id: "ask_more",
+          text: "\"가족이 어떻게 됐나요?\"",
+          conditions: [{ type: "relationMin", target: "political", value: 1 }],
+          nextScene: "political_family"
+        },
         {
           id: "thank",
           text: "감사를 표하고 물러난다.",
@@ -870,10 +881,23 @@ const gameData = {
       ],
       actions: [
         {
+          id: "ask_family",
+          text: "\"그런데... 가족은 어떻게 됐나요?\"",
+          conditions: [{ type: "relationMin", target: "political", value: 1 }],
+          nextScene: "political_family",
+          effects: [
+            { type: "setFlag", flag: "knowPrisoners" },
+            { type: "increaseRelation", target: "political" }
+          ]
+        },
+        {
           id: "remember",
           text: "정보를 머릿속에 새긴다.",
           nextScene: "first_night",
-          effects: [{ type: "setFlag", flag: "knowPrisoners" }]
+          effects: [
+            { type: "setFlag", flag: "knowPrisoners" },
+            { type: "increaseRelation", target: "political" }
+          ]
         }
       ]
     },
@@ -1851,16 +1875,44 @@ const gameData = {
         { type: "narration", text: "당신이 끼어들어 소아성폭력범을 가린다." },
         { type: "dialogue", speaker: "player", text: "그만해! 진짜 죽일 셈이야?!" },
         { type: "narration", text: "죄수들이 당신을 노려보다 간수의 발소리에 흩어진다." },
+        { type: "narration", text: "흩어지던 죄수 중 하나가 침을 뱉는다." },
+        { type: "dialogue", speaker: "unknown", text: "아이들한테 그 짓을 한 놈을 감싸? 쓰레기끼리 잘 어울리네." },
+        { type: "narration", text: "메시아가 멀리서 경멸 어린 눈으로 당신을 바라본다. 방화범과 아내 살인범도 고개를 돌린다." },
         { type: "narration", text: "소아성폭력범이 입가에 고인 피를 닦으며 당신을 올려다본다." },
         { type: "dialogue", speaker: "pedophile", text: "약속은 잘 지키는 친구네. 고마워." },
         { type: "narration", text: "그는 말을 잇는다." },
         { type: "dialogue", speaker: "pedophile", text: "보답으로 정보를 하나 더 주지." },
         { type: "dialogue", speaker: "pedophile", text: "**간수장이 여자 문제**로 협박당하고 있어. 누가 그 증거를 갖고 있는지는 모르겠지만...." },
       ],
-      effects: [{ type: "increaseRelation", target: "pedophile", amount: 2 },
-                { type: "setFlag", flag: "knowWardenWeakness" }],
+      effects: [
+        { type: "increaseRelation", target: "pedophile", amount: 2 },
+        { type: "setFlag", flag: "knowWardenWeakness" },
+        { type: "setFlag", flag: "defendedPedophile" },
+        { type: "decreaseRelation", target: "messiah", amount: 3 },
+        { type: "decreaseRelation", target: "wifekiller", amount: 3 },
+        { type: "decreaseRelation", target: "arsonist", amount: 3 },
+      ],
       actions: [
-        { id: "continue", text: "작업장으로 향한다.", nextScene: "day_three_workshop" }
+        { id: "continue", text: "작업장으로 향한다.", nextScene: "day_three_workshop_contempt" }
+      ]
+    },
+
+    day_three_workshop_contempt: {
+      title: "작업장 - 셋째 날",
+      location: "workshop",
+      description: [
+        { type: "narration", text: "작업장의 기름 냄새가 익숙해졌다. 당신은 프레스 기계 앞에 선다." },
+        { type: "narration", text: "당신이 지나가자 죄수들이 노골적으로 피한다. 몇몇은 침을 뱉는 시늉을 한다." },
+        { type: "dialogue", speaker: "unknown", text: "저 새끼, 어린애한테 그 짓을 한 놈이랑 어울리더라." },
+        { type: "narration", text: "메시아가 당신을 보자 고개를 돌린다. 방화범은 혐오스럽다는 듯 눈을 피한다." },
+        { type: "narration", text: "아내 살인범마저 말없이 거리를 둔다. 이곳에서 소아성폭력범을 감싼 대가는 컸다." }
+      ],
+      actions: [
+        {
+          id: "work_observe",
+          text: "묵묵히 일하면서 주변을 관찰한다.",
+          nextScene: "day_three_observe"
+        }
       ]
     },
 
@@ -2408,7 +2460,10 @@ const gameData = {
         { type: "dialogue", speaker: "messiah", text: "해냈구나, 형제여... 이것으로 구원의 문이 열릴 것이다." },
         { type: "dialogue", speaker: "messiah", text: "오늘 밤 2시, 환기구 앞에서 만나자. 구원이 가까워졌다..." },
       ],
-      effects: [{ type: "setFlag", flag: "messiahKeyDelivered" }],
+      effects: [
+        { type: "setFlag", flag: "messiahKeyDelivered" },
+        { type: "increaseRelation", target: "messiah", amount: 3 }
+      ],
       actions: [
         {
           id: "continue",
