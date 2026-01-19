@@ -20,7 +20,8 @@ class GameEngine {
       groper: 0,
       arsonist: 0,
       pedophile: 0,
-      political: 0
+      political: 0,
+      guard: 0
     }) };
     this.history = [];
     this.visitedLocations = [];
@@ -187,7 +188,8 @@ class GameEngine {
             groper: 0,
             arsonist: 0,
             pedophile: 0,
-            political: 0
+            political: 0,
+            guard: 0
           }) };
           this.history = [];
           this.visitedLocations = [];
@@ -260,7 +262,8 @@ class GameEngine {
       groper: 0,
       arsonist: 0,
       pedophile: 0,
-      political: 0
+      political: 0,
+      guard: 0
     }) };
     this.history = saveData.history || [];
     this.visitedLocations = saveData.visitedLocations || [];

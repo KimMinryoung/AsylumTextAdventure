@@ -47,8 +47,10 @@ const gameData = {
         { type: "dialogue", speaker: "guard", text: "크하하! 이것 봐라. 밖에서 그렇게 잘난 척하더니 여기선 벌써 꼬리를 내리는군." },
         { type: "narration", text: "간수가 당신의 등을 발로 밟아 바닥에 엎드리게 한다. 굴욕적이지만, 그는 당신의 비굴한 태도에 흥미를 잃은 듯 코웃음을 치며 물러난다." },
         { type: "dialogue", speaker: "guard", text: "재미없는 년. 7번 감방으로 꺼져. 거기서 네 새 '가족'들을 만나봐라." },
-        { type: "narration", text: "잔뜩 긴장했지만 다행히 신체적 피해는 피했다." }
+        { type: "narration", text: "잔뜩 긴장했지만 다행히 신체적 피해는 피했다." },
+        { type: "narration", text: "[간수가 당신의 순종적인 태도를 마음에 들어한다.]" }
       ],
+      effects: [{ type: "increaseRelation", target: "guard", amount: 1 }],
       actions: [
         {
           id: "go_to_cell",
@@ -67,8 +69,10 @@ const gameData = {
         { type: "narration", text: "간수의 표정이 차갑게 굳어진다. 그의 손에 들린 몽둥이가 번개처럼 날아와 당신의 무릎을 강타한다." },
         { type: "narration", text: "!!극심한 통증!!이 다리를 타고 퍼진다. 당신은 비명을 삼키며 바닥에 쓰러진다." },
         { type: "dialogue", speaker: "guard", text: "그 눈빛 잘 간직해둬. 일주일 안에 꺼질 테니까. 7번 감방으로 기어가." },
-        { type: "narration", text: "다리가 저려 일부 행동에 제약이 생길 것 같다...." }
+        { type: "narration", text: "다리가 저려 일부 행동에 제약이 생길 것 같다...." },
+        { type: "narration", text: "!!간수가 당신을 요주의 인물로 찍었다.!!" }
       ],
+      effects: [{ type: "decreaseRelation", target: "guard", amount: 2 }],
       actions: [
         {
           id: "go_to_cell",
@@ -87,7 +91,9 @@ const gameData = {
         { type: "dialogue", speaker: "guard", text: "뭘 봐, 이 변태 새끼야!" },
         { type: "narration", text: "간수가 당신의 시선을 알아채고 채찍 손잡이로 턱을 올려친다. 하지만 이미 중요한 정보는 머릿속에 새겨졌다." },
         { type: "dialogue", speaker: "guard", text: "7번 감방이다. 썩 꺼져." },
+        { type: "narration", text: "[간수가 당신의 시선을 의심스럽게 여긴다.]" }
       ],
+      effects: [{ type: "decreaseRelation", target: "guard", amount: 1 }],
       actions: [
         {
           id: "go_to_cell",
@@ -2416,6 +2422,12 @@ const gameData = {
       ],
       actions: [
         {
+          id: "approach_friendly_guard",
+          text: "친해진 간수에게 슬쩍 다가간다.",
+          conditions: [{ type: "relationMin", target: "guard", value: 1 }],
+          nextScene: "cafeteria_guard_friendly"
+        },
+        {
           id: "observe_guards",
           text: "간수들을 관찰한다.",
           nextScene: "cafeteria_observe_guards"
@@ -2429,6 +2441,31 @@ const gameData = {
           id: "event_groper",
           text: "소란이 일어나는 쪽을 본다.",
           nextScene: "cafeteria_groper_event"
+        }
+      ]
+    },
+
+    cafeteria_guard_friendly: {
+      title: "간수와의 접촉",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "배식이 끝난 틈을 타 친해진 간수 근처로 다가간다." },
+        { type: "narration", text: "간수가 당신을 알아보고 살짝 고개를 끄덕인다." },
+        { type: "dialogue", speaker: "guard", text: "...배가 아직 고파?" },
+        { type: "narration", text: "간수가 주변을 살피더니 배식구 쪽으로 눈짓한다." },
+        { type: "dialogue", speaker: "guard", text: "저기 남은 거 있어. 가서 한 그릇 더 받아. 내가 봐줄게." },
+        { type: "narration", text: "추가 배식은 엄격히 금지되어 있다. 다른 죄수들이 부러운 눈으로 쳐다본다." },
+        { type: "narration", text: "[간수의 호의로 추가 식사를 얻었다. 체력이 회복된다.]" }
+      ],
+      effects: [
+        { type: "setFlag", flag: "extraMeal" },
+        { type: "increaseRelation", target: "guard", amount: 1 }
+      ],
+      actions: [
+        {
+          id: "thank_and_eat",
+          text: "감사히 추가 식사를 받는다.",
+          nextScene: "cafeteria_end"
         }
       ]
     },
@@ -2549,6 +2586,18 @@ const gameData = {
           nextScene: "political_night_talk"
         },
         {
+          id: "talk_guard_night_good",
+          text: "순찰하는 간수에게 조심스럽게 말을 건다.",
+          conditions: [{ type: "relationMin", target: "guard", value: 1 }],
+          nextScene: "guard_night_friendly"
+        },
+        {
+          id: "talk_guard_night_bad",
+          text: "순찰하는 간수에게 말을 건다.",
+          conditions: [{ type: "relationMax", target: "guard", value: 0 }],
+          nextScene: "guard_night_hostile"
+        },
+        {
           id: "sleep",
           text: "정보를 머릿속에 새기고 잠을 청한다.",
           nextScene: "day_three_morning"
@@ -2571,6 +2620,90 @@ const gameData = {
         {
           id: "thank_sleep",
           text: "감사를 표하고 잠자리에 든다.",
+          nextScene: "day_three_morning"
+        }
+      ]
+    },
+
+    // ===== 간수와의 야간 상호작용 =====
+    guard_night_friendly: {
+      title: "간수와의 대화",
+      location: "cell",
+      description: [
+        { type: "narration", text: "순찰하는 간수가 당신의 감방 앞에서 멈춘다. 입소 때 만났던 그 간수다." },
+        { type: "dialogue", speaker: "guard", text: "...뭐야. 못 자?" },
+        { type: "narration", text: "당신은 조심스럽게 고개를 끄덕인다. 간수가 주변을 살피더니 낮은 목소리로 말한다." },
+        { type: "dialogue", speaker: "guard", text: "첫날부터 말 잘 듣더니... 여기서 오래 버티고 싶으면 그렇게 살아. 튀려고 하지 말고." },
+        { type: "narration", text: "그가 잠시 망설이다가 주머니에서 무언가를 꺼낸다." },
+        { type: "dialogue", speaker: "guard", text: "...이거. 밤에 배고프면 먹어. 다른 놈들한테 말하면 죽는다." },
+        { type: "narration", text: "간수가 창살 사이로 {{빵 조각}}을 밀어 넣는다." },
+        { type: "narration", text: "[간수와의 관계가 좋아졌다.]" }
+      ],
+      effects: [
+        { type: "addItem", item: "빵 조각" },
+        { type: "increaseRelation", target: "guard", amount: 1 },
+        { type: "setFlag", flag: "guardFriendly" }
+      ],
+      actions: [
+        {
+          id: "thank_guard",
+          text: "감사하다고 말하고 잠자리에 든다.",
+          nextScene: "day_three_morning"
+        },
+        {
+          id: "ask_guard_info",
+          text: "간수에게 조심스럽게 정보를 물어본다.",
+          nextScene: "guard_night_info"
+        }
+      ]
+    },
+
+    guard_night_info: {
+      title: "간수의 귀띔",
+      location: "cell",
+      description: [
+        { type: "narration", text: "당신이 조심스럽게 물어본다." },
+        { type: "dialogue", speaker: "player", text: "...여기서 살아남으려면 뭘 조심해야 하나요?" },
+        { type: "narration", text: "간수가 한숨을 쉬더니 주변을 다시 살핀다." },
+        { type: "dialogue", speaker: "guard", text: "간수장 눈 밖에 나면 끝이야. 그 인간, **수요일 밤**마다 의무실에 가는데... 그날은 특히 신경질적이거든." },
+        { type: "dialogue", speaker: "guard", text: "그리고 {{창고}} 근처에는 얼씬도 하지 마. 그쪽에서 뭔가 불법적인 거래가 있다는 소문이 있어. 걸리면..." },
+        { type: "narration", text: "간수가 목을 긋는 시늉을 한다." },
+        { type: "dialogue", speaker: "guard", text: "이만 가봐야겠다. 다음 순찰 돌아야 해." },
+        { type: "narration", text: "[유용한 정보를 얻었다.]" }
+      ],
+      effects: [
+        { type: "setFlag", flag: "guardTip" },
+        { type: "increaseRelation", target: "guard", amount: 1 }
+      ],
+      actions: [
+        {
+          id: "sleep_after_info",
+          text: "정보를 머릿속에 새기고 잠을 청한다.",
+          nextScene: "day_three_morning"
+        }
+      ]
+    },
+
+    guard_night_hostile: {
+      title: "간수의 적의",
+      location: "cell",
+      description: [
+        { type: "narration", text: "순찰하는 간수가 당신의 감방 앞에서 멈춘다. 입소 때 만났던 그 간수다." },
+        { type: "narration", text: "그의 눈빛이 차갑게 빛난다." },
+        { type: "dialogue", speaker: "guard", text: "뭘 쳐다봐, 이 변태 새끼야. 아직도 버릇이 안 고쳐졌나?" },
+        { type: "narration", text: "간수가 갑자기 창살을 몽둥이로 세게 내리친다. 귀가 찢어질 듯한 쇳소리가 울린다." },
+        { type: "dialogue", speaker: "guard", text: "잠이나 자. 내일 작업장에서 널 특별히 눈여겨보고 있을 테니까." },
+        { type: "narration", text: "간수가 비릿한 웃음을 지으며 사라진다. 다른 죄수들이 놀라서 뒤척인다." },
+        { type: "narration", text: "!!간수의 적대감이 느껴진다.!!" }
+      ],
+      effects: [
+        { type: "decreaseRelation", target: "guard", amount: 1 },
+        { type: "setFlag", flag: "guardHostile" }
+      ],
+      actions: [
+        {
+          id: "sleep_scared",
+          text: "불안한 마음으로 잠자리에 든다.",
           nextScene: "day_three_morning"
         }
       ]
@@ -2698,6 +2831,12 @@ const gameData = {
       ],
       actions: [
         {
+          id: "guard_favor",
+          text: "친해진 간수에게 접근한다. (간수 호감 보상)",
+          conditions: [{ type: "relationMin", target: "guard", value: 2 }],
+          nextScene: "guard_favor_workshop"
+        },
+        {
           id: "mediator_advantage",
           text: "메시아와 방화범 양쪽에 접근한다. (중재자의 이점)",
           conditions: [{ type: "flagSet", flag: "conflictMediator" }],
@@ -2725,6 +2864,80 @@ const gameData = {
           id: "work_observe",
           text: "일하면서 주변을 관찰한다.",
           nextScene: "day_three_observe"
+        }
+      ]
+    },
+
+    // ===== 간수 호감도 보상 씬 =====
+    guard_favor_workshop: {
+      title: "간수의 배려",
+      location: "workshop",
+      description: [
+        { type: "narration", text: "작업 배치 시간, 당신은 친해진 간수를 발견한다. 그가 눈짓으로 당신을 부른다." },
+        { type: "dialogue", speaker: "guard", text: "...야, 이리 와." },
+        { type: "narration", text: "간수가 주변을 살피며 낮은 목소리로 속삭인다." },
+        { type: "dialogue", speaker: "guard", text: "오늘 넌 창고 정리 담당이야. 프레스보다 훨씬 편해. 일 대충 해도 아무도 안 봐." },
+        { type: "narration", text: "그가 무언가를 당신의 손에 쥐여준다." },
+        { type: "dialogue", speaker: "guard", text: "그리고 이거... {{담배 한 갑}}. 여기선 돈보다 값어치 있어. 다른 죄수들한테 물물교환 하든가." },
+        { type: "narration", text: "[간수의 호의로 유용한 물품을 얻었다.]" }
+      ],
+      effects: [
+        { type: "addItem", item: "담배 한 갑" },
+        { type: "setFlag", flag: "easyWorkAssigned" }
+      ],
+      actions: [
+        {
+          id: "thank_guard_favor",
+          text: "감사를 표하고 창고로 향한다.",
+          nextScene: "guard_favor_storage"
+        }
+      ]
+    },
+
+    guard_favor_storage: {
+      title: "창고 정리",
+      location: "workshop",
+      description: [
+        { type: "narration", text: "창고는 프레스 작업장보다 훨씬 한산하다. 먼지 쌓인 선반들 사이로 낡은 물품들이 널려 있다." },
+        { type: "narration", text: "간수 말대로 아무도 신경 쓰지 않는다. 이 시간을 활용할 수 있을 것 같다." },
+        { type: "narration", text: "창고 구석에서 {{녹슨 철사}}를 발견한다. 자물쇠를 따는 데 쓸 수 있을지도 모른다." }
+      ],
+      effects: [
+        { type: "addItem", item: "녹슨 철사" },
+        { type: "setFlag", flag: "exploredStorage" }
+      ],
+      actions: [
+        {
+          id: "search_more",
+          text: "창고를 더 뒤진다.",
+          nextScene: "guard_favor_storage_search"
+        },
+        {
+          id: "rest_storage",
+          text: "적당히 일하고 쉰다.",
+          nextScene: "day_three_afternoon"
+        }
+      ]
+    },
+
+    guard_favor_storage_search: {
+      title: "창고 탐색",
+      location: "workshop",
+      description: [
+        { type: "narration", text: "당신은 조심스럽게 창고 깊숙이 들어간다." },
+        { type: "narration", text: "선반 뒤편에서 낡은 {{수용소 배치도}}를 발견한다. 비상구와 환기구 위치가 표시되어 있다." },
+        { type: "narration", text: "이건 탈출 계획에 매우 유용할 것이다." },
+        { type: "narration", text: "[중요한 정보를 획득했다!]" }
+      ],
+      effects: [
+        { type: "addItem", item: "수용소 배치도" },
+        { type: "setFlag", flag: "hasFloorPlan" }
+      ],
+      actions: [
+        {
+          id: "continue_to_afternoon",
+          text: "배치도를 숨기고 작업을 마친다.",
+          nextScene: "day_three_afternoon"
         }
       ]
     },
