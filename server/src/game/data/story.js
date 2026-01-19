@@ -1399,7 +1399,7 @@ const gameData = {
         {
           id: "continue",
           text: "아무 일 없던 듯 작업을 계속한다.",
-          nextScene: "day_two_evening"
+          nextScene: "cafeteria_arrival"
         }
       ]
     },
@@ -1416,7 +1416,7 @@ const gameData = {
         {
           id: "continue",
           text: "작업을 계속한다.",
-          nextScene: "day_two_evening"
+          nextScene: "cafeteria_arrival"
         }
       ]
     },
@@ -1439,7 +1439,7 @@ const gameData = {
         {
           id: "continue",
           text: "고개만 끄덕이고 작업을 계속한다.",
-          nextScene: "day_two_evening"
+          nextScene: "cafeteria_arrival"
         }
       ]
     },
@@ -1472,7 +1472,7 @@ const gameData = {
         {
           id: "leave",
           text: "\"아무것도 아니에요.\" 자리를 피한다.",
-          nextScene: "day_two_evening"
+          nextScene: "cafeteria_arrival"
         }
       ]
     },
@@ -1504,7 +1504,7 @@ const gameData = {
         {
           id: "thank",
           text: "진심으로 감사를 표한다.",
-          nextScene: "day_two_evening"
+          nextScene: "cafeteria_arrival"
         }
       ]
     },
@@ -1523,7 +1523,7 @@ const gameData = {
         {
           id: "continue",
           text: "감사를 표하고 작업을 계속한다.",
-          nextScene: "day_two_evening"
+          nextScene: "cafeteria_arrival"
         }
       ]
     },
@@ -1608,7 +1608,7 @@ const gameData = {
         {
           id: "listen_more",
           text: "조용히 듣고만 있는다.",
-          nextScene: "day_two_evening"
+          nextScene: "cafeteria_arrival"
         },
         {
           id: "leave_sermon",
@@ -1638,7 +1638,7 @@ const gameData = {
         {
           id: "need_time",
           text: "생각할 시간이 필요하다고 한다.",
-          nextScene: "day_two_evening"
+          nextScene: "cafeteria_arrival"
         }
       ]
     },
@@ -1656,7 +1656,7 @@ const gameData = {
         {
           id: "continue",
           text: "고개를 끄덕이고 물러난다.",
-          nextScene: "day_two_evening"
+          nextScene: "cafeteria_arrival"
         }
       ]
     },
@@ -1691,7 +1691,7 @@ const gameData = {
         {
           id: "leave_silent",
           text: "아무 말 없이 자리를 뜬다.",
-          nextScene: "day_two_evening"
+          nextScene: "cafeteria_arrival"
         }
       ]
     },
@@ -1715,7 +1715,7 @@ const gameData = {
         {
           id: "thank_leave",
           text: "정보에 감사하고 자리를 뜬다.",
-          nextScene: "day_two_evening"
+          nextScene: "cafeteria_arrival"
         }
       ]
     },
@@ -1738,7 +1738,7 @@ const gameData = {
         {
           id: "ignore_crack",
           text: "무시하고 계속 걷는다.",
-          nextScene: "day_two_evening"
+          nextScene: "cafeteria_arrival"
         }
       ]
     },
@@ -1755,6 +1755,756 @@ const gameData = {
         {
           id: "continue",
           text: "자리를 뜬다.",
+          nextScene: "cafeteria_arrival"
+        }
+      ]
+    },
+
+    // ===== 5.5장: 식당 =====
+    cafeteria_arrival: {
+      title: "식당",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "저녁 식사 시간을 알리는 종이 울린다. 죄수들이 일제히 **식당**으로 향한다." },
+        { type: "narration", text: "식당은 회색 콘크리트 벽과 녹슨 철제 테이블로 가득하다. 천장의 형광등이 깜빡이며 창백한 빛을 내뿜는다." },
+        { type: "narration", text: "배급구에서 {{묽은 죽}}과 {{딱딱한 빵}} 한 조각을 받아든다. 식욕을 돋우는 냄새와는 거리가 멀다." },
+        { type: "narration", text: "식당 안을 둘러본다. 여러 무리가 각자의 영역을 차지하고 있다." },
+        { type: "narration", text: "한쪽에는 **메시아**가 추종자들에 둘러싸여 앉아 있다. 반대편에는 **사기꾼**이 누군가와 귓속말을 나누고 있다." },
+        { type: "narration", text: "구석에는 **방화범**이 혼자 앉아 불꽃처럼 일렁이는 눈으로 허공을 응시한다. **정치범**은 책을 읽으며 조용히 식사 중이다." }
+      ],
+      actions: [
+        {
+          id: "sit_messiah",
+          text: "메시아의 테이블로 간다.",
+          nextScene: "cafeteria_messiah"
+        },
+        {
+          id: "sit_fraudster",
+          text: "사기꾼 옆에 앉는다.",
+          nextScene: "cafeteria_fraudster"
+        },
+        {
+          id: "sit_arsonist",
+          text: "방화범 옆에 앉는다.",
+          nextScene: "cafeteria_arsonist"
+        },
+        {
+          id: "sit_political",
+          text: "정치범 옆에 앉는다.",
+          nextScene: "cafeteria_political"
+        },
+        {
+          id: "sit_alone",
+          text: "빈 테이블에 혼자 앉는다.",
+          nextScene: "cafeteria_alone"
+        }
+      ]
+    },
+
+    cafeteria_messiah: {
+      title: "메시아의 테이블",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "당신이 다가가자 메시아의 추종자들이 경계의 눈빛을 보낸다. 하지만 메시아가 손을 들어 그들을 제지한다." },
+        { type: "dialogue", speaker: "messiah", text: "앉아라, 길 잃은 영혼이여. 이 테이블엔 자리가 있다." },
+        { type: "narration", text: "당신이 앉자 메시아가 부드러운 미소를 짓는다. 그의 눈동자는 형광등 빛 아래서도 이상하게 빛난다." },
+        { type: "dialogue", speaker: "messiah", text: "너는 며칠 전에 들어왔지? 이곳의 삶이 어떻든?" },
+        { type: "narration", text: "주변의 추종자들이 당신의 대답을 기다린다." }
+      ],
+      actions: [
+        {
+          id: "answer_hard",
+          text: "\"지옥 같아요.\"",
+          nextScene: "cafeteria_messiah_hell",
+          effects: [{ type: "increaseRelation", target: "messiah" }]
+        },
+        {
+          id: "answer_okay",
+          text: "\"버틸 만합니다.\"",
+          nextScene: "cafeteria_messiah_tough"
+        },
+        {
+          id: "ask_back",
+          text: "\"당신은 왜 여기 있는 거죠?\"",
+          nextScene: "cafeteria_messiah_question"
+        }
+      ]
+    },
+
+    cafeteria_messiah_hell: {
+      title: "지옥",
+      location: "cafeteria",
+      description: [
+        { type: "dialogue", speaker: "messiah", text: "그렇지. 이곳은 지옥이다. 육체의 지옥이자 영혼의 지옥." },
+        { type: "narration", text: "메시아가 죽 그릇을 내려다보며 말을 잇는다." },
+        { type: "dialogue", speaker: "messiah", text: "하지만 지옥에도 구원은 있다. 나는 그것을 보았고, 너에게도 보여줄 수 있어." },
+        { type: "dialogue", speaker: "messiah", text: "매일 밤 우리는 기도 모임을 연다. 마음의 평화를 원한다면... 언제든 환영이야." },
+        { type: "narration", text: "추종자들이 고개를 끄덕인다. 그들의 눈빛에는 광신적인 믿음이 서려 있다." },
+        { type: "dialogue", speaker: "messiah", text: "그리고... 우리에겐 {{특별한 정보망}}이 있지. 이 안에서 살아남으려면 정보가 필요하니까." }
+      ],
+      effects: [{ type: "setFlag", flag: "messiahInvite" }],
+      actions: [
+        {
+          id: "interested",
+          text: "\"관심 있어요.\"",
+          nextScene: "cafeteria_messiah_join",
+          effects: [{ type: "increaseRelation", target: "messiah" }]
+        },
+        {
+          id: "decline",
+          text: "\"생각해 볼게요.\"",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_messiah_tough: {
+      title: "강함",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "메시아의 눈이 가늘어진다. 탐구하듯 당신을 바라본다." },
+        { type: "dialogue", speaker: "messiah", text: "강한 척하는 거야, 아니면 진짜 강한 거야?" },
+        { type: "narration", text: "잠시 침묵이 흐른다." },
+        { type: "dialogue", speaker: "messiah", text: "어느 쪽이든 상관없어. 이곳에선 둘 다 필요하니까." },
+        { type: "dialogue", speaker: "messiah", text: "하지만 기억해. 혼자서는 이곳을 버틸 수 없어. 언젠가 네게도 **의지할 곳**이 필요할 거야." },
+        { type: "narration", text: "메시아가 다시 식사에 집중한다. 대화가 끝났다는 신호다." }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "자리에서 일어난다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_messiah_question: {
+      title: "질문",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "메시아의 미소가 살짝 굳는다. 추종자들 사이에 긴장감이 흐른다." },
+        { type: "dialogue", speaker: "messiah", text: "...대담하군. 아무도 그런 질문은 하지 않는데." },
+        { type: "narration", text: "그가 천천히 숟가락을 내려놓는다." },
+        { type: "dialogue", speaker: "messiah", text: "나는 **진실**을 말했기 때문에 여기 있다. 정부가 숨기고 싶어하는 진실을." },
+        { type: "dialogue", speaker: "messiah", text: "사람들은 내 말을 따랐고, 그들은 그것을 '사이비'라고 불렀지. 진실을 말하는 자는 언제나 박해받는 법이야." },
+        { type: "narration", text: "그의 목소리에는 확신이 가득하다. 믿거나 말거나, 그 자신은 완전히 믿고 있다." }
+      ],
+      effects: [{ type: "setFlag", flag: "knowMessiahStory" }],
+      actions: [
+        {
+          id: "continue",
+          text: "고개를 끄덕이고 식사를 계속한다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_messiah_join: {
+      title: "환영",
+      location: "cafeteria",
+      description: [
+        { type: "dialogue", speaker: "messiah", text: "현명한 선택이야." },
+        { type: "narration", text: "메시아가 당신의 손을 잡는다. 의외로 따뜻한 손이다." },
+        { type: "dialogue", speaker: "messiah", text: "오늘 밤 소등 후에 동쪽 복도 끝으로 와. 간수들은 그 시간에 순찰을 돌지 않아." },
+        { type: "narration", text: "추종자들이 은밀한 미소를 교환한다." },
+        { type: "dialogue", speaker: "messiah", text: "그리고... 혹시 **탈출**에 관심이 있다면, 우리가 알고 있는 것들이 있어. 나중에 이야기하지." }
+      ],
+      effects: [
+        { type: "setFlag", flag: "messiahFollower" },
+        { type: "increaseRelation", target: "messiah", amount: 2 }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "고개를 끄덕인다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_fraudster: {
+      title: "사기꾼의 테이블",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "사기꾼이 당신을 보더니 옆자리를 턱짓으로 가리킨다." },
+        { type: "dialogue", speaker: "fraudster", text: "이거 봐, 신입이 찾아왔네. 뭐, 정보가 필요해?" },
+        { type: "narration", text: "그가 상대방과의 대화를 끝내고 당신에게 집중한다." },
+        { type: "dialogue", speaker: "fraudster", text: "여긴 정보가 곧 생존이야. 그리고 난 정보상이지. 물론 공짜는 없어." },
+        { type: "narration", text: "그가 능글맞게 웃는다." }
+      ],
+      actions: [
+        {
+          id: "ask_info",
+          text: "\"무슨 정보를 갖고 있어?\"",
+          nextScene: "cafeteria_fraudster_info"
+        },
+        {
+          id: "ask_price",
+          text: "\"대가가 뭔데?\"",
+          nextScene: "cafeteria_fraudster_price"
+        },
+        {
+          id: "just_eat",
+          text: "\"그냥 조용히 먹고 싶어서 왔어.\"",
+          nextScene: "cafeteria_fraudster_quiet",
+          effects: [{ type: "increaseRelation", target: "fraudster" }]
+        }
+      ]
+    },
+
+    cafeteria_fraudster_info: {
+      title: "정보",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "사기꾼이 주변을 둘러보며 목소리를 낮춘다." },
+        { type: "dialogue", speaker: "fraudster", text: "뭐가 알고 싶은데? 간수들 순찰 시간? 독방 위치? 아니면..." },
+        { type: "narration", text: "그가 의미심장하게 눈을 빛낸다." },
+        { type: "dialogue", speaker: "fraudster", text: "**탈출 루트**?" },
+        { type: "dialogue", speaker: "fraudster", text: "다 알고 있어. 문제는 네가 뭘 줄 수 있느냐지." }
+      ],
+      actions: [
+        {
+          id: "escape_route",
+          text: "\"탈출 루트를 알려줘.\"",
+          nextScene: "cafeteria_fraudster_escape"
+        },
+        {
+          id: "guard_schedule",
+          text: "\"간수들 순찰 시간이나 알려줘.\"",
+          nextScene: "cafeteria_fraudster_guards",
+          effects: [{ type: "setFlag", flag: "knowGuardSchedule" }]
+        }
+      ]
+    },
+
+    cafeteria_fraudster_escape: {
+      title: "탈출 루트",
+      location: "cafeteria",
+      description: [
+        { type: "dialogue", speaker: "fraudster", text: "탈출? 크큭, 바로 본론으로 들어가네." },
+        { type: "narration", text: "그가 손가락으로 테이블 위에 무언가를 그린다." },
+        { type: "dialogue", speaker: "fraudster", text: "루트는 세 개야. **지하 하수도**, **옥상**, 그리고 **정문 돌파**." },
+        { type: "dialogue", speaker: "fraudster", text: "하수도는 냄새나고 위험하지만 발각될 확률이 낮아. 옥상은 담이 높아서 도구가 필요해." },
+        { type: "dialogue", speaker: "fraudster", text: "정문 돌파는... 글쎄, 미친놈이나 천재만 시도하겠지." },
+        { type: "narration", text: "그가 손바닥을 내민다." },
+        { type: "dialogue", speaker: "fraudster", text: "자세한 건 나중에. 일단 이 정도 맛보기는 서비스야. 더 알고 싶으면 담배 한 보루 가져와." }
+      ],
+      effects: [{ type: "setFlag", flag: "knowEscapeRoutes" }],
+      actions: [
+        {
+          id: "continue",
+          text: "고개를 끄덕인다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_fraudster_guards: {
+      title: "순찰 정보",
+      location: "cafeteria",
+      description: [
+        { type: "dialogue", speaker: "fraudster", text: "간수들? 그건 서비스로 알려줄게. 신입 환영 이벤트랄까." },
+        { type: "narration", text: "그가 손가락을 꼽으며 설명한다." },
+        { type: "dialogue", speaker: "fraudster", text: "새벽 2시부터 3시 사이가 가장 느슨해. 야간 근무자들이 졸거든." },
+        { type: "dialogue", speaker: "fraudster", text: "그리고 **수요일 밤**은 간수장이 외출해. 왜인지는 모르겠지만 매주 그래." },
+        { type: "narration", text: "유용한 정보다." }
+      ],
+      effects: [{ type: "increaseRelation", target: "fraudster" }],
+      actions: [
+        {
+          id: "thanks",
+          text: "\"고마워.\"",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_fraudster_price: {
+      title: "대가",
+      location: "cafeteria",
+      description: [
+        { type: "dialogue", speaker: "fraudster", text: "대가? 여기선 담배가 화폐야. 담배 있어?" },
+        { type: "narration", text: "당신이 고개를 젓자 그가 어깨를 으쓱한다." },
+        { type: "dialogue", speaker: "fraudster", text: "없으면 다른 걸로 해도 돼. **정보**로 정보를 사거나, **부탁**을 들어주거나." },
+        { type: "dialogue", speaker: "fraudster", text: "예를 들어... 누군가에게 메시지를 전달한다거나, 뭔가를 훔쳐온다거나." },
+        { type: "narration", text: "그가 능글맞은 미소를 짓는다." },
+        { type: "dialogue", speaker: "fraudster", text: "어때, 나중에 거래할 생각 있어?" }
+      ],
+      actions: [
+        {
+          id: "agree",
+          text: "\"생각해 볼게.\"",
+          nextScene: "cafeteria_end",
+          effects: [{ type: "setFlag", flag: "fraudsterDeal" }]
+        },
+        {
+          id: "decline",
+          text: "\"됐어.\"",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_fraudster_quiet: {
+      title: "조용한 식사",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "사기꾼이 잠시 놀란 표정을 짓더니 피식 웃는다." },
+        { type: "dialogue", speaker: "fraudster", text: "하, 그래? 의외네. 다들 뭔가를 원하면서 오는데." },
+        { type: "narration", text: "그가 어깨를 으쓱하고 자기 식사에 집중한다." },
+        { type: "dialogue", speaker: "fraudster", text: "뭐, 조용히 먹고 싶다는 거 이해해. 난 원래 시끄러운 편이거든." },
+        { type: "narration", text: "의외로 편안한 침묵 속에서 식사를 마친다. 사기꾼은 당신의 경계심을 존중하는 것 같다." }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "식사를 마친다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_arsonist: {
+      title: "방화범의 테이블",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "방화범이 앉은 테이블은 아무도 근처에 오지 않는다. 그의 얼굴 절반을 덮은 **화상 흉터**가 사람들을 쫓아낸다." },
+        { type: "narration", text: "당신이 맞은편에 앉자 그가 천천히 고개를 든다. 눈동자에 불꽃이 일렁이는 것 같다." },
+        { type: "dialogue", speaker: "arsonist", text: "...왜 여기 앉아?" },
+        { type: "narration", text: "그의 목소리는 낮고 갈라져 있다." }
+      ],
+      actions: [
+        {
+          id: "honest",
+          text: "\"다른 자리가 불편해서.\"",
+          nextScene: "cafeteria_arsonist_honest",
+          effects: [{ type: "increaseRelation", target: "arsonist" }]
+        },
+        {
+          id: "curious",
+          text: "\"당신이 궁금해서.\"",
+          nextScene: "cafeteria_arsonist_curious"
+        },
+        {
+          id: "silent",
+          text: "아무 말 없이 식사를 시작한다.",
+          nextScene: "cafeteria_arsonist_silent",
+          effects: [{ type: "increaseRelation", target: "arsonist" }]
+        }
+      ]
+    },
+
+    cafeteria_arsonist_honest: {
+      title: "솔직함",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "방화범이 잠시 당신을 바라보다 희미하게 웃는다. 흉터가 일그러진다." },
+        { type: "dialogue", speaker: "arsonist", text: "...솔직하네. 마음에 들어." },
+        { type: "narration", text: "그가 다시 죽을 떠먹기 시작한다." },
+        { type: "dialogue", speaker: "arsonist", text: "사람들은 날 무서워해. 이 얼굴 때문이기도 하고... 내가 한 짓 때문이기도 하고." },
+        { type: "narration", text: "잠시 침묵이 흐른다." },
+        { type: "dialogue", speaker: "arsonist", text: "불은... 아름다워. 모든 걸 정화하거든. 더러운 것, 추한 것, 다 태워버리지." },
+        { type: "narration", text: "그의 눈이 먼 곳을 바라본다." }
+      ],
+      actions: [
+        {
+          id: "understand",
+          text: "\"무슨 뜻인지 알 것 같아.\"",
+          nextScene: "cafeteria_arsonist_bond",
+          effects: [{ type: "increaseRelation", target: "arsonist" }]
+        },
+        {
+          id: "change_topic",
+          text: "\"여기서 오래 있었어?\"",
+          nextScene: "cafeteria_arsonist_time"
+        }
+      ]
+    },
+
+    cafeteria_arsonist_curious: {
+      title: "호기심",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "방화범의 눈이 날카로워진다." },
+        { type: "dialogue", speaker: "arsonist", text: "궁금해? 뭐가?" },
+        { type: "dialogue", speaker: "arsonist", text: "이 흉터가 어떻게 생겼는지? 내가 왜 불을 질렀는지?" },
+        { type: "narration", text: "그가 숟가락을 내려놓는다." },
+        { type: "dialogue", speaker: "arsonist", text: "사람들은 항상 구경거리를 원해. 괴물 구경." },
+        { type: "narration", text: "분위기가 싸늘해진다." }
+      ],
+      actions: [
+        {
+          id: "apologize",
+          text: "\"미안해, 그런 뜻이 아니었어.\"",
+          nextScene: "cafeteria_arsonist_apologize"
+        },
+        {
+          id: "leave",
+          text: "자리를 뜬다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_arsonist_silent: {
+      title: "침묵의 식사",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "당신은 대답 대신 묵묵히 숟가락을 든다." },
+        { type: "narration", text: "방화범이 잠시 당신을 바라보다 다시 자신의 식사에 집중한다." },
+        { type: "narration", text: "아무 말 없이 시간이 흐른다. 의외로 불편하지 않다." },
+        { type: "narration", text: "식사가 끝날 무렵, 방화범이 낮게 중얼거린다." },
+        { type: "dialogue", speaker: "arsonist", text: "...시끄럽지 않아서 좋군." },
+        { type: "narration", text: "그것이 그의 칭찬이라는 걸 알 수 있다." }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "고개를 끄덕이고 자리를 뜬다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_arsonist_bond: {
+      title: "교감",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "방화범이 당신을 새로운 눈으로 바라본다." },
+        { type: "dialogue", speaker: "arsonist", text: "...너도 뭔가를 태워버리고 싶었던 적 있어?" },
+        { type: "narration", text: "그가 주머니에서 낡은 {{라이터}}를 꺼내 만지작거린다." },
+        { type: "dialogue", speaker: "arsonist", text: "여기 들어올 때 압수당했는데, 다시 구했어. 내 유일한 친구지." },
+        { type: "narration", text: "그가 라이터를 당신에게 살짝 보여준다." },
+        { type: "dialogue", speaker: "arsonist", text: "탈출할 생각이 있다면... 불이 필요할 때가 있을 거야. 그때 날 찾아와." }
+      ],
+      effects: [
+        { type: "setFlag", flag: "arsonistRoute" },
+        { type: "increaseRelation", target: "arsonist" }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "고개를 끄덕인다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_arsonist_time: {
+      title: "시간",
+      location: "cafeteria",
+      description: [
+        { type: "dialogue", speaker: "arsonist", text: "5년. 15년 형 받았으니까 아직 10년 남았지." },
+        { type: "narration", text: "그가 창밖을 바라본다." },
+        { type: "dialogue", speaker: "arsonist", text: "근데 시간은 의미없어. 여기 있으나 밖에 있으나." },
+        { type: "dialogue", speaker: "arsonist", text: "불만 있으면 어디든 괜찮아." }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "식사를 마친다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_arsonist_apologize: {
+      title: "사과",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "방화범이 잠시 당신을 노려보다 한숨을 쉰다." },
+        { type: "dialogue", speaker: "arsonist", text: "...됐어. 익숙해." },
+        { type: "narration", text: "그가 다시 식사에 집중한다. 대화는 끝난 것 같다." }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "조용히 식사를 마친다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_political: {
+      title: "정치범의 테이블",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "정치범은 한 손에 낡은 책을 들고 다른 손으로 빵을 뜯어 먹고 있다." },
+        { type: "narration", text: "당신이 다가가자 그가 잠시 책에서 눈을 떼고 당신을 본다." },
+        { type: "dialogue", speaker: "political", text: "앉아도 돼. 방해가 되진 않을 테니." },
+        { type: "narration", text: "그의 말투는 차분하고 교양있다." }
+      ],
+      actions: [
+        {
+          id: "ask_book",
+          text: "\"무슨 책이야?\"",
+          nextScene: "cafeteria_political_book"
+        },
+        {
+          id: "ask_crime",
+          text: "\"정치범이라던데, 무슨 일로?\"",
+          nextScene: "cafeteria_political_crime",
+          effects: [{ type: "increaseRelation", target: "political" }]
+        },
+        {
+          id: "quiet",
+          text: "조용히 앉아서 식사한다.",
+          nextScene: "cafeteria_political_quiet"
+        }
+      ]
+    },
+
+    cafeteria_political_book: {
+      title: "책",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "정치범이 책 표지를 보여준다. 글씨가 낡아서 잘 보이지 않는다." },
+        { type: "dialogue", speaker: "political", text: "철학책이야. 감옥에서 허락되는 몇 안 되는 책 중 하나지." },
+        { type: "dialogue", speaker: "political", text: "**'인간의 자유에 대하여'**. 아이러니하지? 자유가 없는 곳에서 자유에 대해 읽다니." },
+        { type: "narration", text: "그가 쓴웃음을 짓는다." },
+        { type: "dialogue", speaker: "political", text: "하지만 정신의 자유만큼은 빼앗을 수 없어. 그게 내가 버티는 이유야." }
+      ],
+      effects: [{ type: "increaseRelation", target: "political" }],
+      actions: [
+        {
+          id: "agree",
+          text: "\"맞는 말이야.\"",
+          nextScene: "cafeteria_political_agree",
+          effects: [{ type: "increaseRelation", target: "political" }]
+        },
+        {
+          id: "skeptical",
+          text: "\"그래도 몸이 갇혀 있잖아.\"",
+          nextScene: "cafeteria_political_body"
+        }
+      ]
+    },
+
+    cafeteria_political_crime: {
+      title: "죄목",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "정치범이 책을 내려놓고 당신을 바라본다." },
+        { type: "dialogue", speaker: "political", text: "기자였어. 정부의 비리를 파헤쳤지. 부패한 관리들, 세금 횡령, 인권 유린..." },
+        { type: "dialogue", speaker: "political", text: "진실을 썼더니 **반역죄**로 몰렸어. 국가 전복을 선동했다나 뭐라나." },
+        { type: "narration", text: "그가 한숨을 쉰다." },
+        { type: "dialogue", speaker: "political", text: "20년 형을 받았어. 벌써 7년이 지났고." },
+        { type: "dialogue", speaker: "political", text: "하지만 후회는 없어. 누군가는 진실을 말해야 하니까." }
+      ],
+      effects: [{ type: "setFlag", flag: "knowPoliticalStory" }],
+      actions: [
+        {
+          id: "respect",
+          text: "\"존경스러워.\"",
+          nextScene: "cafeteria_political_respect",
+          effects: [{ type: "increaseRelation", target: "political", amount: 2 }]
+        },
+        {
+          id: "practical",
+          text: "\"여기서 나갈 방법은 없어?\"",
+          nextScene: "cafeteria_political_escape"
+        }
+      ]
+    },
+
+    cafeteria_political_quiet: {
+      title: "조용한 동석",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "정치범은 당신이 말을 걸지 않자 다시 책에 집중한다." },
+        { type: "narration", text: "간간이 빵을 뜯어먹으며 페이지를 넘긴다." },
+        { type: "narration", text: "고요하지만 불편하지 않은 시간이 흐른다." }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "식사를 마치고 자리를 뜬다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_political_agree: {
+      title: "동의",
+      location: "cafeteria",
+      description: [
+        { type: "dialogue", speaker: "political", text: "이해하는 사람을 만나니 반갑군." },
+        { type: "narration", text: "정치범이 당신에게 살짝 미소 짓는다." },
+        { type: "dialogue", speaker: "political", text: "여기서 나가고 싶다면... 내가 아는 걸 알려줄 수 있어. 7년 동안 많은 걸 봤거든." },
+        { type: "dialogue", speaker: "political", text: "특히 **간수장의 비밀**에 대해서. 관심 있으면 나중에 이야기하지." }
+      ],
+      effects: [{ type: "setFlag", flag: "politicalFriend" }],
+      actions: [
+        {
+          id: "continue",
+          text: "고개를 끄덕인다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_political_body: {
+      title: "육체",
+      location: "cafeteria",
+      description: [
+        { type: "dialogue", speaker: "political", text: "그렇지. 몸은 갇혀 있어." },
+        { type: "narration", text: "그가 쓸쓸하게 웃는다." },
+        { type: "dialogue", speaker: "political", text: "하지만 생각해봐. 밖에 있어도 진짜 자유로운 사람이 몇이나 될까?" },
+        { type: "dialogue", speaker: "political", text: "돈에, 권력에, 두려움에 갇혀 사는 사람들. 그들이 나보다 자유로울까?" },
+        { type: "narration", text: "그의 말에 생각할 거리가 있다." }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "식사를 마친다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_political_respect: {
+      title: "존경",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "정치범이 잠시 놀란 표정을 짓다가 고개를 젓는다." },
+        { type: "dialogue", speaker: "political", text: "존경받을 일은 아니야. 그냥 해야 할 일을 했을 뿐이지." },
+        { type: "narration", text: "하지만 그의 표정이 한결 부드러워졌다." },
+        { type: "dialogue", speaker: "political", text: "네가 여기서 나가고 싶다면... 도와줄 수 있어. **수요일 밤**에 기회가 있어." },
+        { type: "dialogue", speaker: "political", text: "관심 있으면 나중에 조용히 찾아와." }
+      ],
+      effects: [{ type: "setFlag", flag: "politicalFriend" }],
+      actions: [
+        {
+          id: "continue",
+          text: "감사를 표하고 자리를 뜬다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_political_escape: {
+      title: "탈출",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "정치범이 주변을 둘러보며 목소리를 낮춘다." },
+        { type: "dialogue", speaker: "political", text: "방법은 있어. 여기서 7년을 버티면서 많은 걸 알게 됐지." },
+        { type: "dialogue", speaker: "political", text: "**수요일 밤**, 간수장이 외출하는 시간이 있어. 그때가 유일한 틈이야." },
+        { type: "dialogue", speaker: "political", text: "난... 나갈 생각이 없어. 밖에서 나를 기다리는 사람도 없고, 나가봤자 다시 잡힐 테니까." },
+        { type: "dialogue", speaker: "political", text: "하지만 네가 나가고 싶다면 도와줄 수 있어." }
+      ],
+      effects: [
+        { type: "setFlag", flag: "politicalFriend" },
+        { type: "setFlag", flag: "knowWednesday" }
+      ],
+      actions: [
+        {
+          id: "continue",
+          text: "감사를 표한다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_alone: {
+      title: "혼자 앉기",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "당신은 구석의 빈 테이블에 혼자 앉는다." },
+        { type: "narration", text: "묽은 죽을 떠먹으며 식당 안을 관찰한다." },
+        { type: "narration", text: "죄수들 사이의 권력 관계, 간수들의 위치, 출입구의 구조..." },
+        { type: "narration", text: "혼자 있으니 주변을 살피기가 더 쉽다." }
+      ],
+      actions: [
+        {
+          id: "observe_guards",
+          text: "간수들을 관찰한다.",
+          nextScene: "cafeteria_observe_guards"
+        },
+        {
+          id: "observe_exit",
+          text: "출입구를 살핀다.",
+          nextScene: "cafeteria_observe_exit"
+        },
+        {
+          id: "event_groper",
+          text: "소란이 일어나는 쪽을 본다.",
+          nextScene: "cafeteria_groper_event"
+        }
+      ]
+    },
+
+    cafeteria_observe_guards: {
+      title: "간수 관찰",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "식당에는 간수가 세 명 있다. 입구에 한 명, 배급구 옆에 한 명, 그리고 순찰하는 한 명." },
+        { type: "narration", text: "순찰하는 간수는 약 **5분마다** 식당을 한 바퀴 돈다." },
+        { type: "narration", text: "배급구 옆 간수는 계속 하품을 하고 있다. 야간 근무에 지친 것 같다." },
+        { type: "narration", text: "유용한 정보를 얻었다." }
+      ],
+      effects: [{ type: "setFlag", flag: "knowCafeteriaGuards" }],
+      actions: [
+        {
+          id: "continue",
+          text: "식사를 마친다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_observe_exit: {
+      title: "출입구 관찰",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "식당의 출입구는 두 곳이다. 정문과 **주방으로 통하는 뒷문**." },
+        { type: "narration", text: "뒷문은 잠겨 있지만, 식사 배급 시간에는 열린다." },
+        { type: "narration", text: "주방 너머로 **하역장**이 보인다. 식자재 트럭이 드나드는 곳..." },
+        { type: "narration", text: "혹시 탈출 루트가 될 수 있을까?" }
+      ],
+      effects: [{ type: "setFlag", flag: "knowKitchenExit" }],
+      actions: [
+        {
+          id: "continue",
+          text: "정보를 머릿속에 새긴다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_groper_event: {
+      title: "소란",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "식당 한쪽에서 소란이 일어나고 있다. **성추행범**이 어떤 죄수에게 접근하고 있다." },
+        { type: "dialogue", speaker: "groper", text: "야, 거기 신입. 우리 친해지자고. 히히..." },
+        { type: "narration", text: "상대방 죄수가 불쾌한 표정으로 물러난다." },
+        { type: "dialogue", speaker: "unknown", text: "꺼져, 이 변태 새끼야!" },
+        { type: "narration", text: "성추행범이 불쾌한 웃음을 흘리며 물러난다. 하지만 그의 눈은 여전히 사냥감을 노리고 있다." },
+        { type: "narration", text: "주변 죄수들이 그를 피해 흩어진다. 저 자는 조심해야 한다." }
+      ],
+      effects: [{ type: "setFlag", flag: "knowGroperDanger" }],
+      actions: [
+        {
+          id: "continue",
+          text: "식사를 마치고 자리를 뜬다.",
+          nextScene: "cafeteria_end"
+        }
+      ]
+    },
+
+    cafeteria_end: {
+      title: "식사 종료",
+      location: "cafeteria",
+      description: [
+        { type: "narration", text: "식사 시간 종료를 알리는 종이 울린다." },
+        { type: "narration", text: "죄수들이 일제히 식기를 반납하고 감방으로 돌아간다." },
+        { type: "narration", text: "당신도 빈 그릇을 들고 줄을 선다." },
+        { type: "dialogue", speaker: "guard", text: "빨리 움직여! 소등까지 30분이다!" }
+      ],
+      actions: [
+        {
+          id: "return_cell",
+          text: "감방으로 돌아간다.",
           nextScene: "day_two_evening"
         }
       ]
@@ -1765,7 +2515,7 @@ const gameData = {
       title: "둘째 날 저녁",
       location: "cell",
       description: [
-        { type: "narration", text: "저녁 식사 시간이다. 맛없는 죽과 딱딱한 빵이 배급된다." },
+        { type: "narration", text: "감방으로 돌아온 당신은 침대에 누워 오늘 하루를 되짚어본다." },
         { type: "narration", text: "당신은 지금까지 모은 정보들을 정리한다. 탈출의 기회는 있어 보인다." },
         { type: "narration", text: "하지만 아직 시간이 있다. 내일 더 많은 정보를 모을 수 있을지도 모른다." }
       ],
