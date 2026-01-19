@@ -24,7 +24,7 @@ const locationNames = {
   duct: '환기덕트'
 };
 
-function Minimap({ location }) {
+function Minimap({ location, visitedLocations = [] }) {
   if (!location) return null;
 
   // Special case for duct - it spans multiple areas
@@ -43,14 +43,15 @@ function Minimap({ location }) {
 
               const isCurrentLocation = loc === location;
               const isDuctOverlay = isDuct && ['corridor', 'cell', 'workshop'].includes(loc);
+              const isVisited = visitedLocations.includes(loc);
 
               return (
                 <div
                   key={colIndex}
-                  className={`minimap-cell ${isCurrentLocation ? 'current' : ''} ${isDuctOverlay ? 'duct-overlay' : ''}`}
-                  title={locationNames[loc]}
+                  className={`minimap-cell ${isCurrentLocation ? 'current' : ''} ${isDuctOverlay ? 'duct-overlay' : ''} ${!isVisited ? 'unvisited' : ''}`}
+                  title={isVisited ? locationNames[loc] : '???'}
                 >
-                  <span className="minimap-label">{locationNames[loc]}</span>
+                  <span className="minimap-label">{isVisited ? locationNames[loc] : '???'}</span>
                 </div>
               );
             })}

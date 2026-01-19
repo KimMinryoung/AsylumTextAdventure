@@ -387,6 +387,16 @@
   font-weight: bold;
 }
 
+.minimap-cell.unvisited {
+  background: rgba(20, 20, 30, 0.8);
+  border-color: #333;
+}
+
+.minimap-cell.unvisited .minimap-label {
+  color: #555;
+  font-style: italic;
+}
+
 .minimap-current {
   text-align: center;
   color: #b8b8b8;

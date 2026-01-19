@@ -6,6 +6,7 @@ class GameEngine {
     this.flags = {};
     this.relations = {};
     this.history = [];
+    this.visitedLocations = [];
   }
 
   start() {
@@ -22,11 +23,17 @@ class GameEngine {
       political: 0
     }) };
     this.history = [];
+    this.visitedLocations = [];
 
     // Execute scene effects on start
     const scene = this.gameData.scenes[this.currentScene];
     if (scene && scene.effects) {
       this.executeEffects(scene.effects);
+    }
+
+    // Mark starting location as visited
+    if (scene && scene.location && !this.visitedLocations.includes(scene.location)) {
+      this.visitedLocations.push(scene.location);
     }
 
     return this.getState();
@@ -51,6 +58,7 @@ class GameEngine {
       inventory: this.inventory,
       relations: this.relations,
       location: scene.location || null,
+      visitedLocations: [...this.visitedLocations],
       isEnding: scene.isEnding || false
     };
   }
@@ -132,6 +140,11 @@ class GameEngine {
       if (nextScene && nextScene.effects) {
         this.executeEffects(nextScene.effects);
       }
+
+      // Mark new location as visited
+      if (nextScene && nextScene.location && !this.visitedLocations.includes(nextScene.location)) {
+        this.visitedLocations.push(nextScene.location);
+      }
     }
 
     return {
@@ -177,6 +190,7 @@ class GameEngine {
             political: 0
           }) };
           this.history = [];
+          this.visitedLocations = [];
           break;
         default:
           break;
@@ -222,6 +236,7 @@ class GameEngine {
       flags: { ...this.flags },
       relations: { ...this.relations },
       history: [...this.history],
+      visitedLocations: [...this.visitedLocations],
       savedAt: Date.now()
     };
   }
@@ -248,6 +263,7 @@ class GameEngine {
       political: 0
     }) };
     this.history = saveData.history || [];
+    this.visitedLocations = saveData.visitedLocations || [];
 
     return { success: true };
   }
