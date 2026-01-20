@@ -389,7 +389,7 @@ const yardScenes = {
       d("messiah", "믿음을 가져. 모든 게 계획대로 될 거야."),
       n("[메시아에게 환기구 카드키를 전달했다.]"),
     ],
-    effects: [eff.flag("messiahKeyDelivered"), eff.loseItem("환기구 카드키")],
+    effects: [eff.flag("messiahKeyDelivered"), eff.drop("환기구 카드키")],
     actions: () => [
       action("감방으로 돌아간다.", "day_three_evening")
     ]
