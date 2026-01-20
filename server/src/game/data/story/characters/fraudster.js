@@ -184,7 +184,10 @@ const fraudsterScenes = {
     title: "사기꾼의 진행 상황",
     location: "workshop",
     description: [
-      d("fraudster", "박 간수가 넘어왔어. 오늘 밤 11시에 뒷문을 열어주기로 했어."),
+        { type: "narration", text: "사기꾼이 눈짓으로 당신을 구석으로 부른다." },
+        { type: "dialogue", speaker: "fraudster", text: "좋은 소식이야. 박 간수가 넘어왔어. 오늘 밤 11시에 뒷문을 열어주기로 했어." },
+        { type: "narration", text: "그가 능글맞게 웃는다." },
+        { type: "dialogue", speaker: "fraudster", text: "내 조직에서 차를 보내기로 했어. 우리 둘 다 태워갈 거야. 완벽하지?" }
     ],
     actions: () => [
       action("\"대가가 뭔데?\"", "fraudster_catch_revealed", [cond.flag("knowPrisoners")]),
@@ -196,21 +199,16 @@ const fraudsterScenes = {
     title: "숨겨진 조건",
     location: "workshop",
     description: [
-      d("fraudster", "우리 조직에서 네 능력이 필요하대. 문서 위조랑 피싱 일 좀 해야겠어."),
+        { type: "narration", text: "정치범이 알려준 정보가 떠오른다. '영악한 년이야. 말은 못 믿지만...'" },
+        { type: "narration", text: "사기꾼의 미소가 살짝 굳어진다." },
+        { type: "dialogue", speaker: "fraudster", text: "...영리하네. 그래, 조건이 있어. 우리 조직에서 네 능력이 필요하대." },
+        { type: "dialogue", speaker: "fraudster", text: "게임 만들던 친구잖아. 우리 조직에서 **문서 위조**랑 **온라인 피싱** 쪽 일을 시키려고 해." },
+        { type: "dialogue", speaker: "fraudster", text: "싫으면... 뭐, 혼자 알아서 나가든가. 어때?" }
     ],
     actions: () => [
       action("\"알았어. 일단 나가는 게 먼저야.\"", "day_three_afternoon", [], [eff.rel("fraudster", 2)]),
       action("\"사기는 더 이상 안 해.\"", "day_three_afternoon", [], [eff.flag("fraudsterRefused")])
     ]
-  }),
-
-  ...defineScene("ending_fraudster_route", {
-    title: "거래의 대가",
-    description: [
-      n("**[엔딩 B: 새로운 족쇄]**"),
-    ],
-    isEnding: true,
-    actions: () => [action("다시 시작하기", "entrance", [], [eff.reset()])]
   })
 };
 

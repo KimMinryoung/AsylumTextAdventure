@@ -17,8 +17,10 @@ const sleepScenes = {
     title: "둘째 날 아침",
     location: "cell",
     description: [
-      d("guard", "기상! 5분 안에 점호다!"),
-      d("fraudster", "작업장은 유용한 물건을 구할 수 있고, 운동장은 편하지만 눈이 많아."),
+        n("새벽을 알리는 사이렌 소리에 눈을 뜬다."),
+        d("guard", "기상! 5분 안에 점호다!"),
+        n("죄수들이 하나둘 침대에서 일어난다. 피곤한 첫날밤이었다."),
+        n("오늘의 일과가 시작된다. **작업장**으로 갈지, **운동장**으로 갈지 선택해야 한다."),
     ],
     actions: () => [
       action("작업장으로 간다.", "workshop"),
@@ -42,7 +44,9 @@ const sleepScenes = {
     title: "밤의 탐색",
     location: "cell",
     description: [
-      n("순찰은 대략 **15분**마다 지나가는 것 같다."),
+        n("다른 죄수들이 잠든 틈을 타 감방 안을 조용히 살펴본다."),
+        n("창살 사이로 복도를 내다본다. 간수의 발소리가 규칙적으로 들린다."),
+        n("순찰 간격을 세어본다. 대략 **15분**마다 지나가는 것 같다.")
     ],
     actions: () => [
       action("아직 깨어있는 정치범에게 말을 건다.", "political_night_talk", [cond.relMin("political", 3)]),
@@ -56,8 +60,10 @@ const sleepScenes = {
     title: "셋째 날 아침",
     location: "cell",
     description: [
-      d("guard", "기상! 오늘은 전원 작업장이다!"),
-      n("오늘은 **수요일**이다."),
+        n("새벽을 찢는 사이렌 소리에 눈을 뜬다."),
+        n("오늘은 **수요일**이다. 폭풍우의 전조인지 습한 공기가 피부에 들러붙는다."),
+        d("guard", "기상! 오늘은 전원 작업장이다! 낙오자는 국물도 없을 줄 알아!"),
+        n("간수들의 고함과 함께 죄수들이 좀비처럼 몸을 일으킨다.")
     ],
     actions: () => [
       action("작업장으로 향한다.", "pedophile_attack", [cond.flag("helpedPedophile")]),
@@ -82,7 +88,7 @@ const sleepScenes = {
     title: "넷째 날 새벽",
     location: "cell",
     description: [
-      n("지금이 탈출의 순간이다. 어떤 길을 선택하시겠는가?"),
+      n("지금이 탈출의 순간이다. 어떤 길을 선택하겠는가?"),
     ],
     actions: () => [
       action("메시아의 계획을 따른다. (열쇠 전달 완료)", "ending_messiah_enhanced", [cond.flag("messiahKeyDelivered")]),

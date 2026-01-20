@@ -106,7 +106,11 @@ const messiahScenes = {
     title: "계획의 상세",
     location: "yard",
     description: [
-      d("messiah", "**내일 밤**, 환기구를 통해 탈출한다. 간수장의 특수 열쇠가 필요해."),
+        n("메시아가 당신을 옆으로 데려가 낮은 목소리로 속삭인다."),
+        d("messiah", "네가 나를 믿기로 했으니 알려주지."),
+        d("messiah", "**내일 밤**, 밖에서 우리 신도들이 움직인다. 정전을 일으키고, 그 혼란 속에서 **환기구**를 통해 탈출하는 거야."),
+        d("messiah", "문제는 환기구 잠금장치야. 내부에서 열어야 하는데... {{특수 열쇠}}가 필요해. 간수장이 가지고 있지."),
+        d("messiah", "그 열쇠를 구할 방법을 찾아야 해. 도울 수 있겠나, 자매여?")
     ],
     actions: () => [
       action("열쇠를 구해보겠다고 한다.", "messiah_mission_accept", [], [eff.flag("messiahKeyMission")]),
@@ -129,7 +133,11 @@ const messiahScenes = {
     title: "메시아의 테이블",
     location: "cafeteria",
     description: [
-      d("messiah", "앉아라, 길 잃은 영혼이여. 이곳의 삶이 어떻든?"),
+        n("당신이 다가가자 메시아의 추종자들이 경계의 눈빛을 보낸다. 하지만 메시아가 손을 들어 그들을 제지한다."),
+        d("messiah", "앉아라, 길 잃은 영혼이여. 이 테이블엔 자리가 있다."),
+        n("당신이 앉자 메시아가 부드러운 미소를 짓는다. 그의 눈동자는 형광등 빛 아래서도 이상하게 빛난다."),
+        d("messiah", "너는 며칠 전에 들어왔지? 이곳의 삶이 어떻든?"),
+        n("주변의 추종자들이 당신의 대답을 기다린다.")
     ],
     actions: () => [
       action("\"지옥 같아요.\"", "cafeteria_messiah_hell", [], [eff.rel("messiah")]),
@@ -142,7 +150,11 @@ const messiahScenes = {
     title: "지옥",
     location: "cafeteria",
     description: [
-      d("messiah", "지옥에도 구원은 있다. 마음의 평화를 원한다면 기도 모임에 오게."),
+              d("messiah", "그렇지. 이곳은 지옥이다. 육체의 지옥이자 영혼의 지옥."),
+        n("메시아가 죽 그릇을 내려다보며 말을 잇는다."),
+        d("messiah", "하지만 지옥에도 구원은 있다. 나는 그것을 보았고, 너에게도 보여줄 수 있어."),
+        d("messiah", "매일 밤 우리는 기도 모임을 연다. 마음의 평화를 원한다면... 언제든 환영이야."),
+        n("추종자들이 고개를 끄덕인다. 그들의 눈빛에는 광신적인 믿음이 서려 있다."),
     ],
     effects: [eff.flag("messiahInvite")],
     actions: () => [
@@ -155,7 +167,12 @@ const messiahScenes = {
     title: "강함",
     location: "cafeteria",
     description: [
-      d("messiah", "혼자서는 이곳을 버틸 수 없어. 언젠가 네게도 **의지할 곳**이 필요할 거야."),
+        n("메시아의 눈이 가늘어진다. 탐구하듯 당신을 바라본다."),
+        d("messiah", "강한 척하는 거야, 아니면 진짜 강한 거야?"),
+        n("잠시 침묵이 흐른다."),
+        d("messiah", "어느 쪽이든 상관없어. 이곳에선 둘 다 필요하니까."),
+        d("messiah", "하지만 기억해. 혼자서는 이곳을 버틸 수 없어. 언젠가 네게도 **의지할 곳**이 필요할 거야."),
+        n("메시아가 다시 식사에 집중한다. 대화가 끝났다는 신호다.")
     ],
     actions: () => [
       action("자리에서 일어난다.", "cafeteria_end")
@@ -166,7 +183,12 @@ const messiahScenes = {
     title: "질문",
     location: "cafeteria",
     description: [
-      d("messiah", "나는 **진실**을 말했기 때문에 여기 있다. 진실을 말하는 자는 박해받는 법이지."),
+        n("메시아의 미소가 살짝 굳는다. 추종자들 사이에 긴장감이 흐른다."),
+        d("messiah", "...대담하군. 아무도 그런 질문은 하지 않는데."),
+        n("그가 천천히 숟가락을 내려놓는다."),
+        d("messiah", "나는 **진실**을 말했기 때문에 여기 있다. 정부가 숨기고 싶어하는 진실을."),
+        d("messiah", "사람들은 내 말을 따랐고, 그들은 그것을 '사이비'라고 불렀지. 진실을 말하는 자는 언제나 박해받는 법이야."),
+        n("그의 목소리에는 확신이 가득하다. 믿거나 말거나, 그 자신은 완전히 믿고 있다.")
     ],
     effects: [eff.flag("knowMessiahStory")],
     actions: () => [
@@ -178,7 +200,11 @@ const messiahScenes = {
     title: "환영",
     location: "cafeteria",
     description: [
-      d("messiah", "오늘 밤 소등 후에 동쪽 복도 끝으로 와."),
+        d("messiah", "현명한 선택이야."),
+        n("메시아가 당신의 손을 잡는다. 의외로 따뜻한 손이다."),
+        d("messiah", "오늘 밤 소등 후에 동쪽 복도 끝으로 와. 간수들은 그 시간에 순찰을 돌지 않아."),
+        n("추종자들이 은밀한 미소를 교환한다."),
+        d("messiah", "그리고... 혹시 **탈출**에 관심이 있다면, 우리가 알고 있는 것들이 있어. 나중에 이야기하지.")
     ],
     effects: [eff.rel("messiah", 2)],
     actions: () => [
@@ -190,7 +216,10 @@ const messiahScenes = {
     title: "메시아의 계획",
     location: "workshop",
     description: [
-      d("messiah", "정전 속에서 환기구로 탈출한다. 간수장의 카드키가 필요해."),
+        n("메시아가 당신을 구석으로 데려간다."),
+        d("messiah", "오늘 밤 정전이 일어날 거야. 밖에 있는 내 신도들이 준비했지."),
+        d("messiah", "문제는 환기구 잠금장치야. 간수장의 카드키가 필요해."),
+        d("messiah", "네가 그걸 구해줄 수 있다면... 우리의 구원은 확실해진다."),
     ],
     effects: [eff.flag("messiahKeyMission")],
     actions: () => [
@@ -203,7 +232,10 @@ const messiahScenes = {
     title: "열쇠 전달",
     location: "yard",
     description: [
-      d("messiah", "오늘 밤 2시, 환기구 앞에서 만나자."),
+        n("메시아에게 다가가 몰래 카드키를 전달한다."),
+        n("메시아의 눈이 환하게 빛난다."),
+        d("messiah", "해냈구나, 형제여... 이것으로 구원의 문이 열릴 것이다."),
+        d("messiah", "오늘 밤 2시, 환기구 앞에서 만나자. 구원이 가까워졌다..."),
     ],
     effects: [eff.flag("messiahKeyDelivered"), eff.rel("messiah", 3)],
     actions: () => [
@@ -211,32 +243,6 @@ const messiahScenes = {
     ]
   }),
 
-  ...defineScene("ending_messiah_enhanced", {
-    title: "완벽한 구원",
-    description: [
-      d("messiah", "형제여, 네 믿음이 우리 모두를 구원했다!"),
-      n("**[엔딩 A+: 선택받은 자]**"),
-    ],
-    isEnding: true,
-    actions: () => [action("다시 시작하기", "entrance", [], [eff.reset()])]
-  }),
-
-  ...defineScene("ending_messiah_route", {
-    title: "구원의 밤",
-    description: [
-      n("**[엔딩 A: 구원의 밤]**"),
-    ],
-    isEnding: true,
-    actions: () => [action("다시 시작하기", "entrance", [], [eff.reset()])]
-  }),
-
-  ...defineScene("gameover_messiah_followers", {
-    title: "이단자의 최후",
-    location: "cell",
-    description: [n("**[GAME OVER: 이단자 처형]**")],
-    isEnding: true,
-    actions: () => [action("다시 시작하기", "entrance", [], [eff.reset()])]
-  })
 };
 
 module.exports = messiahScenes;

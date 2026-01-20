@@ -78,7 +78,9 @@ const wifekillerScenes = {
     title: "아내 살인범과의 대화",
     location: "workshop",
     description: [
-      d("wifekiller", "...뭐야. 또 왔어?"),
+        n("당신이 말을 걸자, 그가 잠시 손을 멈추고 당신을 본다."),
+        d("wifekiller", "...뭐야. 또 왔어?"),
+        n("말투는 퉁명스럽지만, 어제보다 경계심이 덜하다.")
     ],
     actions: () => [
       action("\"그날 밤 무슨 일이 있었는지... 들어도 될까요?\"", "wifekiller_story_day2", [cond.relMin("wifekiller", 2)], [eff.rel("wifekiller")]),
@@ -91,7 +93,23 @@ const wifekillerScenes = {
     title: "아내 살인범의 진실",
     location: "workshop",
     description: [
-      d("wifekiller", "난 내 아이를 지키려다 살인범이 됐어. 네가 성공하는 건 보고 싶거든. 필요하면 말해. **지하 구조도**를 그려줄 수 있어."),
+        n("그가 잠시 주위를 살핀다. 아무도 듣고 있지 않다는 걸 확인한 후, 낮은 목소리로 말하기 시작한다."),
+        d("wifekiller", "...왜 알고 싶어?"),
+        n("당신이 대답하기 전에, 그가 먼저 입을 연다."),
+        d("wifekiller", "난 평범한 일꾼이었어. 건축업을 했지. 아내와 다섯 살 아들이 있었고."),
+        d("wifekiller", "아내가... 변했어. 술을 마시기 시작했고, 날 때리기 시작했어. 나중엔 아들도."),
+        n("그의 손이 떨린다."),
+        d("wifekiller", "어느 날 밤... 아내가 칼을 들고 아들 방에 들어갔어. '네가 없으면 다 해결돼'라고 소리치면서."),
+        d("wifekiller", "난... 뛰어들었어. 칼을 막다가 손을 베였고, 아내를 밀쳤어. 그녀가 넘어지면서... 머리를 부딪혔어."),
+        n("그가 손등의 오래된 흉터를 내려다본다."),
+        d("wifekiller", "정당방위였어. 분명히. 근데 아내 집안이 부자였고, 판사를 샀어. 난... 살인범이 됐지."),
+        d("wifekiller", "아들은 지금 아내 부모 밑에서 자라고 있어. 날 살인자라고 배우면서. 면회도 못 오게 해."),
+        n("긴 침묵이 흐른다."),
+        d("wifekiller", "...왜 네한테 이런 얘기를 했는지 모르겠군. 네가 물어봐서? 아니면..."),
+        n("그가 당신을 빤히 바라본다."),
+        d("wifekiller", "넌 다른 놈들과 달라. 여기서 10년을 보내면 사람 보는 눈이 생겨."),
+        d("wifekiller", "네가 탈출하고 싶다면... 도와줄 수 있어. 난 여기서 나가도 갈 곳이 없지만, 네가 성공하는 건 보고 싶거든."),
+        d("wifekiller", "필요하면 말해. **지하 구조도**를 그려줄 수 있어.")
     ],
     effects: [eff.rel("wifekiller", 2)],
     actions: () => [
@@ -103,7 +121,11 @@ const wifekillerScenes = {
     title: "동정",
     location: "workshop",
     description: [
-      d("wifekiller", "네가 탈출을 계획하고 있다면... 도와줄 수 있어. 구조와 경비 패턴을 다 알고 있지."),
+        n("당신의 말에 그가 잠시 멈춘다."),
+        d("wifekiller", "...억울하다고? 그래, 억울하지."),
+        n("그가 주위를 살피며 목소리를 낮춘다."),
+        d("wifekiller", "네가 탈출을 계획하고 있다면... 도와줄 수 있어. 난 밖에 나가도 의미없지만, 네가 성공하는 건 보고 싶거든."),
+        d("wifekiller", "난 이 수용소에서 10년을 보냈어. **구조와 경비 패턴**을 다 알고 있지. 필요하면 말해."),
     ],
     actions: () => [
       action("감사를 표하고 작업을 계속한다.", "cafeteria_arrival")
@@ -114,20 +136,15 @@ const wifekillerScenes = {
     title: "아내 살인범의 마지막 도움",
     location: "workshop",
     description: [
-      d("wifekiller", "**지하 창고 옆 비상구**를 기억해. 거긴 안에서 열 수 있어."),
+        n("아내 살인범이 당신 옆에서 일하며 낮은 목소리로 말한다."),
+        d("wifekiller", "오늘 밤 뭔가 일어날 것 같아. 공기가 이상해."),
+        d("wifekiller", "네가 움직일 거라면... **지하 창고 옆 비상구**를 기억해. 거긴 열쇠가 없어도 안에서 열 수 있어."),
+        d("wifekiller", "난 여기 남을 거야. 하지만 네가 성공하면... 언젠가 내 아들한테 편지 좀 전해줘."),
     ],
     effects: [eff.flag("knowEmergencyExit")],
     actions: () => [
       action("약속한다.", "day_three_afternoon")
     ]
-  }),
-
-  ...defineScene("gameover_wifekiller_rage", {
-    title: "치명적 실수",
-    location: "cell",
-    description: [n("**[GAME OVER: 말을 함부로 하면 안 됩니다]**")],
-    isEnding: true,
-    actions: () => [action("다시 시작하기", "entrance", [], [eff.reset()])]
   })
 };
 
