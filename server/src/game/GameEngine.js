@@ -7,6 +7,7 @@ class GameEngine {
     this.relations = {};
     this.history = [];
     this.visitedLocations = [];
+    this.unlockedEndings = this.gameData.unlockedEndings || [];
   }
 
   start() {
@@ -60,7 +61,8 @@ class GameEngine {
       relations: this.relations,
       location: scene.location || null,
       visitedLocations: [...this.visitedLocations],
-      isEnding: scene.isEnding || false
+      isEnding: scene.isEnding || false,
+      unlockedEndings: [...this.unlockedEndings]
     };
   }
 
@@ -138,6 +140,14 @@ class GameEngine {
 
       // Execute scene effects when entering new scene
       const nextScene = this.gameData.scenes[this.currentScene];
+
+      // 엔딩 장면 도달 시 해금 목록에 추가
+      if (nextScene && nextScene.isEnding) {
+        if (!this.unlockedEndings.includes(this.currentScene)) {
+          this.unlockedEndings.push(this.currentScene);
+        }
+      }
+
       if (nextScene && nextScene.effects) {
         this.executeEffects(nextScene.effects);
       }
@@ -239,6 +249,7 @@ class GameEngine {
       relations: { ...this.relations },
       history: [...this.history],
       visitedLocations: [...this.visitedLocations],
+      unlockedEndings: [...this.unlockedEndings],
       savedAt: Date.now()
     };
   }
@@ -267,6 +278,10 @@ class GameEngine {
     }) };
     this.history = saveData.history || [];
     this.visitedLocations = saveData.visitedLocations || [];
+    // 현재의 엔딩 해금 목록과, 세이브 파일에 있던 해금 목록을 병합
+    const savedEndings = saveData.unlockedEndings || [];
+    const currentEndings = this.unlockedEndings || [];
+    this.unlockedEndings = [...new Set([...currentEndings, ...savedEndings])];
 
     return { success: true };
   }

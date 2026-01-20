@@ -97,4 +97,22 @@ router.post('/load', (req, res) => {
   });
 });
 
+router.get('/endings', (req, res) => {
+  try {
+    const endings = Object.entries(gameData.scenes)
+      .filter(([id, scene]) => scene.isEnding)
+      .map(([id, scene]) => ({
+        id: id,
+        title: scene.title,
+        description: scene.description,
+        isEnding: true
+      }));
+
+    res.json({ success: true, endings });
+  } catch (error) {
+    console.error('Error fetching endings:', error);
+    res.status(500).json({ success: false, error: 'Failed to fetch endings' });
+  }
+});
+
 module.exports = router;

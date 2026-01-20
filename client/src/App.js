@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import GameScreen from './components/GameScreen';
 import StartScreen from './components/StartScreen';
 import { gameApi } from './api/gameApi';
@@ -10,6 +10,20 @@ function App() {
   const [message, setMessage] = useState(null);
   const [sessionId] = useState(() => crypto.randomUUID());
 
+  const [endingCollection, setEndingCollection] = useState([]);
+  useEffect(() => {
+    const fetchEndings = async () => {
+      const result = await gameApi.getEndings();
+      if (result.success) {
+        setEndingCollection(result.endings);
+      } else {
+        console.error("Failed to load endings:", result.error);
+      }
+    };
+
+    fetchEndings();
+  }, []);
+
   const startGame = useCallback(async () => {
     setIsLoading(true);
     try {
@@ -19,7 +33,7 @@ function App() {
         setMessage(null);
       }
     } catch (error) {
-      setMessage({ type: 'error', text: 'Failed to start game. Is the server running?' });
+      setMessage({ type: 'error', text: '게임 시작 실패. 서버 접속 오류' });
     }
     setIsLoading(false);
   }, [sessionId]);
@@ -37,7 +51,7 @@ function App() {
         setGameState(result.state);
       }
     } catch (error) {
-      setMessage({ type: 'error', text: 'Action failed. Please try again.' });
+      setMessage({ type: 'error', text: '게임 진행 실패. 오류 발생' });
     }
     setIsLoading(false);
   }, [sessionId]);
@@ -47,17 +61,17 @@ function App() {
       const result = await gameApi.saveGame(sessionId);
       if (result.success) {
         localStorage.setItem('textAdventureSave', JSON.stringify(result.saveData));
-        setMessage({ type: 'success', text: 'Game saved!' });
+        setMessage({ type: 'success', text: '게임 저장됨!' });
       }
     } catch (error) {
-      setMessage({ type: 'error', text: 'Failed to save game.' });
+      setMessage({ type: 'error', text: '저장을 실패했다.' });
     }
   }, [sessionId]);
 
   const loadGame = useCallback(async () => {
     const saveData = localStorage.getItem('textAdventureSave');
     if (!saveData) {
-      setMessage({ type: 'error', text: 'No save data found.' });
+      setMessage({ type: 'error', text: '저장된 데이터가 없다.' });
       return;
     }
 
@@ -66,10 +80,10 @@ function App() {
       const result = await gameApi.loadGame(sessionId, JSON.parse(saveData));
       if (result.success) {
         setGameState(result.state);
-        setMessage({ type: 'success', text: 'Game loaded!' });
+        setMessage({ type: 'success', text: '게임을 불러왔다!' });
       }
     } catch (error) {
-      setMessage({ type: 'error', text: 'Failed to load game.' });
+      setMessage({ type: 'error', text: '불러오기 실패.' });
     }
     setIsLoading(false);
   }, [sessionId]);
@@ -92,6 +106,7 @@ function App() {
           onRestart={startGame}
           isLoading={isLoading}
           message={message}
+          endingCollection={endingCollection}
         />
       )}
     </div>

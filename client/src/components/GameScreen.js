@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Minimap from './Minimap';
 
 const speakerInfo = {
@@ -105,19 +105,30 @@ function renderDescription(description) {
   return null;
 }
 
-function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading, message }) {
-  const { title, description, actions, inventory, isEnding, location, visitedLocations } = gameState;
+function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading, message, endingCollection }) {
+  const { title, description, actions, inventory, isEnding, location, visitedLocations, unlockedEndings } = gameState;
+
+
+  const [showCollection, setShowCollection] = useState(false);
+  const [selectedEnding, setSelectedEnding] = useState(null);
+  const toggleCollection = () => {
+    setShowCollection(!showCollection);
+    setSelectedEnding(null);
+  };
 
   return (
     <div className="game-screen">
       <div className="game-header">
         <h2>{title}</h2>
         <div className="header-buttons">
-          <button className="btn btn-secondary" onClick={onSave} disabled={isLoading}>
-            저장
+          <button className="btn btn-info" onClick={toggleCollection} disabled={isLoading}>
+            컬렉션
           </button>
           <button className="btn btn-secondary" onClick={onRestart} disabled={isLoading}>
             재시작
+          </button>
+          <button className="btn btn-secondary" onClick={onSave} disabled={isLoading}>
+            저장
           </button>
           <button className="btn btn-secondary" onClick={onLoad} disabled={isLoading}>
             불러오기
@@ -176,6 +187,48 @@ function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading,
       </div>
 
       <Minimap location={location} visitedLocations={visitedLocations || []} />
+
+      {/* 컬렉션 오버레이 (모달) */}
+      {showCollection && (
+        <div className="collection-overlay">
+          <div className="collection-modal">
+            <div className="collection-header">
+              <h3>엔딩 컬렉션</h3>
+              <button className="btn-close" onClick={toggleCollection}>X</button>
+            </div>
+            
+            <div className="collection-body">
+              {selectedEnding ? (
+                <div className="ending-detail">
+                  <h4>{selectedEnding.title}</h4>
+                  <div className="ending-desc-container">
+                    {renderDescription(selectedEnding.description)}
+                  </div>
+                  <button className="btn btn-secondary btn-sm" onClick={() => setSelectedEnding(null)} style={{marginTop: '20px'}}>
+                    목록으로 돌아가기
+                  </button>
+                </div>
+              ) : (
+                <div className="ending-grid">
+                  {endingCollection.map((ending) => {
+                    const isUnlocked = unlockedEndings.includes(ending.id);
+                    return (
+                      <button
+                        key={ending.id}
+                        className={`ending-item ${isUnlocked ? 'unlocked' : 'locked'}`}
+                        disabled={!isUnlocked}
+                        onClick={() => setSelectedEnding(ending)}
+                      >
+                        {isUnlocked ? ending.title : "???"}
+                      </button>
+                    );
+                  })}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

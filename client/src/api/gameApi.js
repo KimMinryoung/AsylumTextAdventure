@@ -88,5 +88,22 @@ export const gameApi = {
         error: 'Failed to connect to server.'
       };
     }
+  },
+
+  async getEndings() {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/game/endings`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      return await response.json();
+    } catch (error) {
+      return {
+        success: false,
+        error: 'Failed to connect to server.'
+      };
+    }
   }
 };
