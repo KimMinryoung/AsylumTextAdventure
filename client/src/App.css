@@ -405,3 +405,93 @@
   padding-top: 8px;
   border-top: 1px solid rgba(255, 215, 0, 0.3);
 }
+
+/* Mobile Layout */
+@media (max-width: 600px) {
+  /* 미니맵: 좌상단으로 이동 + 크기 축소 */
+  .minimap {
+    bottom: auto;
+    right: auto;
+    top: 10px;
+    left: 10px;
+    padding: 8px;
+    min-width: auto;
+    transform: scale(0.75);
+    transform-origin: top left;
+  }
+
+  .minimap-title {
+    font-size: 0.7rem;
+    margin-bottom: 6px;
+    padding-bottom: 5px;
+  }
+
+  .minimap-cell {
+    width: 36px;
+    height: 22px;
+  }
+
+  .minimap-label {
+    font-size: 0.5rem;
+  }
+
+  .minimap-current {
+    font-size: 0.65rem;
+    margin-top: 6px;
+    padding-top: 5px;
+  }
+
+  /* 전체 글씨 크기 축소 */
+  .game-header h2 {
+    font-size: 1.2rem;
+  }
+
+  .scene-description {
+    font-size: 0.9rem;
+    padding: 12px;
+  }
+
+  .narration {
+    font-size: 0.85rem;
+    margin-bottom: 10px;
+  }
+
+  .dialogue {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+  }
+
+  .action-btn {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+  }
+
+  .inventory {
+    padding: 10px;
+  }
+
+  .inventory h4 {
+    font-size: 0.8rem;
+  }
+
+  .inventory-items span {
+    font-size: 0.75rem;
+    padding: 3px 8px;
+  }
+
+  /* 헤더 버튼 크기 축소 */
+  .header-buttons .btn {
+    font-size: 0.75rem;
+    padding: 6px 10px;
+  }
+
+  /* 게임 컨텐츠 여백 조정 */
+  .game-content {
+    padding: 10px;
+  }
+
+  /* 미니맵 공간 확보를 위한 상단 여백 */
+  .game-screen {
+    padding-top: 80px;
+  }
+}
