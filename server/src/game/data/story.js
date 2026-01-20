@@ -274,7 +274,7 @@ const gameData = {
         { type: "dialogue", speaker: "wifekiller", text: "네가 탈출하고 싶다면... 도와줄 수 있어. 난 여기서 나가도 갈 곳이 없지만, 네가 성공하는 건 보고 싶거든." },
         { type: "dialogue", speaker: "wifekiller", text: "필요하면 말해. **지하 구조도**를 그려줄 수 있어." },
       ],
-      effects: [{ type: "setFlag", flag: "wifekillerFriend" }],
+      effects: [{ type: "increaseRelation", target: "wifekiller", amount: 2 }],
       actions: [
         {
           id: "accept_help",
@@ -376,7 +376,7 @@ const gameData = {
           id: "trust_messiah",
           text: "\"믿겠습니다.\"",
           nextScene: "messiah_trust",
-          effects: [{ type: "setFlag", flag: "messiahRoute" }]
+          effects: [{ type: "setFlag", flag: "knowMessiahPlan" }]
         },
         {
           id: "doubt_messiah",
@@ -437,7 +437,7 @@ const gameData = {
           id: "believe_now",
           text: "\"...믿겠습니다.\"",
           nextScene: "messiah_trust",
-          effects: [{ type: "setFlag", flag: "messiahRoute" }]
+          effects: [{ type: "setFlag", flag: "knowMessiahPlan" }]
         },
         {
           id: "still_doubt",
@@ -539,7 +539,7 @@ const gameData = {
           id: "have_contact",
           text: "\"연락할 사람이 있을지도...\"",
           nextScene: "fraudster_deal",
-          effects: [{ type: "setFlag", flag: "fraudsterRoute" }]
+          effects: [{ type: "setFlag", flag: "knowFraudsterPlan" }]
         },
         {
           id: "no_contact",
@@ -655,7 +655,7 @@ const gameData = {
           id: "have_contact",
           text: "\"연락할 사람이 있을지도...\"",
           nextScene: "fraudster_deal",
-          effects: [{ type: "setFlag", flag: "fraudsterRoute" }]
+          effects: [{ type: "setFlag", flag: "knowFraudsterPlan" }]
         },
         {
           id: "no_contact",
@@ -720,7 +720,7 @@ const gameData = {
           id: "agree",
           text: "\"...일리가 있네.\"",
           nextScene: "fraudster_deal",
-          effects: [{ type: "setFlag", flag: "fraudsterRoute" }]
+          effects: [{ type: "setFlag", flag: "knowFraudsterPlan" }]
         },
         {
           id: "decline",
@@ -834,7 +834,7 @@ const gameData = {
       ],
       effects: [
         { type: "setFlag", flag: "knowWednesdayGap" },
-        { type: "setFlag", flag: "politicalFriend" }
+        { type: "increaseRelation", target: "political", amount: 2 }
       ],
       actions: [
         {
@@ -1254,7 +1254,7 @@ const gameData = {
           id: "agree_arsonist",
           text: "\"알겠어! 도와줄게.\"",
           nextScene: "arsonist_agree",
-          effects: [{ type: "setFlag", flag: "arsonistRoute" }]
+          effects: [{ type: "setFlag", flag: "knowArsonistPlan" }]
         },
         {
           id: "refuse_arsonist",
@@ -1369,7 +1369,7 @@ const gameData = {
           id: "steal_oil",
           text: "기름을 몰래 빼돌린다.",
           conditions: [
-            { type: "flagSet", flag: "arsonistRoute" },
+            { type: "flagSet", flag: "knowArsonistPlan" },
             { type: "flagNotSet", flag: "groperEnemy" }
           ],
           nextScene: "workshop_steal_oil",
@@ -1471,7 +1471,6 @@ const gameData = {
           text: "\"억울한 일을 당했다는 건 알겠어요.\"",
           nextScene: "wifekiller_sympathy",
           effects: [
-            { type: "setFlag", flag: "wifekillerFriend" },
             { type: "increaseRelation", target: "wifekiller" }
           ]
         },
@@ -1505,7 +1504,7 @@ const gameData = {
         { type: "dialogue", speaker: "wifekiller", text: "네가 탈출하고 싶다면... 도와줄 수 있어. 난 여기서 나가도 갈 곳이 없지만, 네가 성공하는 건 보고 싶거든." },
         { type: "dialogue", speaker: "wifekiller", text: "필요하면 말해. **지하 구조도**를 그려줄 수 있어." }
       ],
-      effects: [{ type: "setFlag", flag: "wifekillerFriend" }],
+      effects: [{ type: "increaseRelation", target: "wifekiller", amount: 2 }],
       actions: [
         {
           id: "thank",
@@ -1608,7 +1607,7 @@ const gameData = {
         {
           id: "ask_plan",
           text: "계획에 대해 물어본다.",
-          conditions: [{ type: "flagSet", flag: "messiahRoute" }],
+          conditions: [{ type: "flagSet", flag: "knowMessiahPlan" }],
           nextScene: "messiah_plan_detail"
         },
         {
@@ -1916,7 +1915,6 @@ const gameData = {
         { type: "dialogue", speaker: "messiah", text: "그리고... 혹시 **탈출**에 관심이 있다면, 우리가 알고 있는 것들이 있어. 나중에 이야기하지." }
       ],
       effects: [
-        { type: "setFlag", flag: "messiahFollower" },
         { type: "increaseRelation", target: "messiah", amount: 2 }
       ],
       actions: [
@@ -2184,7 +2182,7 @@ const gameData = {
         { type: "dialogue", speaker: "arsonist", text: "탈출할 생각이 있다면... 불이 필요할 때가 있을 거야. 그때 날 찾아와." }
       ],
       effects: [
-        { type: "setFlag", flag: "arsonistRoute" },
+        { type: "setFlag", flag: "knowArsonistPlan" },
         { type: "increaseRelation", target: "arsonist" }
       ],
       actions: [
@@ -2339,7 +2337,7 @@ const gameData = {
         { type: "dialogue", speaker: "political", text: "여기서 나가고 싶다면... 내가 아는 걸 알려줄 수 있어. 7년 동안 많은 걸 봤거든." },
         { type: "dialogue", speaker: "political", text: "특히 **간수장의 비밀**에 대해서. 관심 있으면 나중에 이야기하지." }
       ],
-      effects: [{ type: "setFlag", flag: "politicalFriend" }],
+      effects: [{ type: "increaseRelation", target: "political", amount: 2 }],
       actions: [
         {
           id: "continue",
@@ -2378,7 +2376,7 @@ const gameData = {
         { type: "dialogue", speaker: "political", text: "네가 여기서 나가고 싶다면... 도와줄 수 있어. **수요일 밤**에 기회가 있어." },
         { type: "dialogue", speaker: "political", text: "관심 있으면 나중에 조용히 찾아와." }
       ],
-      effects: [{ type: "setFlag", flag: "politicalFriend" }],
+      effects: [{ type: "increaseRelation", target: "political", amount: 2 }],
       actions: [
         {
           id: "continue",
@@ -2399,7 +2397,7 @@ const gameData = {
         { type: "dialogue", speaker: "political", text: "하지만 네가 나가고 싶다면 도와줄 수 있어." }
       ],
       effects: [
-        { type: "setFlag", flag: "politicalFriend" },
+        { type: "increaseRelation", target: "political", amount: 2 },
         { type: "setFlag", flag: "knowWednesday" }
       ],
       actions: [
@@ -2582,7 +2580,7 @@ const gameData = {
         {
           id: "talk_political_night",
           text: "아직 깨어있는 정치범에게 말을 건다.",
-          conditions: [{ type: "flagSet", flag: "politicalFriend" }],
+          conditions: [{ type: "relationMin", target: "political", value: 3 }],
           nextScene: "political_night_talk"
         },
         {
@@ -2641,8 +2639,7 @@ const gameData = {
       ],
       effects: [
         { type: "addItem", item: "빵 조각" },
-        { type: "increaseRelation", target: "guard", amount: 1 },
-        { type: "setFlag", flag: "guardFriendly" }
+        { type: "increaseRelation", target: "guard", amount: 1 }
       ],
       actions: [
         {
@@ -2672,7 +2669,8 @@ const gameData = {
         { type: "narration", text: "[유용한 정보를 얻었다.]" }
       ],
       effects: [
-        { type: "setFlag", flag: "guardTip" },
+        { type: "setFlag", flag: "knowWardenMedical" },
+        { type: "setFlag", flag: "knowStorageDeals" },
         { type: "increaseRelation", target: "guard", amount: 1 }
       ],
       actions: [
@@ -2697,8 +2695,7 @@ const gameData = {
         { type: "narration", text: "!!간수의 적대감이 느껴진다.!!" }
       ],
       effects: [
-        { type: "decreaseRelation", target: "guard", amount: 1 },
-        { type: "setFlag", flag: "guardHostile" }
+        { type: "decreaseRelation", target: "guard", amount: 1 }
       ],
       actions: [
         {
@@ -2851,13 +2848,13 @@ const gameData = {
         {
           id: "arsonist_final_prep",
           text: "방화범에게 마지막 확인을 한다.",
-          conditions: [{ type: "flagSet", flag: "arsonistRoute" }],
+          conditions: [{ type: "flagSet", flag: "knowArsonistPlan" }],
           nextScene: "day_three_arsonist_prep"
         },
         {
           id: "fraudster_check",
           text: "사기꾼의 계획 진행 상황을 확인한다.",
-          conditions: [{ type: "flagSet", flag: "fraudsterRoute" }],
+          conditions: [{ type: "flagSet", flag: "knowFraudsterPlan" }],
           nextScene: "day_three_fraudster_check"
         },
         {
@@ -2931,7 +2928,7 @@ const gameData = {
       ],
       effects: [
         { type: "addItem", item: "수용소 배치도" },
-        { type: "setFlag", flag: "hasFloorPlan" }
+        { type: "setFlag", flag: "knowFloorPlan" }
       ],
       actions: [
         {
@@ -2954,8 +2951,8 @@ const gameData = {
         { type: "narration", text: "두 가지 계획에 모두 접근할 수 있게 되었다." }
       ],
       effects: [
-        { type: "setFlag", flag: "messiahRoute" },
-        { type: "setFlag", flag: "arsonistRoute" }
+        { type: "setFlag", flag: "knowMessiahPlan" },
+        { type: "setFlag", flag: "knowArsonistPlan" }
       ],
       actions: [
         {
@@ -3088,8 +3085,7 @@ const gameData = {
         { type: "narration", text: "**환기구 카드키**를 획득했다." }
       ],
       effects: [
-        { type: "addItem", item: "환기구 카드키" },
-        { type: "setFlag", flag: "hasVentKey" }
+        { type: "addItem", item: "환기구 카드키" }
       ],
       actions: [
         {
@@ -3174,8 +3170,7 @@ const gameData = {
         { type: "narration", text: "**환기구 카드키**를 획득했다." }
       ],
       effects: [
-        { type: "addItem", item: "환기구 카드키" },
-        { type: "setFlag", flag: "hasVentKey" }
+        { type: "addItem", item: "환기구 카드키" }
       ],
       actions: [
         {
@@ -3306,7 +3301,7 @@ const gameData = {
           id: "accept",
           text: "\"좋아, 믿을게.\"",
           nextScene: "day_three_afternoon",
-          effects: [{ type: "setFlag", flag: "fraudsterTrusted" }]
+          effects: [{ type: "increaseRelation", target: "fraudster", amount: 2 }]
         }
       ]
     },
@@ -3326,7 +3321,7 @@ const gameData = {
           id: "accept_anyway",
           text: "\"...알았어. 일단 나가는 게 먼저야.\"",
           nextScene: "day_three_afternoon",
-          effects: [{ type: "setFlag", flag: "fraudsterTrusted" }]
+          effects: [{ type: "increaseRelation", target: "fraudster", amount: 2 }]
         },
         {
           id: "refuse_fraud",
@@ -3349,7 +3344,7 @@ const gameData = {
         {
           id: "talk_wifekiller_day3",
           text: "아내 살인범에게 다가간다.",
-          conditions: [{ type: "flagSet", flag: "wifekillerFriend" }],
+          conditions: [{ type: "relationMin", target: "wifekiller", value: 3 }],
           nextScene: "wifekiller_final_help"
         },
         {
@@ -3391,7 +3386,7 @@ const gameData = {
         {
           id: "meet_messiah",
           text: "메시아에게 열쇠를 전달한다.",
-          conditions: [{ type: "flagSet", flag: "hasVentKey" }],
+          conditions: [{ type: "hasItem", item: "환기구 카드키" }],
           nextScene: "messiah_key_delivery"
         },
         {
@@ -3496,9 +3491,9 @@ const gameData = {
           text: "곤히 잠든다.",
           conditions: [
             { type: "flagSet", flag: "messiahEnemy" },
-            { type: "flagNotSet", flag: "fraudsterTrusted" },
-            { type: "flagNotSet", flag: "arsonistRoute" },
-            { type: "flagNotSet", flag: "wifekillerFriend" }
+            { type: "relationMax", target: "fraudster", value: 1 },
+            { type: "flagNotSet", flag: "knowArsonistPlan" },
+            { type: "relationMax", target: "wifekiller", value: 2 }
           ],
           nextScene: "gameover_messiah_followers"
         },
@@ -3507,9 +3502,9 @@ const gameData = {
           text: "곤히 잠든다.",
           conditions: [
             { type: "flagSet", flag: "arsonistEnemy" },
-            { type: "flagNotSet", flag: "messiahRoute" },
-            { type: "flagNotSet", flag: "fraudsterTrusted" },
-            { type: "flagNotSet", flag: "wifekillerFriend" },
+            { type: "flagNotSet", flag: "knowMessiahPlan" },
+            { type: "relationMax", target: "fraudster", value: 1 },
+            { type: "relationMax", target: "wifekiller", value: 2 },
             { type: "flagNotSet", flag: "knowEmergencyExit" }
           ],
           nextScene: "gameover_burned_alive"
@@ -3542,7 +3537,7 @@ const gameData = {
           id: "messiah_path",
           text: "메시아의 계획을 따른다. (환기구 탈출)",
           conditions: [
-            { type: "flagSet", flag: "messiahRoute" },
+            { type: "flagSet", flag: "knowMessiahPlan" },
             { type: "flagNotSet", flag: "messiahKeyDelivered" }
           ],
           nextScene: "ending_messiah_route"
@@ -3551,7 +3546,7 @@ const gameData = {
           id: "fraudster_path",
           text: "사기꾼과 함께 간수를 매수한다.",
           conditions: [
-            { type: "flagSet", flag: "fraudsterTrusted" },
+            { type: "relationMin", target: "fraudster", value: 2 },
             { type: "flagNotSet", flag: "fraudsterRefused" }
           ],
           nextScene: "ending_fraudster_route"
@@ -3601,7 +3596,7 @@ const gameData = {
         {
           id: "solo_path_partial",
           text: "혼자서 탈출을 시도한다. (일부 정보)",
-          conditions: [{ type: "flagSet", flag: "wifekillerFriend" }],
+          conditions: [{ type: "relationMin", target: "wifekiller", value: 3 }],
           nextScene: "solo_escape_partial"
         },
         {
