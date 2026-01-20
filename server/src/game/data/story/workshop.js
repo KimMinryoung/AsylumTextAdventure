@@ -220,8 +220,8 @@ const workshopScenes = {
     ],
     effects: [eff.flag("knowMessiahPlan"), eff.flag("knowArsonistPlan")],
     actions: () => [
-      action("메시아의 계획에 대해 더 듣는다.", "mediator_messiah_detail"),
-      action("방화범의 계획에 대해 더 듣는다.", "mediator_arsonist_detail"),
+      action("메시아의 계획에 대해 더 듣는다.", "messiah_listen_to_plan_detail"),
+      action("방화범의 계획에 대해 더 듣는다.", "arsonist_listen_to_plan_detail"),
       action("둘 다 열어두고 관찰한다.", "day_three_afternoon")
     ]
   }),

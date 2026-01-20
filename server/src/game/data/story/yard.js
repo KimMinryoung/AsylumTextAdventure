@@ -368,30 +368,7 @@ const yardScenes = {
       action("메시아에게 열쇠를 전달한다.", "messiah_key_delivery", [cond.has("환기구 카드키")]),
       action("간수장의 약점을 이용해 협박한다.", "warden_blackmail", [cond.flag("knowWardenWeakness")]),
       action("담벼락의 균열을 다시 확인한다.", "wall_crack_plan", [cond.flag("knowWallCrack")]),
-      action("오늘 밤을 위해 휴식을 취한다.", "day_three_evening")
-    ]
-  }),
-
-  ...defineScene("messiah_key_delivery", {
-    title: "열쇠 전달",
-    location: "yard",
-    description: [
-      n("메시아에게 조심스럽게 다가간다."),
-      n("주변을 살핀다. 간수들은 다른 쪽을 보고 있다."),
-      d("player", "(속삭임) 열쇠... 가져왔어요."),
-      n("메시아의 눈이 빛난다."),
-      d("messiah", "(속삭임) 잘했다. 너는 진정한 신도야."),
-      n("손을 맞잡는 척하며 카드키를 전달한다."),
-      n("메시아가 능숙하게 소매 안으로 숨긴다."),
-      d("messiah", "(속삭임) 오늘 밤 자정. 정전이 일어나면 환기구로 와."),
-      d("messiah", "(속삭임) 우리와 함께 구원받게 될 거야."),
-      n("그가 당신의 손을 꽉 쥔다. 손이 차갑다."),
-      d("messiah", "믿음을 가져. 모든 게 계획대로 될 거야."),
-      n("[메시아에게 환기구 카드키를 전달했다.]"),
-    ],
-    effects: [eff.flag("messiahKeyDelivered"), eff.drop("환기구 카드키")],
-    actions: () => [
-      action("감방으로 돌아간다.", "day_three_evening")
+      action("저녁을 먹으러 간다.", "day_three_dinner")
     ]
   }),
 
@@ -417,7 +394,7 @@ const yardScenes = {
     ],
     effects: [eff.flag("wardenBlackmailed")],
     actions: () => [
-      action("조용히 자리를 뜬다.", "day_three_evening")
+      action("조용히 자리를 뜬다.", "day_three_dinner")
     ]
   }),
 
@@ -436,7 +413,7 @@ const yardScenes = {
     ],
     actions: () => [
       action("밤에 균열을 파볼 계획을 세운다.", "wall_plan_set", [], [eff.flag("wallEscapePlan")]),
-      action("다른 방법을 생각한다.", "day_three_evening")
+      action("다른 방법을 생각한다.", "day_three_dinner")
     ]
   }),
 
@@ -453,7 +430,7 @@ const yardScenes = {
       n("[담벼락 탈출 계획을 세웠다.]"),
     ],
     actions: () => [
-      action("감방으로 돌아간다.", "day_three_evening")
+      action("저녁을 먹으러 간다.", "day_three_dinner")
     ]
   })
 };

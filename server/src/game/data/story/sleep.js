@@ -325,12 +325,12 @@ const sleepScenes = {
       n("정치범만 평소처럼 책을 읽고 있다."),
       n("...아니, 책을 읽는 척하면서 주변을 살피고 있다."),
       n("다들 뭔가 알고 있는 것 같다. 나만 모르는 건가?"),
-      n("곧 저녁 식사 시간이다."),
+      n("곧 운동 시간이다."),
     ],
     actions: () => [
-      action("메시아에게 다가간다.", "day_three_messiah_confirm", [cond.flag("knowMessiahPlan")]),
-      action("방화범에게 다가간다.", "day_three_arsonist_confirm", [cond.flag("knowArsonistPlan")]),
-      action("저녁을 먹으러 간다.", "day_three_dinner")
+      action("메시아의 계획을 들으러 간다.", "messiah_listen_to_plan_detail", [cond.flag("knowMessiahPlan")]),
+      action("방화범의 계획을 들으러 간다.", "arsonist_listen_to_plan_detail", [cond.flag("knowArsonistPlan")]),
+      action("운동장으로 간다.", "day_three_yard")
     ]
   }),
 

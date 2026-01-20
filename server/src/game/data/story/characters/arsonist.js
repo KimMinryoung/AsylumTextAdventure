@@ -287,7 +287,7 @@ const arsonistScenes = {
     ]
   }),
 
-  ...defineScene("mediator_arsonist_detail", {
+  ...defineScene("arsonist_listen_to_plan_detail", {
     title: "방화범의 계획",
     location: "workshop",
     description: [
@@ -295,12 +295,12 @@ const arsonistScenes = {
         d("arsonist", "넌 내가 무섭다고 도망가지 않았어. 그래서 믿을 수 있어."),
         d("arsonist", "오늘 밤 이 곳을 태울 거야. 불이 나면 혼란이 생기고, 그 틈에 도망치는 거지."),
         d("arsonist", "기름이 필요해. 작업장에 있잖아. 구해줄 수 있어?"),
-        n("당신이 그를 중재했기에 그도 당신의 의견을 들을 것 같다.")
     ],
     effects: [eff.rel("arsonist")],
     actions: () => [
-      action("기름을 구하러 간다.", "workshop_steal_oil_mediator"),
-      action("피해를 줄이도록 설득한다.", "arsonist_reconsider"),
+      action("기름을 건네준다.", "arsonist_ready", [cond.has("라이터 기름")]),
+      action("기름을 구하러 간다.", "workshop_steal_oil_mediator", [cond.notHas("라이터 기름")]),
+      action("피해를 줄이도록 설득한다.", "arsonist_reconsider", [cond.flag("conflictMediator")]),
       action("다른 방법도 살펴본다.", "day_three_afternoon")
     ]
   }),
@@ -330,7 +330,7 @@ const arsonistScenes = {
     actions: () => [
       action("기름을 건네준다.", "arsonist_ready", [cond.has("라이터 기름")]),
       action("\"아직 구하지 못했어...\"", "arsonist_disappointed"),
-      action("\"사람들이 다칠 수 있어. 다시 생각해봐.\"", "arsonist_reconsider", [cond.relMin("arsonist", 1)])
+      action("\"사람들이 다칠 수 있어. 다시 생각해봐.\"", "arsonist_reconsider", [cond.relMin("arsonist", 2)])
     ]
   }),
 

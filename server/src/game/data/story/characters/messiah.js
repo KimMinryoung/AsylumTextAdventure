@@ -150,7 +150,7 @@ const messiahScenes = {
     title: "지옥",
     location: "cafeteria",
     description: [
-              d("messiah", "그렇지. 이곳은 지옥이다. 육체의 지옥이자 영혼의 지옥."),
+        d("messiah", "그렇지. 이곳은 지옥이다. 육체의 지옥이자 영혼의 지옥."),
         n("메시아가 죽 그릇을 내려다보며 말을 잇는다."),
         d("messiah", "하지만 지옥에도 구원은 있다. 나는 그것을 보았고, 너에게도 보여줄 수 있어."),
         d("messiah", "매일 밤 우리는 기도 모임을 연다. 마음의 평화를 원한다면... 언제든 환영이야."),
@@ -212,7 +212,7 @@ const messiahScenes = {
     ]
   }),
 
-  ...defineScene("mediator_messiah_detail", {
+  ...defineScene("messiah_listen_to_plan_detail", {
     title: "메시아의 계획",
     location: "workshop",
     description: [
@@ -223,7 +223,8 @@ const messiahScenes = {
     ],
     effects: [eff.flag("messiahKeyMission")],
     actions: () => [
-      action("열쇠를 구해보겠다고 한다.", "day_three_key_heist"),
+      action("열쇠를 건넨다.", "messiah_key_delivery", [cond.has("환기구 카드키")]),
+      action("열쇠를 구해보겠다고 한다.", "day_three_key_heist", [cond.notHas("환기구 카드키")]),
       action("다른 방법도 살펴본다.", "day_three_afternoon")
     ]
   }),
@@ -232,17 +233,23 @@ const messiahScenes = {
     title: "열쇠 전달",
     location: "yard",
     description: [
-        n("메시아에게 다가가 몰래 카드키를 전달한다."),
-        n("메시아의 눈이 환하게 빛난다."),
-        d("messiah", "해냈구나, 형제여... 이것으로 구원의 문이 열릴 것이다."),
-        d("messiah", "오늘 밤 2시, 환기구 앞에서 만나자. 구원이 가까워졌다..."),
+      n("주변을 살핀다. 간수들은 다른 쪽을 보고 있다."),
+      d("player", "(속삭임) 열쇠... 가져왔어요."),
+      n("메시아의 눈이 빛난다."),
+      d("messiah", "해냈구나, 자매여... 이것으로 구원의 문이 열릴 것이다."),
+      d("messiah", "오늘 밤 2시, 환기구 앞에서 만나자. 구원이 가까워졌다..."),
+      n("손을 맞잡는 척하며 카드키를 전달한다."),
+      n("메시아가 능숙하게 소매 안으로 숨긴다."),
+      d("messiah", "(속삭임) 오늘 밤 자정. 정전이 일어나면 환기구로 와."),
+      d("messiah", "(속삭임) 우리와 함께 구원받게 될 거야."),
+      n("그가 당신의 손을 꽉 쥔다. 손이 차갑다."),
+      d("messiah", "믿음을 가져. 모든 게 계획대로 될 거야."),
     ],
-    effects: [eff.flag("messiahKeyDelivered"), eff.rel("messiah", 3)],
+    effects: [eff.flag("messiahKeyDelivered"), eff.drop("환기구 카드키"), eff.rel("messiah", 3)],
     actions: () => [
-      action("고개를 끄덕이고 물러난다.", "day_three_evening")
+      action("고개를 끄덕이고 물러난다.", "day_three_dinner")
     ]
   }),
-
 };
 
 module.exports = messiahScenes;
