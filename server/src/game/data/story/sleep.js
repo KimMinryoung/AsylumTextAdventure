@@ -330,7 +330,6 @@ const sleepScenes = {
     actions: () => [
       action("메시아에게 다가간다.", "day_three_messiah_confirm", [cond.flag("knowMessiahPlan")]),
       action("방화범에게 다가간다.", "day_three_arsonist_confirm", [cond.flag("knowArsonistPlan")]),
-      action("정치범에게 다가간다.", "day_three_political_check"),
       action("저녁을 먹으러 간다.", "day_three_dinner")
     ]
   }),
