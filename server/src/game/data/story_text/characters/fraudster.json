@@ -1,0 +1,169 @@
+{
+  "scenes": {
+    "talk_fraudster": {
+      "script": [
+        "사기꾼이 능글맞은 미소를 지으며 당신에게 다가온다.",
+        "fraudster: 오, 새 친구. 반가워. 여기선 '김 사장'이라고 불러.",
+        "fraudster: 근데 말이야, 여기 간수들 중에 **매수 가능한 놈**이 있어. 야간 근무 서는 '박' 간수라고.",
+        "fraudster: 혹시 밖에 연락할 사람 있어? 있으면 거래 좀 해보자고."
+      ],
+      "actions": [
+        "\"어떻게 사기를 치게 됐어요?\"",
+        "\"연락할 사람이 있을지도...\"",
+        "\"없어. 난 버려진 몸이야.\"",
+        "\"사기꾼 말을 어떻게 믿어?\""
+      ],
+      "location": "cell"
+    },
+    "fraudster_past": {
+      "script": [
+        "fraudster: ...내가 왜 사기꾼이 됐는지 궁금해? 재밌는 이야기는 아닌데.",
+        "fraudster: 나도 원래는 **평범한 회사원**이었어. 근데 회사가 망했어. 대표가 도주한 거야.",
+        "fraudster: 그때 깨달았어. 정직하게 살아봤자 호구 되는 거더라고."
+      ],
+      "actions": [
+        "\"그러다 어떻게 커졌어요?\"",
+        "\"...그래서, 탈출 얘기는?\""
+      ],
+      "location": "cell"
+    },
+    "fraudster_past_2": {
+      "script": [
+        "fraudster: 처음 100만 원 뜯었을 때... 손이 떨렸어. 근데 열 번째쯤 되니까... **아무렇지도 않았어**.",
+        "fraudster: 3년 만에 127억을 모았어. 근데 내 동업자 새끼가 배신했어."
+      ],
+      "actions": [
+        "\"어떻게 하는 건데?\"",
+        "\"피해자들한테 미안하진 않아?\""
+      ],
+      "location": "cell"
+    },
+    "fraudster_guilt": {
+      "script": [
+        "사기꾼이 잠시 멈칫한다.",
+        "fraudster: 한 할머니가 있었어. 전 재산 3천만 원을 맡기셨지. 나중에 들었는데... 한강에 뛰어들었대.",
+        "fraudster: 그래서 나가면... 그 아들한테 돈 좀 보내주려고. 찝찝하니까."
+      ],
+      "actions": [
+        "거래를 제안받는다.",
+        "거절하고 물러난다."
+      ],
+      "location": "cell"
+    },
+    "fraudster_deal_talk": {
+      "script": [
+        "fraudster: 박 간수는 돈에 약해. 5천만 원이면 넘어와.",
+        "fraudster: 문제는 밖에 있는 내 조직에 연락하는 거야. 면회 온 사람한테 메모를 전달하면 돼."
+      ],
+      "actions": [
+        "\"연락할 사람이 있을지도...\"",
+        "\"없어. 난 버려진 몸이야.\""
+      ],
+      "location": "cell"
+    },
+    "fraudster_deal": {
+      "script": [
+        "fraudster: 오, 그래? 그럼 이야기가 되네.",
+        "fraudster: 내일 면회 시간에 방법을 알려줄게. 어때, 나쁘지 않지?"
+      ],
+      "actions": [
+        "일단 알겠다고 한다."
+      ],
+      "location": "cell"
+    },
+    "fraudster_reject": {
+      "script": [
+        "fraudster: 그래? 안됐네. 뭐, 다른 방법을 찾아봐야지."
+      ],
+      "actions": [
+        "다른 죄수와 이야기한다.",
+        "침대로 가서 쉰다."
+      ],
+      "location": "cell"
+    },
+    "fraudster_suspicious": {
+      "script": [
+        "fraudster: 하하, 날카롭네. 그래, 내가 사기꾼인 건 맞아. 하지만 나는 **거래**에는 정직하거든."
+      ],
+      "actions": [
+        "\"...일리가 있네.\"",
+        "\"그래도 됐어.\""
+      ],
+      "location": "cell"
+    },
+    "cafeteria_fraudster": {
+      "script": [
+        "fraudster: 여긴 정보가 곧 생존이야. 물론 공짜는 없어."
+      ],
+      "actions": [
+        "\"무슨 정보를 갖고 있어?\"",
+        "\"대가가 뭔데?\"",
+        "\"그냥 조용히 먹고 싶어서 왔어.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_info": {
+      "script": [
+        "fraudster: **탈출 루트**? 다 알고 있어."
+      ],
+      "actions": [
+        "\"탈출 루트를 알려줘.\"",
+        "\"간수들 순찰 시간이나 알려줘.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_escape": {
+      "script": [
+        "fraudster: 루트는 세 개야. **지하 하수도**, **옥상**, 그리고 **정문 돌파**."
+      ],
+      "actions": [
+        "고개를 끄덕인다."
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_guards": {
+      "script": [
+        "fraudster: 새벽 2시부터 3시 사이가 가장 느슨해. 그리고 수요일 밤은 간수장이 외출해."
+      ],
+      "actions": [
+        "\"고마워.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_price": {
+      "script": [
+        "fraudster: 대가? 담배 한 보루 가져와. 없으면 부탁을 들어주거나."
+      ],
+      "actions": [
+        "\"생각해 볼게.\"",
+        "\"됐어.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_quiet": {
+      "script": [
+        "fraudster: 하, 그래? 의외네. 조용히 먹고 싶다는 거 이해해."
+      ],
+      "actions": [
+        "식사를 마친다."
+      ],
+      "location": "cafeteria"
+    },
+    "day_three_fraudster_check": {
+      "script": [],
+      "actions": [
+        "\"대가가 뭔데?\"",
+        "\"좋아, 믿을게.\""
+      ],
+      "location": "workshop"
+    },
+    "fraudster_catch_revealed": {
+      "script": [],
+      "actions": [
+        "\"알았어. 일단 나가는 게 먼저야.\"",
+        "\"사기는 더 이상 안 해.\""
+      ],
+      "location": "workshop"
+    }
+  }
+}

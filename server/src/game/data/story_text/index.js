@@ -1,0 +1,41 @@
+/**
+ * 모든 텍스트 JSON 파일을 병합하여 export
+ */
+
+const cafeteria = require('./cafeteria.json');
+const characters_arsonist = require('./characters/arsonist.json');
+const characters_fraudster = require('./characters/fraudster.json');
+const characters_groper = require('./characters/groper.json');
+const characters_guard = require('./characters/guard.json');
+const characters_messiah = require('./characters/messiah.json');
+const characters_pedophile = require('./characters/pedophile.json');
+const characters_political = require('./characters/political.json');
+const characters_wifekiller = require('./characters/wifekiller.json');
+const daily = require('./daily.json');
+const endings = require('./endings.json');
+const escape = require('./escape.json');
+const intro = require('./intro.json');
+const sleep = require('./sleep.json');
+const workshop = require('./workshop.json');
+const yard = require('./yard.json');
+
+const allScenes = {
+  ...cafeteria.scenes,
+  ...characters_arsonist.scenes,
+  ...characters_fraudster.scenes,
+  ...characters_groper.scenes,
+  ...characters_guard.scenes,
+  ...characters_messiah.scenes,
+  ...characters_pedophile.scenes,
+  ...characters_political.scenes,
+  ...characters_wifekiller.scenes,
+  ...daily.scenes,
+  ...endings.scenes,
+  ...escape.scenes,
+  ...intro.scenes,
+  ...sleep.scenes,
+  ...workshop.scenes,
+  ...yard.scenes,
+};
+
+module.exports = { scenes: allScenes };

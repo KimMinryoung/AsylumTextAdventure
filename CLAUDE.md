@@ -36,13 +36,21 @@ npm run build            # Production build
 - **Game Engine**: `src/game/GameEngine.js` - Core logic for state, conditions, effects, save/load
 - **SceneBuilder**: `src/game/SceneBuilder.js` - Helper for defining scenes with auto-generated action IDs
 
-### Story Data (`/server/src/game/data/story/`)
-Modular story structure organized by game section:
-- `intro.js` - Day 1 opening
-- `workshop.js`, `yard.js`, `cafeteria.js`, `sleep.js` - Daily activities
+### Story Data (Logic/Text Separation)
+Story is split into logic and text for maintainability:
+
+**`/server/src/game/data/story_logic/`** - Scene logic (conditions, effects, actions)
+- `intro.js`, `daily.js`, `workshop.js`, `yard.js`, `cafeteria.js`, `sleep.js` - Daily activities
 - `escape.js` - Escape sequences
 - `endings.js` - All ending scenarios
-- `characters/` - Individual NPC dialogue files (messiah, fraudster, wifekiller, groper, arsonist, pedophile, political)
+- `characters/` - NPC-specific logic (messiah, fraudster, wifekiller, groper, arsonist, pedophile, political, guard)
+- `index.js` - **Main entry point**, initializes text data and exports all scenes
+
+**`/server/src/game/data/story_text/`** - Text content (JSON)
+- Matching JSON files for each logic module (e.g., `intro.json`, `characters/messiah.json`)
+- `index.js` - Merges all text JSON files
+
+**`/server/src/game/data/story/`** - Legacy (deprecated)
 
 ### Frontend (`/client`)
 - **App.js**: Main container with game state logic
@@ -57,16 +65,33 @@ Modular story structure organized by game section:
 - **Inventory, flags, visited locations, unlocked endings**
 
 ### Scene Definition Pattern
-Use SceneBuilder for new scenes - action IDs are auto-generated as `{sceneId}_act_{index}`:
+Use SceneBuilder's `defineScene` for logic, with text stored separately in JSON:
+
+**Logic file (`story_logic/*.js`):**
 ```javascript
-const { scene, action } = require('../SceneBuilder');
+const { cond, eff, action, defineScene } = require('../../SceneBuilder');
 
 module.exports = {
-  ...scene('scene_id', '장면 설명')
-    .action(action('선택지 텍스트').next('next_scene'))
-    .action(action('조건부 선택').condition({ hasItem: 'key' }).next('secret_scene'))
-    .build()
+  ...defineScene("scene_id", { effects: [eff.rel("guard", 1)] }, () => [
+    action("next_scene"),
+    action("conditional_scene", [cond.hasItem("key")], [eff.flag("unlocked")])
+  ])
 };
+```
+
+**Text file (`story_text/*.json`):**
+```json
+{
+  "scenes": {
+    "scene_id": {
+      "description": "장면 설명",
+      "actions": {
+        "next_scene": "선택지 텍스트",
+        "conditional_scene": "조건부 선택"
+      }
+    }
+  }
+}
 ```
 
 ### Text Formatting (Client-side)

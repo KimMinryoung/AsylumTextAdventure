@@ -1,0 +1,100 @@
+const { cond, eff, action, defineScene } = require('../../SceneBuilder');
+
+const scenes = {
+  ...defineScene("workshop", () => [
+    action("gameover_groper_trap", [cond.flag("groperEnemy")]),
+    action("workshop_steal_oil", [cond.flag("knowArsonistPlan"), cond.notFlag("groperEnemy")], [eff.getItem("라이터 기름")]),
+    action("workshop_steal_tool", [cond.notFlag("groperEnemy")], [eff.getItem("작은 드라이버")]),
+    action("workshop_normal", [cond.notFlag("groperEnemy")]),
+    action("workshop_examine_press")
+  ]),
+
+  ...defineScene("workshop_examine_press", { effects: [eff.flag("knowWorkshopDanger")] }, () => [
+    action("workshop_accident_truth"),
+    action("workshop_normal")
+  ]),
+
+  ...defineScene("workshop_accident_truth", { effects: [eff.flag("knowGroperDanger")] }, () => [
+    action("cafeteria_arrival")
+  ]),
+
+  ...defineScene("workshop_steal_oil", () => [
+    action("cafeteria_arrival")
+  ]),
+
+  ...defineScene("workshop_steal_tool", () => [
+    action("cafeteria_arrival")
+  ]),
+
+  ...defineScene("workshop_normal", () => [
+    action("talk_wifekiller"),
+    action("cafeteria_arrival")
+  ]),
+
+  ...defineScene("workshop_strange_noise", { effects: [eff.flag("heardStrangeNoise")] }, () => [
+    action("workshop_ask_noise"),
+    action("cafeteria_arrival")
+  ]),
+
+  ...defineScene("workshop_ask_noise", { effects: [eff.flag("knowWorkshopHistory")] }, () => [
+    action("cafeteria_arrival")
+  ]),
+
+  ...defineScene("day_three_workshop", () => [
+    action("guard_favor_workshop", [cond.relMin("guard", 2)]),
+    action("day_three_mediator", [cond.flag("conflictMediator")]),
+    action("day_three_key_heist", [cond.flag("messiahKeyMission")]),
+    action("day_three_arsonist_prep", [cond.flag("knowArsonistPlan")]),
+    action("day_three_fraudster_check", [cond.flag("knowFraudsterPlan")]),
+    action("day_three_observe")
+  ]),
+
+  ...defineScene("day_three_mediator", { effects: [eff.flag("knowMessiahPlan"), eff.flag("knowArsonistPlan")] }, () => [
+    action("messiah_listen_to_plan_detail"),
+    action("arsonist_listen_to_plan_detail"),
+    action("day_three_afternoon")
+  ]),
+
+  ...defineScene("day_three_key_heist", () => [
+    action("key_heist_success", [cond.flag("knowKeyStructure")]),
+    action("key_heist_risky"),
+    action("key_heist_distraction", [cond.flag("defendedPedophile")])
+  ]),
+
+  ...defineScene("key_heist_success", { effects: [eff.getItem("환기구 카드키")] }, () => [
+    action("day_three_afternoon")
+  ]),
+
+  ...defineScene("key_heist_risky", () => [
+    action("key_heist_excuse_success", [cond.flag("hurtLeg")]),
+    action("key_heist_caught")
+  ]),
+
+  ...defineScene("key_heist_excuse_success", () => [
+    action("day_three_afternoon")
+  ]),
+
+  ...defineScene("key_heist_caught", () => [
+    action("solitary_cell")
+  ]),
+
+  ...defineScene("key_heist_distraction", { effects: [eff.getItem("환기구 카드키")] }, () => [
+    action("day_three_afternoon")
+  ]),
+
+  ...defineScene("day_three_observe", () => [
+    action("wifekiller_final_help", [cond.relMin("wifekiller", 3)]),
+    action("day_three_afternoon")
+  ]),
+
+  ...defineScene("workshop_glitch", { effects: [eff.flag("machineGlitch")] }, () => [
+    action("confront_groper_workshop"),
+    action("cafeteria_arrival")
+  ]),
+
+  ...defineScene("confront_groper_workshop", { effects: [eff.rel("groper", -2), eff.flag("groperTension")] }, () => [
+    action("cafeteria_arrival")
+  ])
+};
+
+module.exports = scenes;
