@@ -105,8 +105,25 @@ function renderDescription(description) {
   return null;
 }
 
+const findEndingTitle = (descArray) => {
+  if (!Array.isArray(descArray)) return "엔딩";
+
+  for (let i = descArray.length - 1; i >= 0; i--) {
+    const item = descArray[i];
+    
+    const textContent = item.text || (typeof item === 'string' ? item : "");
+
+    const match = textContent.match(/\[(.*?)\]/);
+    
+    if (match) {
+      return match[1];
+    }
+  }
+  return "엔딩";
+};
+
 function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading, message, endingCollection }) {
-  const { title, description, actions, inventory, isEnding, location, visitedLocations, unlockedEndings } = gameState;
+  const { description, actions, inventory, isEnding, location, visitedLocations, unlockedEndings } = gameState;
 
 
   const [showCollection, setShowCollection] = useState(false);
@@ -119,9 +136,8 @@ function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading,
   return (
     <div className="game-screen">
       <div className="game-header">
-        <h2>{title}</h2>
         <div className="header-buttons">
-          <button className="btn btn-info" onClick={toggleCollection} disabled={isLoading}>
+          <button className="btn btn-secondary" onClick={toggleCollection} disabled={isLoading}>
             컬렉션
           </button>
           <button className="btn btn-secondary" onClick={onRestart} disabled={isLoading}>
@@ -171,7 +187,7 @@ function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading,
         )}
 
         <div className="inventory">
-          <h3>Inventory</h3>
+          <h3>소지품</h3>
           {inventory.length > 0 ? (
             <div className="inventory-items">
               {inventory.map((item, index) => (
@@ -181,7 +197,7 @@ function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading,
               ))}
             </div>
           ) : (
-            <p className="inventory-empty">Your inventory is empty.</p>
+            <p className="inventory-empty">가진 게 없다.</p>
           )}
         </div>
       </div>
@@ -200,7 +216,6 @@ function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading,
             <div className="collection-body">
               {selectedEnding ? (
                 <div className="ending-detail">
-                  <h4>{selectedEnding.title}</h4>
                   <div className="ending-desc-container">
                     {renderDescription(selectedEnding.description)}
                   </div>
@@ -219,7 +234,7 @@ function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading,
                         disabled={!isUnlocked}
                         onClick={() => setSelectedEnding(ending)}
                       >
-                        {isUnlocked ? ending.title : "???"}
+                        {isUnlocked ? findEndingTitle(ending.description) : "???"}
                       </button>
                     );
                   })}

@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../../SceneBuilder'
 
 const pedophileScenes = {
   ...defineScene("yard_pedophile", {
-    title: "소아성폭력범",
     location: "yard",
     description: [
         n("당신이 다가가자, 왜소한 안경잡이가 웅크린 몸을 일으키며 위협적인 자세를 취한다. 하지만 이내 주변 간수들의 눈치를 보며 어깨를 움츠린다."),
@@ -17,7 +16,6 @@ const pedophileScenes = {
   }),
 
   ...defineScene("pedophile_kind", {
-    title: "연민",
     location: "yard",
     description: [
         n("당신이 옆에 앉자, 그의 어깨 근육이 눈에 띄게 경직된다. 몸은 본능적으로 타격에 대비하듯 웅크려지지만, 눈빛만은 짐승처럼 날카롭게 당신을 훑는다."),
@@ -33,7 +31,6 @@ const pedophileScenes = {
   }),
 
   ...defineScene("pedophile_deal", {
-    title: "거래 제안",
     location: "yard",
     description: [
         n("당신의 제안에 그가 코웃음을 친다. 하지만 눈빛은 예리하게 빛난다."),
@@ -49,7 +46,6 @@ const pedophileScenes = {
   }),
 
   ...defineScene("pedophile_attack", {
-    title: "린치",
     location: "cell",
     description: [
         n("갑자기 감방 구석에서 소란이 일어난다. 몇몇 죄수들이 소아성폭력범을 둘러싸고 있다."),
@@ -65,7 +61,6 @@ const pedophileScenes = {
   }),
 
   ...defineScene("pedophile_help", {
-    title: "구출",
     location: "cell",
     description: [
         n("당신이 끼어들어 소아성폭력범을 가린다."),
@@ -87,7 +82,6 @@ const pedophileScenes = {
   }),
 
   ...defineScene("day_three_workshop_contempt", {
-    title: "작업장 - 셋째 날",
     location: "workshop",
     description: [
         n("작업장의 기름 냄새가 익숙해졌다. 당신은 프레스 기계 앞에 선다."),
@@ -102,7 +96,6 @@ const pedophileScenes = {
   }),
 
   ...defineScene("pedophile_ignore", {
-    title: "외면",
     location: "cell",
     description: [
         n("당신은 눈을 돌린다. 이 지옥에서 남을 도울 여유 따위는 없다."),

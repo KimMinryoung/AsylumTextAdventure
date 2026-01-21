@@ -2,7 +2,6 @@ const { n, d, eff, action, defineScene } = require('../../SceneBuilder');
 
 const endingScenes = {
   ...defineScene("ending_messiah_enhanced", {
-    title: "완벽한 구원",
     description: [
         n("당신이 전달한 카드키로 메시아가 환기구를 연다."),
         d("messiah", "형제여, 네 믿음이 우리 모두를 구원했다!"),
@@ -17,7 +16,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_messiah_route", {
-    title: "구원의 밤",
     description: [
         n("메시아의 계획대로 움직인다. 밤, 갑자기 수용소 전체가 정전된다."),
         d("messiah", "때가 왔다! 형제들이여, 따라와라!"),
@@ -33,7 +31,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_fraudster_route", {
-    title: "거래의 대가",
     description: [
         n("사기꾼의 계획대로 박 간수에게 접근한다."),
         d("fraudster", "모든 게 준비됐어. 오늘 밤 뒷문으로 빠져나간다."),
@@ -48,7 +45,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_arsonist_safe", {
-    title: "통제된 불꽃",
     description: [
         n("방화범이 동쪽 창고에만 불을 지른다. 약속대로 피해를 최소화했다."),
         n("화재 경보가 울리고 간수들이 몰려간다. 그 틈에 당신과 방화범은 담벼락을 넘는다."),
@@ -62,7 +58,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_arsonist_route", {
-    title: "불의 정화",
     description: [
         n("방화범에게 기름을 전달한다. 그의 눈이 광기로 빛난다."),
         d("arsonist", "완벽해... 오늘 밤, 이 지옥을 태워버릴 거야."),
@@ -77,7 +72,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_warden_route", {
-    title: "약점의 대가",
     description: [
         n("새벽 3시, 간수장이 약속대로 지하 비상구를 열어준다."),
         d("warden", "...꺼져. 다시는 내 앞에 나타나지 마."),
@@ -91,7 +85,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_wall_route", {
-    title: "폭풍의 밤",
     description: [
         n("폭풍우가 몰아치는 밤, 당신은 담벼락 균열 앞에 선다."),
         n("비에 젖은 콘크리트가 부서지기 쉬워졌다. 맨손으로 파헤친다."),
@@ -105,7 +98,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_emergency_route", {
-    title: "친구의 선물",
     description: [
         n("아내 살인범이 알려준 비상구로 향한다."),
         n("지하 창고 옆, 낡은 철문이 있다. 안쪽에서 여는 건 쉽다."),
@@ -120,7 +112,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_solo_success", {
-    title: "고독한 자유",
     description: [
         n("당신은 밤새 걸었다. 숲을 지나고, 들판을 건너고, 작은 마을에 도착했다."),
         n("새벽빛이 하늘을 물들이기 시작한다. 당신은 자유이다."),
@@ -134,7 +125,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_solo_lucky", {
-    title: "운 좋은 탈출",
     description: [
 
         n("...눈을 뜨니 **수용소 밖**이다. 쓰레기 처리장 같은 곳에 떨어진 것 같다."),
@@ -151,7 +141,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_solo_daring", {
-    title: "전설의 탈출",
     description: [
         n("당신은 밤새 도망쳤다. 추격대가 따라왔지만 따돌렸다."),
         n("새벽이 밝아올 무렵, 당신은 국경 근처의 작은 마을에 도착한다."),
@@ -164,7 +153,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_solo_redemption", {
-    title: "구원",
     description: [
         n("하수도 출구로 기어나온다. 숲속이다. 새가 지저귀고, 햇빛이 따사롭다."),
         n("당신은 피투성이의 손을 바라본다. 이 손으로 자유를 쟁취했다."),
@@ -176,7 +164,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_solo_despair", {
-    title: "절망",
     location: "solitary",
     description: [
 
@@ -193,7 +180,6 @@ const endingScenes = {
   }),
 
   ...defineScene("ending_surrender", {
-    title: "체념",
     location: "cell",
     description: [
         n("당신은 탈출을 포기한다. 어차피 밖에 나가봤자 뭐가 달라지겠는가."),
@@ -208,7 +194,6 @@ const endingScenes = {
   }),
 
   ...defineScene("gameover_solitary_madness", {
-    title: "독방의 끝",
     location: "solitary",
     description: [
         n("독방에 갇힌 지 며칠이 지났는지 알 수 없다."),
@@ -228,7 +213,6 @@ const endingScenes = {
 
 
   ...defineScene("gameover_messiah_followers", {
-    title: "이단자의 최후",
     location: "cell",
     
     description: [
@@ -250,7 +234,6 @@ const endingScenes = {
   }),
 
   ...defineScene("gameover_burned_alive", {
-    title: "화염 속에서",
     location: "cell",
     description: [
               n("한밤중, 굉음과 함께 눈이 번쩍 떠진다."),
@@ -271,7 +254,6 @@ const endingScenes = {
   }),
 
   ...defineScene("gameover_groper_trap", {
-    title: "덫",
     location: "workshop",
     description: [
         n("한참 작업에 집중하고 있는데 어디선가 중얼거리는 소리가 들린다."),
@@ -290,7 +272,6 @@ const endingScenes = {
   }),
 
   ...defineScene("gameover_guard_murder", {
-    title: "본보기",
     location: "yard",
     description: [
         n("간수의 얼굴이 핏빛으로 물든다."),
@@ -312,7 +293,6 @@ const endingScenes = {
   }),
 
   ...defineScene("gameover_wifekiller_rage", {
-    title: "치명적 실수",
     location: "cell",
     description: [
         n("아내 살인범의 눈빛이 순간적으로 변한다. 깊은 슬픔이 살의로 바뀐다."),

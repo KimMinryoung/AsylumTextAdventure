@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../SceneBuilder');
 
 const introScenes = {
   ...defineScene("entrance", {
-    title: "수용소 입소",
     location: "corridor",
     description: [
       n("무겁고 녹슨 **철문**이 비명 같은 쇳소리를 내며 열린다."),
@@ -30,7 +29,6 @@ const introScenes = {
   }),
 
   ...defineScene("entrance_candy", {
-    title: "사탕",
     location: "corridor",
     description: [
       n("간수의 표정이 살짝 굳는다."),
@@ -50,7 +48,6 @@ const introScenes = {
   }),
 
   ...defineScene("entrance_beg", {
-    title: "굴욕",
     location: "corridor",
     description: [
       n("당신은 고개를 깊이 숙이며 용서를 구한다."),
@@ -70,7 +67,6 @@ const introScenes = {
   }),
 
   ...defineScene("entrance_stare", {
-    title: "반항",
     location: "corridor",
     description: [
       n("당신은 아무 말 없이 간수의 눈을 똑바로 쏘아본다."),
@@ -92,7 +88,6 @@ const introScenes = {
   }),
 
   ...defineScene("entrance_key", {
-    title: "관찰",
     location: "corridor",
     description: [
       n("간수가 당신의 죄목을 읊으며 훈계하는 동안, 당신은 고개를 숙인 척하며 그의 허리춤을 주시한다."),
@@ -112,7 +107,6 @@ const introScenes = {
   }),
 
   ...defineScene("cell_arrival", {
-    title: "7번 감방",
     location: "cell",
     description: [
       n("축축한 복도를 지나 **7번 감방** 앞에 도착한다."),
@@ -140,7 +134,6 @@ const introScenes = {
   }),
 
   ...defineScene("cell_examine_structure", {
-    title: "구조 파악",
     location: "cell",
     description: [
       n("습관적으로 공간을 스캔한다. 레벨 디자인 하듯이."),
@@ -167,7 +160,6 @@ const introScenes = {
   }),
 
   ...defineScene("cell_introduction_dev", {
-    title: "게임 개발자",
     location: "cell",
     description: [
       n("당신은 한숨을 쉬며 고개를 끄덕인다."),
@@ -200,7 +192,6 @@ const introScenes = {
   }),
 
   ...defineScene("cell_arsonist_lighter", {
-    title: "라이터",
     location: "cell",
     description: [
       d("player", "저기... 그 라이터 어디서 났어요? 반입금지 아니에요?"),
@@ -227,7 +218,6 @@ const introScenes = {
   }),
 
   ...defineScene("cell_introduction", {
-    title: "자기소개",
     location: "cell",
     description: [
       n("당신은 목소리를 가다듬고 자신을 소개한다."),
@@ -257,7 +247,6 @@ const introScenes = {
   }),
 
   ...defineScene("cell_silent", {
-    title: "침묵",
     location: "cell",
     description: [
       n("당신은 아무 말 없이 감방 구석의 빈 침대로 향한다."),
@@ -282,7 +271,6 @@ const introScenes = {
   }),
 
   ...defineScene("cell_ask_note", {
-    title: "쪽지",
     location: "cell",
     description: [
       d("player", "저기요, 이 침대 원래 누가 썼어요? 매트리스에서 이상한 쪽지가..."),
@@ -306,7 +294,6 @@ const introScenes = {
   }),
 
   ...defineScene("cell_ask_solitary", {
-    title: "독방 이야기",
     location: "cell",
     description: [
       n("정치범이 한숨을 쉬며 말한다."),
@@ -332,7 +319,6 @@ const introScenes = {
   }),
 
   ...defineScene("cell_observe", {
-    title: "관찰",
     location: "cell",
     description: [
       n("당신은 눈을 가늘게 뜨고 감방 안의 죄수들을 하나하나 살핀다."),

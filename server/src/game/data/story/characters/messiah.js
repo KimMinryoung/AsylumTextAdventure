@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../../SceneBuilder'
 
 const messiahScenes = {
   ...defineScene("talk_messiah", {
-    title: "메시아와의 대화",
     location: "cell",
     description: [
       d("messiah", "나에게 관심이 있는가, 새로운 양이여?"),
@@ -19,7 +18,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("messiah_origin", {
-    title: "메시아의 기원",
     location: "cell",
     description: [
       n("메시아의 눈빛이 머나먼 곳을 바라본다."),
@@ -34,7 +32,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("messiah_origin_2", {
-    title: "메시아의 탄생",
     location: "cell",
     description: [
       d("messiah", "어느 날, 한 아이가 찾아왔어. 암 말기였지. 의학으로는 가망이 없었어."),
@@ -48,7 +45,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("messiah_trust", {
-    title: "메시아의 신뢰",
     location: "cell",
     description: [
       n("메시아의 얼굴에 환한 미소가 번진다."),
@@ -61,7 +57,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("messiah_doubt", {
-    title: "유보",
     location: "cell",
     description: [
       d("messiah", "의심은 지혜의 시작이지... 하지만 너무 오래 망설이면 기회는 사라진다."),
@@ -73,7 +68,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("messiah_reject", {
-    title: "거부",
     location: "cell",
     description: [
       n("메시아의 눈빛이 순간 얼어붙는다."),
@@ -90,7 +84,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("yard_messiah", {
-    title: "메시아의 설교",
     location: "yard",
     description: [
       d("messiah", "어서 와라, 자매여. 믿는 자들만이 새로운 세상을 맞이하리라."),
@@ -103,7 +96,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("messiah_plan_detail", {
-    title: "계획의 상세",
     location: "yard",
     description: [
         n("메시아가 당신을 옆으로 데려가 낮은 목소리로 속삭인다."),
@@ -119,7 +111,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("messiah_mission_accept", {
-    title: "임무 수락",
     location: "yard",
     description: [
       d("messiah", "간수장은 저녁에 **의무실**에 들러. 그때가 기회야."),
@@ -130,7 +121,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("cafeteria_messiah", {
-    title: "메시아의 테이블",
     location: "cafeteria",
     description: [
         n("당신이 다가가자 메시아의 추종자들이 경계의 눈빛을 보낸다. 하지만 메시아가 손을 들어 그들을 제지한다."),
@@ -147,7 +137,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("cafeteria_messiah_hell", {
-    title: "지옥",
     location: "cafeteria",
     description: [
         d("messiah", "그렇지. 이곳은 지옥이다. 육체의 지옥이자 영혼의 지옥."),
@@ -164,7 +153,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("cafeteria_messiah_tough", {
-    title: "강함",
     location: "cafeteria",
     description: [
         n("메시아의 눈이 가늘어진다. 탐구하듯 당신을 바라본다."),
@@ -180,7 +168,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("cafeteria_messiah_question", {
-    title: "질문",
     location: "cafeteria",
     description: [
         n("메시아의 미소가 살짝 굳는다. 추종자들 사이에 긴장감이 흐른다."),
@@ -197,7 +184,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("cafeteria_messiah_join", {
-    title: "환영",
     location: "cafeteria",
     description: [
         d("messiah", "현명한 선택이야."),
@@ -213,7 +199,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("messiah_listen_to_plan_detail", {
-    title: "메시아의 계획",
     location: "workshop",
     description: [
         n("메시아가 당신을 구석으로 데려간다."),
@@ -230,7 +215,6 @@ const messiahScenes = {
   }),
 
   ...defineScene("messiah_key_delivery", {
-    title: "열쇠 전달",
     location: "yard",
     description: [
       n("주변을 살핀다. 간수들은 다른 쪽을 보고 있다."),

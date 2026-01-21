@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../../SceneBuilder'
 
 const groperScenes = {
   ...defineScene("talk_groper", {
-    title: "치한과의 대화",
     location: "cell",
     description: [
       d("groper", "뭐야... 뭘 봐? 나한테 뭔 볼일이야?"),
@@ -17,7 +16,6 @@ const groperScenes = {
   }),
 
   ...defineScene("groper_threat", {
-    title: "위협",
     location: "cell",
     description: [
         n("치한의 얼굴이 순간 일그러진다. 히죽거리던 웃음이 사라지고 싸늘한 눈빛이 드러난다."),
@@ -34,7 +32,6 @@ const groperScenes = {
   }),
 
   ...defineScene("groper_past", {
-    title: "치한의 과거",
     location: "cell",
     description: [
         n("치한이 음습하게 웃으며 과거를 회상한다."),
@@ -53,7 +50,6 @@ const groperScenes = {
   }),
 
   ...defineScene("groper_info", {
-    title: "치한의 정보",
     location: "cell",
     description: [
         n("치한이 주위를 두리번거린다."),
@@ -70,7 +66,6 @@ const groperScenes = {
   }),
 
   ...defineScene("cafeteria_groper_event", {
-    title: "소란",
     location: "cafeteria",
     description: [
       n("식당 한쪽에서 소란이 일어나고 있다. **치한**이 어떤 죄수에게 접근하고 있다."),

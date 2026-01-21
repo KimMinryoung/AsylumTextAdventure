@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../SceneBuilder');
 
 const workshopScenes = {
   ...defineScene("workshop", {
-    title: "작업장",
     location: "workshop",
     description: [
       n("작업장은 기름 냄새와 금속 소리로 가득하다. 죄수들이 기계 앞에서 단순 작업을 반복하고 있다."),
@@ -24,7 +23,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("workshop_examine_press", {
-    title: "프레스 기계",
     location: "workshop",
     description: [
       n("직업병이 또 도졌다. 기계 구조를 분석하기 시작한다."),
@@ -48,7 +46,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("workshop_accident_truth", {
-    title: "사고의 진실",
     location: "workshop",
     description: [
       n("아내 살인범이 주변을 살피며 목소리를 낮춘다."),
@@ -72,7 +69,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("workshop_steal_oil", {
-    title: "기름 확보",
     location: "workshop",
     description: [
       n("간수가 졸고 있는 틈을 타 기름통에 다가간다."),
@@ -94,7 +90,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("workshop_steal_tool", {
-    title: "공구 확보",
     location: "workshop",
     description: [
       n("공구 벽 앞을 지나가는 척하며 작은 드라이버 하나를 소매 안에 숨긴다."),
@@ -113,7 +108,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("workshop_normal", {
-    title: "평범한 작업",
     location: "workshop",
     description: [
       n("당신은 위험을 감수하지 않기로 한다. 묵묵히 기계를 작동시키며 시간을 보낸다."),
@@ -132,7 +126,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("workshop_strange_noise", {
-    title: "이상한 소리",
     location: "workshop",
     description: [
       n("작업 중 갑자기 기계들이 일제히 멈춘다. 정전인가?"),
@@ -163,7 +156,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("workshop_ask_noise", {
-    title: "소리의 정체",
     location: "workshop",
     description: [
       d("player", "저 소리 대체 뭐예요? 기계 고장?"),
@@ -187,7 +179,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("day_three_workshop", {
-    title: "작업장 - 셋째 날",
     location: "workshop",
     description: [
       n("셋째 날 아침. 오늘따라 공기가 무겁다."),
@@ -206,7 +197,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("day_three_mediator", {
-    title: "중재자의 이점",
     location: "workshop",
     description: [
       n("당신이 첫날 메시아와 방화범 사이의 갈등을 중재한 것을 양쪽 모두 기억하고 있다."),
@@ -227,7 +217,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("day_three_key_heist", {
-    title: "열쇠 작전",
     location: "workshop",
     description: [
       n("메시아의 임무를 수행할 때이다. 간수장의 열쇠를 손에 넣어야 한다."),
@@ -244,7 +233,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("key_heist_success", {
-    title: "완벽한 작전",
     location: "workshop",
     description: [
       n("입소 첫날 관찰한 정보가 떠오른다. 큰 녹슨 열쇠, 작고 반짝이는 열쇠 둘, 그리고 카드키."),
@@ -266,7 +254,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("key_heist_risky", {
-    title: "위험한 시도",
     location: "workshop",
     description: [
       n("간수장이 다른 곳을 볼 때, 열쇠 꾸러미에 손을 뻗는다."),
@@ -283,7 +270,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("key_heist_excuse_success", {
-    title: "위기 모면",
     location: "workshop",
     description: [
       n("당신은 다리를 절뚝거리며 고통스러운 표정을 짓는다."),
@@ -302,7 +288,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("key_heist_caught", {
-    title: "발각",
     location: "workshop",
     description: [
       n("간수장의 눈이 차갑게 빛난다."),
@@ -318,7 +303,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("key_heist_distraction", {
-    title: "주의 분산",
     location: "workshop",
     description: [
       n("당신이 눈짓을 보내자, 소아성폭력범이 알아챈다."),
@@ -341,7 +325,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("day_three_observe", {
-    title: "관찰",
     location: "workshop",
     description: [
       n("당신은 묵묵히 일하면서 주변을 살핀다."),
@@ -360,7 +343,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("workshop_glitch", {
-    title: "오작동",
     location: "workshop",
     description: [
       n("작업 중 갑자기 당신 앞의 프레스 기계가 오작동한다."),
@@ -386,7 +368,6 @@ const workshopScenes = {
   }),
 
   ...defineScene("confront_groper_workshop", {
-    title: "대면",
     location: "workshop",
     description: [
       n("쉬는 시간에 치한에게 다가간다."),

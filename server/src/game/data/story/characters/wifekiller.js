@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../../SceneBuilder'
 
 const wifekillerScenes = {
   ...defineScene("talk_wifekiller_intro", {
-    title: "아내 살인범",
     location: "cell",
     description: [
       n("당신은 돌아선 아내 살인범을 따라간다. 감방 구석 창문 앞에 선 그는 육체노동으로 단련된 건장한 몸을 갖고 있다."),
@@ -21,7 +20,6 @@ const wifekillerScenes = {
   }),
 
   ...defineScene("wifekiller_reject_story", {
-    title: "거절",
     location: "cell",
     description: [
       n("아내 살인범이 잠시 멈칫한다. 그의 눈에 복잡한 감정이 스친다."),
@@ -37,7 +35,6 @@ const wifekillerScenes = {
   }),
 
   ...defineScene("wifekiller_story", {
-    title: "아내 살인범의 진실",
     location: "cell",
     description: [
       n("당신의 말에 아내 살인범이 잠시 멈칫한다."),
@@ -59,7 +56,6 @@ const wifekillerScenes = {
   }),
 
   ...defineScene("wifekiller_bond", {
-    title: "유대",
     location: "cell",
     description: [
       n("당신의 진심 어린 반응에 아내 살인범의 표정이 조금 누그러진다."),
@@ -75,7 +71,6 @@ const wifekillerScenes = {
   }),
 
   ...defineScene("talk_wifekiller", {
-    title: "아내 살인범과의 대화",
     location: "workshop",
     description: [
         n("당신이 말을 걸자, 그가 잠시 손을 멈추고 당신을 본다."),
@@ -90,7 +85,6 @@ const wifekillerScenes = {
   }),
 
   ...defineScene("wifekiller_story_day2", {
-    title: "아내 살인범의 진실",
     location: "workshop",
     description: [
         n("그가 잠시 주위를 살핀다. 아무도 듣고 있지 않다는 걸 확인한 후, 낮은 목소리로 말하기 시작한다."),
@@ -118,7 +112,6 @@ const wifekillerScenes = {
   }),
 
   ...defineScene("wifekiller_sympathy", {
-    title: "동정",
     location: "workshop",
     description: [
         n("당신의 말에 그가 잠시 멈춘다."),
@@ -133,7 +126,6 @@ const wifekillerScenes = {
   }),
 
   ...defineScene("wifekiller_final_help", {
-    title: "아내 살인범의 마지막 도움",
     location: "workshop",
     description: [
         n("아내 살인범이 당신 옆에서 일하며 낮은 목소리로 말한다."),

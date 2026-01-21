@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../SceneBuilder');
 
 const sleepScenes = {
   ...defineScene("first_night", {
-    title: "첫째 날 밤",
     location: "cell",
     description: [
       n("소등 시간이 되자 감방이 어둠에 잠긴다."),
@@ -26,7 +25,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("first_night_investigate", {
-    title: "밤의 소리",
     location: "cell",
     description: [
       n("침대에서 천천히 일어난다. 어둠에 눈이 조금 적응됐다."),
@@ -54,7 +52,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("first_night_sleep", {
-    title: "첫 번째 꿈",
     location: "cell",
     description: [
       n("눈을 감는다. 피곤해서 금방 잠들 줄 알았는데."),
@@ -88,7 +85,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("first_night_wake", {
-    title: "기상",
     location: "cell",
     description: [
       n("눈을 번쩍 뜬다."),
@@ -115,7 +111,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("messiah_cryptic", {
-    title: "메시아의 예언",
     location: "cell",
     description: [
       d("messiah", "넌 창조자잖아. 세계를 만드는 자."),
@@ -139,7 +134,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("day_two_morning", {
-    title: "둘째 날 아침",
     location: "cell",
     description: [
       n("새벽을 알리는 사이렌 소리에 눈을 뜬다."),
@@ -162,7 +156,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("day_two_evening", {
-    title: "둘째 날 저녁",
     location: "cell",
     description: [
       n("감방으로 돌아왔다. 긴 하루였다."),
@@ -185,7 +178,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("day_two_bathroom", {
-    title: "밤의 화장실",
     location: "cell",
     description: [
       n("'밤에 화장실 가지 마라.'"),
@@ -217,7 +209,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("day_two_early_sleep", {
-    title: "이른 취침",
     location: "cell",
     description: [
       n("피곤하다. 내일을 위해 일찍 자자."),
@@ -240,7 +231,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("day_two_nightmare", {
-    title: "둘째 밤의 악몽",
     location: "cell",
     description: [
       n("꿈을 꾼다."),
@@ -270,7 +260,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("day_two_night_explore", {
-    title: "밤의 탐색",
     location: "cell",
     description: [
       n("다른 죄수들이 잠든 틈을 타 감방 안을 조용히 살펴본다."),
@@ -292,7 +281,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("day_three_morning", {
-    title: "셋째 날 아침",
     location: "cell",
     description: [
       n("새벽을 찢는 사이렌 소리에 눈을 뜬다."),
@@ -315,7 +303,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("day_three_afternoon", {
-    title: "셋째 날 오후",
     location: "cell",
     description: [
       n("작업을 마치고 감방으로 돌아왔다."),
@@ -335,7 +322,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("day_three_dinner", {
-    title: "마지막 만찬",
     location: "cafeteria",
     description: [
       n("식당으로 간다. 오늘따라 음식이 더 맛없게 느껴진다."),
@@ -353,7 +339,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("day_three_evening", {
-    title: "셋째 날 저녁",
     location: "cell",
     description: [
       n("감방으로 돌아왔다. 소등까지 1시간."),
@@ -374,7 +359,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("day_four_final", {
-    title: "넷째 날 새벽",
     location: "cell",
     description: [
       n("새벽 2시. 눈을 뜬다."),
@@ -405,7 +389,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("night_whisper", {
-    title: "밤의 속삭임",
     location: "cell",
     description: [
       n("잠이 안 온다. 뒤척이다 보니 속삭이는 소리가 들린다."),
@@ -428,7 +411,6 @@ const sleepScenes = {
   }),
 
   ...defineScene("night_whisper_more", {
-    title: "더 많은 정보",
     location: "cell",
     description: [
       n("조금 더 듣는다."),

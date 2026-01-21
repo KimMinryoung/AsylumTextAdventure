@@ -54,7 +54,6 @@ class GameEngine {
 
     return {
       sceneId: this.currentScene,
-      title: scene.title,
       description: this.processText(scene.description),
       actions: availableActions,
       inventory: this.inventory,

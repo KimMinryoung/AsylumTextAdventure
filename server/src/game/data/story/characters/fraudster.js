@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../../SceneBuilder'
 
 const fraudsterScenes = {
   ...defineScene("talk_fraudster", {
-    title: "사기꾼과의 대화",
     location: "cell",
     description: [
       n("사기꾼이 능글맞은 미소를 지으며 당신에게 다가온다."),
@@ -19,7 +18,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("fraudster_past", {
-    title: "사기꾼의 과거",
     location: "cell",
     description: [
       d("fraudster", "...내가 왜 사기꾼이 됐는지 궁금해? 재밌는 이야기는 아닌데."),
@@ -33,7 +31,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("fraudster_past_2", {
-    title: "사기꾼의 성장",
     location: "cell",
     description: [
       d("fraudster", "처음 100만 원 뜯었을 때... 손이 떨렸어. 근데 열 번째쯤 되니까... **아무렇지도 않았어**."),
@@ -46,7 +43,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("fraudster_guilt", {
-    title: "죄책감",
     location: "cell",
     description: [
       n("사기꾼이 잠시 멈칫한다."),
@@ -60,7 +56,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("fraudster_deal_talk", {
-    title: "사기꾼의 제안",
     location: "cell",
     description: [
       d("fraudster", "박 간수는 돈에 약해. 5천만 원이면 넘어와."),
@@ -73,7 +68,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("fraudster_deal", {
-    title: "거래",
     location: "cell",
     description: [
       d("fraudster", "오, 그래? 그럼 이야기가 되네."),
@@ -85,7 +79,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("fraudster_reject", {
-    title: "거절",
     location: "cell",
     description: [
       d("fraudster", "그래? 안됐네. 뭐, 다른 방법을 찾아봐야지."),
@@ -97,7 +90,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("fraudster_suspicious", {
-    title: "의심",
     location: "cell",
     description: [
       d("fraudster", "하하, 날카롭네. 그래, 내가 사기꾼인 건 맞아. 하지만 나는 **거래**에는 정직하거든."),
@@ -109,7 +101,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("cafeteria_fraudster", {
-    title: "사기꾼의 테이블",
     location: "cafeteria",
     description: [
       d("fraudster", "여긴 정보가 곧 생존이야. 물론 공짜는 없어."),
@@ -122,7 +113,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("cafeteria_fraudster_info", {
-    title: "정보",
     location: "cafeteria",
     description: [
       d("fraudster", "**탈출 루트**? 다 알고 있어."),
@@ -134,7 +124,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("cafeteria_fraudster_escape", {
-    title: "탈출 루트",
     location: "cafeteria",
     description: [
       d("fraudster", "루트는 세 개야. **지하 하수도**, **옥상**, 그리고 **정문 돌파**."),
@@ -146,7 +135,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("cafeteria_fraudster_guards", {
-    title: "순찰 정보",
     location: "cafeteria",
     description: [
       d("fraudster", "새벽 2시부터 3시 사이가 가장 느슨해. 그리고 수요일 밤은 간수장이 외출해."),
@@ -158,7 +146,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("cafeteria_fraudster_price", {
-    title: "대가",
     location: "cafeteria",
     description: [
       d("fraudster", "대가? 담배 한 보루 가져와. 없으면 부탁을 들어주거나."),
@@ -170,7 +157,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("cafeteria_fraudster_quiet", {
-    title: "조용한 식사",
     location: "cafeteria",
     description: [
       d("fraudster", "하, 그래? 의외네. 조용히 먹고 싶다는 거 이해해."),
@@ -181,7 +167,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("day_three_fraudster_check", {
-    title: "사기꾼의 진행 상황",
     location: "workshop",
     description: [
         { type: "narration", text: "사기꾼이 눈짓으로 당신을 구석으로 부른다." },
@@ -196,7 +181,6 @@ const fraudsterScenes = {
   }),
 
   ...defineScene("fraudster_catch_revealed", {
-    title: "숨겨진 조건",
     location: "workshop",
     description: [
         { type: "narration", text: "정치범이 알려준 정보가 떠오른다. '영악한 년이야. 말은 못 믿지만...'" },

@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../SceneBuilder');
 
 const yardScenes = {
   ...defineScene("yard", {
-    title: "운동장",
     location: "yard",
     description: [
       n("운동장은 높은 담벼락으로 둘러싸여 있다. 하늘이 보이는 유일한 장소이다."),
@@ -28,7 +27,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_bow_guard", {
-    title: "굴복",
     location: "yard",
     description: [
       n("고개를 숙인다. 지금 대들어봤자 손해다."),
@@ -50,7 +48,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_walk", {
-    title: "산책",
     location: "yard",
     description: [
       n("당신은 혼자 운동장 가장자리를 걷는다."),
@@ -70,7 +67,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_strange_sound", {
-    title: "이상한 소리",
     location: "yard",
     description: [
       n("담벼락 너머에서 뭔가 들린다."),
@@ -104,7 +100,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_political_talk", {
-    title: "정치범과의 대화",
     location: "yard",
     description: [
       n("정치범과 함께 운동장을 걷는다."),
@@ -130,7 +125,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_crack", {
-    title: "벽의 균열",
     location: "yard",
     description: [
       n("몸을 숙여 스트레칭하는 척하며 균열을 살펴본다."),
@@ -151,7 +145,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_messiah", {
-    title: "메시아의 설교",
     location: "yard",
     description: [
       n("메시아 쪽으로 피한다. 추종자들 사이에 섞여 들어간다."),
@@ -174,7 +167,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_join_messiah", {
-    title: "합류",
     location: "yard",
     description: [
       n("일단 어울리는 게 좋을 것 같다. 정보도 얻을 수 있고."),
@@ -197,7 +189,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_messiah_plan", {
-    title: "메시아의 계획",
     location: "yard",
     description: [
       n("설교가 끝난 후, 메시아가 당신에게 다가온다."),
@@ -221,7 +212,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_decline_messiah", {
-    title: "거절",
     location: "yard",
     description: [
       d("player", "아, 그냥 지나가는 길이에요. 운동하러요."),
@@ -239,7 +229,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_listen_messiah", {
-    title: "경청",
     location: "yard",
     description: [
       n("아무 말 없이 듣기만 한다. 정보 수집이 먼저다."),
@@ -260,7 +249,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_pedophile", {
-    title: "소아성폭력범",
     location: "yard",
     description: [
       n("소아성폭력범에게 다가간다."),
@@ -283,7 +271,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_pedophile_bond", {
-    title: "유대",
     location: "yard",
     description: [
       d("player", "나도 비슷한 취급 받으니까. 여기서 '변태' 소리 듣는 거."),
@@ -308,7 +295,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_pedophile_info", {
-    title: "정보",
     location: "yard",
     description: [
       d("player", "여기 오래 있었어? 뭔가 아는 거 있어?"),
@@ -334,7 +320,6 @@ const yardScenes = {
   }),
 
   ...defineScene("yard_pedophile_thanks", {
-    title: "감사",
     location: "yard",
     description: [
       d("player", "고마워. 유용한 정보야."),
@@ -354,7 +339,6 @@ const yardScenes = {
   }),
 
   ...defineScene("day_three_yard", {
-    title: "셋째 날 운동장",
     location: "yard",
     description: [
       n("오후 운동 시간이다. 하늘에 먹구름이 끼어 있다."),
@@ -373,7 +357,6 @@ const yardScenes = {
   }),
 
   ...defineScene("warden_blackmail", {
-    title: "협박",
     location: "yard",
     description: [
       n("운동 시간이 끝날 무렵, 간수장이 혼자 있는 틈을 노린다."),
@@ -399,7 +382,6 @@ const yardScenes = {
   }),
 
   ...defineScene("wall_crack_plan", {
-    title: "균열 확인",
     location: "yard",
     description: [
       n("담벼락 구석의 균열을 다시 살펴본다."),
@@ -418,7 +400,6 @@ const yardScenes = {
   }),
 
   ...defineScene("wall_plan_set", {
-    title: "계획 수립",
     location: "yard",
     description: [
       n("오늘 밤, 비가 오면 균열을 파보자."),

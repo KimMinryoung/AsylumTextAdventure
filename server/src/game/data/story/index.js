@@ -13,7 +13,6 @@ const scenes = {
 };
 
 const gameData = {
-  title: "수용소 탈출기",
   startScene: "entrance",
   startInventory: [],
   startFlags: {},

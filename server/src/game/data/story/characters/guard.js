@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../../SceneBuilder'
 
 const guardScenes = {
   ...defineScene("yard_bow_guard", {
-    title: "굴복",
     location: "yard",
     description: [
       n("당신은 재빨리 고개를 숙인다."),
@@ -17,7 +16,6 @@ const guardScenes = {
   }),
 
   ...defineScene("cafeteria_guard_friendly", {
-    title: "간수와의 접촉",
     location: "cafeteria",
     description: [
       n("배식이 끝난 틈을 타 간수 근처로 다가간다."),
@@ -33,7 +31,6 @@ const guardScenes = {
   }),
 
   ...defineScene("guard_favor_workshop", {
-    title: "간수의 배려",
     location: "workshop",
     description: [
       n("작업 배치 시간, 당신은 친해진 간수를 발견한다. 그가 눈짓으로 당신을 부른다."),
@@ -46,7 +43,6 @@ const guardScenes = {
   }),
 
   ...defineScene("guard_favor_storage", {
-    title: "창고 정리",
     location: "workshop",
     description: [
       n("창고는 프레스 작업장보다 훨씬 한산하다. 먼지 쌓인 선반들 사이로 낡은 물품들이 널려 있다."),
@@ -61,7 +57,6 @@ const guardScenes = {
   }),
 
   ...defineScene("guard_favor_storage_search", {
-    title: "창고 탐색",
     location: "workshop",
     description: [
       n("당신은 조심스럽게 창고 깊숙이 들어간다."),
@@ -74,7 +69,6 @@ const guardScenes = {
   }),
 
   ...defineScene("guard_night_friendly", {
-    title: "간수와의 대화",
     location: "cell",
     description: [
         n("순찰하는 간수가 당신의 감방 앞에서 멈춘다."),
@@ -93,7 +87,6 @@ const guardScenes = {
   }),
 
   ...defineScene("guard_night_info", {
-    title: "간수의 귀띔",
     location: "cell",
     description: [
         n("당신이 조심스럽게 물어본다."),
@@ -111,7 +104,6 @@ const guardScenes = {
   }),
 
   ...defineScene("guard_night_hostile", {
-    title: "간수의 적의",
     location: "cell",
     description: [
       n("순찰하는 간수가 당신의 감방 앞에서 멈춘다."),

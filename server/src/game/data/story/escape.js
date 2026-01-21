@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../SceneBuilder');
 
 const escapeScenes = {
   ...defineScene("solo_escape_prepared", {
-    title: "완벽한 계획",
     location: "cell",
     description: [
         n("당신은 혼자 탈출을 시도하기로 한다. 하지만 이번엔 **준비가 되어 있다**."),
@@ -15,7 +14,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("solo_escape_execution", {
-    title: "탈출 실행",
     location: "corridor",
     description: [
         n("작은 드라이버로 감방 자물쇠를 딴다. 손이 떨리지만, 침착하게."),
@@ -29,7 +27,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("solo_escape_sewer", {
-    title: "하수도",
     location: "sewer",
     description: [
         n("악취 나는 하수도를 기어간다. 어둠 속에서 손으로 벽을 더듬으며 나아간다."),
@@ -43,7 +40,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("solo_escape_partial", {
-    title: "불완전한 계획",
     location: "cell",
     description: [
         n("당신은 혼자 탈출을 시도하기로 한다."),
@@ -58,7 +54,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("solo_partial_basement", {
-    title: "지하 탐색",
     location: "basement",
     description: [
         n("아내 살인범이 말한 대로, 지하로 내려간다."),
@@ -74,7 +69,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("solo_partial_duct", {
-    title: "환기 덕트",
     location: "basement",
     description: [
         n("소아성폭력범이 지하 2층에 있다고 말한 {{환기 덕트}}가 생각난다."),
@@ -88,7 +82,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("solo_partial_roof", {
-    title: "옥상",
     location: "roof",
     description: [
         n("계단을 올라 옥상으로 향한다."),
@@ -104,7 +97,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("solo_roof_wire", {
-    title: "위험한 도박",
     location: "roof",
     description: [
         n("전선을 양손으로 잡고 건너간다. 아래는 까마득한 어둠이다."),
@@ -120,7 +112,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("solo_roof_gamble", {
-    title: "도박",
     location: "roof",
     description: [
         n("당신은 전선을 미친 듯이 타고 간다. 총성이 들린다!"),
@@ -133,7 +124,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("solo_escape_unprepared", {
-    title: "무모한 시도",
     location: "cell",
     description: [
         n("당신은 혼자 탈출을 시도하기로 한다. 아무도 믿을 수 없으니까."),
@@ -147,7 +137,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("solo_escape_caught", {
-    title: "발각",
     location: "corridor",
     description: [
         n("복도에 발을 내딛는 순간, 손전등 불빛이 당신을 비춘다."),
@@ -162,7 +151,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("solitary_cell", {
-    title: "독방",
     location: "solitary",
     description: [
         n("캄캄한 독방에 던져진다. 문이 닫히고 완전한 어둠이 찾아온다."),
@@ -177,7 +165,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("solitary_discovery", {
-    title: "발견",
     location: "solitary",
     description: [
         n("손으로 바닥을 더듬어본다. 구석에 **금이 간 콘크리트**가 있다."),
@@ -192,7 +179,6 @@ const escapeScenes = {
   }),
 
   ...defineScene("sewer_escape", {
-    title: "하수도",
     location: "sewer",
     description: [
         n("며칠에 걸쳐 구멍을 넓힌다. 손은 피투성이가 되고, 손톱은 빠지지만..."),

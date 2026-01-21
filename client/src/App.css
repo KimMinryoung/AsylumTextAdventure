@@ -59,6 +59,7 @@
 .header-buttons {
   display: flex;
   gap: 10px;
+  margin-left: auto;
 }
 
 .game-content {
@@ -249,13 +250,16 @@
 }
 
 .btn-secondary {
+  background-color: #17a2b8;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
   background: rgba(255, 255, 255, 0.1);
-  color: #e8e8e8;
   border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .btn-secondary:hover:not(:disabled) {
-  background: rgba(255, 255, 255, 0.2);
+  background-color: #138496;
 }
 
 .btn:disabled {
@@ -612,17 +616,4 @@
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-/* 버튼 스타일 (기존 스타일과 어울리게) */
-.btn-info {
-  background-color: #17a2b8;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  border-radius: 4px;
-  cursor: pointer;
-}
-.btn-info:hover {
-  background-color: #138496;
 }

@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../../SceneBuilder'
 
 const politicalScenes = {
   ...defineScene("talk_political", {
-    title: "정치범과의 대화",
     location: "cell",
     description: [
       n("책을 읽던 여자가 고개를 들어 당신을 바라본다."),
@@ -19,7 +18,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("political_family", {
-    title: "정치범의 가족",
     location: "cell",
     description: [
       d("political", "...내가 체포되던 날, 남편은 나를 숨기려다가 총을 맞았어. 눈앞에서."),
@@ -33,7 +31,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("political_request", {
-    title: "정치범의 부탁",
     location: "cell",
     description: [
       d("political", "민아한테 쓴 편지야. 5년 동안 부치지 못했어."),
@@ -46,7 +43,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("political_grateful", {
-    title: "약속",
     location: "cell",
     description: [
       d("political", "고마워... 정말 고마워. 네가 이 지옥에서 나갈 수 있도록 내가 아는 모든 걸 알려줄게."),
@@ -59,7 +55,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("political_advice", {
-    title: "조언",
     location: "cell",
     description: [
       d("political", "지하 3층에 하수도로 연결되는 통로가 있다는 소문이 있어."),
@@ -73,7 +68,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("political_info", {
-    title: "정보",
     location: "cell",
     description: [
       d("political", "**메시아** - 사이비 교주 출신. 그를 따르는 신도들이 밖에서 뭔가 준비 중이야."),
@@ -87,7 +81,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("cafeteria_political", {
-    title: "정치범의 테이블",
     location: "cafeteria",
     description: [
       d("political", "앉아도 돼. 방해가 되진 않을 테니."),
@@ -100,7 +93,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("cafeteria_political_book", {
-    title: "책",
     location: "cafeteria",
     description: [
       d("political", "**'인간의 자유에 대하여'**. 정신의 자유만큼은 빼앗을 수 없어."),
@@ -113,7 +105,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("cafeteria_political_crime", {
-    title: "죄목",
     location: "cafeteria",
     description: [
       d("political", "기자였어. 진실을 썼더니 반역죄로 몰렸지. 후회는 없어."),
@@ -126,7 +117,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("cafeteria_political_quiet", {
-    title: "조용한 동석",
     location: "cafeteria",
     description: [
       n("고요하지만 불편하지 않은 시간이 흐른다."),
@@ -137,7 +127,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("cafeteria_political_agree", {
-    title: "동의",
     location: "cafeteria",
     description: [
       d("political", "내가 아는 걸 알려줄게. **간수장의 비밀**에 대해서."),
@@ -149,7 +138,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("cafeteria_political_body", {
-    title: "육체",
     location: "cafeteria",
     description: [
       d("political", "밖에 있어도 권력에 갇혀 사는 사람들... 그들이 나보다 자유로울까?"),
@@ -160,7 +148,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("cafeteria_political_respect", {
-    title: "존경",
     location: "cafeteria",
     description: [
       d("political", "도와줄 수 있어. **수요일 밤**에 기회가 있어."),
@@ -172,7 +159,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("cafeteria_political_escape", {
-    title: "탈출",
     location: "cafeteria",
     description: [
       d("political", "**수요일 밤**, 간수장이 외출하는 시간이 유일한 틈이야."),
@@ -184,7 +170,6 @@ const politicalScenes = {
   }),
 
   ...defineScene("political_night_talk", {
-    title: "정치범과의 밤 대화",
     location: "cell",
     description: [
       d("political", "내일이 바로 수요일이야. 간수장이 의무실에 가는 시간... 그때가 유일한 틈이야."),

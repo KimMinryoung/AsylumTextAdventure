@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../SceneBuilder');
 
 const cafeteriaScenes = {
   ...defineScene("cafeteria_arrival", {
-    title: "식당",
     location: "cafeteria",
     description: [
       n("저녁 식사 시간을 알리는 종이 울린다. 죄수들이 일제히 **식당**으로 향한다."),
@@ -27,7 +26,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_alone", {
-    title: "혼자 앉기",
     location: "cafeteria",
     description: [
       n("당신은 구석의 빈 테이블에 혼자 앉는다."),
@@ -48,7 +46,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_smell", {
-    title: "이상한 냄새",
     location: "cafeteria",
     description: [
       n("죽을 먹다가 뭔가 이상한 냄새를 맡는다."),
@@ -73,7 +70,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_eat_anyway", {
-    title: "강행",
     location: "cafeteria",
     description: [
       n("눈 딱 감고 죽을 입에 넣는다."),
@@ -92,7 +88,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_move_table", {
-    title: "테이블 이동",
     location: "cafeteria",
     description: [
       n("쥐 시체 옆에서 밥 먹긴 싫다. 테이블을 옮긴다."),
@@ -113,7 +108,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_political_morbid", {
-    title: "어두운 이야기",
     location: "cafeteria",
     description: [
       d("player", "여기서... 사람이 많이 죽어요?"),
@@ -143,7 +137,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_commotion", {
-    title: "소란",
     location: "cafeteria",
     description: [
       n("갑자기 식당 한쪽에서 고함 소리가 터진다."),
@@ -174,7 +167,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_observe_guards", {
-    title: "간수 관찰",
     location: "cafeteria",
     description: [
       n("식당에는 간수가 세 명 있다. 입구에 한 명, 배급구 옆에 한 명, 그리고 순찰하는 한 명."),
@@ -194,7 +186,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_observe_exit", {
-    title: "출입구 관찰",
     location: "cafeteria",
     description: [
       n("식당의 출입구는 두 곳이다. 정문과 **주방으로 통하는 뒷문**."),
@@ -215,7 +206,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_ghost_story", {
-    title: "식당 괴담",
     location: "cafeteria",
     description: [
       n("혼자 앉아 있으니 옆 테이블 대화가 들린다."),
@@ -242,7 +232,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_ghost_detail", {
-    title: "냉동실 이야기",
     location: "cafeteria",
     description: [
       n("대화하던 죄수들에게 슬쩍 다가간다."),
@@ -272,7 +261,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_food_mystery", {
-    title: "음식의 비밀",
     location: "cafeteria",
     description: [
       n("죽을 먹다가 문득 의문이 든다."),
@@ -303,7 +291,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_fraudster_hint", {
-    title: "힌트",
     location: "cafeteria",
     description: [
       d("player", "그게 무슨 뜻이에요?"),
@@ -328,7 +315,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_end", {
-    title: "식사 종료",
     location: "cafeteria",
     description: [
       n("식사 시간 종료를 알리는 종이 울린다."),
@@ -347,7 +333,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_messiah", {
-    title: "메시아의 테이블",
     location: "cafeteria",
     description: [
       n("메시아의 테이블로 다가간다. 추종자들의 시선이 집중된다."),
@@ -373,7 +358,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_messiah_salvation", {
-    title: "구원",
     location: "cafeteria",
     description: [
       d("player", "구원이 뭔데요? 여기서 어떻게 구원받는다는 거예요?"),
@@ -398,7 +382,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_arsonist", {
-    title: "방화범과 식사",
     location: "cafeteria",
     description: [
       n("방화범 옆에 앉는다. 그가 고개를 돌려 당신을 본다."),
@@ -429,7 +412,6 @@ const cafeteriaScenes = {
   }),
 
   ...defineScene("cafeteria_arsonist_past", {
-    title: "방화범의 과거",
     location: "cafeteria",
     description: [
       d("player", "...왜 불을 질렀어요?"),

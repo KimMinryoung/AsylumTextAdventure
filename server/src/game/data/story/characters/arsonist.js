@@ -2,7 +2,6 @@ const { n, d, cond, eff, action, defineScene } = require('../../../SceneBuilder'
 
 const arsonistScenes = {
   ...defineScene("talk_arsonist_day", {
-    title: "방화범과의 대화",
     location: "cell",
     description: [
         n("방화범이 멍하니 허공을 바라보고 있다. 가까이 다가가자 그가 천천히 고개를 돌린다."),
@@ -21,7 +20,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("arsonist_reject_talk", {
-    title: "거부",
     location: "cell",
     description: [
         n("방화범의 눈빛이 차갑게 변한다."),
@@ -36,7 +34,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("arsonist_scar", {
-    title: "방화범의 상처",
     location: "workshop",
     description: [
         n("방화범이 일그러진 얼굴을 손으로 쓸어내린다. 눈빛이 묘하게 그리워하는 듯하다."),
@@ -57,7 +54,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("arsonist_crime", {
-    title: "방화범의 죄",
     location: "workshop",
     description: [
         n("방화범의 눈이 반짝인다. 마치 가장 자랑스러운 이야기를 꺼내는 것처럼."),
@@ -78,7 +74,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("arsonist_calm", {
-    title: "진정",
     location: "workshop",
     description: [
         n("당신이 조심스럽게 어깨를 터치하자, 방화범이 멈칫한다."),
@@ -92,7 +87,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("conflict_messiah_arsonist", {
-    title: "대립",
     location: "cell",
     description: [
         n("갑자기 감방 안에 긴장감이 흐른다. 메시아가 방화범 앞에 서 있다."),
@@ -110,7 +104,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("conflict_mediate", {
-    title: "중재",
     location: "cell",
     description: [
         n("당신이 둘 사이에 끼어든다."),
@@ -128,7 +121,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("conflict_watch", {
-    title: "관망",
     location: "cell",
     description: [
         n("당신은 한 발 뒤로 물러서서 상황을 지켜본다."),
@@ -144,7 +136,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("night_whisper", {
-    title: "밤의 속삭임",
     location: "cell",
     description: [
         n("갑자기 옆 침대에서 속삭이는 소리가 들린다."),
@@ -162,7 +153,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("arsonist_agree", {
-    title: "방화 계획",
     location: "cell",
     description: [
         n("방화범의 얼굴에 광기 어린 미소가 번진다."),
@@ -177,7 +167,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("arsonist_refuse", {
-    title: "거부",
     location: "cell",
     description: [
         d("arsonist", "죽어? 하하... 그게 뭐가 문제야? 여기 있는 년들 다 죽어 마땅한 쓰레기들인데."),
@@ -193,7 +182,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("arsonist_ignore", {
-    title: "무시",
     location: "cell",
     description: [
         n("당신은 눈을 꼭 감고 자는 척한다."),
@@ -206,7 +194,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("cafeteria_arsonist", {
-    title: "방화범의 테이블",
     location: "cafeteria",
     description: [
       d("arsonist", "...왜 여기 앉아?"),
@@ -219,7 +206,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("cafeteria_arsonist_honest", {
-    title: "솔직함",
     location: "cafeteria",
     description: [
       d("arsonist", "...솔직하네. 마음에 들어. 불은... 모든 걸 정화해."),
@@ -231,7 +217,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("cafeteria_arsonist_curious", {
-    title: "호기심",
     location: "cafeteria",
     description: [
       d("arsonist", "궁금해? 이 흉터가? 괴물 구경 왔나 보군."),
@@ -243,7 +228,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("cafeteria_arsonist_silent", {
-    title: "침묵의 식사",
     location: "cafeteria",
     description: [
       d("arsonist", "...시끄럽지 않아서 좋군."),
@@ -254,7 +238,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("cafeteria_arsonist_bond", {
-    title: "교감",
     location: "cafeteria",
     description: [
       d("arsonist", "탈출할 생각이 있다면... 불이 필요할 때가 있을 거야. 그때 날 찾아와."),
@@ -266,7 +249,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("cafeteria_arsonist_time", {
-    title: "시간",
     location: "cafeteria",
     description: [
       d("arsonist", "5년. 하지만 시간은 의미없어. 불만 있으면 어디든 괜찮아."),
@@ -277,7 +259,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("cafeteria_arsonist_apologize", {
-    title: "사과",
     location: "cafeteria",
     description: [
       d("arsonist", "...됐어. 익숙해."),
@@ -288,7 +269,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("arsonist_listen_to_plan_detail", {
-    title: "방화범의 계획",
     location: "workshop",
     description: [
         n("방화범이 기계 뒤로 당신을 부른다."),
@@ -306,7 +286,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("workshop_steal_oil_mediator", {
-    title: "기름 확보",
     location: "workshop",
     description: [
         n("간수가 졸고 있는 틈을 타 기름통에 다가간다."),
@@ -320,7 +299,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("day_three_arsonist_prep", {
-    title: "방화범의 준비",
     location: "workshop",
     description: [
         n("방화범이 기계 뒤에서 당신을 기다리고 있다."),
@@ -335,7 +313,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("arsonist_ready", {
-    title: "준비 완료",
     location: "workshop",
     description: [
         n("방화범이 기름을 받아들고 환하게 웃는다."),
@@ -354,7 +331,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("arsonist_disappointed", {
-    title: "실망",
     location: "workshop",
     description: [
         d("arsonist", "...뭐? 왜 못 구해? 도와준다면서?"),
@@ -369,7 +345,6 @@ const arsonistScenes = {
   }),
 
   ...defineScene("arsonist_reconsider", {
-    title: "재고",
     location: "workshop",
     description: [
         n("당신의 말에 방화범이 짜증을 낸다."),
