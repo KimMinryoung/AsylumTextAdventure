@@ -32,12 +32,6 @@ const scenes = {
     action("first_night")
   ]),
 
-  ...defineScene("yard_messiah", () => [
-    action("messiah_plan_detail", [cond.flag("knowMessiahPlan")]),
-    action("cafeteria_arrival"),
-    action("yard")
-  ]),
-
   ...defineScene("messiah_plan_detail", () => [
     action("messiah_mission_accept", [], [eff.flag("messiahKeyMission")]),
     action("cafeteria_arrival")
@@ -76,7 +70,7 @@ const scenes = {
     action("day_three_afternoon")
   ]),
 
-  ...defineScene("messiah_key_delivery", { effects: [eff.flag("messiahKeyDelivered"), eff.drop("환기구 카드키"), eff.rel("messiah", 3)] }, () => [
+  ...defineScene("messiah_key_delivery", { effects: [eff.drop("환기구 카드키"), eff.flag("messiahKeyDelivered"), eff.rel("messiah", 2)] }, () => [
     action("day_three_dinner")
   ])
 };

@@ -14,7 +14,10 @@ const scenes = {
     action("cafeteria_observe_guards"),
     action("cafeteria_observe_exit"),
     action("cafeteria_commotion"),
-    action("cafeteria_smell")
+    action("cafeteria_smell"),
+    action("cafeteria_ghost_story"),
+    action("cafeteria_food_mystery"),
+    action("cafeteria_groper_event", [cond.relMin("groper", 1)])
   ]),
 
   ...defineScene("cafeteria_smell", () => [

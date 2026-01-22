@@ -6,7 +6,9 @@ const scenes = {
     action("workshop_steal_oil", [cond.flag("knowArsonistPlan"), cond.notFlag("groperEnemy")], [eff.getItem("라이터 기름")]),
     action("workshop_steal_tool", [cond.notFlag("groperEnemy")], [eff.getItem("작은 드라이버")]),
     action("workshop_normal", [cond.notFlag("groperEnemy")]),
-    action("workshop_examine_press")
+    action("workshop_examine_press"),
+    action("workshop_strange_noise"),
+    action("workshop_glitch", [cond.relMin("groper", 1)])
   ]),
 
   ...defineScene("workshop_examine_press", { effects: [eff.flag("knowWorkshopDanger")] }, () => [
@@ -41,17 +43,18 @@ const scenes = {
   ]),
 
   ...defineScene("day_three_workshop", () => [
+    action("fraudster_collect_debt", [cond.flag("owesFraudster")]),
     action("guard_favor_workshop", [cond.relMin("guard", 2)]),
     action("day_three_mediator", [cond.flag("conflictMediator")]),
     action("day_three_key_heist", [cond.flag("messiahKeyMission")]),
-    action("day_three_arsonist_prep", [cond.flag("knowArsonistPlan")]),
+    action("day_three_arsonist_prep", [cond.flag("knowArsonistPlan"), cond.notFlag("arsonistReady")]),
     action("day_three_fraudster_check", [cond.flag("knowFraudsterPlan")]),
     action("day_three_observe")
   ]),
 
   ...defineScene("day_three_mediator", { effects: [eff.flag("knowMessiahPlan"), eff.flag("knowArsonistPlan")] }, () => [
-    action("messiah_listen_to_plan_detail"),
-    action("arsonist_listen_to_plan_detail"),
+    action("messiah_listen_to_plan_detail", [cond.notFlag("messiahKeyDelivered")]),
+    action("arsonist_listen_to_plan_detail", [cond.notFlag("arsonistReady")]),
     action("day_three_afternoon")
   ]),
 

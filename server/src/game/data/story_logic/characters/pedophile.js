@@ -1,12 +1,6 @@
 const { cond, eff, action, defineScene } = require('../../../SceneBuilder');
 
 const scenes = {
-  ...defineScene("yard_pedophile", () => [
-    action("pedophile_kind"),
-    action("yard"),
-    action("pedophile_deal")
-  ]),
-
   ...defineScene("pedophile_kind", () => [
     action("cafeteria_arrival")
   ]),

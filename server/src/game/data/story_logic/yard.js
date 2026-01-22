@@ -35,6 +35,7 @@ const scenes = {
   ]),
 
   ...defineScene("yard_messiah", { effects: [eff.rel("messiah", 1)] }, () => [
+    action("messiah_plan_detail", [cond.flag("knowMessiahPlan")]),
     action("yard_join_messiah"),
     action("yard_decline_messiah"),
     action("yard_listen_messiah")
@@ -59,6 +60,8 @@ const scenes = {
   ]),
 
   ...defineScene("yard_pedophile", () => [
+    action("pedophile_kind"),
+    action("pedophile_deal"),
     action("yard_pedophile_bond"),
     action("yard_pedophile_info"),
     action("yard_walk")

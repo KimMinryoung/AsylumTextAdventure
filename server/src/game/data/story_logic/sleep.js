@@ -3,7 +3,8 @@ const { cond, eff, action, defineScene } = require('../../SceneBuilder');
 const scenes = {
   ...defineScene("first_night", () => [
     action("first_night_investigate"),
-    action("night_whisper", [cond.relMin("arsonist", 1)]),
+    action("arsonist_night_whisper", [cond.relMin("arsonist", 1)]),
+    action("night_whisper"),
     action("first_night_sleep")
   ]),
 
@@ -60,8 +61,8 @@ const scenes = {
   ]),
 
   ...defineScene("day_three_afternoon", () => [
-    action("messiah_listen_to_plan_detail", [cond.flag("knowMessiahPlan")]),
-    action("arsonist_listen_to_plan_detail", [cond.flag("knowArsonistPlan")]),
+    action("messiah_listen_to_plan_detail", [cond.flag("knowMessiahPlan"), cond.notFlag("messiahKeyDelivered")]),
+    action("arsonist_listen_to_plan_detail", [cond.flag("knowArsonistPlan"), cond.notFlag("arsonistReady")]),
     action("day_three_yard")
   ]),
 
@@ -79,6 +80,8 @@ const scenes = {
     action("ending_messiah_enhanced", [cond.flag("messiahKeyDelivered")]),
     action("ending_messiah_route", [cond.flag("knowMessiahPlan"), cond.notFlag("messiahKeyDelivered")]),
     action("ending_fraudster_route", [cond.relMin("fraudster", 2), cond.notFlag("fraudsterRefused")]),
+    action("fraudster_bribe_guard", [cond.relMin("fraudster", 4)]),
+    action("political_help_escape", [cond.relMin("political", 4)]),
     action("ending_arsonist_safe", [cond.flag("arsonistMinimized")]),
     action("ending_arsonist_route", [cond.flag("arsonistReady"), cond.notFlag("arsonistMinimized")]),
     action("ending_warden_route", [cond.flag("wardenBlackmailed")]),

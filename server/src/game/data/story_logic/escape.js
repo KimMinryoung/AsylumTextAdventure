@@ -51,6 +51,7 @@ const scenes = {
 
   ...defineScene("solitary_cell", () => [
     action("solitary_discovery", [cond.flag("knowWallCrack")]),
+    action("gameover_solitary_madness"),
     action("ending_solo_despair")
   ]),
 

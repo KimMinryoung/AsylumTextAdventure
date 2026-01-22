@@ -105,7 +105,7 @@ const scenes = {
     action("arsonist_reconsider", [cond.relMin("arsonist", 2)])
   ]),
 
-  ...defineScene("arsonist_ready", { effects: [eff.flag("arsonistReady"), eff.rel("arsonist", 2)] }, () => [
+  ...defineScene("arsonist_ready", { effects: [eff.drop("라이터 기름"), eff.flag("arsonistReady"), eff.rel("arsonist", 2)] }, () => [
     action("arsonist_scar"),
     action("arsonist_crime"),
     action("day_three_afternoon")

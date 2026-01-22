@@ -3,6 +3,7 @@ const { cond, eff, action, defineScene } = require('../../../SceneBuilder');
 const scenes = {
   ...defineScene("talk_wifekiller_intro", () => [
     action("gameover_wifekiller_rage"),
+    action("wifekiller_story", [cond.relMin("wifekiller", 1)]),
     action("wifekiller_reject_story", [], [eff.rel("wifekiller")]),
     action("first_night")
   ]),

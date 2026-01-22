@@ -20,6 +20,7 @@ npm run install:all      # Install deps for root, server, and client
 ```bash
 npm run dev              # Nodemon with auto-reload
 npm run lint             # ESLint checking
+node scripts/validate_story_logic.js  # Validate story structure, find orphan scenes
 ```
 
 ### Client (from /client)
