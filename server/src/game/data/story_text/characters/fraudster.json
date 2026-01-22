@@ -30,7 +30,8 @@
     "fraudster_past_2": {
       "script": [
         "fraudster: 처음 100만 원 뜯었을 때... 손이 떨렸어. 근데 열 번째쯤 되니까... **아무렇지도 않았어**.",
-        "fraudster: 3년 만에 127억을 모았어. 근데 내 동업자 새끼가 배신했어."
+        "fraudster: 3년 만에 127억을 모았어. 근데 내 동업자 새끼가 배신했어.",
+        "fraudster: 웃긴 건... 내가 남들한테 한 짓을 당한 거지."
       ],
       "actions": [
         "\"어떻게 하는 건데?\"",
@@ -40,20 +41,36 @@
     },
     "fraudster_guilt": {
       "script": [
-        "사기꾼이 잠시 멈칫한다.",
+        "사기꾼이 잠시 멈칫한다. 처음으로 진지한 표정이 스친다.",
         "fraudster: 한 할머니가 있었어. 전 재산 3천만 원을 맡기셨지. 나중에 들었는데... 한강에 뛰어들었대.",
-        "fraudster: 그래서 나가면... 그 아들한테 돈 좀 보내주려고. 찝찝하니까."
+        "fraudster: 그래서 나가면... 그 아들한테 돈 좀 보내주려고. **찝찝해서** 그래.",
+        "fraudster: ...근데 왜 네한테 이런 얘기를 하고 있지."
       ],
       "actions": [
+        "\"괜찮아. 누구나 후회는 있어.\"",
         "거래를 제안받는다.",
         "거절하고 물러난다."
+      ],
+      "location": "cell"
+    },
+    "fraudster_comfort": {
+      "script": [
+        "사기꾼이 놀란 눈으로 당신을 본다.",
+        "fraudster: ...처음이야. 누가 그런 말을 해주는 거.",
+        "fraudster: 보통은 '당연히 지옥 가야지' 이런 소리나 하거든.",
+        "fraudster: 넌... 좀 다르네. 기억해둘게."
+      ],
+      "actions": [
+        "거래 얘기를 듣는다.",
+        "\"나중에 다시 올게.\""
       ],
       "location": "cell"
     },
     "fraudster_deal_talk": {
       "script": [
         "fraudster: 박 간수는 돈에 약해. 5천만 원이면 넘어와.",
-        "fraudster: 문제는 밖에 있는 내 조직에 연락하는 거야. 면회 온 사람한테 메모를 전달하면 돼."
+        "fraudster: 문제는 밖에 있는 내 조직에 연락하는 거야. 면회 온 사람한테 메모를 전달하면 돼.",
+        "fraudster: 어때, 나쁘지 않은 거래지?"
       ],
       "actions": [
         "\"연락할 사람이 있을지도...\"",
@@ -64,7 +81,8 @@
     "fraudster_deal": {
       "script": [
         "fraudster: 오, 그래? 그럼 이야기가 되네.",
-        "fraudster: 내일 면회 시간에 방법을 알려줄게. 어때, 나쁘지 않지?"
+        "fraudster: 내일 면회 시간에 방법을 알려줄게. 어때, 나쁘지 않지?",
+        "fraudster: 아, 그리고... **공짜는 없어**. 나중에 부탁 하나 들어줘야 해. 기억해둬."
       ],
       "actions": [
         "일단 알겠다고 한다."
@@ -73,7 +91,8 @@
     },
     "fraudster_reject": {
       "script": [
-        "fraudster: 그래? 안됐네. 뭐, 다른 방법을 찾아봐야지."
+        "fraudster: 그래? 안됐네. 뭐, 다른 방법을 찾아봐야지.",
+        "fraudster: 근데 말야... 나중에 마음 바뀌면 언제든 와. **문은 항상 열려 있어**."
       ],
       "actions": [
         "다른 죄수와 이야기한다.",
@@ -83,7 +102,9 @@
     },
     "fraudster_suspicious": {
       "script": [
-        "fraudster: 하하, 날카롭네. 그래, 내가 사기꾼인 건 맞아. 하지만 나는 **거래**에는 정직하거든."
+        "fraudster: 하하, 날카롭네. 그래, 내가 사기꾼인 건 맞아.",
+        "fraudster: 하지만 나는 **거래**에는 정직하거든. 사기꾼이라고 다 거짓말하는 건 아니야.",
+        "fraudster: 정보가 내 자산이야. 그걸 함부로 쓰면 **신용**이 떨어지거든."
       ],
       "actions": [
         "\"...일리가 있네.\"",
@@ -93,18 +114,116 @@
     },
     "cafeteria_fraudster": {
       "script": [
+        "사기꾼이 당신을 보고 손짓한다.",
         "fraudster: 여긴 정보가 곧 생존이야. 물론 공짜는 없어."
       ],
       "actions": [
+        "\"친구한테 공짜로 알려줘.\"",
         "\"무슨 정보를 갖고 있어?\"",
         "\"대가가 뭔데?\"",
+        "\"다른 죄수들에 대해 알아?\"",
         "\"그냥 조용히 먹고 싶어서 왔어.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_free": {
+      "script": [
+        "사기꾼이 진심으로 웃는다.",
+        "fraudster: 하, 맞아. 친구한테 돈 받으면 되겠어?",
+        "fraudster: 좋아. 뭐가 알고 싶어? 오늘은 **서비스**야."
+      ],
+      "actions": [
+        "\"탈출 루트를 알려줘.\"",
+        "\"다른 죄수들의 비밀을 알아?\"",
+        "\"간수들에 대해 알려줘.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_free_escape": {
+      "script": [
+        "fraudster: 탈출 루트? 세 개가 있어.",
+        "fraudster: 첫째, **지하 하수도**. 가장 확실한데 독방 구역을 지나야 해.",
+        "fraudster: 둘째, **옥상**. 담을 넘어야 하는데 감시가 빡빡해.",
+        "fraudster: 셋째, **정문 돌파**. 간수를 매수하면 가능해. 내가 도와줄 수 있어.",
+        "fraudster: 그리고... **수요일 밤 2시**가 골든타임이야. 간수장이 없거든."
+      ],
+      "actions": [
+        "\"고마워. 정말 도움이 됐어.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_free_secrets": {
+      "script": [
+        "fraudster: 다른 놈들 비밀? 하, 그건 내 전문 분야지.",
+        "fraudster: 누구에 대해 알고 싶어?"
+      ],
+      "actions": [
+        "\"메시아에 대해.\"",
+        "\"아내 살인범에 대해.\"",
+        "\"정치범에 대해.\"",
+        "\"됐어. 나중에.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_secret_messiah": {
+      "script": [
+        "fraudster: **메시아**... 그 새끼, 보기보다 무섭다고.",
+        "fraudster: 밖에 있는 신도들이 **탈출 계획**을 짜고 있어. 폭발물 반입 소문도 있고.",
+        "fraudster: 근데 웃긴 건, 그 새끼 본인은 안 나가려고 해. **순교자** 흉내를 내려나 봐.",
+        "fraudster: 그 놈 루트는 조심해. 같이 도망치면 **말려들 수 있어**."
+      ],
+      "actions": [
+        "\"아내 살인범은?\"",
+        "\"정치범은?\"",
+        "\"고마워.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_secret_wifekiller": {
+      "script": [
+        "fraudster: **아내 살인범**? 그 양반은 순둥이야.",
+        "fraudster: 근데 알아? 그 사람이 만드는 목공품... **간수들한테 팔려**.",
+        "fraudster: 그래서 간수들이 그 사람한테 좀 봐줘. 작업실 열쇠도 빌릴 수 있을 거야.",
+        "fraudster: 그리고... 그 사람 아내가 먼저 칼을 들었대. **정당방위**였는데 판사가 매수당한 거지."
+      ],
+      "actions": [
+        "\"메시아는?\"",
+        "\"정치범은?\"",
+        "\"고마워.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_secret_political": {
+      "script": [
+        "fraudster: **정치범**? 조심해. 그 여자 **예리해**.",
+        "fraudster: 기자 출신이라 정보 수집에 능해. 나한테도 캐물었거든.",
+        "fraudster: 근데 약점이 있어. **딸** 때문에 움직여. 편지 전달 부탁하면 뭐든 해줄걸.",
+        "fraudster: 그리고... 그 여자, 간수장 비밀을 알고 있어. 협상 카드로 쓸 수 있지."
+      ],
+      "actions": [
+        "\"메시아는?\"",
+        "\"아내 살인범은?\"",
+        "\"고마워.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_free_guard": {
+      "script": [
+        "fraudster: 간수들? 다 **돈에 약해**.",
+        "fraudster: 특히 야간 근무 **박 간수**. 5천이면 넘어와. 내가 연결해줄 수 있어.",
+        "fraudster: 간수장 정 대위는... 아들 병원비 때문에 **눈 감아주는 것**들이 있어. 직접 매수는 어렵지만.",
+        "fraudster: 그리고 **수요일 밤**에 간수장이 면회 가. 그때 박 간수만 남아. **찬스**지."
+      ],
+      "actions": [
+        "\"고마워. 큰 도움이 됐어.\""
       ],
       "location": "cafeteria"
     },
     "cafeteria_fraudster_info": {
       "script": [
-        "fraudster: **탈출 루트**? 다 알고 있어."
+        "fraudster: 정보? 있지. 근데 **공짜는 아니야**.",
+        "fraudster: **탈출 루트**? 담배 한 갑이면 알려줄게.",
+        "fraudster: **간수들 순찰 시간**? 그건 서비스로 줄게. 나중에 도움 받을 일이 있을 테니."
       ],
       "actions": [
         "\"탈출 루트를 알려줘.\"",
@@ -114,7 +233,8 @@
     },
     "cafeteria_fraudster_escape": {
       "script": [
-        "fraudster: 루트는 세 개야. **지하 하수도**, **옥상**, 그리고 **정문 돌파**."
+        "fraudster: 루트는 세 개야. **지하 하수도**, **옥상**, 그리고 **정문 돌파**.",
+        "fraudster: 더 자세한 건... 나중에 친해지면 알려줄게."
       ],
       "actions": [
         "고개를 끄덕인다."
@@ -123,7 +243,68 @@
     },
     "cafeteria_fraudster_guards": {
       "script": [
-        "fraudster: 새벽 2시부터 3시 사이가 가장 느슨해. 그리고 수요일 밤은 간수장이 외출해."
+        "fraudster: 새벽 2시부터 3시 사이가 가장 느슨해.",
+        "fraudster: 그리고 **수요일 밤**은 간수장이 외출해. 그때가 **찬스**야.",
+        "fraudster: 이 정도면 충분하지? 나중에 도움 필요하면 말해."
+      ],
+      "actions": [
+        "\"고마워.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_gossip": {
+      "script": [
+        "fraudster: 소문? 있지. 많지. 근데 그건 **가치 있는 정보**야.",
+        "fraudster: 담배 있어? 한 갑이면 원하는 거 알려줄게."
+      ],
+      "actions": [
+        "담배를 건넨다.",
+        "\"담배는 없는데... 나중에 갚을게.\"",
+        "\"됐어.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_gossip_pay": {
+      "script": [
+        "사기꾼이 담배를 받아들고 만족스럽게 웃는다.",
+        "fraudster: 좋아, 이게 비즈니스지. 뭐가 알고 싶어?"
+      ],
+      "actions": [
+        "\"메시아가 뭘 꾸미고 있어?\"",
+        "\"간수들 중에 매수할 만한 놈이 있어?\"",
+        "\"됐어. 나중에.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_gossip_owe": {
+      "script": [
+        "fraudster: 외상? 하... 보통은 안 해주는데.",
+        "fraudster: 좋아. 대신 나중에 **부탁 하나** 들어줘야 해. 잊지 마.",
+        "fraudster: 뭐가 알고 싶어?"
+      ],
+      "actions": [
+        "\"메시아가 뭘 꾸미고 있어?\"",
+        "\"간수들 중에 매수할 만한 놈이 있어?\"",
+        "\"역시 됐어.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_gossip_messiah": {
+      "script": [
+        "fraudster: **메시아**? 그 새끼, 밖에 있는 신도들이 움직이고 있어.",
+        "fraudster: **폭발물** 반입 소문도 있고... 대규모 탈출을 계획 중이래.",
+        "fraudster: 근데 조심해. 그 루트 타면 **희생양**이 될 수 있어."
+      ],
+      "actions": [
+        "\"고마워.\""
+      ],
+      "location": "cafeteria"
+    },
+    "cafeteria_fraudster_gossip_guard": {
+      "script": [
+        "fraudster: 간수? 야간 근무 **박 간수**가 제일 약해.",
+        "fraudster: 5천만 원이면 넘어와. 내가 밖에 연락해줄 수 있어.",
+        "fraudster: 아, 그리고 간수장 정 대위는 **수요일 밤마다** 아들 면회 가. 그때가 **찬스**야."
       ],
       "actions": [
         "\"고마워.\""
@@ -132,7 +313,8 @@
     },
     "cafeteria_fraudster_price": {
       "script": [
-        "fraudster: 대가? 담배 한 보루 가져와. 없으면 부탁을 들어주거나."
+        "fraudster: 대가? 담배 한 보루 가져와. 없으면 부탁을 들어주거나.",
+        "fraudster: **공짜는 없어**. 그게 세상 이치야."
       ],
       "actions": [
         "\"생각해 볼게.\"",
@@ -142,7 +324,8 @@
     },
     "cafeteria_fraudster_quiet": {
       "script": [
-        "fraudster: 하, 그래? 의외네. 조용히 먹고 싶다는 거 이해해."
+        "fraudster: 하, 그래? 의외네. 조용히 먹고 싶다는 거 이해해.",
+        "fraudster: 근데 기억해. **정보가 필요하면** 언제든 와."
       ],
       "actions": [
         "식사를 마친다."
@@ -150,7 +333,10 @@
       "location": "cafeteria"
     },
     "day_three_fraudster_check": {
-      "script": [],
+      "script": [
+        "사기꾼이 작업실에서 당신에게 다가온다.",
+        "fraudster: 어이, 거래 준비됐어. 어떻게 할래?"
+      ],
       "actions": [
         "\"대가가 뭔데?\"",
         "\"좋아, 믿을게.\""
@@ -158,10 +344,63 @@
       "location": "workshop"
     },
     "fraudster_catch_revealed": {
-      "script": [],
+      "script": [
+        "사기꾼의 눈이 빛난다.",
+        "fraudster: 오, 정치범한테 들었구나? 그 여자, 날카롭지.",
+        "fraudster: 좋아, 솔직하게 말할게. 나가면 **한 건** 할 거야. 도와주면 몫을 줄게."
+      ],
       "actions": [
         "\"알았어. 일단 나가는 게 먼저야.\"",
         "\"사기는 더 이상 안 해.\""
+      ],
+      "location": "workshop"
+    },
+    "fraudster_bribe_guard": {
+      "script": [
+        "사기꾼이 진지한 표정으로 말한다.",
+        "fraudster: 좋아. 박 간수 매수 완료했어. **오늘 밤 2시**에 정문이 열려.",
+        "fraudster: 대신... 나중에 밖에서 만나면, **할 일이 있어**. 알지?",
+        "fraudster: 잘 가. 운 좋은 새끼."
+      ],
+      "actions": [
+        "\"고마워. 잊지 않을게.\""
+      ],
+      "location": "cell"
+    },
+    "fraudster_collect_debt": {
+      "script": [
+        "사기꾼이 다가온다. 평소와 다른 진지한 표정이다.",
+        "fraudster: 이봐, 기억하지? **빚진 거**.",
+        "fraudster: 작업실에서 담배 몇 갑 빼돌리는 거야. 간단하지?",
+        "fraudster: 간수들 눈 피해서 내 침대 밑에 넣어놔. 그럼 우리 **청산**이야."
+      ],
+      "actions": [
+        "\"알았어. 해줄게.\"",
+        "\"싫어. 그런 짓 안 해.\""
+      ],
+      "location": "workshop"
+    },
+    "fraudster_debt_favor": {
+      "script": [
+        "사기꾼이 만족스럽게 웃는다.",
+        "fraudster: 좋아, 이게 비즈니스지. 신용은 지켜야 하는 거야.",
+        "fraudster: 고마워. 덕분에 **거래가 성사**될 거야.",
+        "fraudster: 앞으로도 잘 지내자, 친구."
+      ],
+      "actions": [
+        "고개를 끄덕인다."
+      ],
+      "location": "workshop"
+    },
+    "fraudster_debt_refuse": {
+      "script": [
+        "사기꾼의 표정이 싸늘해진다.",
+        "fraudster: ...그래? 신용을 저버리겠다?",
+        "fraudster: 좋아. 기억해둘게. **여기서 신용 없으면** 어떻게 되는지 알지?",
+        "fraudster: 후회하지 마."
+      ],
+      "actions": [
+        "자리를 뜬다."
       ],
       "location": "workshop"
     }

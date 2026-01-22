@@ -38,7 +38,7 @@ const scenes = {
     action("first_night")
   ]),
 
-  ...defineScene("night_whisper", () => [
+  ...defineScene("arsonist_night_whisper", () => [
     action("arsonist_agree", [], [eff.flag("knowArsonistPlan")]),
     action("arsonist_refuse"),
     action("arsonist_ignore")

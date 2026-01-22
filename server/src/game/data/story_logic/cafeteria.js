@@ -69,23 +69,6 @@ const scenes = {
     action("day_two_evening")
   ]),
 
-  ...defineScene("cafeteria_messiah", { effects: [eff.rel("messiah", 1)] }, () => [
-    action("cafeteria_messiah_salvation"),
-    action("cafeteria_end")
-  ]),
-
-  ...defineScene("cafeteria_messiah_salvation", { effects: [eff.flag("heardMessiahProphecy")] }, () => [
-    action("cafeteria_end")
-  ]),
-
-  ...defineScene("cafeteria_arsonist", { effects: [eff.rel("arsonist", 1)] }, () => [
-    action("cafeteria_arsonist_past"),
-    action("cafeteria_end")
-  ]),
-
-  ...defineScene("cafeteria_arsonist_past", { effects: [eff.flag("knowArsonistPast"), eff.rel("arsonist", 2)] }, () => [
-    action("cafeteria_end")
-  ])
 };
 
 module.exports = scenes;

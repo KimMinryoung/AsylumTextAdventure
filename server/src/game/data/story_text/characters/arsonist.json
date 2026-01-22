@@ -125,7 +125,7 @@
       ],
       "location": "cell"
     },
-    "night_whisper": {
+    "arsonist_night_whisper": {
       "script": [
         "갑자기 옆 침대에서 속삭이는 소리가 들린다.",
         "어둠 속에서 누군가 당신의 침대 옆으로 다가온다.",

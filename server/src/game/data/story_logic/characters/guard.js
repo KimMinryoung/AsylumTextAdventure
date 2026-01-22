@@ -1,10 +1,6 @@
 const { cond, eff, action, defineScene } = require('../../../SceneBuilder');
 
 const scenes = {
-  ...defineScene("yard_bow_guard", () => [
-    action("yard_walk")
-  ]),
-
   ...defineScene("cafeteria_guard_friendly", { effects: [eff.flag("extraMeal"), eff.rel("guard", 1)] }, () => [
     action("cafeteria_end")
   ]),
