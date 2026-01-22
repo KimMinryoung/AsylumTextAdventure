@@ -181,11 +181,11 @@ const scenes = {
   ]),
 
   ...defineScene("fraudster_debt_favor", { effects: [eff.flag("didFraudsterFavor"), eff.unflag("owesFraudster")] }, () => [
-    action("continue_scene")
+    action("day_three_afternoon")
   ]),
 
   ...defineScene("fraudster_debt_refuse", { effects: [eff.unflag("owesFraudster"), eff.flag("fraudsterEnemy")] }, () => [
-    action("continue_scene")
+    action("day_three_afternoon")
   ])
 };
 

@@ -79,6 +79,20 @@ const scenes = {
 
   ...defineScene("gameover_wifekiller_rage", { isEnding: true }, () => [
     action("entrance", [], [eff.reset()])
+  ]),
+
+  // 사기꾼 매수 탈출 엔딩
+  ...defineScene("ending_bribed_escape", { isEnding: true }, () => [
+    action("entrance", [], [eff.reset()])
+  ]),
+
+  // 정치범 교란 탈출 엔딩들
+  ...defineScene("ending_distraction_success", { isEnding: true }, () => [
+    action("entrance", [], [eff.reset()])
+  ]),
+
+  ...defineScene("ending_distraction_daring", { isEnding: true }, () => [
+    action("entrance", [], [eff.reset()])
   ])
 };
 
