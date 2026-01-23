@@ -1,12 +1,15 @@
 import React from 'react';
 
-// Minimap layout (5 rows x 3 columns)
+// Minimap layout (7 rows x 3 columns) - includes dungeon
 const mapLayout = [
   [null, 'roof', null],
   ['yard', 'corridor', 'workshop'],
   ['cafeteria', 'cell', null],
   [null, 'basement', 'solitary'],
   ['sewer1', 'sewer2', 'sewer3'],
+  // Dungeon layer
+  ['tunnels', 'tunnels_chapel', 'tunnels_deep'],
+  [null, 'tunnels_exit', null],
 ];
 
 const locationNames = {
@@ -21,7 +24,12 @@ const locationNames = {
   sewer1: '하수도',
   sewer2: '하수도',
   sewer3: '하수도',
-  duct: '환기덕트'
+  duct: '환기덕트',
+  // Dungeon locations
+  tunnels: '지하터널',
+  tunnels_chapel: '폐예배당',
+  tunnels_deep: '깊은 지하',
+  tunnels_exit: '탈출구'
 };
 
 function Minimap({ location, visitedLocations = [] }) {

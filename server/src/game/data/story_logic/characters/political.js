@@ -80,7 +80,13 @@ const scenes = {
   // 관계가 높을 때만 나오는 깊은 대화
   ...defineScene("cafeteria_political_deep", { effects: [eff.rel("political")] }, () => [
     action("cafeteria_political_deep_guard"),
+    action("cafeteria_political_deep_tunnels", [cond.notFlag("knowTunnels")]),
     action("cafeteria_political_deep_fraudster", [cond.relMin("fraudster", 1)]),
+    action("cafeteria_end")
+  ]),
+
+  // 지하 터널에 대한 정보
+  ...defineScene("cafeteria_political_deep_tunnels", { effects: [eff.flag("knowTunnels")] }, () => [
     action("cafeteria_end")
   ]),
 

@@ -19,6 +19,7 @@ const scenes = {
   ]),
 
   ...defineScene("solo_partial_basement", () => [
+    action("dungeon_discover", [cond.flag("knowTunnels")]),
     action("solo_partial_duct", [cond.flag("knowVentDuct")]),
     action("solo_escape_caught")
   ]),

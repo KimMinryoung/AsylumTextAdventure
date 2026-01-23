@@ -14,6 +14,7 @@ const characters_pedophile = require('./characters/pedophile.js');
 const characters_political = require('./characters/political.js');
 const characters_wifekiller = require('./characters/wifekiller.js');
 const daily = require('./daily.js');
+const dungeon = require('./dungeon');
 const endings = require('./endings.js');
 const escape = require('./escape.js');
 const intro = require('./intro.js');
@@ -32,6 +33,7 @@ const scenes = {
   ...characters_political,
   ...characters_wifekiller,
   ...daily,
+  ...dungeon,
   ...endings,
   ...escape,
   ...intro,

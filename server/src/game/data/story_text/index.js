@@ -12,6 +12,10 @@ const characters_pedophile = require('./characters/pedophile.json');
 const characters_political = require('./characters/political.json');
 const characters_wifekiller = require('./characters/wifekiller.json');
 const daily = require('./daily.json');
+const dungeon_entrance = require('./dungeon/entrance.json');
+const dungeon_tunnels = require('./dungeon/tunnels.json');
+const dungeon_chapel = require('./dungeon/chapel.json');
+const dungeon_endings = require('./dungeon/endings.json');
 const endings = require('./endings.json');
 const escape = require('./escape.json');
 const intro = require('./intro.json');
@@ -30,6 +34,10 @@ const allScenes = {
   ...characters_political.scenes,
   ...characters_wifekiller.scenes,
   ...daily.scenes,
+  ...dungeon_entrance.scenes,
+  ...dungeon_tunnels.scenes,
+  ...dungeon_chapel.scenes,
+  ...dungeon_endings.scenes,
   ...endings.scenes,
   ...escape.scenes,
   ...intro.scenes,

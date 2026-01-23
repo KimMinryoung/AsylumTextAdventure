@@ -42,9 +42,15 @@ const scenes = {
   ]),
 
   ...defineScene("cafeteria_messiah", () => [
+    action("cafeteria_messiah_blessing", [cond.relMin("messiah", 3), cond.notFlag("messiahBlessing")]),
     action("cafeteria_messiah_hell", [], [eff.rel("messiah")]),
     action("cafeteria_messiah_tough"),
     action("cafeteria_messiah_question")
+  ]),
+
+  // 메시아의 축복 - 관계가 높을 때
+  ...defineScene("cafeteria_messiah_blessing", { effects: [eff.flag("messiahBlessing"), eff.rel("messiah")] }, () => [
+    action("cafeteria_end")
   ]),
 
   ...defineScene("cafeteria_messiah_hell", { effects: [eff.flag("messiahInvite")] }, () => [
