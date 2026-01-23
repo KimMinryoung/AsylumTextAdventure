@@ -4,15 +4,12 @@
   box-sizing: border-box;
 }
 
-/* Sweet Home-inspired Horror Aesthetic */
+/* Sweet Home (1989) - Stark Minimalist Horror */
 body {
-  font-family: 'Noto Serif KR', '바탕', 'Batang', Georgia, serif;
-  background: #0a0808;
-  background-image:
-    radial-gradient(ellipse at center, #1a0a0a 0%, #0a0808 70%),
-    url("data:image/svg+xml,%3Csvg viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  font-family: 'Noto Sans KR', '맑은 고딕', sans-serif;
+  background: #000;
   min-height: 100vh;
-  color: #c9b896;
+  color: #fff;
 }
 
 #root {
@@ -23,5 +20,4 @@ body {
   padding: 20px;
 }
 
-/* Import Google Font for Korean serif */
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap');
