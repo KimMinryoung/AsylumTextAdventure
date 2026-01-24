@@ -145,7 +145,7 @@
 
 /* === Text Formatting Colors === */
 .text-status {
-  color: #fff;
+  color: #88ccff;
   font-weight: 500;
 }
 
@@ -156,12 +156,12 @@
 }
 
 .text-item {
-  color: #fff;
+  color: #ffd700;
   font-weight: bold;
 }
 
 .text-danger {
-  color: #fff;
+  color: #ff4444;
   font-weight: bold;
 }
 
