@@ -66,6 +66,8 @@ const SB = {
     notFlag: (flag) => ({ type: 'flagNotSet', flag }),
     relMin: (target, value) => ({ type: 'relationMin', target, value }),
     relMax: (target, value) => ({ type: 'relationMax', target, value }),
+    workMin: (value) => ({ type: 'workScoreMin', value }),
+    eduMin: (value) => ({ type: 'educationScoreMin', value }),
   },
 
   // ===== 효과(Effect) =====
@@ -75,6 +77,8 @@ const SB = {
     flag: (flag) => ({ type: 'setFlag', flag }),
     unflag: (flag) => ({ type: 'clearFlag', flag }),
     rel: (target, amount = 1) => ({ type: 'increaseRelation', target, amount }),
+    work: (amount = 1) => ({ type: 'increaseWorkScore', amount }),
+    edu: (amount = 1) => ({ type: 'increaseEducationScore', amount }),
     reset: () => ({ type: 'resetGame' }),
   },
 

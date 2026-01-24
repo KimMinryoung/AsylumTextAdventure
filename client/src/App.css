@@ -248,6 +248,49 @@
   font-style: italic;
 }
 
+/* === Performance Record (모범수 기록) === */
+.performance-record {
+  margin-top: 20px;
+  padding: 20px;
+  background: #000;
+  border: 2px solid #fff;
+}
+
+.performance-record h3 {
+  color: #fff;
+  margin-bottom: 15px;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 10px;
+}
+
+.performance-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border: 1px solid #444;
+}
+
+.stat-label {
+  color: #aaa;
+  font-size: 0.9rem;
+}
+
+.stat-value {
+  color: #ffd700;
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
 /* === Buttons === */
 .btn {
   padding: 12px 24px;

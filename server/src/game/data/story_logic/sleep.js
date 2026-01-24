@@ -31,6 +31,7 @@ const scenes = {
   ]),
 
   ...defineScene("day_two_evening", () => [
+    action("education_session", [cond.notFlag("educationToday")]),
     action("day_two_early_sleep"),
     action("day_two_night_explore"),
     action("day_two_bathroom", [cond.flag("foundNote")])

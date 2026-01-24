@@ -9,7 +9,8 @@ const speakerInfo = {
   fraudster: { name: "사기꾼 죄수", image: "fraudster.png" },
   political: { name: "정치범 죄수", image: "political.png" },
   wifekiller: { name: "아내 살인범 죄수", image: "wifekiller.png" },
-  pedophile: { name: "소아성폭력범 죄수", image: "pedophile.png" }
+  pedophile: { name: "소아성폭력범 죄수", image: "pedophile.png" },
+  warden: { name: "간수장", image: "warden.png" },
 };
 
 function getImagePath(filename) {
@@ -123,7 +124,7 @@ const findEndingTitle = (descArray) => {
 };
 
 function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading, message, endingCollection }) {
-  const { description, actions, inventory, isEnding, location, visitedLocations, unlockedEndings } = gameState;
+  const { description, actions, inventory, isEnding, location, visitedLocations, unlockedEndings, workScore = 0, educationScore = 0 } = gameState;
 
 
   const [showCollection, setShowCollection] = useState(false);
@@ -200,6 +201,26 @@ function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading,
             <p className="inventory-empty">가진 게 없다.</p>
           )}
         </div>
+
+        {(workScore > 0 || educationScore > 0) && (
+          <div className="performance-record">
+            <h3>모범수 기록</h3>
+            <div className="performance-stats">
+              {workScore > 0 && (
+                <div className="stat-item">
+                  <span className="stat-label">작업 성과</span>
+                  <span className="stat-value">{'★'.repeat(Math.min(workScore, 5))}</span>
+                </div>
+              )}
+              {educationScore > 0 && (
+                <div className="stat-item">
+                  <span className="stat-label">교육 이수</span>
+                  <span className="stat-value">{'★'.repeat(Math.min(educationScore, 5))}</span>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
       </div>
 
       <Minimap location={location} visitedLocations={visitedLocations || []} />

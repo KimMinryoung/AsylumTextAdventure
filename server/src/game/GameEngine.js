@@ -8,6 +8,9 @@ class GameEngine {
     this.history = [];
     this.visitedLocations = [];
     this.unlockedEndings = this.gameData.unlockedEndings || [];
+    // 작업 성과 및 교육 점수
+    this.workScore = 0;
+    this.educationScore = 0;
   }
 
   start() {
@@ -26,6 +29,8 @@ class GameEngine {
     }) };
     this.history = [];
     this.visitedLocations = [];
+    this.workScore = 0;
+    this.educationScore = 0;
 
     // Execute scene effects on start
     const scene = this.gameData.scenes[this.currentScene];
@@ -61,7 +66,9 @@ class GameEngine {
       location: scene.location || null,
       visitedLocations: [...this.visitedLocations],
       isEnding: scene.isEnding || false,
-      unlockedEndings: [...this.unlockedEndings]
+      unlockedEndings: [...this.unlockedEndings],
+      workScore: this.workScore,
+      educationScore: this.educationScore
     };
   }
 
@@ -98,6 +105,12 @@ class GameEngine {
           break;
         case 'relationMax':
           if ((this.relations[condition.target] || 0) > condition.value) return false;
+          break;
+        case 'workScoreMin':
+          if (this.workScore < condition.value) return false;
+          break;
+        case 'educationScoreMin':
+          if (this.educationScore < condition.value) return false;
           break;
         default:
           break;
@@ -187,6 +200,12 @@ class GameEngine {
         case 'decreaseRelation':
           this.relations[effect.target] -= (effect.amount || 1);
           break;
+        case 'increaseWorkScore':
+          this.workScore += (effect.amount || 1);
+          break;
+        case 'increaseEducationScore':
+          this.educationScore += (effect.amount || 1);
+          break;
         case 'resetGame':
           this.inventory = [];
           this.flags = {};
@@ -202,6 +221,8 @@ class GameEngine {
           }) };
           this.history = [];
           this.visitedLocations = [];
+          this.workScore = 0;
+          this.educationScore = 0;
           break;
         default:
           break;
@@ -249,6 +270,8 @@ class GameEngine {
       history: [...this.history],
       visitedLocations: [...this.visitedLocations],
       unlockedEndings: [...this.unlockedEndings],
+      workScore: this.workScore,
+      educationScore: this.educationScore,
       savedAt: Date.now()
     };
   }
@@ -277,6 +300,8 @@ class GameEngine {
     }) };
     this.history = saveData.history || [];
     this.visitedLocations = saveData.visitedLocations || [];
+    this.workScore = saveData.workScore || 0;
+    this.educationScore = saveData.educationScore || 0;
     // 현재의 엔딩 해금 목록과, 세이브 파일에 있던 해금 목록을 병합
     const savedEndings = saveData.unlockedEndings || [];
     const currentEndings = this.unlockedEndings || [];

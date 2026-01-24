@@ -3,12 +3,22 @@ const { cond, eff, action, defineScene } = require('../../SceneBuilder');
 const scenes = {
   ...defineScene("workshop", () => [
     action("gameover_groper_trap", [cond.flag("groperEnemy")]),
+    action("workshop_hardwork", [cond.notFlag("groperEnemy")], [eff.work(1), eff.rel("guard", 1)]),
     action("workshop_steal_oil", [cond.flag("knowArsonistPlan"), cond.notFlag("groperEnemy")], [eff.getItem("라이터 기름")]),
     action("workshop_steal_tool", [cond.notFlag("groperEnemy")], [eff.getItem("작은 드라이버")]),
     action("workshop_normal", [cond.notFlag("groperEnemy")]),
     action("workshop_examine_press"),
     action("workshop_strange_noise"),
     action("workshop_glitch", [cond.relMin("groper", 1)])
+  ]),
+
+  ...defineScene("workshop_hardwork", () => [
+    action("workshop_hardwork_reward", [cond.workMin(2)]),
+    action("cafeteria_arrival")
+  ]),
+
+  ...defineScene("workshop_hardwork_reward", { effects: [eff.getItem("담배 한 갑"), eff.flag("modelPrisoner")] }, () => [
+    action("cafeteria_arrival")
   ]),
 
   ...defineScene("workshop_examine_press", { effects: [eff.flag("knowWorkshopDanger")] }, () => [
@@ -45,11 +55,21 @@ const scenes = {
   ...defineScene("day_three_workshop", () => [
     action("fraudster_collect_debt", [cond.flag("owesFraudster")]),
     action("guard_favor_workshop", [cond.relMin("guard", 2)]),
+    action("day_three_hardwork", [], [eff.work(1), eff.rel("guard", 1)]),
     action("day_three_mediator", [cond.flag("conflictMediator")]),
     action("day_three_key_heist", [cond.flag("messiahKeyMission")]),
     action("day_three_arsonist_prep", [cond.flag("knowArsonistPlan"), cond.notFlag("arsonistReady")]),
     action("day_three_fraudster_check", [cond.flag("knowFraudsterPlan")]),
     action("day_three_observe")
+  ]),
+
+  ...defineScene("day_three_hardwork", () => [
+    action("day_three_hardwork_reward", [cond.workMin(3)]),
+    action("day_three_afternoon")
+  ]),
+
+  ...defineScene("day_three_hardwork_reward", { effects: [eff.getItem("특별 배식권"), eff.flag("trustedByGuard")] }, () => [
+    action("day_three_afternoon")
   ]),
 
   ...defineScene("day_three_mediator", { effects: [eff.flag("knowMessiahPlan"), eff.flag("knowArsonistPlan")] }, () => [
