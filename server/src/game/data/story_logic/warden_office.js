@@ -104,13 +104,14 @@ const scenes = {
     action("true_admin_menu")
   ]),
 
-  // === TRUE ADMIN 메뉴 (5가지 엔딩 루트) ===
+  // === TRUE ADMIN 메뉴 (5가지 엔딩 루트 + 기밀 파일) ===
   ...defineScene("true_admin_menu", () => [
     action("admin_route_solo"),
     action("admin_route_warden"),
     action("admin_route_liberation"),
     action("admin_route_ghost"),
-    action("admin_route_vengeance", [cond.flag("groperEnemy")])
+    action("admin_route_vengeance", [cond.flag("groperEnemy")]),
+    action("admin_riot_files")
   ]),
 
   // 엔딩 F: 고독한 자유 (Solo Escape)
@@ -136,6 +137,12 @@ const scenes = {
   // 엔딩 P: 디지털 복수 (Digital Vengeance)
   ...defineScene("admin_route_vengeance", () => [
     action("ending_vengeance")
+  ]),
+
+  // === 3년 전 폭동 기밀 파일 ===
+  ...defineScene("admin_riot_files", { effects: [eff.flag("knowRiotSecret")] }, () => [
+    action("true_admin_menu"),
+    action("workshop_underground_entry", [cond.flag("knowWorkshopHistory"), cond.relMin("wifekiller", 3)])
   ])
 };
 

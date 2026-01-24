@@ -135,6 +135,46 @@ const scenes = {
   ...defineScene("workshop_seek_main_terminal", { effects: [eff.flag("knowsWardenTerminal")] }, () => [
     action("warden_office_hub"),
     action("cafeteria_arrival")
+  ]),
+
+  // === 3년 전 폭동: 작업장 지하 탐색 ===
+  ...defineScene("workshop_underground_entry", { effects: [eff.flag("enteredWorkshopBasement")] }, () => [
+    action("workshop_basement")
+  ]),
+
+  ...defineScene("workshop_basement", () => [
+    action("workshop_basement_deeper"),
+    action("workshop_basement_retreat")
+  ]),
+
+  ...defineScene("workshop_basement_retreat", () => [
+    action("true_admin_menu")
+  ]),
+
+  ...defineScene("workshop_basement_deeper", () => [
+    action("workshop_basement_bones")
+  ]),
+
+  ...defineScene("workshop_basement_bones", { effects: [eff.flag("sawRiotBones")] }, () => [
+    action("workshop_basement_evidence"),
+    action("workshop_basement_flee")
+  ]),
+
+  ...defineScene("workshop_basement_flee", () => [
+    action("true_admin_menu")
+  ]),
+
+  ...defineScene("workshop_basement_evidence", { effects: [eff.flag("foundRiotVictims"), eff.getItem("폭동 증거물")] }, () => [
+    action("workshop_basement_decision")
+  ]),
+
+  ...defineScene("workshop_basement_decision", () => [
+    action("ending_whistleblower"),
+    action("workshop_basement_leave_evidence")
+  ]),
+
+  ...defineScene("workshop_basement_leave_evidence", () => [
+    action("true_admin_menu")
   ])
 };
 

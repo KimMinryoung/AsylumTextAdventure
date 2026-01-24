@@ -109,6 +109,11 @@ const scenes = {
   // 엔딩 P: 디지털 복수
   ...defineScene("ending_vengeance", { isEnding: true }, () => [
     action("entrance", [], [eff.reset()])
+  ]),
+
+  // 엔딩 T: 폭로자
+  ...defineScene("ending_whistleblower", { isEnding: true }, () => [
+    action("entrance", [], [eff.reset()])
   ])
 };
 
