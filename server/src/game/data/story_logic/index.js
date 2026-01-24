@@ -22,6 +22,7 @@ const sleep = require('./sleep.js');
 const warden_office = require('./warden_office.js');
 const workshop = require('./workshop.js');
 const yard = require('./yard.js');
+const sewer_mystery = require('./sewer_mystery.js');
 
 const scenes = {
   ...cafeteria,
@@ -42,6 +43,7 @@ const scenes = {
   ...warden_office,
   ...workshop,
   ...yard,
+  ...sewer_mystery,
 };
 
 const gameData = {

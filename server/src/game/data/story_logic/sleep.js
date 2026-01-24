@@ -38,6 +38,7 @@ const scenes = {
   ]),
 
   ...defineScene("day_two_bathroom", { effects: [eff.flag("heardSewerVoice")] }, () => [
+    action("sewer_voice_investigate"),
     action("day_two_nightmare")
   ]),
 
@@ -74,6 +75,7 @@ const scenes = {
   ...defineScene("day_three_evening", () => [
     action("gameover_messiah_followers", [cond.flag("messiahEnemy"), cond.relMax("fraudster", 1), cond.notFlag("knowArsonistPlan"), cond.relMax("wifekiller", 2)]),
     action("gameover_burned_alive", [cond.flag("arsonistEnemy"), cond.notFlag("knowMessiahPlan"), cond.relMax("fraudster", 1), cond.relMax("wifekiller", 2), cond.notFlag("knowEmergencyExit")]),
+    action("sewer_bring_food", [cond.flag("promisedFood")]),
     action("day_four_final")
   ]),
 
@@ -88,6 +90,7 @@ const scenes = {
     action("ending_warden_route", [cond.flag("wardenBlackmailed")]),
     action("ending_wall_route", [cond.flag("wallEscapePlan")]),
     action("ending_emergency_route", [cond.flag("knowEmergencyExit")]),
+    action("sewer_mystery_encounter", [cond.flag("sewerSurvivorRoute")]),
     action("solo_escape_prepared", [cond.flag("knowSewerPath"), cond.flag("knowPatrolGap")]),
     action("solo_escape_partial", [cond.relMin("wifekiller", 3)]),
     action("solo_escape_unprepared"),
