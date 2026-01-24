@@ -26,7 +26,8 @@ const scenes = {
   // 직업 훈련 (기술 교육)
   ...defineScene("education_vocational", { effects: [eff.rel("guard", 1)] }, () => [
     action("education_vocational_focus"),
-    action("education_vocational_slack")
+    action("education_vocational_slack"),
+    action("education_vocational_library", [cond.flag("foundGhostError")])
   ]),
 
   ...defineScene("education_vocational_focus", { effects: [eff.edu(1), eff.flag("learnedSkill")] }, () => [
@@ -45,6 +46,21 @@ const scenes = {
 
   // 교육 보상 (교육 점수 누적 시)
   ...defineScene("education_reward", { effects: [eff.getItem("교육 이수증"), eff.flag("educationCompleted")] }, () => [
+    action("day_two_evening")
+  ]),
+
+  // === 도서관/자료실 (개발자 백도어 힌트) ===
+  ...defineScene("education_vocational_library", () => [
+    action("library_coding_book"),
+    action("education_vocational_focus")
+  ]),
+
+  ...defineScene("library_coding_book", { effects: [eff.getItem("코딩 입문서")] }, () => [
+    action("library_book_examine")
+  ]),
+
+  ...defineScene("library_book_examine", { effects: [eff.flag("hasDebugHint1")] }, () => [
+    action("education_reward", [cond.eduMin(2)]),
     action("day_two_evening")
   ])
 };
