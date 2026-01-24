@@ -180,6 +180,7 @@ function validateStory() {
 
   if (cycleNodes.size > 0) {
     info.push(`[Cycles] Found ${cycleNodes.size} scenes involved in cycles (normal for adventure games)`);
+    cycleNodes.forEach(id => { info.push(`[Cycles] Scene '${id}' is in a cycle`); });
   }
 
   // ==========================================
