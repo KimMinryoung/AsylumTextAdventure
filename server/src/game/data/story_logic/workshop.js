@@ -120,46 +120,21 @@ const scenes = {
     action("cafeteria_arrival")
   ]),
 
-  // === 개발자의 백도어 퍼즐 ===
+  // === 개발자의 백도어 발견 (소장실 연결) ===
   ...defineScene("workshop_error_discovery", { effects: [eff.flag("foundGhostError")] }, () => [
     action("workshop_error_examine"),
     action("cafeteria_arrival")
   ]),
 
   ...defineScene("workshop_error_examine", { effects: [eff.flag("recognizedMyCode")] }, () => [
-    action("workshop_debug_terminal"),
+    action("workshop_seek_main_terminal"),
     action("cafeteria_arrival")
   ]),
 
-  ...defineScene("workshop_debug_terminal", () => [
-    action("debug_puzzle_input", [cond.flag("hasDebugHint1"), cond.flag("hasDebugHint2")]),
-    action("debug_puzzle_fail"),
+  // 메인 터미널을 찾아야 함을 깨닫는 장면
+  ...defineScene("workshop_seek_main_terminal", { effects: [eff.flag("knowsWardenTerminal")] }, () => [
+    action("warden_office_hub"),
     action("cafeteria_arrival")
-  ]),
-
-  ...defineScene("debug_puzzle_input", () => [
-    action("debug_puzzle_success")
-  ]),
-
-  ...defineScene("debug_puzzle_fail", { effects: [eff.rel("guard", -1)] }, () => [
-    action("cafeteria_arrival")
-  ]),
-
-  ...defineScene("debug_puzzle_success", { effects: [eff.flag("adminMode"), eff.flag("knowSewerPath"), eff.flag("knowPatrolGap"), eff.flag("wardenBlackmailed")] }, () => [
-    action("admin_mode_choice")
-  ]),
-
-  ...defineScene("admin_mode_choice", () => [
-    action("admin_warden_route"),
-    action("admin_solo_route")
-  ]),
-
-  ...defineScene("admin_warden_route", () => [
-    action("ending_warden_route")
-  ]),
-
-  ...defineScene("admin_solo_route", () => [
-    action("ending_solo_success")
   ])
 };
 

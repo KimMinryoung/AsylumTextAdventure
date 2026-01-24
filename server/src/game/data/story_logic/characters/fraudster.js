@@ -57,8 +57,7 @@ const scenes = {
     action("cafeteria_fraudster_info"),
     action("cafeteria_fraudster_price"),
     action("cafeteria_fraudster_gossip"),
-    action("cafeteria_fraudster_quiet", [], [eff.rel("fraudster")]),
-    action("fraudster_machine_talk", [cond.flag("foundGhostError")])
+    action("cafeteria_fraudster_quiet", [], [eff.rel("fraudster")])
   ]),
 
   // 관계가 높을 때 무료 정보
@@ -189,10 +188,6 @@ const scenes = {
     action("day_three_afternoon")
   ]),
 
-  // === 개발자 백도어 힌트 (기계 대화) ===
-  ...defineScene("fraudster_machine_talk", { effects: [eff.flag("hasDebugHint2")] }, () => [
-    action("cafeteria_end")
-  ])
 };
 
 module.exports = scenes;

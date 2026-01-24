@@ -19,6 +19,7 @@ const endings = require('./endings.js');
 const escape = require('./escape.js');
 const intro = require('./intro.js');
 const sleep = require('./sleep.js');
+const warden_office = require('./warden_office.js');
 const workshop = require('./workshop.js');
 const yard = require('./yard.js');
 
@@ -38,6 +39,7 @@ const scenes = {
   ...escape,
   ...intro,
   ...sleep,
+  ...warden_office,
   ...workshop,
   ...yard,
 };

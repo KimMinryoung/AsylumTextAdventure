@@ -93,6 +93,22 @@ const scenes = {
 
   ...defineScene("ending_distraction_daring", { isEnding: true }, () => [
     action("entrance", [], [eff.reset()])
+  ]),
+
+  // === TRUE ADMIN 신규 엔딩들 ===
+  // 엔딩 N: 대해방
+  ...defineScene("ending_mass_liberation", { isEnding: true }, () => [
+    action("entrance", [], [eff.reset()])
+  ]),
+
+  // 엔딩 O: 유령 프로토콜
+  ...defineScene("ending_ghost_protocol", { isEnding: true }, () => [
+    action("entrance", [], [eff.reset()])
+  ]),
+
+  // 엔딩 P: 디지털 복수
+  ...defineScene("ending_vengeance", { isEnding: true }, () => [
+    action("entrance", [], [eff.reset()])
   ])
 };
 
