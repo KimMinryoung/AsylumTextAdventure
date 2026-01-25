@@ -83,6 +83,7 @@ const scenes = {
 
   ...defineScene("day_three_yard", () => [
     action("messiah_key_delivery", [cond.has("환기구 카드키")]),
+    action("yard_ask_messiah_torchlight", [cond.flag("sawTorchlight"), cond.notFlag("messiahEnemy")]),
     action("warden_blackmail", [cond.flag("knowWardenWeakness")]),
     action("wall_crack_plan", [cond.flag("knowWallCrack")]),
     action("day_three_dinner")

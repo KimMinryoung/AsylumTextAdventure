@@ -24,6 +24,7 @@ const warden_office = require('./warden_office.json');
 const workshop = require('./workshop.json');
 const yard = require('./yard.json');
 const sewer_mystery = require('./sewer_mystery.json');
+const torchlight_mystery = require('./torchlight_mystery.json');
 
 const allScenes = {
   ...cafeteria.scenes,
@@ -48,6 +49,7 @@ const allScenes = {
   ...workshop.scenes,
   ...yard.scenes,
   ...sewer_mystery.scenes,
+  ...torchlight_mystery.scenes,
 };
 
 module.exports = { scenes: allScenes };

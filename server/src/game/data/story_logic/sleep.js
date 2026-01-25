@@ -51,6 +51,7 @@ const scenes = {
   ]),
 
   ...defineScene("day_two_night_explore", { effects: [eff.flag("knowPatrolGap")] }, () => [
+    action("night_torchlight_discovery", [cond.flag("knowBeeNest")]),
     action("political_night_talk", [cond.relMin("political", 3)]),
     action("guard_night_friendly", [cond.relMin("guard", 1)]),
     action("guard_night_hostile", [cond.relMax("guard", 0)]),
@@ -76,12 +77,15 @@ const scenes = {
     action("gameover_messiah_followers", [cond.flag("messiahEnemy"), cond.relMax("fraudster", 1), cond.notFlag("knowArsonistPlan"), cond.relMax("wifekiller", 2)]),
     action("gameover_burned_alive", [cond.flag("arsonistEnemy"), cond.notFlag("knowMessiahPlan"), cond.relMax("fraudster", 1), cond.relMax("wifekiller", 2), cond.notFlag("knowEmergencyExit")]),
     action("sewer_bring_food", [cond.flag("promisedFood")]),
+    action("night_torchlight_investigate", [cond.flag("suspectCultCamp"), cond.relMin("political", 2)]),
     action("day_four_final")
   ]),
 
   ...defineScene("day_four_final", () => [
     action("ending_messiah_enhanced", [cond.flag("messiahKeyDelivered")]),
     action("ending_messiah_route", [cond.flag("knowMessiahPlan"), cond.notFlag("messiahKeyDelivered")]),
+    action("ending_cult_direct_contact", [cond.flag("cultResponseReceived")]),
+    action("ending_cult_political_alliance", [cond.flag("cultContactMade"), cond.relMin("political", 3)]),
     action("ending_fraudster_route", [cond.relMin("fraudster", 2), cond.notFlag("fraudsterRefused")]),
     action("fraudster_bribe_guard", [cond.relMin("fraudster", 4)]),
     action("political_help_escape", [cond.relMin("political", 4)]),
