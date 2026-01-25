@@ -24,6 +24,7 @@ const workshop = require('./workshop.js');
 const yard = require('./yard.js');
 const sewer_mystery = require('./sewer_mystery.js');
 const torchlight_mystery = require('./torchlight_mystery.js');
+const wall_scratching_mystery = require('./wall_scratching_mystery.js');
 
 const scenes = {
   ...cafeteria,
@@ -46,6 +47,7 @@ const scenes = {
   ...yard,
   ...sewer_mystery,
   ...torchlight_mystery,
+  ...wall_scratching_mystery,
 };
 
 const gameData = {
