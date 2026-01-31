@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Story Text Editor</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <header class="top-bar">
+      <h1>STORY TEXT EDITOR</h1>
+      <div class="top-bar-right">
+        <span id="unsaved-indicator" class="unsaved-indicator hidden">*</span>
+        <button id="btn-save" class="btn" disabled>SAVE</button>
+      </div>
+    </header>
+
+    <div id="message-bar" class="message-bar hidden"></div>
+
+    <main class="panels">
+      <!-- File Explorer -->
+      <aside class="panel file-explorer">
+        <div class="panel-header">FILES</div>
+        <div id="file-tree" class="panel-content"></div>
+      </aside>
+
+      <!-- Scene List -->
+      <aside class="panel scene-list">
+        <div class="panel-header">SCENES</div>
+        <div id="scene-list" class="panel-content">
+          <div class="empty-message">Select a file</div>
+        </div>
+      </aside>
+
+      <!-- Scene Editor -->
+      <section class="panel scene-editor">
+        <div class="panel-header">
+          <span>EDITOR</span>
+          <span id="current-scene"></span>
+        </div>
+        <div id="editor-content" class="panel-content">
+          <div class="empty-message">Select a scene</div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
