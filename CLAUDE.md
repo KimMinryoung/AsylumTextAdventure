@@ -112,3 +112,6 @@ module.exports = {
 - Backend: Render (asylumtextadventureserver.onrender.com)
 - Frontend: Render (asylumtextadventure.onrender.com)
 - Sessions are in-memory (Map) - reset on server restart
+
+## Caution
+- When running bash commands on Windows, use /dev/null for output redirection, not nul.

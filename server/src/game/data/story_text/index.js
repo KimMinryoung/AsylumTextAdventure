@@ -54,9 +54,41 @@ const localScenes = {
 };
 
 let scenes = localScenes;
+let autoRefreshInterval = null;
+const REFRESH_INTERVAL_MS = 60 * 60 * 1000; // 1 hour
 
 /**
  * DB에서 story_text를 로드하여 메모리에 저장
+ * @returns {boolean} 로드 성공 여부
+ */
+async function loadFromDB() {
+  if (process.env.USE_DB_STORY_TEXT !== 'true' || !supabase) {
+    return false;
+  }
+
+  const { data, error } = await supabase
+    .from('story_scenes')
+    .select('*');
+
+  if (error) throw error;
+
+  if (data && data.length > 0) {
+    const dbScenes = {};
+    data.forEach(row => {
+      dbScenes[row.scene_id] = {
+        script: row.script,
+        actions: row.actions,
+        location: row.location
+      };
+    });
+    scenes = dbScenes;
+    return true;
+  }
+  return false;
+}
+
+/**
+ * 초기화: DB에서 story_text를 로드
  */
 async function initialize() {
   if (process.env.USE_DB_STORY_TEXT !== 'true' || !supabase) {
@@ -66,23 +98,9 @@ async function initialize() {
 
   try {
     console.log('📡 Fetching story text from Supabase...');
-    const { data, error } = await supabase
-      .from('story_scenes')
-      .select('*');
-
-    if (error) throw error;
-
-    if (data && data.length > 0) {
-      const dbScenes = {};
-      data.forEach(row => {
-        dbScenes[row.scene_id] = {
-          script: row.script,
-          actions: row.actions,
-          location: row.location
-        };
-      });
-      scenes = dbScenes;
-      console.log(`✅ Loaded ${data.length} scenes from Supabase`);
+    const loaded = await loadFromDB();
+    if (loaded) {
+      console.log(`✅ Loaded ${Object.keys(scenes).length} scenes from Supabase`);
     } else {
       console.warn('⚠ No scenes found in DB, using local fallback');
     }
@@ -92,9 +110,53 @@ async function initialize() {
   }
 }
 
-// 초기 로딩 (동기적으로 require 시에는 localScenes가 먼저 노출되지만, 
+/**
+ * 자동 갱신 시작 (1시간마다 DB에서 다시 로드)
+ * @param {Function} onRefresh - 갱신 완료 후 호출될 콜백 (예: storyData.reinitialize)
+ */
+function startAutoRefresh(onRefresh) {
+  if (process.env.USE_DB_STORY_TEXT !== 'true' || !supabase) {
+    console.log('ℹ Auto-refresh disabled (USE_DB_STORY_TEXT is not true)');
+    return;
+  }
+
+  if (autoRefreshInterval) {
+    clearInterval(autoRefreshInterval);
+  }
+
+  console.log('🔄 Starting auto-refresh (every 1 hour)');
+  autoRefreshInterval = setInterval(async () => {
+    try {
+      console.log('🔄 Auto-refreshing story text from Supabase...');
+      const loaded = await loadFromDB();
+      if (loaded) {
+        console.log(`✅ Auto-refresh: Loaded ${Object.keys(scenes).length} scenes`);
+        if (typeof onRefresh === 'function') {
+          onRefresh();
+        }
+      }
+    } catch (err) {
+      console.error('❌ Auto-refresh failed:', err.message);
+    }
+  }, REFRESH_INTERVAL_MS);
+}
+
+/**
+ * 자동 갱신 중지
+ */
+function stopAutoRefresh() {
+  if (autoRefreshInterval) {
+    clearInterval(autoRefreshInterval);
+    autoRefreshInterval = null;
+    console.log('⏹ Auto-refresh stopped');
+  }
+}
+
+// 초기 로딩 (동기적으로 require 시에는 localScenes가 먼저 노출되지만,
 // initialize() 호출 이후에는 scenes가 업데이트됨)
 module.exports = {
   get scenes() { return scenes; },
-  initialize
+  initialize,
+  startAutoRefresh,
+  stopAutoRefresh
 };

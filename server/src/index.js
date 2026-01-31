@@ -34,6 +34,12 @@ async function startServer() {
     await storyText.initialize();
     storyData.reinitialize();
 
+    // Start auto-refresh (reloads story text from DB every hour)
+    storyText.startAutoRefresh(() => {
+      storyData.reinitialize();
+      console.log('🔄 Story logic re-initialized after auto-refresh');
+    });
+
     app.listen(PORT, () => {
       console.log(`✅ Text Adventure Server is running on port ${PORT}`);
     });
