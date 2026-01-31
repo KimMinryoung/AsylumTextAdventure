@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const gameRoutes = require('./routes/game');
 const editorRoutes = require('./routes/editor');
+const storyText = require('./game/data/story_text');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -26,6 +27,18 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', message: 'Text Adventure Server is running' });
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
-});
+// Initialize and start server
+async function startServer() {
+  try {
+    await storyText.initialize();
+
+    app.listen(PORT, () => {
+      console.log(`✅ Text Adventure Server is running on port ${PORT}`);
+    });
+  } catch (err) {
+    console.error('Failed to start server:', err);
+    process.exit(1);
+  }
+}
+
+startServer();

@@ -1,7 +1,6 @@
-/**
- * 모든 텍스트 JSON 파일을 병합하여 export
- */
+const supabase = require('../../../config/supabase');
 
+// Local imports for fallback
 const cafeteria = require('./cafeteria.json');
 const characters_arsonist = require('./characters/arsonist.json');
 const characters_fraudster = require('./characters/fraudster.json');
@@ -27,7 +26,7 @@ const sewer_mystery = require('./sewer_mystery.json');
 const torchlight_mystery = require('./torchlight_mystery.json');
 const wall_scratching_mystery = require('./wall_scratching_mystery.json');
 
-const allScenes = {
+const localScenes = {
   ...cafeteria.scenes,
   ...characters_arsonist.scenes,
   ...characters_fraudster.scenes,
@@ -54,4 +53,48 @@ const allScenes = {
   ...wall_scratching_mystery.scenes,
 };
 
-module.exports = { scenes: allScenes };
+let scenes = localScenes;
+
+/**
+ * DB에서 story_text를 로드하여 메모리에 저장
+ */
+async function initialize() {
+  if (process.env.USE_DB_STORY_TEXT !== 'true' || !supabase) {
+    console.log('ℹ Loading story text from local JSON files (fallback)');
+    return;
+  }
+
+  try {
+    console.log('📡 Fetching story text from Supabase...');
+    const { data, error } = await supabase
+      .from('story_scenes')
+      .select('*');
+
+    if (error) throw error;
+
+    if (data && data.length > 0) {
+      const dbScenes = {};
+      data.forEach(row => {
+        dbScenes[row.scene_id] = {
+          script: row.script,
+          actions: row.actions,
+          location: row.location
+        };
+      });
+      scenes = dbScenes;
+      console.log(`✅ Loaded ${data.length} scenes from Supabase`);
+    } else {
+      console.warn('⚠ No scenes found in DB, using local fallback');
+    }
+  } catch (err) {
+    console.error('❌ Failed to load story text from DB:', err.message);
+    console.log('ℹ Falling back to local JSON files');
+  }
+}
+
+// 초기 로딩 (동기적으로 require 시에는 localScenes가 먼저 노출되지만, 
+// initialize() 호출 이후에는 scenes가 업데이트됨)
+module.exports = {
+  get scenes() { return scenes; },
+  initialize
+};
