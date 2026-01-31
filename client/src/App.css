@@ -22,12 +22,14 @@
   color: #fff;
   font-weight: 700;
   letter-spacing: 4px;
+  word-break: keep-all;
 }
 
 .start-screen p {
   font-size: 1.1rem;
   margin-bottom: 40px;
   color: #fff;
+  word-break: keep-all;
 }
 
 .button-group {
@@ -45,7 +47,7 @@
 }
 
 .game-header {
-  padding: 20px 30px;
+  padding: 10px 10px;
   background: #000;
   display: flex;
   justify-content: space-between;
@@ -478,23 +480,21 @@
   border-top: 1px solid #fff;
 }
 
-/* === Mobile Layout === */
-@media (max-width: 600px) {
+/* === Mobile/Tablet Layout === */
+@media (max-width: 1050px) {
+  .game-screen {
+    position: relative;
+  }
   .minimap {
+    position: absolute;
     bottom: auto;
     right: auto;
-    top: 10px;
-    left: 10px;
-    padding: 8px;
+    top: 0px;
+    left: 0px;
+    padding: 0px;
     min-width: auto;
-    transform: scale(0.75);
+    transform: scale(0.9);
     transform-origin: top left;
-  }
-
-  .minimap-title {
-    font-size: 0.65rem;
-    margin-bottom: 6px;
-    padding-bottom: 5px;
   }
 
   .minimap-cell {
@@ -503,13 +503,7 @@
   }
 
   .minimap-label {
-    font-size: 0.45rem;
-  }
-
-  .minimap-current {
-    font-size: 0.6rem;
-    margin-top: 6px;
-    padding-top: 5px;
+    font-size: 0.5rem;
   }
 
   .game-header h2 {
@@ -555,11 +549,11 @@
   }
 
   .game-content {
-    padding: 10px;
+    padding: 5px;
   }
 
   .game-screen {
-    padding-top: 80px;
+    padding-top: 100px;
   }
 }
 

@@ -40,7 +40,6 @@ function Minimap({ location, visitedLocations = [] }) {
 
   return (
     <div className="minimap">
-      <div className="minimap-title">수용소 지도</div>
       <div className="minimap-grid">
         {mapLayout.map((row, rowIndex) => (
           <div key={rowIndex} className="minimap-row">
@@ -65,9 +64,6 @@ function Minimap({ location, visitedLocations = [] }) {
             })}
           </div>
         ))}
-      </div>
-      <div className="minimap-current">
-        현재: {locationNames[location] || '???'}
       </div>
     </div>
   );
