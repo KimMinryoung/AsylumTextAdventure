@@ -26,35 +26,50 @@ const sewer_mystery = require('./sewer_mystery.js');
 const torchlight_mystery = require('./torchlight_mystery.js');
 const wall_scratching_mystery = require('./wall_scratching_mystery.js');
 
-const scenes = {
-  ...cafeteria,
-  ...characters_arsonist,
-  ...characters_fraudster,
-  ...characters_groper,
-  ...characters_guard,
-  ...characters_messiah,
-  ...characters_pedophile,
-  ...characters_political,
-  ...characters_wifekiller,
-  ...daily,
-  ...dungeon,
-  ...endings,
-  ...escape,
-  ...intro,
-  ...sleep,
-  ...warden_office,
-  ...workshop,
-  ...yard,
-  ...sewer_mystery,
-  ...torchlight_mystery,
-  ...wall_scratching_mystery,
-};
+let scenes = {};
+
+function buildScenes() {
+  scenes = {
+    ...cafeteria,
+    ...characters_arsonist,
+    ...characters_fraudster,
+    ...characters_groper,
+    ...characters_guard,
+    ...characters_messiah,
+    ...characters_pedophile,
+    ...characters_political,
+    ...characters_wifekiller,
+    ...daily,
+    ...dungeon,
+    ...endings,
+    ...escape,
+    ...intro,
+    ...sleep,
+    ...warden_office,
+    ...workshop,
+    ...yard,
+    ...sewer_mystery,
+    ...torchlight_mystery,
+    ...wall_scratching_mystery,
+  };
+
+  gameData.scenes = scenes;
+}
 
 const gameData = {
   startScene: "entrance",
   startInventory: [],
   startFlags: {},
-  scenes: scenes
+  scenes: {}
 };
 
-module.exports = gameData;
+// Initial build
+buildScenes();
+
+module.exports = {
+  ...gameData,
+  reinitialize: () => {
+    SB.initTextData(textIndex);
+    buildScenes();
+  }
+};

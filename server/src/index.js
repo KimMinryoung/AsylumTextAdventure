@@ -4,6 +4,7 @@ const path = require('path');
 const gameRoutes = require('./routes/game');
 const editorRoutes = require('./routes/editor');
 const storyText = require('./game/data/story_text');
+const storyData = require('./game/data/story_logic');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -31,6 +32,7 @@ app.get('/api/health', (req, res) => {
 async function startServer() {
   try {
     await storyText.initialize();
+    storyData.reinitialize();
 
     app.listen(PORT, () => {
       console.log(`✅ Text Adventure Server is running on port ${PORT}`);
