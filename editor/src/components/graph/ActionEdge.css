@@ -1,0 +1,50 @@
+.edge-label {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background-color: var(--bg-tertiary);
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  border: 1px solid var(--border);
+  max-width: 150px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.edge-label:hover {
+  border-color: var(--accent);
+  background-color: var(--bg-primary);
+}
+
+.edge-label.has-condition {
+  border-color: var(--info);
+}
+
+.edge-label.has-effect {
+  border-color: var(--success);
+}
+
+.edge-label.has-condition.has-effect {
+  border-color: var(--accent);
+}
+
+.edge-icon {
+  font-size: 10px;
+  flex-shrink: 0;
+}
+
+.edge-icon.condition {
+  color: var(--info);
+}
+
+.edge-icon.effect {
+  color: var(--success);
+}
+
+.edge-text {
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

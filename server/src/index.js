@@ -3,6 +3,7 @@ const cors = require('cors');
 const path = require('path');
 const gameRoutes = require('./routes/game');
 const editorRoutes = require('./routes/editor');
+const visualEditorRoutes = require('./routes/visualEditor');
 const storyText = require('./game/data/story_text');
 const storyData = require('./game/data/story_logic');
 
@@ -11,8 +12,8 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(cors({
-  origin: ['https://asylumtextadventure.onrender.com', 'http://localhost:3000'],
-  methods: ['GET', 'POST', 'PUT']
+  origin: ['https://asylumtextadventure.onrender.com', 'http://localhost:3000', 'http://localhost:3002'],
+  methods: ['GET', 'POST', 'PUT', 'DELETE']
 }));
 app.use(express.json());
 
@@ -22,6 +23,7 @@ app.use('/editor', express.static(path.join(__dirname, '../../editor')));
 // Routes
 app.use('/api/game', gameRoutes);
 app.use('/api/editor', editorRoutes);
+app.use('/api/visual-editor', visualEditorRoutes);
 
 // Health check
 app.get('/api/health', (req, res) => {

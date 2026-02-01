@@ -6,8 +6,11 @@
   "scripts": {
     "server": "cd server && npm run dev",
     "client": "cd client && npm start",
+    "editor": "cd editor && npm start",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "install:all": "npm install && cd server && npm install && cd ../client && npm install"
+    "dev:editor": "concurrently \"npm run server\" \"npm run editor\"",
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "install:dev": "npm install && cd server && npm install && cd ../client && npm install && cd ../editor && npm install"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"

@@ -1,0 +1,123 @@
+.scene-node {
+  padding: 10px 15px;
+  border-radius: 8px;
+  border: 2px solid var(--border);
+  background-color: var(--bg-tertiary);
+  min-width: 150px;
+  max-width: 200px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.scene-node:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 10px rgba(233, 69, 96, 0.3);
+}
+
+.scene-node.selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 15px rgba(233, 69, 96, 0.5);
+}
+
+/* 노드 타입별 스타일 */
+.scene-node.entrance {
+  border-color: var(--success);
+  background: linear-gradient(135deg, var(--bg-tertiary), rgba(74, 222, 128, 0.15));
+}
+
+.scene-node.entrance:hover,
+.scene-node.entrance.selected {
+  box-shadow: 0 0 15px rgba(74, 222, 128, 0.4);
+}
+
+.scene-node.ending {
+  border-color: var(--danger);
+  background: linear-gradient(135deg, var(--bg-tertiary), rgba(239, 68, 68, 0.15));
+}
+
+.scene-node.ending:hover,
+.scene-node.ending.selected {
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);
+}
+
+.scene-node.orphan {
+  border-color: var(--warning);
+  background: linear-gradient(135deg, var(--bg-tertiary), rgba(251, 191, 36, 0.15));
+}
+
+.scene-node.orphan:hover,
+.scene-node.orphan.selected {
+  box-shadow: 0 0 15px rgba(251, 191, 36, 0.4);
+}
+
+/* 노드 내용 */
+.scene-node__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.scene-node__header {
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.scene-node__location {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.scene-node__badges {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.scene-node__badge {
+  font-size: 9px;
+  padding: 2px 6px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.scene-node__badge.entrance {
+  background-color: var(--success);
+  color: var(--bg-primary);
+}
+
+.scene-node__badge.ending {
+  background-color: var(--danger);
+  color: white;
+}
+
+.scene-node__badge.orphan {
+  background-color: var(--warning);
+  color: var(--bg-primary);
+}
+
+.scene-node__actions-count {
+  font-size: 10px;
+  color: var(--text-secondary);
+  margin-top: 4px;
+}
+
+/* 핸들 스타일 */
+.scene-node__handle {
+  width: 10px;
+  height: 10px;
+  background-color: var(--text-secondary);
+  border: 2px solid var(--bg-tertiary);
+  transition: all 0.2s ease;
+}
+
+.scene-node:hover .scene-node__handle {
+  background-color: var(--accent);
+}
