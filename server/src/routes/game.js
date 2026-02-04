@@ -8,16 +8,34 @@ const supabase = require('../config/supabase');
 const sessions = new Map();
 
 // Start a new game
-router.post('/start', (req, res) => {
-  const { sessionId } = req.body;
+router.post('/start', async (req, res) => {
+  const { sessionId, playerId } = req.body;
   const engine = new GameEngine(gameData);
-  const initialState = engine.start();
+  engine.start();
+
+  // DB에서 이전 엔딩 기록만 불러오기
+  if (playerId && supabase) {
+    try {
+      const { data, error } = await supabase
+        .from('game_saves')
+        .select('save_data')
+        .eq('player_id', playerId)
+        .single();
+
+      if (!error && data?.save_data?.unlockedEndings) {
+        engine.unlockedEndings = data.save_data.unlockedEndings;
+      }
+    } catch (err) {
+      // 실패해도 새 게임은 계속 진행
+      console.log('Failed to load previous endings:', err.message);
+    }
+  }
 
   sessions.set(sessionId, engine);
 
   res.json({
     success: true,
-    state: initialState
+    state: engine.getState()
   });
 });
 

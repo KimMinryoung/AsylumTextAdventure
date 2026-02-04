@@ -39,7 +39,7 @@ function App() {
   const startGame = useCallback(async () => {
     setIsLoading(true);
     try {
-      const result = await gameApi.startGame(sessionId);
+      const result = await gameApi.startGame(sessionId, playerId);
       if (result.success) {
         setGameState(result.state);
         prevUnlockedEndingsRef.current = result.state.unlockedEndings || [];
@@ -49,7 +49,7 @@ function App() {
       setMessage({ type: 'error', text: '게임 시작 실패. 서버 접속 오류' });
     }
     setIsLoading(false);
-  }, [sessionId]);
+  }, [sessionId, playerId]);
 
   const performAction = useCallback(async (actionId) => {
     setIsLoading(true);

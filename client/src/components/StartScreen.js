@@ -25,7 +25,7 @@ function StartScreen({ onStartGame, onLoadGame, isLoading, message }) {
           onClick={onLoadGame}
           disabled={isLoading}
         >
-          불러오기
+          {isLoading ? '로딩...' : '불러오기'}
         </button>
       </div>
     </div>

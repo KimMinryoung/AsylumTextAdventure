@@ -1,14 +1,14 @@
 const API_BASE_URL = process.env.REACT_APP_API_URL || 'https://asylumtextadventureserver.onrender.com';
 
 export const gameApi = {
-  async startGame(sessionId) {
+  async startGame(sessionId, playerId) {
     try {
       const response = await fetch(`${API_BASE_URL}/api/game/start`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ sessionId }),
+        body: JSON.stringify({ sessionId, playerId }),
       });
       return await response.json();
     } catch (error) {
