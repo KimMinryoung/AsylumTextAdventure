@@ -23,13 +23,13 @@ const scenes = {
   ...defineScene("fraudster_guilt", { effects: [eff.rel("fraudster")] }, () => [
     action("fraudster_comfort", [], [eff.rel("fraudster")]),
     action("fraudster_deal_talk"),
-    action("first_night")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   // 위로하면 추가 관계 상승
   ...defineScene("fraudster_comfort", { effects: [eff.rel("fraudster")] }, () => [
     action("fraudster_deal_talk"),
-    action("first_night")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("fraudster_deal_talk", () => [
@@ -38,17 +38,17 @@ const scenes = {
   ]),
 
   ...defineScene("fraudster_deal", { effects: [eff.rel("fraudster")] }, () => [
-    action("first_night")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("fraudster_reject", () => [
     action("cell_introduction"),
-    action("first_night")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("fraudster_suspicious", () => [
     action("fraudster_deal", [], [eff.flag("knowFraudsterPlan")]),
-    action("first_night")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   // 식당 - 관계에 따라 정보 가격 차등화
@@ -69,7 +69,7 @@ const scenes = {
 
   // 무료: 탈출 루트
   ...defineScene("cafeteria_fraudster_free_escape", { effects: [eff.flag("knowEscapeRoutes"), eff.flag("knowDetailedEscape")] }, () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   // 무료: 다른 죄수들의 비밀
@@ -77,33 +77,33 @@ const scenes = {
     action("cafeteria_fraudster_secret_messiah"),
     action("cafeteria_fraudster_secret_wifekiller"),
     action("cafeteria_fraudster_secret_political"),
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   // 메시아의 비밀
   ...defineScene("cafeteria_fraudster_secret_messiah", { effects: [eff.flag("knowMessiahSecret")] }, () => [
     action("cafeteria_fraudster_secret_wifekiller"),
     action("cafeteria_fraudster_secret_political"),
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   // 아내 살인범의 비밀
   ...defineScene("cafeteria_fraudster_secret_wifekiller", { effects: [eff.flag("knowWifekillerSecret")] }, () => [
     action("cafeteria_fraudster_secret_messiah", [cond.notFlag("knowMessiahSecret")]),
     action("cafeteria_fraudster_secret_political"),
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   // 정치범의 비밀
   ...defineScene("cafeteria_fraudster_secret_political", { effects: [eff.flag("knowPoliticalSecret")] }, () => [
     action("cafeteria_fraudster_secret_messiah", [cond.notFlag("knowMessiahSecret")]),
     action("cafeteria_fraudster_secret_wifekiller", [cond.notFlag("knowWifekillerSecret")]),
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   // 무료: 간수 정보
   ...defineScene("cafeteria_fraudster_free_guard", { effects: [eff.flag("knowGuardWeakness")] }, () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_fraudster_info", () => [
@@ -112,61 +112,61 @@ const scenes = {
   ]),
 
   ...defineScene("cafeteria_fraudster_escape", { effects: [eff.flag("knowEscapeRoutes")] }, () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_fraudster_guards", { effects: [eff.rel("fraudster")] }, () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   // 다른 죄수들의 소문
   ...defineScene("cafeteria_fraudster_gossip", () => [
     action("cafeteria_fraudster_gossip_pay", [cond.has("담배")], [eff.drop("담배")]),
     action("cafeteria_fraudster_gossip_owe"),
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   // 담배로 정보 구매
   ...defineScene("cafeteria_fraudster_gossip_pay", { effects: [eff.rel("fraudster")] }, () => [
     action("cafeteria_fraudster_gossip_messiah"),
     action("cafeteria_fraudster_gossip_guard"),
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   // 빚으로 정보 구매
   ...defineScene("cafeteria_fraudster_gossip_owe", { effects: [eff.flag("owesFraudster")] }, () => [
     action("cafeteria_fraudster_gossip_messiah"),
     action("cafeteria_fraudster_gossip_guard"),
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   // 메시아 소문
   ...defineScene("cafeteria_fraudster_gossip_messiah", { effects: [eff.flag("knowMessiahPlan")] }, () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   // 간수 소문
   ...defineScene("cafeteria_fraudster_gossip_guard", { effects: [eff.flag("knowGuardCorruption")] }, () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_fraudster_price", () => [
-    action("cafeteria_end", [], [eff.flag("fraudsterDeal")]),
-    action("cafeteria_end")
+    action("workshop", [], [eff.flag("fraudsterDeal"), eff.advanceTime()]),
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_fraudster_quiet", () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("day_three_fraudster_check", () => [
     action("fraudster_catch_revealed", [cond.flag("knowPrisoners")]),
-    action("day_three_afternoon", [], [eff.rel("fraudster", 2)])
+    action("cell_arrival", [], [eff.rel("fraudster", 2), eff.advanceTime()])
   ]),
 
   ...defineScene("fraudster_catch_revealed", () => [
-    action("day_three_afternoon", [], [eff.rel("fraudster", 2)]),
-    action("day_three_afternoon", [], [eff.flag("fraudsterRefused")])
+    action("cell_arrival", [], [eff.rel("fraudster", 2), eff.advanceTime()]),
+    action("cell_arrival", [], [eff.flag("fraudsterRefused"), eff.advanceTime()])
   ]),
 
   // 높은 관계에서 실질적 도움
@@ -181,11 +181,11 @@ const scenes = {
   ]),
 
   ...defineScene("fraudster_debt_favor", { effects: [eff.flag("didFraudsterFavor"), eff.unflag("owesFraudster")] }, () => [
-    action("day_three_afternoon")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("fraudster_debt_refuse", { effects: [eff.unflag("owesFraudster"), eff.flag("fraudsterEnemy")] }, () => [
-    action("day_three_afternoon")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
 };

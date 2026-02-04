@@ -38,7 +38,7 @@ module.exports = {
   ...defineScene("location_select", () => [
     // 아침 시간대 장소
     action("cell_arrival", [cond.time(TIME_SLOTS.MORNING)], [eff.moveTo("cell")]),
-    action("hub_corridor", [cond.time(TIME_SLOTS.MORNING)], [eff.moveTo("corridor")]),
+    action("cell_arrival", [cond.time(TIME_SLOTS.MORNING)], [eff.moveTo("corridor")]),
     action("yard", [cond.time(TIME_SLOTS.MORNING)], [eff.moveTo("yard")]),
 
     // 점심 시간대 - 식당만 가능
@@ -47,13 +47,13 @@ module.exports = {
     // 낮 시간대 장소
     action("workshop", [cond.time(TIME_SLOTS.AFTERNOON)], [eff.moveTo("workshop")]),
     action("yard", [cond.time(TIME_SLOTS.AFTERNOON)], [eff.moveTo("yard")]),
-    action("hub_corridor", [cond.time(TIME_SLOTS.AFTERNOON)], [eff.moveTo("corridor")]),
+    action("cell_arrival", [cond.time(TIME_SLOTS.AFTERNOON)], [eff.moveTo("corridor")]),
     action("cell_arrival", [cond.time(TIME_SLOTS.AFTERNOON)], [eff.moveTo("cell")]),
 
     // 저녁 시간대 장소
     action("cell_arrival", [cond.time(TIME_SLOTS.EVENING)], [eff.moveTo("cell")]),
     action("cafeteria_arrival", [cond.time(TIME_SLOTS.EVENING)], [eff.moveTo("cafeteria")]),
-    action("hub_corridor", [cond.time(TIME_SLOTS.EVENING)], [eff.moveTo("corridor")]),
+    action("cell_arrival", [cond.time(TIME_SLOTS.EVENING)], [eff.moveTo("corridor")]),
     action("yard", [cond.time(TIME_SLOTS.EVENING)], [eff.moveTo("yard")]),
 
     // 밤 시간대 - 감방만 가능

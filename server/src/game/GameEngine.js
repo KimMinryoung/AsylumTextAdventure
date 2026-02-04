@@ -111,11 +111,11 @@ class GameEngine {
       .filter(action => this.checkConditions(action.conditions))
       .map(action => ({ ...action })); // 원본 훼손 방지를 위해 복사
 
-    // 허브 액션 주입: 메인 허브 장면이거나 특정 진입 장면에서만 주입
-    const hubTriggerScenes = ['yard', 'cafeteria_arrival', 'workshop', 'cell_arrival', 'hub_corridor'];
+    // 허브 액션 주입: 메인 허브 장면이거나 특정 진입 장면에서만 주입 (2일차부터)
+    const hubTriggerScenes = ['yard', 'cafeteria_arrival', 'workshop', 'cell_arrival'];
     const isHubEntrance = scene.isHub || hubTriggerScenes.includes(this.currentScene);
 
-    if (scene.location && isHubEntrance) {
+    if (this.currentDay > 1 && scene.location && isHubEntrance) {
       // 1. NPC 상호작용 추가
       const npcs = this.getNpcsAtCurrentLocation();
       npcs.forEach(npcId => {
@@ -277,26 +277,32 @@ class GameEngine {
 
     // Move to next scene
     if (action.nextScene) {
+      const nextSceneData = this.gameData.scenes[action.nextScene];
       this.currentScene = action.nextScene;
 
+      // Update location based on next scene's location if defined
+      if (nextSceneData && nextSceneData.location) {
+        this.currentLocation = nextSceneData.location;
+      }
+
       // Execute scene effects when entering new scene
-      const nextScene = this.gameData.scenes[this.currentScene];
+      if (nextSceneData && nextSceneData.effects) {
+        this.executeEffects(nextSceneData.effects);
+      }
 
       // 엔딩 장면 도달 시 해금 목록에 추가
-      if (nextScene && nextScene.isEnding) {
+      if (nextSceneData && nextSceneData.isEnding) {
         if (!this.unlockedEndings.includes(this.currentScene)) {
           this.unlockedEndings.push(this.currentScene);
         }
       }
 
-      if (nextScene && nextScene.effects) {
-        this.executeEffects(nextScene.effects);
+      // Mark new location as visited
+      if (nextSceneData && nextSceneData.location && !this.visitedLocations.includes(nextSceneData.location)) {
+        this.visitedLocations.push(nextSceneData.location);
       }
 
-      // Mark new location as visited
-      if (nextScene && nextScene.location && !this.visitedLocations.includes(nextScene.location)) {
-        this.visitedLocations.push(nextScene.location);
-      }
+      console.log(`Transitioned to scene: ${this.currentScene} (Location: ${this.currentLocation})`);
     }
 
     return {

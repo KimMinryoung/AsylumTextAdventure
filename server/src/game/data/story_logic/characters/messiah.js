@@ -19,26 +19,26 @@ const scenes = {
   ]),
 
   ...defineScene("messiah_trust", () => [
-    action("first_night")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("messiah_doubt", () => [
     action("cell_introduction"),
-    action("first_night")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("messiah_reject", { effects: [eff.flag("messiahEnemy")] }, () => [
     action("talk_fraudster"),
-    action("first_night")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("messiah_plan_detail", () => [
     action("messiah_mission_accept", [], [eff.flag("messiahKeyMission")]),
-    action("cafeteria_arrival")
+    action("cafeteria_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("messiah_mission_accept", () => [
-    action("cafeteria_arrival")
+    action("cafeteria_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_messiah", () => [
@@ -50,34 +50,34 @@ const scenes = {
 
   // 메시아의 축복 - 관계가 높을 때
   ...defineScene("cafeteria_messiah_blessing", { effects: [eff.flag("messiahBlessing"), eff.rel("messiah")] }, () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_messiah_hell", { effects: [eff.flag("messiahInvite")] }, () => [
     action("cafeteria_messiah_join", [], [eff.rel("messiah")]),
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_messiah_tough", () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_messiah_question", { effects: [eff.flag("knowMessiahStory")] }, () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_messiah_join", { effects: [eff.rel("messiah", 2)] }, () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("messiah_listen_to_plan_detail", { effects: [eff.flag("messiahKeyMission")] }, () => [
     action("messiah_key_delivery", [cond.has("환기구 카드키")]),
     action("day_three_key_heist", [cond.notHas("환기구 카드키")]),
-    action("day_three_afternoon")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("messiah_key_delivery", { effects: [eff.drop("환기구 카드키"), eff.flag("messiahKeyDelivered"), eff.rel("messiah", 2)] }, () => [
-    action("day_three_dinner")
+    action("cell_arrival", [], [eff.advanceTime()])
   ])
 };
 

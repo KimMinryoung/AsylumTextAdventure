@@ -43,20 +43,20 @@ const scenes = {
 
   ...defineScene("yard_join_messiah", { effects: [eff.rel("messiah", 2), eff.flag("joinedMessiah")] }, () => [
     action("yard_messiah_plan"),
-    action("cafeteria_arrival")
+    action("cafeteria_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("yard_messiah_plan", { effects: [eff.flag("knowMessiahTiming")] }, () => [
-    action("cafeteria_arrival")
+    action("cafeteria_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("yard_decline_messiah", () => [
     action("yard_walk"),
-    action("cafeteria_arrival")
+    action("cafeteria_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("yard_listen_messiah", { effects: [eff.flag("heardMessiahPlan")] }, () => [
-    action("cafeteria_arrival")
+    action("cafeteria_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("yard_pedophile", () => [
@@ -69,16 +69,16 @@ const scenes = {
 
   ...defineScene("yard_pedophile_bond", { effects: [eff.rel("pedophile", 2)] }, () => [
     action("yard_pedophile_info"),
-    action("cafeteria_arrival")
+    action("cafeteria_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("yard_pedophile_info", { effects: [eff.flag("knowWardenWeakness"), eff.rel("pedophile", 1)] }, () => [
     action("yard_pedophile_thanks"),
-    action("cafeteria_arrival")
+    action("cafeteria_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("yard_pedophile_thanks", { effects: [eff.flag("helpedPedophile")] }, () => [
-    action("cafeteria_arrival")
+    action("cafeteria_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("day_three_yard", () => [
@@ -86,20 +86,20 @@ const scenes = {
     action("yard_ask_messiah_torchlight", [cond.flag("sawTorchlight"), cond.notFlag("messiahEnemy")]),
     action("warden_blackmail", [cond.flag("knowWardenWeakness")]),
     action("wall_crack_plan", [cond.flag("knowWallCrack")]),
-    action("day_three_dinner")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("warden_blackmail", { effects: [eff.flag("wardenBlackmailed")] }, () => [
-    action("day_three_dinner")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("wall_crack_plan", () => [
     action("wall_plan_set", [], [eff.flag("wallEscapePlan")]),
-    action("day_three_dinner")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("wall_plan_set", () => [
-    action("day_three_dinner")
+    action("cell_arrival", [], [eff.advanceTime()])
   ])
 };
 

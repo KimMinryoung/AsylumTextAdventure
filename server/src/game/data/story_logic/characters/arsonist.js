@@ -8,21 +8,21 @@ const scenes = {
   ]),
 
   ...defineScene("arsonist_reject_talk", () => [
-    action("cell_observe")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("arsonist_scar", () => [
     action("arsonist_crime"),
-    action("day_three_afternoon")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("arsonist_crime", () => [
     action("arsonist_calm", [], [eff.rel("arsonist")]),
-    action("day_three_afternoon")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("arsonist_calm", () => [
-    action("day_three_afternoon")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("conflict_messiah_arsonist", () => [
@@ -31,11 +31,11 @@ const scenes = {
   ]),
 
   ...defineScene("conflict_mediate", { effects: [eff.flag("conflictMediator")] }, () => [
-    action("first_night")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("conflict_watch", () => [
-    action("first_night")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("arsonist_night_whisper", () => [
@@ -69,30 +69,30 @@ const scenes = {
 
   ...defineScene("cafeteria_arsonist_curious", () => [
     action("cafeteria_arsonist_apologize"),
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_arsonist_silent", () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_arsonist_bond", { effects: [eff.flag("knowArsonistPlan"), eff.rel("arsonist")] }, () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_arsonist_time", () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_arsonist_apologize", () => [
-    action("cafeteria_end")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("arsonist_listen_to_plan_detail", { effects: [eff.rel("arsonist")] }, () => [
     action("arsonist_ready", [cond.has("라이터 기름")]),
     action("workshop_steal_oil_mediator", [cond.notHas("라이터 기름")]),
     action("arsonist_reconsider", [cond.flag("conflictMediator")]),
-    action("day_three_afternoon")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("workshop_steal_oil_mediator", { effects: [eff.getItem("라이터 기름")] }, () => [
@@ -108,15 +108,15 @@ const scenes = {
   ...defineScene("arsonist_ready", { effects: [eff.drop("라이터 기름"), eff.flag("arsonistReady"), eff.rel("arsonist", 2)] }, () => [
     action("arsonist_scar"),
     action("arsonist_crime"),
-    action("day_three_afternoon")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("arsonist_disappointed", { effects: [eff.flag("arsonistAbandoned")] }, () => [
-    action("day_three_afternoon")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("arsonist_reconsider", { effects: [eff.flag("arsonistMinimized")] }, () => [
-    action("day_three_afternoon")
+    action("cell_arrival", [], [eff.advanceTime()])
   ])
 };
 

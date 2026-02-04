@@ -2,11 +2,11 @@ const { cond, eff, action, defineScene } = require('../../../SceneBuilder');
 
 const scenes = {
   ...defineScene("pedophile_kind", () => [
-    action("cafeteria_arrival")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("pedophile_deal", { effects: [eff.flag("helpedPedophile"), eff.rel("pedophile"), eff.flag("knowVentDuct")] }, () => [
-    action("cafeteria_arrival")
+    action("workshop", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("pedophile_attack", () => [
@@ -19,11 +19,11 @@ const scenes = {
   ]),
 
   ...defineScene("day_three_workshop_contempt", () => [
-    action("day_three_observe")
+    action("cell_arrival", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("pedophile_ignore", { effects: [eff.rel("pedophile", 4)] }, () => [
-    action("day_three_workshop")
+    action("cell_arrival", [], [eff.advanceTime()])
   ])
 };
 
