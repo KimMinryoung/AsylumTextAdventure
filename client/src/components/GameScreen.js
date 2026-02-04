@@ -111,11 +111,11 @@ const findEndingTitle = (descArray) => {
 
   for (let i = descArray.length - 1; i >= 0; i--) {
     const item = descArray[i];
-    
+
     const textContent = item.text || (typeof item === 'string' ? item : "");
 
     const match = textContent.match(/\[(.*?)\]/);
-    
+
     if (match) {
       return match[1];
     }
@@ -124,7 +124,7 @@ const findEndingTitle = (descArray) => {
 };
 
 function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading, message, endingCollection }) {
-  const { description, actions, inventory, isEnding, location, visitedLocations, unlockedEndings, workScore = 0, educationScore = 0 } = gameState;
+  const { description, actions, inventory, isEnding, location, visitedLocations, unlockedEndings, workScore = 0, educationScore = 0, currentDay, currentTimeSlotName } = gameState;
 
 
   const [showCollection, setShowCollection] = useState(false);
@@ -137,6 +137,11 @@ function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading,
   return (
     <div className="game-screen">
       <div className="game-header">
+        <div className="game-status-hud">
+          <span className="hud-day">Day {currentDay}</span>
+          <span className="hud-separator">|</span>
+          <span className="hud-time">{currentTimeSlotName}</span>
+        </div>
         <div className="header-buttons">
           <button className="btn btn-secondary" onClick={toggleCollection} disabled={isLoading}>
             컬렉션
@@ -233,14 +238,14 @@ function GameScreen({ gameState, onAction, onSave, onLoad, onRestart, isLoading,
               <h3>엔딩 컬렉션</h3>
               <button className="btn-close" onClick={toggleCollection}>X</button>
             </div>
-            
+
             <div className="collection-body">
               {selectedEnding ? (
                 <div className="ending-detail">
                   <div className="ending-desc-container">
                     {renderDescription(selectedEnding.description)}
                   </div>
-                  <button className="btn btn-secondary btn-sm" onClick={() => setSelectedEnding(null)} style={{marginTop: '20px'}}>
+                  <button className="btn btn-secondary btn-sm" onClick={() => setSelectedEnding(null)} style={{ marginTop: '20px' }}>
                     목록으로 돌아가기
                   </button>
                 </div>

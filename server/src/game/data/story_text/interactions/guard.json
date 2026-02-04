@@ -1,0 +1,157 @@
+{
+  "scenes": {
+    "interact_guard": {
+      "location": "dynamic",
+      "script": [
+        "간수가 순찰을 돌고 있다.",
+        "당신을 보더니 잠시 멈춘다."
+      ],
+      "actions": [
+        "친근하게 대화한다",
+        "호의를 요청한다",
+        "일반적인 대화를 한다",
+        "무시한다",
+        "돌아간다"
+      ]
+    },
+    "guard_normal_talk": {
+      "location": "dynamic",
+      "script": [
+        "guard: 뭐야? 할 말 있어?",
+        "간수가 무표정하게 당신을 본다."
+      ],
+      "actions": [
+        "칭찬한다",
+        "돌아간다"
+      ]
+    },
+    "guard_compliment": {
+      "location": "dynamic",
+      "script": [
+        "당신이 간수의 업무를 칭찬하자 그가 조금 놀란다.",
+        "guard: ...어, 그래?",
+        "약간 어색해하면서도 나쁘지 않은 표정이다.",
+        "[status]간수와의 관계가 개선되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "guard_friendly_talk": {
+      "location": "dynamic",
+      "script": [
+        "guard: 오늘 밥 좀 더 먹고 싶어?",
+        "간수가 조용히 당신에게 빵을 건넨다.",
+        "[status]추가 식사를 받았다. 간수와의 관계가 개선되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "guard_ask_favor": {
+      "location": "dynamic",
+      "script": [
+        "guard: 뭘 원해?",
+        "간수가 주변을 살피며 조용히 묻는다."
+      ],
+      "actions": [
+        "작업장에서 편한 일을 달라",
+        "돌아간다"
+      ]
+    },
+    "hub_guard_favor_workshop": {
+      "location": "dynamic",
+      "script": [
+        "guard: 알았어. 내일 창고 정리 시켜줄게.",
+        "간수가 담배 한 갑을 슬쩍 건넨다.",
+        "guard: 이건 수고비야. 조용히 해.",
+        "[status]{{담배 한 갑}}을 받았다.[/status]"
+      ],
+      "actions": [
+        "창고로 간다",
+        "돌아간다"
+      ]
+    },
+    "hub_guard_favor_storage": {
+      "location": "dynamic",
+      "script": [
+        "창고에서 쉬운 일을 하게 되었다.",
+        "틈을 타 주변을 살펴본다.",
+        "녹슨 철사가 눈에 띈다.",
+        "[status]{{녹슨 철사}}를 얻었다.[/status]"
+      ],
+      "actions": [
+        "더 찾아본다",
+        "돌아간다"
+      ]
+    },
+    "guard_storage_search": {
+      "location": "dynamic",
+      "script": [
+        "창고 깊숙이에서 수용소 배치도를 발견했다!",
+        "누군가 숨겨둔 것 같다.",
+        "[status]{{수용소 배치도}}를 얻었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "guard_ignore": {
+      "location": "dynamic",
+      "script": [
+        "간수를 무시하고 지나간다.",
+        "그가 별다른 반응 없이 순찰을 계속한다."
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "guard_night_event": {
+      "location": "dynamic",
+      "script": [
+        "밤에 간수가 순찰을 돈다.",
+        "당신을 발견하고 다가온다."
+      ],
+      "actions": [
+        "친근하게 인사한다",
+        "무시한다"
+      ]
+    },
+    "hub_guard_night_friendly": {
+      "location": "dynamic",
+      "script": [
+        "guard: 못 자? 여기 빵이나 먹어.",
+        "간수가 빵 조각을 건넨다.",
+        "[status]{{빵 조각}}을 받았다.[/status]"
+      ],
+      "actions": [
+        "정보를 물어본다",
+        "돌아간다"
+      ]
+    },
+    "hub_guard_night_info": {
+      "location": "dynamic",
+      "script": [
+        "guard: 간수장? 그 사람 건강이 안 좋아.",
+        "guard: 자주 의무실에 가더라.",
+        "guard: 그리고 창고에서 거래하는 놈들이 있어. 조심해.",
+        "[status]간수장의 건강 문제와 창고 거래에 대해 알게 되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "hub_guard_night_hostile": {
+      "location": "dynamic",
+      "script": [
+        "guard: 왜 안 자고 돌아다녀?",
+        "간수가 의심스러운 눈으로 당신을 본다.",
+        "guard: 빨리 감방으로 돌아가.",
+        "[status]간수와의 관계가 조금 개선되었다. (주의를 줬지만 처벌은 안 함)[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    }
+  }
+}

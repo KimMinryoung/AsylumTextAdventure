@@ -1,0 +1,169 @@
+{
+  "scenes": {
+    "interact_messiah": {
+      "location": "dynamic",
+      "script": [
+        "메시아가 당신을 알아보고 고개를 끄덕인다.",
+        "그의 눈빛에서 평온함이 느껴진다."
+      ],
+      "actions": [
+        "탈출 계획에 대해 묻는다",
+        "계획의 세부사항을 논의한다",
+        "환기구 카드키를 건넨다",
+        "축복을 요청한다",
+        "어떻게 여기 오게 되었는지 묻는다",
+        "가볍게 대화를 나눈다",
+        "돌아간다"
+      ]
+    },
+    "messiah_intro_plan": {
+      "location": "dynamic",
+      "script": [
+        "messiah: 자네도 이곳에서 나가고 싶은가?",
+        "messiah: 나에겐 계획이 있네. 4일 뒤 밤, 우리는 탈출한다.",
+        "messiah: 환기구를 통해 나갈 것이야. 하지만 카드키가 필요해.",
+        "그가 진지한 눈으로 당신을 바라본다."
+      ],
+      "actions": [
+        "그의 계획을 믿기로 한다",
+        "의심스럽다",
+        "돌아간다"
+      ]
+    },
+    "messiah_trust_plan": {
+      "location": "dynamic",
+      "script": [
+        "messiah: 현명한 선택이야. 함께라면 해낼 수 있어.",
+        "messiah: 필요한 것이 있으면 언제든 찾아오게.",
+        "[status]메시아의 탈출 계획을 알게 되었다.[/status]",
+        "[status]메시아와의 관계가 개선되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "messiah_doubt_plan": {
+      "location": "dynamic",
+      "script": [
+        "messiah: 의심은 자연스러운 것이야.",
+        "messiah: 하지만 언젠가 자네도 깨닫게 될 거야. 이곳을 벗어나는 방법은 하나뿐이라는 것을.",
+        "그가 조용히 뒤돌아선다."
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "messiah_plan_discussion": {
+      "location": "dynamic",
+      "script": [
+        "messiah: 계획이 진행 중이야.",
+        "messiah: 무엇이 궁금한가?"
+      ],
+      "actions": [
+        "내가 할 수 있는 일이 있는가?",
+        "현재 상황이 어떤가?",
+        "돌아간다"
+      ]
+    },
+    "messiah_accept_mission": {
+      "location": "dynamic",
+      "script": [
+        "messiah: 고맙네. 자네의 도움이 필요해.",
+        "messiah: 간수실에서 환기구 카드키를 구해와야 해.",
+        "messiah: 위험하지만, 자네라면 해낼 수 있을 거야.",
+        "[status]메시아의 임무를 수락했다: 환기구 카드키 구하기[/status]"
+      ],
+      "actions": [
+        "알겠다"
+      ]
+    },
+    "messiah_mission_status": {
+      "location": "dynamic",
+      "script": [
+        "messiah: 카드키는 구했나?",
+        "messiah: 시간이 많지 않아. 서둘러야 해."
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "messiah_deliver_key": {
+      "location": "dynamic",
+      "script": [
+        "환기구 카드키를 메시아에게 건넨다.",
+        "messiah: ...해냈군. 정말 대단해.",
+        "messiah: 이제 탈출 준비가 거의 끝났어. 고맙네.",
+        "그의 눈에 희망의 빛이 어린다.",
+        "[status]{{환기구 카드키}}를 메시아에게 전달했다.[/status]",
+        "[status]메시아와의 관계가 크게 개선되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "messiah_ask_blessing": {
+      "location": "dynamic",
+      "script": [
+        "messiah: 자네는 우리 모두에게 희망이야.",
+        "messiah: 내가 할 수 있는 건 적지만... 축복을 빌어주지.",
+        "그가 당신의 이마에 손을 얹는다.",
+        "따뜻한 기운이 느껴진다.",
+        "[status]메시아의 축복을 받았다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "messiah_ask_origin": {
+      "location": "dynamic",
+      "script": [
+        "messiah: 내 이야기가 궁금한가...",
+        "messiah: 나는 한때 목사였어. 사람들에게 희망을 전하는 일을 했지.",
+        "messiah: 하지만 이 세상은 희망을 허락하지 않더군.",
+        "그의 눈에 슬픔이 어린다."
+      ],
+      "actions": [
+        "이야기를 더 듣는다",
+        "돌아간다"
+      ]
+    },
+    "messiah_origin_continue": {
+      "location": "dynamic",
+      "script": [
+        "messiah: 부패한 권력에 맞서다 이곳에 오게 됐어.",
+        "messiah: 하지만 후회는 없네. 옳은 일을 했으니까.",
+        "messiah: 자네도 언젠가 선택의 순간이 올 거야.",
+        "messiah: 그때 자신을 믿게."
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "messiah_small_talk": {
+      "location": "dynamic",
+      "script": [
+        "메시아와 잠시 대화를 나눈다.",
+        "그의 말에서 지혜와 평온함이 느껴진다.",
+        "마음이 조금 편안해진다.",
+        "[status]메시아와의 관계가 조금 개선되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "return_to_hub": {
+      "location": "dynamic",
+      "script": [
+        "다시 주변을 둘러본다."
+      ],
+      "actions": [
+        "돌아간다",
+        "돌아간다",
+        "돌아간다",
+        "돌아간다",
+        "돌아간다",
+        "장소를 선택한다"
+      ]
+    }
+  }
+}

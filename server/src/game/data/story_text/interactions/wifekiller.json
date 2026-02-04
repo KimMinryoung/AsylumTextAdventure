@@ -1,0 +1,129 @@
+{
+  "scenes": {
+    "interact_wifekiller": {
+      "location": "dynamic",
+      "script": [
+        "아내살해범이 조용히 앉아있다.",
+        "그의 표정에서 깊은 슬픔이 느껴진다."
+      ],
+      "actions": [
+        "비상구에 대해 묻는다",
+        "그의 깊은 이야기를 듣는다",
+        "그의 이야기를 듣는다",
+        "조심스럽게 접근한다",
+        "동정심을 표현한다",
+        "돌아간다"
+      ]
+    },
+    "wifekiller_first_approach": {
+      "location": "dynamic",
+      "script": [
+        "아내살해범에게 다가간다.",
+        "그가 경계하는 눈빛으로 당신을 본다."
+      ],
+      "actions": [
+        "왜 아내를 죽였냐고 묻는다",
+        "부드럽게 말을 건다",
+        "거리를 둔다",
+        "돌아간다"
+      ]
+    },
+    "wifekiller_provoke": {
+      "location": "dynamic",
+      "script": [
+        "당신의 질문에 그의 눈이 번뜩인다.",
+        "wifekiller: ...뭐라고?",
+        "!!위험한 기운이 느껴진다!!",
+        "그가 갑자기 달려든다!"
+      ],
+      "actions": [
+        "도망친다"
+      ]
+    },
+    "wifekiller_gentle": {
+      "location": "dynamic",
+      "script": [
+        "wifekiller: ...왜 나한테 친절하게 대해?",
+        "wifekiller: 다들 나를 피하는데.",
+        "[status]아내살해범과의 관계가 개선되었다.[/status]"
+      ],
+      "actions": [
+        "이야기를 듣는다",
+        "돌아간다"
+      ]
+    },
+    "wifekiller_reject": {
+      "location": "dynamic",
+      "script": [
+        "적당한 거리를 유지한다.",
+        "그가 안도하는 것 같다.",
+        "[status]아내살해범과의 관계가 조금 개선되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "wifekiller_listen_story": {
+      "location": "dynamic",
+      "script": [
+        "wifekiller: ...그녀를 사랑했어.",
+        "wifekiller: 하지만 그녀가... 다른 남자와 있는 걸 봤어.",
+        "wifekiller: 눈앞이 빨개졌지. 정신 차리니 그녀가...",
+        "그가 얼굴을 손으로 가린다."
+      ],
+      "actions": [
+        "위로한다",
+        "돌아간다"
+      ]
+    },
+    "wifekiller_bond": {
+      "location": "dynamic",
+      "script": [
+        "당신의 위로에 그가 잠시 눈을 감는다.",
+        "wifekiller: ...고마워. 이해해줘서.",
+        "wifekiller: 오랜만에 사람다운 대화를 한 것 같아.",
+        "[status]아내살해범과의 관계가 크게 개선되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "wifekiller_deep_story": {
+      "location": "dynamic",
+      "script": [
+        "wifekiller: 우리는 대학 때 만났어.",
+        "wifekiller: 처음엔 정말 행복했지...",
+        "그가 과거를 회상하며 이야기를 이어간다.",
+        "시간이 흘렀다.",
+        "[status]아내살해범과의 관계가 크게 개선되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "wifekiller_sympathy": {
+      "location": "dynamic",
+      "script": [
+        "당신이 동정심을 표현하자 그가 고개를 끄덕인다.",
+        "wifekiller: ...너는 착한 사람이야.",
+        "[status]아내살해범과의 관계가 개선되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "wifekiller_emergency_info": {
+      "location": "dynamic",
+      "script": [
+        "wifekiller: 네가 탈출하려는 거 알아.",
+        "wifekiller: 도와주고 싶어. 너한테 빚이 있으니까.",
+        "wifekiller: 의무실 뒤에 비상구가 있어. 보통은 잠겨있지만...",
+        "wifekiller: 야간에 가끔 열려있을 때가 있어.",
+        "[status]비상구 정보를 얻었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    }
+  }
+}

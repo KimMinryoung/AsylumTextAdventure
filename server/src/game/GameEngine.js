@@ -1,3 +1,14 @@
+// 시간 슬롯 상수
+const TIME_SLOTS = {
+  MORNING: 0,    // 아침 (기상, 준비)
+  LUNCH: 1,      // 점심식사
+  AFTERNOON: 2,  // 낮 (작업/운동)
+  EVENING: 3,    // 저녁 (자유시간/교육)
+  NIGHT: 4       // 밤 (취침)
+};
+
+const TIME_SLOT_NAMES = ['아침', '점심', '낮', '저녁', '밤'];
+
 class GameEngine {
   constructor(gameData) {
     this.gameData = gameData;
@@ -11,26 +22,36 @@ class GameEngine {
     // 작업 성과 및 교육 점수
     this.workScore = 0;
     this.educationScore = 0;
+    // 시간/일정 시스템
+    this.currentDay = 1;
+    this.currentTimeSlot = TIME_SLOTS.MORNING;
+    this.currentLocation = "cell";
   }
 
   start() {
     this.currentScene = this.gameData.startScene;
     this.inventory = [...(this.gameData.startInventory || [])];
     this.flags = { ...(this.gameData.startFlags || {}) };
-    this.relations = { ...(this.gameData.startRelations || {
-      messiah: 0,
-      fraudster: 0,
-      wifekiller: 0,
-      groper: 0,
-      arsonist: 0,
-      pedophile: 0,
-      political: 0,
-      guard: 0
-    }) };
+    this.relations = {
+      ...(this.gameData.startRelations || {
+        messiah: 0,
+        fraudster: 0,
+        wifekiller: 0,
+        groper: 0,
+        arsonist: 0,
+        pedophile: 0,
+        political: 0,
+        guard: 0
+      })
+    };
     this.history = [];
     this.visitedLocations = [];
     this.workScore = 0;
     this.educationScore = 0;
+    // 시간/일정 시스템 초기화
+    this.currentDay = 1;
+    this.currentTimeSlot = TIME_SLOTS.MORNING;
+    this.currentLocation = "cell";
 
     // Execute scene effects on start
     const scene = this.gameData.scenes[this.currentScene];
@@ -68,19 +89,57 @@ class GameEngine {
       isEnding: scene.isEnding || false,
       unlockedEndings: [...this.unlockedEndings],
       workScore: this.workScore,
-      educationScore: this.educationScore
+      educationScore: this.educationScore,
+      // 시간/일정 시스템 상태
+      currentDay: this.currentDay,
+      currentTimeSlot: this.currentTimeSlot,
+      currentTimeSlotName: TIME_SLOT_NAMES[this.currentTimeSlot],
+      currentLocation: this.currentLocation,
+      npcsAtLocation: this.getNpcsAtCurrentLocation()
     };
   }
 
   getAvailableActions(scene) {
     if (!scene.actions) return [];
 
-    return scene.actions
+    let actions = scene.actions
       .filter(action => this.checkConditions(action.conditions))
       .map(action => ({
         id: action.id,
         text: this.processText(action.text)
       }));
+
+    // 허브 액션 주입: 장면이 특정 장소에 속해있을 때 NPC 대화 및 이동 메뉴 추가
+    if (scene.location) {
+      // 1. NPC 상호작용 추가
+      const npcs = this.getNpcsAtCurrentLocation();
+      npcs.forEach(npcId => {
+        // 이미 해당 NPC와 대화하는 액션이 있는지 확인 (중복 방지)
+        if (!actions.find(a => a.id.includes(`interact_${npcId}`))) {
+          actions.push({
+            id: `hub_interact_${npcId}`,
+            text: `${npcId}에게 다가간다`,
+            nextScene: `interact_${npcId}`
+          });
+        }
+      });
+
+      // 2. 다른 장소로 이동 메뉴 추가 (허브 입구 장면이나 특정 상황에서만)
+      // 여기서는 간단하게 모든 장면 끝에 '장소 이동'이나 '돌아간다' 폴백을 넣을 수 있음
+      // 하지만 원본 흐름을 해치지 않기 위해, 명시적으로 허브 입구 성격의 장면에서만 주입하는 것이 좋음
+      const hubTriggerScenes = ['yard', 'cafeteria_arrival', 'workshop'];
+      if (hubTriggerScenes.includes(this.currentScene) || scene.isHub) {
+        if (!actions.find(a => a.id.includes('location_select'))) {
+          actions.push({
+            id: 'hub_location_move',
+            text: "다른 장소로 이동한다",
+            nextScene: 'location_select'
+          });
+        }
+      }
+    }
+
+    return actions;
   }
 
   checkConditions(conditions) {
@@ -111,6 +170,15 @@ class GameEngine {
           break;
         case 'educationScoreMin':
           if (this.educationScore < condition.value) return false;
+          break;
+        case 'npcAt':
+          if (!this.isNpcAtLocation(condition.npc, condition.location || this.currentLocation)) return false;
+          break;
+        case 'time':
+          if (this.currentTimeSlot !== condition.slot) return false;
+          break;
+        case 'playerAt':
+          if (this.currentLocation !== condition.location) return false;
           break;
         default:
           break;
@@ -206,19 +274,30 @@ class GameEngine {
         case 'increaseEducationScore':
           this.educationScore += (effect.amount || 1);
           break;
+        case 'advanceTime':
+          this.currentTimeSlot = (this.currentTimeSlot + 1) % 5;
+          if (this.currentTimeSlot === 0) {
+            this.currentDay += 1;
+          }
+          break;
+        case 'moveTo':
+          this.currentLocation = effect.location;
+          break;
         case 'resetGame':
           this.inventory = [];
           this.flags = {};
-          this.relations = { ...(this.gameData.startRelations || {
-            messiah: 0,
-            fraudster: 0,
-            wifekiller: 0,
-            groper: 0,
-            arsonist: 0,
-            pedophile: 0,
-            political: 0,
-            guard: 0
-          }) };
+          this.relations = {
+            ...(this.gameData.startRelations || {
+              messiah: 0,
+              fraudster: 0,
+              wifekiller: 0,
+              groper: 0,
+              arsonist: 0,
+              pedophile: 0,
+              political: 0,
+              guard: 0
+            })
+          };
           this.history = [];
           this.visitedLocations = [];
           this.workScore = 0;
@@ -272,6 +351,9 @@ class GameEngine {
       unlockedEndings: [...this.unlockedEndings],
       workScore: this.workScore,
       educationScore: this.educationScore,
+      currentDay: this.currentDay,
+      currentTimeSlot: this.currentTimeSlot,
+      currentLocation: this.currentLocation,
       savedAt: Date.now()
     };
   }
@@ -288,26 +370,43 @@ class GameEngine {
     this.currentScene = saveData.currentScene;
     this.inventory = saveData.inventory || [];
     this.flags = saveData.flags || {};
-    this.relations = saveData.relations || { ...(this.gameData.startRelations || {
-      messiah: 0,
-      fraudster: 0,
-      wifekiller: 0,
-      groper: 0,
-      arsonist: 0,
-      pedophile: 0,
-      political: 0,
-      guard: 0
-    }) };
+    this.relations = saveData.relations || {
+      ...(this.gameData.startRelations || {
+        messiah: 0,
+        fraudster: 0,
+        wifekiller: 0,
+        groper: 0,
+        arsonist: 0,
+        pedophile: 0,
+        political: 0,
+        guard: 0
+      })
+    };
     this.history = saveData.history || [];
     this.visitedLocations = saveData.visitedLocations || [];
     this.workScore = saveData.workScore || 0;
     this.educationScore = saveData.educationScore || 0;
+    this.currentDay = saveData.currentDay || 1;
+    this.currentTimeSlot = saveData.currentTimeSlot || 0;
+    this.currentLocation = saveData.currentLocation || "cell";
     // 현재의 엔딩 해금 목록과, 세이브 파일에 있던 해금 목록을 병합
     const savedEndings = saveData.unlockedEndings || [];
     const currentEndings = this.unlockedEndings || [];
     this.unlockedEndings = [...new Set([...currentEndings, ...savedEndings])];
 
     return { success: true };
+  }
+
+  // NPC 위치 관리 (npc_schedules 사용)
+  getNpcsAtCurrentLocation() {
+    const { getNpcsAtLocation } = require('./data/schedules/npc_schedules');
+    return getNpcsAtLocation(this.currentLocation, this.currentDay, this.currentTimeSlot);
+  }
+
+  isNpcAtLocation(npcId, location) {
+    const { getNpcLocation } = require('./data/schedules/npc_schedules');
+    const npcLocation = getNpcLocation(npcId, this.currentDay, this.currentTimeSlot);
+    return npcLocation === location;
   }
 }
 

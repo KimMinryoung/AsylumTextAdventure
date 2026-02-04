@@ -1,0 +1,276 @@
+{
+  "scenes": {
+    "interact_political": {
+      "location": "dynamic",
+      "script": [
+        "정치범이 책을 읽고 있다.",
+        "당신을 보더니 고개를 들어 인사한다."
+      ],
+      "actions": [
+        "깊은 대화를 나눈다",
+        "가족에 대해 묻는다",
+        "조언을 구한다",
+        "다른 수감자들에 대해 묻는다",
+        "신뢰를 증명한다",
+        "가볍게 대화한다",
+        "돌아간다"
+      ]
+    },
+    "political_prove_trust": {
+      "location": "dynamic",
+      "script": [
+        "정치범이 당신을 경계하는 눈빛으로 바라본다.",
+        "political: 여기선 함부로 믿으면 안 돼.",
+        "당신은 진심을 담아 이야기한다.",
+        "political: ...음, 좋아. 조금 믿어보지.",
+        "[status]정치범과의 관계가 개선되었다.[/status]"
+      ],
+      "actions": [
+        "다른 수감자들에 대해 묻는다",
+        "돌아간다"
+      ]
+    },
+    "political_prisoner_info": {
+      "location": "dynamic",
+      "script": [
+        "political: 누구에 대해 알고 싶어?",
+        "그가 책을 내려놓는다."
+      ],
+      "actions": [
+        "사기꾼에 대해",
+        "아내살해범에 대해",
+        "메시아에 대해",
+        "돌아간다"
+      ]
+    },
+    "hub_political_info_fraudster": {
+      "location": "dynamic",
+      "script": [
+        "political: 사기꾼? 조심해야 해.",
+        "political: 그 사람은 자기 이익만 챙겨. 거래할 땐 조건을 잘 확인해.",
+        "[status]사기꾼에 대한 경고를 들었다.[/status]"
+      ],
+      "actions": [
+        "다른 사람도 묻는다",
+        "돌아간다"
+      ]
+    },
+    "hub_political_info_wifekiller": {
+      "location": "dynamic",
+      "script": [
+        "political: 그 사람은... 불쌍해.",
+        "political: 충동적인 실수로 인생을 망쳤지. 하지만 본성은 나쁘지 않아.",
+        "[status]아내살해범에 대해 알게 되었다.[/status]"
+      ],
+      "actions": [
+        "다른 사람도 묻는다",
+        "돌아간다"
+      ]
+    },
+    "hub_political_info_messiah": {
+      "location": "dynamic",
+      "script": [
+        "political: 메시아? 그 사람은 진짜 신념이 있어.",
+        "political: 위험할 수 있지만, 믿을 수 있는 사람이야.",
+        "[status]메시아에 대해 알게 되었다.[/status]"
+      ],
+      "actions": [
+        "다른 사람도 묻는다",
+        "돌아간다"
+      ]
+    },
+    "political_ask_advice": {
+      "location": "dynamic",
+      "script": [
+        "political: 탈출? 하수구를 통하면 가능해.",
+        "political: 하지만 위험해. 잘못하면 익사할 수도 있어.",
+        "[status]하수구 탈출 경로에 대해 알게 되었다.[/status]"
+      ],
+      "actions": [
+        "가족에 대해 묻는다",
+        "돌아간다"
+      ]
+    },
+    "political_family_talk": {
+      "location": "dynamic",
+      "script": [
+        "political: 아내와 딸이 바깥에 있어.",
+        "political: 걱정돼... 잘 지내고 있을까.",
+        "그의 눈에 그리움이 어린다."
+      ],
+      "actions": [
+        "편지를 전해주겠다고 한다",
+        "돌아간다"
+      ]
+    },
+    "political_letter_request": {
+      "location": "dynamic",
+      "script": [
+        "political: 정말? 고마워...",
+        "그가 조심스럽게 편지를 꺼낸다.",
+        "political: 이걸 탈출하면 가족에게 전해줘.",
+        "[status]{{정치범의 편지}}를 받았다.[/status]"
+      ],
+      "actions": [
+        "약속한다"
+      ]
+    },
+    "political_grateful": {
+      "location": "dynamic",
+      "script": [
+        "political: 고마워. 정말로.",
+        "political: 대신 하나 알려줄게. 수요일 밤엔 순찰이 줄어.",
+        "political: 그때가 기회야.",
+        "[status]수요일 순찰 정보를 알게 되었다.[/status]",
+        "[status]정치범과의 관계가 크게 개선되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "political_deep_talk": {
+      "location": "dynamic",
+      "script": [
+        "정치범과 깊은 대화를 나눈다.",
+        "political: 무엇이 알고 싶어?",
+        "[status]정치범과의 관계가 개선되었다.[/status]"
+      ],
+      "actions": [
+        "간수장에 대해",
+        "지하 터널에 대해",
+        "사기꾼과의 관계에 대해",
+        "돌아간다"
+      ]
+    },
+    "political_deep_guard": {
+      "location": "dynamic",
+      "script": [
+        "political: 간수장? 그 사람 병이 있어.",
+        "political: 정기적으로 의무실에 가. 그때 감시가 느슨해져.",
+        "[status]간수장의 비밀을 알게 되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "political_deep_tunnels": {
+      "location": "dynamic",
+      "script": [
+        "political: 이 수용소 밑에 옛날 터널이 있어.",
+        "political: 지하실에서 접근할 수 있는데, 열쇠가 필요해.",
+        "[status]지하 터널에 대해 알게 되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "political_deep_fraudster": {
+      "location": "dynamic",
+      "script": [
+        "political: 사기꾼과 거래하고 있다고?",
+        "political: 조심해. 그 사람은 결국 배신해."
+      ],
+      "actions": [
+        "경고를 무시한다",
+        "경고를 받아들인다"
+      ]
+    },
+    "political_ignore_warning": {
+      "location": "dynamic",
+      "script": [
+        "political: 마음대로 해. 하지만 나중에 후회하지 마."
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "political_heed_warning": {
+      "location": "dynamic",
+      "script": [
+        "political: 현명한 선택이야.",
+        "political: 그 사람과는 거리를 두는 게 좋아.",
+        "[status]사기꾼에 대한 경고를 받아들였다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "political_small_talk": {
+      "location": "dynamic",
+      "script": [
+        "정치범과 가벼운 대화를 시작한다."
+      ],
+      "actions": [
+        "책에 대해 이야기한다",
+        "그의 범죄에 대해 묻는다",
+        "조용히 시간을 보낸다"
+      ]
+    },
+    "political_book_talk": {
+      "location": "dynamic",
+      "script": [
+        "political: 책? 이건 철학서야. 자유에 대해 쓴 거지.",
+        "political: 역설적이지? 이런 곳에서 자유를 읽다니.",
+        "[status]정치범과의 관계가 개선되었다.[/status]"
+      ],
+      "actions": [
+        "동의한다",
+        "돌아간다"
+      ]
+    },
+    "political_agree_book": {
+      "location": "dynamic",
+      "script": [
+        "political: 네가 이해해줘서 기뻐.",
+        "political: 언젠가 밖에서 다시 책을 읽을 수 있길 바라.",
+        "[status]정치범과의 관계가 더 개선되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "political_crime_talk": {
+      "location": "dynamic",
+      "script": [
+        "political: 내 죄? 진실을 말한 것뿐이야.",
+        "political: 정권의 부정부패를 폭로했지. 그게 범죄가 됐어.",
+        "[status]정치범의 이야기를 알게 되었다.[/status]"
+      ],
+      "actions": [
+        "존경을 표한다",
+        "탈출에 대해 묻는다"
+      ]
+    },
+    "political_respect": {
+      "location": "dynamic",
+      "script": [
+        "political: 고마워. 이해해주는 사람이 있다니 다행이야.",
+        "[status]정치범과의 관계가 개선되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "political_escape_info": {
+      "location": "dynamic",
+      "script": [
+        "political: 탈출? 수요일 밤이 좋아.",
+        "political: 그때 간수들이 교대하면서 틈이 생기거든.",
+        "[status]수요일 탈출 정보를 얻었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "political_quiet": {
+      "location": "dynamic",
+      "script": [
+        "조용히 정치범 옆에 앉는다.",
+        "그는 계속 책을 읽고, 당신은 생각에 잠긴다."
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    }
+  }
+}

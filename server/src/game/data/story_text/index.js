@@ -81,7 +81,7 @@ async function loadFromDB() {
         location: row.location
       };
     });
-    scenes = dbScenes;
+    scenes = { ...localScenes, ...dbScenes };
     return true;
   }
   return false;

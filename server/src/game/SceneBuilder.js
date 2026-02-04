@@ -64,10 +64,26 @@ const internalBake = (sceneId, options, actionsGenerator) => {
   }
 
   // 액션에 텍스트 주입
-  const mergedActions = logicActions.map((act, index) => ({
-    ...act,
-    text: jsonActions[index] || act.text || "[텍스트 없음]"
-  }));
+  const mergedActions = logicActions.map((act, index) => {
+    // 1. 만약 act에 이미 전용 텍스트가 있다면 그대로 사용
+    if (act.text) return act;
+
+    // 2. JSON에서 해당 인덱스의 텍스트 가져오기
+    let text = jsonActions[index];
+
+    // 3. 특별 처리: npcAt 조건이 있는 액션은 해당 NPC 이름을 텍스트로 사용 (폴백)
+    if (!text && act.conditions) {
+      const npcAtCond = act.conditions.find(c => c.type === 'npcAt');
+      if (npcAtCond) {
+        text = `${npcAtCond.npc}에게 다가간다`;
+      }
+    }
+
+    return {
+      ...act,
+      text: text || "[텍스트 없음]"
+    };
+  });
 
   // 장면 객체 생성
   const scene = {
@@ -116,6 +132,9 @@ const SB = {
     relMax: (target, value) => ({ type: 'relationMax', target, value }),
     workMin: (value) => ({ type: 'workScoreMin', value }),
     eduMin: (value) => ({ type: 'educationScoreMin', value }),
+    npcAt: (npc, location) => ({ type: 'npcAt', npc, location }),
+    time: (slot) => ({ type: 'time', slot }),
+    playerAt: (location) => ({ type: 'playerAt', location })
   },
 
   // ===== 효과(Effect) =====
@@ -127,6 +146,8 @@ const SB = {
     rel: (target, amount = 1) => ({ type: 'increaseRelation', target, amount }),
     work: (amount = 1) => ({ type: 'increaseWorkScore', amount }),
     edu: (amount = 1) => ({ type: 'increaseEducationScore', amount }),
+    advanceTime: () => ({ type: 'advanceTime' }),
+    moveTo: (location) => ({ type: 'moveTo', location }),
     reset: () => ({ type: 'resetGame' }),
   },
 
