@@ -26,6 +26,24 @@ const sewer_mystery = require('./sewer_mystery.json');
 const torchlight_mystery = require('./torchlight_mystery.json');
 const wall_scratching_mystery = require('./wall_scratching_mystery.json');
 
+// 새 시스템: 허브 장면 및 장소 메뉴
+const location_menu = require('./location_menu.json');
+const hubs_cell = require('./hubs/cell_hub.json');
+const hubs_yard = require('./hubs/yard_hub.json');
+const hubs_cafeteria = require('./hubs/cafeteria_hub.json');
+const hubs_workshop = require('./hubs/workshop_hub.json');
+const hubs_corridor = require('./hubs/corridor_hub.json');
+
+// 새 시스템: NPC 상호작용
+const interactions_messiah = require('./interactions/messiah.json');
+const interactions_fraudster = require('./interactions/fraudster.json');
+const interactions_arsonist = require('./interactions/arsonist.json');
+const interactions_political = require('./interactions/political.json');
+const interactions_wifekiller = require('./interactions/wifekiller.json');
+const interactions_groper = require('./interactions/groper.json');
+const interactions_pedophile = require('./interactions/pedophile.json');
+const interactions_guard = require('./interactions/guard.json');
+
 const localScenes = {
   ...cafeteria.scenes,
   ...characters_arsonist.scenes,
@@ -51,6 +69,22 @@ const localScenes = {
   ...sewer_mystery.scenes,
   ...torchlight_mystery.scenes,
   ...wall_scratching_mystery.scenes,
+  // 새 시스템: 허브 장면 및 장소 메뉴
+  ...location_menu.scenes,
+  ...hubs_cell.scenes,
+  ...hubs_yard.scenes,
+  ...hubs_cafeteria.scenes,
+  ...hubs_workshop.scenes,
+  ...hubs_corridor.scenes,
+  // 새 시스템: NPC 상호작용
+  ...interactions_messiah.scenes,
+  ...interactions_fraudster.scenes,
+  ...interactions_arsonist.scenes,
+  ...interactions_political.scenes,
+  ...interactions_wifekiller.scenes,
+  ...interactions_groper.scenes,
+  ...interactions_pedophile.scenes,
+  ...interactions_guard.scenes,
 };
 
 let scenes = localScenes;

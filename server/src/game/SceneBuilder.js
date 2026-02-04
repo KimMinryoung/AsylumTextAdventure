@@ -116,6 +116,15 @@ const SB = {
     relMax: (target, value) => ({ type: 'relationMax', target, value }),
     workMin: (value) => ({ type: 'workScoreMin', value }),
     eduMin: (value) => ({ type: 'educationScoreMin', value }),
+    // 시간/일정 시스템 조건
+    day: (day) => ({ type: 'dayIs', day }),
+    dayMin: (day) => ({ type: 'dayMin', day }),
+    dayMax: (day) => ({ type: 'dayMax', day }),
+    time: (slot) => ({ type: 'timeIs', slot }),
+    timeMin: (slot) => ({ type: 'timeMin', slot }),
+    timeMax: (slot) => ({ type: 'timeMax', slot }),
+    playerAt: (location) => ({ type: 'playerAt', location }),
+    npcAt: (npc) => ({ type: 'npcAt', npc }),
   },
 
   // ===== 효과(Effect) =====
@@ -128,6 +137,12 @@ const SB = {
     work: (amount = 1) => ({ type: 'increaseWorkScore', amount }),
     edu: (amount = 1) => ({ type: 'increaseEducationScore', amount }),
     reset: () => ({ type: 'resetGame' }),
+    // 시간/일정 시스템 효과
+    advanceTime: () => ({ type: 'advanceTime' }),
+    setTime: (slot) => ({ type: 'setTime', slot }),
+    setDay: (day) => ({ type: 'setDay', day }),
+    nextDay: () => ({ type: 'nextDay' }),
+    moveTo: (location) => ({ type: 'movePlayer', location }),
   },
 
   action: (nextScene, conditions = [], effects = []) => {

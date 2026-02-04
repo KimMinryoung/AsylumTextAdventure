@@ -1,0 +1,101 @@
+{
+  "scenes": {
+    "hub_cafeteria": {
+      "location": "cafeteria",
+      "script": [
+        "넓은 식당이다. 긴 테이블들이 줄지어 있고, 수감자들이 앉아 식사를 하거나 대화를 나누고 있다.",
+        "음식 냄새와 웅성거리는 소리가 뒤섞인다."
+      ],
+      "actions": [
+        "메시아에게 다가간다",
+        "사기꾼에게 다가간다",
+        "아내살해범에게 다가간다",
+        "치한에게 다가간다",
+        "방화범에게 다가간다",
+        "소아성애자에게 다가간다",
+        "정치범에게 다가간다",
+        "식사를 한다",
+        "주변 대화를 엿듣는다",
+        "주방 쪽을 살펴본다",
+        "다른 곳으로 이동한다",
+        "시간을 보낸다"
+      ]
+    },
+    "cafeteria_eat": {
+      "location": "cafeteria",
+      "script": [
+        "배식받은 음식을 먹는다.",
+        "맛은 없지만, 배는 채울 수 있다."
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "cafeteria_listen": {
+      "location": "cafeteria",
+      "script": [
+        "식사하는 척하며 주변 대화에 귀를 기울인다."
+      ],
+      "actions": [
+        "탈출에 대한 이야기가 들린다",
+        "간수에 대한 이야기가 들린다",
+        "별다른 이야기가 없다"
+      ]
+    },
+    "cafeteria_rumor_escape": {
+      "location": "cafeteria",
+      "script": [
+        "prisoner: ...그 사람, 탈출을 계획하고 있다던데.",
+        "prisoner: 쉿! 조용히 해. 간수가 들으면 어쩌려고.",
+        "[status]누군가 탈출을 계획하고 있다는 소문을 들었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "cafeteria_rumor_guard": {
+      "location": "cafeteria",
+      "script": [
+        "prisoner: 야간 근무 간수가 바뀌었다던데.",
+        "prisoner: 새 놈은 순찰을 대충 한다고 들었어.",
+        "[status]야간 순찰에 대한 정보를 얻었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "cafeteria_nothing_new": {
+      "location": "cafeteria",
+      "script": [
+        "주변에서 특별한 이야기는 들리지 않는다.",
+        "평범한 잡담뿐이다."
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "cafeteria_kitchen": {
+      "location": "cafeteria",
+      "script": [
+        "간수의 눈을 피해 주방 쪽으로 슬쩍 다가간다.",
+        "조리대에 여러 도구들이 놓여 있다."
+      ],
+      "actions": [
+        "식칼을 훔친다",
+        "돌아간다"
+      ]
+    },
+    "cafeteria_steal_knife": {
+      "location": "cafeteria",
+      "script": [
+        "재빠르게 식칼 하나를 옷 속에 숨긴다.",
+        "심장이 두근거린다. 들키지 않은 것 같다.",
+        "[status]{{식칼}}을 얻었다![/status]",
+        "!!하지만 불안한 기분이 든다.!!"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    }
+  }
+}

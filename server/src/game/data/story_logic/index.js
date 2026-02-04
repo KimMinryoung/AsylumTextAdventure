@@ -26,6 +26,11 @@ require('./sewer_mystery.js');
 require('./torchlight_mystery.js');
 require('./wall_scratching_mystery.js');
 
+// 새 시스템: 장소 메뉴, 허브, 상호작용
+require('./location_menu.js');
+require('./hubs');
+require('./interactions');
+
 const gameData = {
   startScene: "entrance",
   startInventory: [],

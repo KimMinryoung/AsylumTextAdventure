@@ -1,0 +1,102 @@
+{
+  "scenes": {
+    "interact_pedophile": {
+      "location": "dynamic",
+      "script": [
+        "소아성애자가 구석에 혼자 앉아있다.",
+        "다른 수감자들이 그를 피하는 게 눈에 띈다."
+      ],
+      "actions": [
+        "친절하게 대한다",
+        "거래를 제안한다",
+        "무시한다",
+        "돌아간다"
+      ]
+    },
+    "pedophile_kind_approach": {
+      "location": "dynamic",
+      "script": [
+        "당신이 다가가자 그가 놀란 표정을 짓는다.",
+        "pedophile: ...왜 나한테 말을 거는 거야?",
+        "pedophile: 다들 나를 피하는데.",
+        "그가 경계하면서도 외로움이 묻어나는 눈빛을 보인다."
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "pedophile_deal_offer": {
+      "location": "dynamic",
+      "script": [
+        "pedophile: 거래? 내가 뭘 줄 수 있겠어...",
+        "pedophile: 아, 하나 있어. 환기구 덕트.",
+        "pedophile: 청소하다가 발견했는데, 밖으로 통해.",
+        "pedophile: 도와주면 알려줄게.",
+        "[status]소아성애자를 도왔다. 환기구 정보를 얻었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "pedophile_ignore_him": {
+      "location": "dynamic",
+      "script": [
+        "그를 무시하고 지나간다.",
+        "그가 고개를 숙인다."
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "pedophile_attack_event": {
+      "location": "dynamic",
+      "script": [
+        "몇몇 수감자들이 소아성애자를 둘러싸고 있다.",
+        "prisoner: 네놈 같은 건 여기서도 용납 안 돼!",
+        "그들이 주먹을 휘두르기 시작한다."
+      ],
+      "actions": [
+        "도와준다",
+        "지켜본다"
+      ]
+    },
+    "pedophile_help_him": {
+      "location": "dynamic",
+      "script": [
+        "당신이 사이에 끼어든다.",
+        "prisoner: 뭐야, 너도 저 쪽이야?",
+        "당신의 단호한 태도에 그들이 물러난다.",
+        "pedophile: ...왜 도와준 거야?",
+        "소아성애자가 충격받은 표정으로 당신을 본다.",
+        "[status]소아성애자를 도왔다. 다른 수감자들과의 관계도 개선되었다.[/status]",
+        "[status]간수장의 약점에 대한 정보를 얻었다.[/status]"
+      ],
+      "actions": [
+        "대화를 계속한다"
+      ]
+    },
+    "pedophile_watch_attack": {
+      "location": "dynamic",
+      "script": [
+        "지켜만 본다.",
+        "폭행이 끝나고 그가 바닥에 쓰러져 있다.",
+        "그가 당신을 원망스러운 눈으로 본다.",
+        "[status]소아성애자와의 관계가 크게 악화되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "pedophile_aftermath": {
+      "location": "dynamic",
+      "script": [
+        "pedophile: 고마워... 정말로.",
+        "pedophile: 나도 할 줄 아는 게 있어. 간수장 있지?",
+        "pedophile: 그 사람, 비밀이 있어. 나중에 유용할 거야."
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    }
+  }
+}

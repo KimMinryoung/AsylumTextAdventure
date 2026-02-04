@@ -25,7 +25,12 @@ const scenes = {
     action("day_two_morning")
   ]),
 
-  ...defineScene("day_two_morning", () => [
+  ...defineScene("day_two_morning", {
+    effects: [eff.setDay(2), eff.setTime(0), eff.moveTo("cell")]  // Day 2 아침, 감방에서 시작
+  }, () => [
+    // 새 허브 시스템으로 전환 (Day 2부터)
+    action("hub_cell"),
+    // 기존 옵션 유지 (레거시)
     action("workshop"),
     action("yard")
   ]),

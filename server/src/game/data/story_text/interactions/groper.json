@@ -1,0 +1,76 @@
+{
+  "scenes": {
+    "interact_groper": {
+      "location": "dynamic",
+      "script": [
+        "치한이 어슬렁거리고 있다.",
+        "불쾌한 눈빛으로 주변을 살핀다."
+      ],
+      "actions": [
+        "과거에 대해 묻는다",
+        "정보를 얻는다",
+        "위협한다",
+        "무시한다",
+        "돌아간다"
+      ]
+    },
+    "groper_past_talk": {
+      "location": "dynamic",
+      "script": [
+        "groper: 왜 내 과거가 궁금해?",
+        "groper: 별 거 없어. 충동을 참지 못했을 뿐이야.",
+        "그가 역겨운 미소를 짓는다."
+      ],
+      "actions": [
+        "정보를 얻는다",
+        "돌아간다"
+      ]
+    },
+    "groper_get_info": {
+      "location": "dynamic",
+      "script": [
+        "groper: 순찰? 밤에 한 시간마다 지나가.",
+        "groper: 근데 새벽 3시쯤엔 잠깐 쉬더라.",
+        "groper: 그때 틈이 있어.",
+        "[status]순찰 틈새 시간을 알게 되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "groper_threaten": {
+      "location": "dynamic",
+      "script": [
+        "당신이 위협적인 태도를 보이자 치한이 움츠러든다.",
+        "groper: 왜, 왜 그래? 난 아무 짓도 안 했어!",
+        "그가 슬금슬금 물러난다.",
+        "[status]치한과 적대 관계가 되었다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "groper_ignore": {
+      "location": "dynamic",
+      "script": [
+        "치한을 무시하고 지나간다.",
+        "그가 뒤에서 중얼거리는 소리가 들린다."
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    },
+    "groper_danger_event": {
+      "location": "dynamic",
+      "script": [
+        "치한이 누군가를 괴롭히려다 간수에게 제지당한다.",
+        "guard: 한 번만 더 그러면 독방이야!",
+        "치한이 고개를 숙인다.",
+        "[status]치한의 위험성을 확인했다.[/status]"
+      ],
+      "actions": [
+        "돌아간다"
+      ]
+    }
+  }
+}
