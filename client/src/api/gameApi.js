@@ -125,6 +125,24 @@ export const gameApi = {
     }
   },
 
+  async cloudSaveEndings(sessionId, playerId) {
+    try {
+      const response = await fetch(`${API_BASE_URL}/api/game/cloud-save-endings`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ sessionId, playerId }),
+      });
+      return await response.json();
+    } catch (error) {
+      return {
+        success: false,
+        error: 'Failed to connect to server.'
+      };
+    }
+  },
+
   async cloudLoad(sessionId, playerId) {
     try {
       const response = await fetch(`${API_BASE_URL}/api/game/cloud-load`, {

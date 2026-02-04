@@ -102,11 +102,26 @@ module.exports = {
 - `!!text!!` - Danger/warning
 
 ## API Endpoints
-- `POST /api/game/start` - New game session
+- `POST /api/game/start` - New game session (loads previous unlocked endings only)
 - `POST /api/game/action` - Perform action
 - `GET /api/game/state/:sessionId` - Get current state
-- `POST /api/game/save` / `POST /api/game/load` - Persistence
+- `POST /api/game/save` / `POST /api/game/load` - Local persistence
+- `POST /api/game/cloud-save` - Cloud save (full game state, manual save)
+- `POST /api/game/cloud-save-endings` - Cloud save endings only (auto-save on new ending)
+- `POST /api/game/cloud-load` - Cloud load (full game state, manual load)
 - `GET /api/game/endings` - Fetch endings
+
+### Save/Load System
+The save system separates **unlocked endings** from **game state** to prevent auto-saves from overwriting manual save points:
+
+| Trigger | What's Saved | Endpoint |
+|---------|--------------|----------|
+| New ending reached (auto) | `unlockedEndings` only | `cloud-save-endings` |
+| Save button (manual) | Full game state | `cloud-save` |
+| Load button (manual) | Full game state | `cloud-load` |
+| New game start | Loads `unlockedEndings` only | `start` |
+
+This ensures that viewing an ending doesn't overwrite the player's manually saved checkpoint.
 
 ## Deployment
 - Backend: Render (asylumtextadventureserver.onrender.com)

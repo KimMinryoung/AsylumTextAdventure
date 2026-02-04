@@ -116,7 +116,7 @@ router.post('/load', (req, res) => {
   });
 });
 
-// Cloud save - DB에 저장
+// Cloud save - DB에 저장 (전체 게임 상태 - 수동 저장용)
 router.post('/cloud-save', async (req, res) => {
   const { sessionId, playerId } = req.body;
 
@@ -150,6 +150,55 @@ router.post('/cloud-save', async (req, res) => {
   } catch (error) {
     console.error('Cloud save error:', error);
     res.status(500).json({ success: false, error: 'Failed to save to cloud' });
+  }
+});
+
+// Cloud save endings only - DB에 엔딩 기록만 저장 (자동 저장용)
+router.post('/cloud-save-endings', async (req, res) => {
+  const { sessionId, playerId } = req.body;
+
+  if (!playerId) {
+    return res.status(400).json({ success: false, error: 'playerId is required' });
+  }
+
+  const engine = sessions.get(sessionId);
+  if (!engine) {
+    return res.status(404).json({ success: false, error: 'Game session not found.' });
+  }
+
+  if (!supabase) {
+    return res.status(503).json({ success: false, error: 'Database not configured' });
+  }
+
+  try {
+    const currentEndings = engine.unlockedEndings || [];
+
+    // 기존 저장 데이터 조회
+    const { data: existingData } = await supabase
+      .from('game_saves')
+      .select('save_data')
+      .eq('player_id', playerId)
+      .single();
+
+    // 기존 데이터가 있으면 unlockedEndings만 업데이트, 없으면 unlockedEndings만 저장
+    const saveData = existingData?.save_data
+      ? { ...existingData.save_data, unlockedEndings: currentEndings }
+      : { unlockedEndings: currentEndings };
+
+    const { error } = await supabase
+      .from('game_saves')
+      .upsert({
+        player_id: playerId,
+        save_data: saveData,
+        updated_at: new Date().toISOString()
+      }, { onConflict: 'player_id' });
+
+    if (error) throw error;
+
+    res.json({ success: true, message: 'Endings saved to cloud' });
+  } catch (error) {
+    console.error('Cloud save endings error:', error);
+    res.status(500).json({ success: false, error: 'Failed to save endings to cloud' });
   }
 });
 

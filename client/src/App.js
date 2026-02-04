@@ -63,15 +63,15 @@ function App() {
         }
         setGameState(result.state);
 
-        // 새 엔딩 도달 시 자동 저장
+        // 새 엔딩 도달 시 엔딩 기록만 자동 저장 (게임 상태는 저장 안 함)
         const prevEndings = prevUnlockedEndingsRef.current;
         const newEndings = result.state.unlockedEndings || [];
         if (newEndings.length > prevEndings.length) {
           prevUnlockedEndingsRef.current = newEndings;
-          // 백그라운드로 클라우드 저장 (UI 블로킹 안 함)
-          gameApi.cloudSave(sessionId, playerId).then(saveResult => {
+          // 백그라운드로 엔딩 기록만 클라우드 저장 (UI 블로킹 안 함)
+          gameApi.cloudSaveEndings(sessionId, playerId).then(saveResult => {
             if (saveResult.success) {
-              console.log('Auto-saved on new ending');
+              console.log('Auto-saved endings only');
             }
           });
         }
