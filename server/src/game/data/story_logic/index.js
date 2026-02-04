@@ -28,15 +28,6 @@ require('./wall_scratching_mystery.js');
 
 // Hub and Location System
 require('./location_menu.js');
-// Interactions
-require('./interactions/messiah.js');
-require('./interactions/fraudster.js');
-require('./interactions/arsonist.js');
-require('./interactions/political.js');
-require('./interactions/wifekiller.js');
-require('./interactions/groper.js');
-require('./interactions/pedophile.js');
-require('./interactions/guard.js');
 
 const gameData = {
   startScene: "entrance",

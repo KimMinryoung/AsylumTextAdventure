@@ -25,6 +25,7 @@ const yard = require('./yard.json');
 const sewer_mystery = require('./sewer_mystery.json');
 const torchlight_mystery = require('./torchlight_mystery.json');
 const wall_scratching_mystery = require('./wall_scratching_mystery.json');
+const location_menu = require('./location_menu.json');
 
 const localScenes = {
   ...cafeteria.scenes,
@@ -51,6 +52,7 @@ const localScenes = {
   ...sewer_mystery.scenes,
   ...torchlight_mystery.scenes,
   ...wall_scratching_mystery.scenes,
+  ...location_menu.scenes,
 };
 
 let scenes = localScenes;

@@ -81,7 +81,11 @@ class GameEngine {
     return {
       sceneId: this.currentScene,
       description: this.processText(scene.description),
-      actions: availableActions,
+      // 클라이언트에게는 ID와 텍스트만 전달
+      actions: availableActions.map(a => ({
+        id: a.id,
+        text: this.processText(a.text)
+      })),
       inventory: this.inventory,
       relations: this.relations,
       location: scene.location || null,
@@ -102,40 +106,93 @@ class GameEngine {
   getAvailableActions(scene) {
     if (!scene.actions) return [];
 
+    // 조건에 맞는 액션들을 가져옴 (nextScene 등 전체 데이터 유지)
     let actions = scene.actions
       .filter(action => this.checkConditions(action.conditions))
-      .map(action => ({
-        id: action.id,
-        text: this.processText(action.text)
-      }));
+      .map(action => ({ ...action })); // 원본 훼손 방지를 위해 복사
 
-    // 허브 액션 주입: 장면이 특정 장소에 속해있을 때 NPC 대화 및 이동 메뉴 추가
-    if (scene.location) {
+    // 허브 액션 주입: 메인 허브 장면이거나 특정 진입 장면에서만 주입
+    const hubTriggerScenes = ['yard', 'cafeteria_arrival', 'workshop', 'cell_arrival', 'hub_corridor'];
+    const isHubEntrance = scene.isHub || hubTriggerScenes.includes(this.currentScene);
+
+    if (scene.location && isHubEntrance) {
       // 1. NPC 상호작용 추가
       const npcs = this.getNpcsAtCurrentLocation();
       npcs.forEach(npcId => {
         // 이미 해당 NPC와 대화하는 액션이 있는지 확인 (중복 방지)
-        if (!actions.find(a => a.id.includes(`interact_${npcId}`))) {
+        const alreadyHasNpc = actions.find(a =>
+          a.id.includes(npcId) ||
+          (typeof a.text === 'string' && a.text.includes(npcId))
+        );
+
+        if (!alreadyHasNpc) {
+          // NPC 및 위치별 오리지널 입장 장면 매핑
+          let nextScene = '';
+          let npcName = npcId;
+
+          switch (npcId) {
+            case 'messiah':
+              npcName = '메시아';
+              if (this.currentLocation === 'yard') nextScene = 'yard_messiah';
+              else if (this.currentLocation === 'cafeteria') nextScene = 'cafeteria_messiah';
+              else nextScene = 'talk_messiah';
+              break;
+            case 'fraudster':
+              npcName = '사기꾼';
+              if (this.currentLocation === 'cafeteria') nextScene = 'cafeteria_fraudster';
+              else nextScene = 'talk_fraudster';
+              break;
+            case 'arsonist':
+              npcName = '방화범';
+              if (this.currentLocation === 'cafeteria') nextScene = 'cafeteria_arsonist';
+              else nextScene = 'talk_arsonist_day';
+              break;
+            case 'wifekiller':
+              npcName = '아내 살인범';
+              if (this.currentLocation === 'cafeteria') nextScene = 'talk_wifekiller';
+              else nextScene = 'talk_wifekiller_intro';
+              break;
+            case 'political':
+              npcName = '정치범';
+              if (this.currentLocation === 'cafeteria') nextScene = 'cafeteria_political';
+              else nextScene = 'talk_political';
+              break;
+            case 'groper':
+              npcName = '치한';
+              if (this.currentLocation === 'cafeteria') nextScene = 'cafeteria_groper_event';
+              else nextScene = 'talk_groper';
+              break;
+            case 'pedophile':
+              npcName = '소아성폭력범';
+              if (this.currentLocation === 'yard') nextScene = 'yard_pedophile';
+              else nextScene = 'pedophile_kind';
+              break;
+            case 'guard':
+              npcName = '간수';
+              if (this.currentLocation === 'yard') nextScene = 'yard_bow_guard';
+              else if (this.currentLocation === 'cafeteria') nextScene = 'cafeteria_guard_friendly';
+              else if (this.currentLocation === 'workshop') nextScene = 'guard_favor_workshop';
+              else nextScene = 'guard_night_friendly';
+              break;
+            default:
+              nextScene = `talk_${npcId}`;
+          }
+
           actions.push({
             id: `hub_interact_${npcId}`,
-            text: `${npcId}에게 다가간다`,
-            nextScene: `interact_${npcId}`
+            text: `${npcName}에게 다가간다`,
+            nextScene: nextScene
           });
         }
       });
 
-      // 2. 다른 장소로 이동 메뉴 추가 (허브 입구 장면이나 특정 상황에서만)
-      // 여기서는 간단하게 모든 장면 끝에 '장소 이동'이나 '돌아간다' 폴백을 넣을 수 있음
-      // 하지만 원본 흐름을 해치지 않기 위해, 명시적으로 허브 입구 성격의 장면에서만 주입하는 것이 좋음
-      const hubTriggerScenes = ['yard', 'cafeteria_arrival', 'workshop'];
-      if (hubTriggerScenes.includes(this.currentScene) || scene.isHub) {
-        if (!actions.find(a => a.id.includes('location_select'))) {
-          actions.push({
-            id: 'hub_location_move',
-            text: "다른 장소로 이동한다",
-            nextScene: 'location_select'
-          });
-        }
+      // 2. 다른 장소로 이동 메뉴 추가
+      if (!actions.find(a => a.id.includes('location_select') || a.nextScene === 'location_select')) {
+        actions.push({
+          id: 'hub_location_move',
+          text: "다른 장소로 이동한다",
+          nextScene: 'location_select'
+        });
       }
     }
 
@@ -193,7 +250,11 @@ class GameEngine {
       return { success: false, error: 'Current scene not found' };
     }
 
-    const action = scene.actions?.find(a => a.id === actionId);
+    // 중요: 정적 scene.actions가 아닌 getAvailableActions()를 통해 
+    // 동적으로 주입된 액션까지 포함하여 찾습니다.
+    const availableActions = this.getAvailableActions(scene);
+    const action = availableActions.find(a => a.id === actionId);
+
     if (!action) {
       return { success: false, error: 'Action not found' };
     }
