@@ -31,30 +31,30 @@ const NPC_SCHEDULES = {
   messiah: {
     1: {
       [TIME_SLOTS.MORNING]: "cell",
-      [TIME_SLOTS.LUNCH]: "cafeteria",
+      [TIME_SLOTS.LUNCH]: "yard",
       [TIME_SLOTS.AFTERNOON]: "cell",
-      [TIME_SLOTS.EVENING]: "cell",
+      [TIME_SLOTS.EVENING]: "cafeteria",
       [TIME_SLOTS.NIGHT]: "cell"
     },
     2: {
       [TIME_SLOTS.MORNING]: "yard",
-      [TIME_SLOTS.LUNCH]: "cafeteria",
+      [TIME_SLOTS.LUNCH]: "yard",
       [TIME_SLOTS.AFTERNOON]: "yard",
-      [TIME_SLOTS.EVENING]: "cell",
+      [TIME_SLOTS.EVENING]: "cafeteria",
       [TIME_SLOTS.NIGHT]: "cell"
     },
     3: {
       [TIME_SLOTS.MORNING]: "yard",
-      [TIME_SLOTS.LUNCH]: "cafeteria",
+      [TIME_SLOTS.LUNCH]: "workshop",
       [TIME_SLOTS.AFTERNOON]: "workshop",
-      [TIME_SLOTS.EVENING]: "cell",
+      [TIME_SLOTS.EVENING]: "cafeteria",
       [TIME_SLOTS.NIGHT]: "cell"
     },
     default: {
       [TIME_SLOTS.MORNING]: "yard",
-      [TIME_SLOTS.LUNCH]: "cafeteria",
+      [TIME_SLOTS.LUNCH]: "yard",
       [TIME_SLOTS.AFTERNOON]: "yard",
-      [TIME_SLOTS.EVENING]: "cell",
+      [TIME_SLOTS.EVENING]: "cafeteria",
       [TIME_SLOTS.NIGHT]: "cell"
     }
   },
@@ -63,7 +63,7 @@ const NPC_SCHEDULES = {
   fraudster: {
     default: {
       [TIME_SLOTS.MORNING]: "corridor",
-      [TIME_SLOTS.LUNCH]: "cafeteria",
+      [TIME_SLOTS.LUNCH]: "yard",
       [TIME_SLOTS.AFTERNOON]: "yard",
       [TIME_SLOTS.EVENING]: "cafeteria",
       [TIME_SLOTS.NIGHT]: "cell"
@@ -74,9 +74,9 @@ const NPC_SCHEDULES = {
   wifekiller: {
     default: {
       [TIME_SLOTS.MORNING]: "cell",
-      [TIME_SLOTS.LUNCH]: "cafeteria",
+      [TIME_SLOTS.LUNCH]: "workshop",
       [TIME_SLOTS.AFTERNOON]: "workshop",
-      [TIME_SLOTS.EVENING]: "cell",
+      [TIME_SLOTS.EVENING]: "cafeteria",
       [TIME_SLOTS.NIGHT]: "cell"
     }
   },
@@ -85,9 +85,9 @@ const NPC_SCHEDULES = {
   groper: {
     default: {
       [TIME_SLOTS.MORNING]: "corridor",
-      [TIME_SLOTS.LUNCH]: "cafeteria",
+      [TIME_SLOTS.LUNCH]: "yard",
       [TIME_SLOTS.AFTERNOON]: "yard",
-      [TIME_SLOTS.EVENING]: "corridor",
+      [TIME_SLOTS.EVENING]: "cafeteria",
       [TIME_SLOTS.NIGHT]: "cell"
     }
   },
@@ -96,16 +96,16 @@ const NPC_SCHEDULES = {
   arsonist: {
     1: {
       [TIME_SLOTS.MORNING]: "cell",
-      [TIME_SLOTS.LUNCH]: "cafeteria",
+      [TIME_SLOTS.LUNCH]: "workshop",
       [TIME_SLOTS.AFTERNOON]: "workshop",
-      [TIME_SLOTS.EVENING]: "yard",
+      [TIME_SLOTS.EVENING]: "cafeteria",
       [TIME_SLOTS.NIGHT]: "cell"
     },
     default: {
       [TIME_SLOTS.MORNING]: "yard",
-      [TIME_SLOTS.LUNCH]: "cafeteria",
+      [TIME_SLOTS.LUNCH]: "workshop",
       [TIME_SLOTS.AFTERNOON]: "workshop",
-      [TIME_SLOTS.EVENING]: "yard",
+      [TIME_SLOTS.EVENING]: "cafeteria",
       [TIME_SLOTS.NIGHT]: "cell"
     }
   },
@@ -114,9 +114,9 @@ const NPC_SCHEDULES = {
   pedophile: {
     default: {
       [TIME_SLOTS.MORNING]: "cell",
-      [TIME_SLOTS.LUNCH]: "cafeteria",
+      [TIME_SLOTS.LUNCH]: "yard",
       [TIME_SLOTS.AFTERNOON]: "cell",
-      [TIME_SLOTS.EVENING]: "corridor",
+      [TIME_SLOTS.EVENING]: "cafeteria",
       [TIME_SLOTS.NIGHT]: "cell"
     }
   },
@@ -125,9 +125,9 @@ const NPC_SCHEDULES = {
   political: {
     default: {
       [TIME_SLOTS.MORNING]: "cell",
-      [TIME_SLOTS.LUNCH]: "cafeteria",
+      [TIME_SLOTS.LUNCH]: "yard",
       [TIME_SLOTS.AFTERNOON]: "yard",
-      [TIME_SLOTS.EVENING]: "cell",
+      [TIME_SLOTS.EVENING]: "cafeteria",
       [TIME_SLOTS.NIGHT]: "cell"
     }
   },
@@ -136,13 +136,69 @@ const NPC_SCHEDULES = {
   guard: {
     default: {
       [TIME_SLOTS.MORNING]: "corridor",
-      [TIME_SLOTS.LUNCH]: "cafeteria",
+      [TIME_SLOTS.LUNCH]: "yard",
       [TIME_SLOTS.AFTERNOON]: "workshop",
-      [TIME_SLOTS.EVENING]: "corridor",
+      [TIME_SLOTS.EVENING]: "cafeteria",
       [TIME_SLOTS.NIGHT]: "corridor"
     }
   }
 };
+
+/**
+ * NPC 상호작용 장면 매핑
+ * 
+ * 특정 위치에서 NPC와 만났을 때 연결할 장면을 정의합니다.
+ */
+const NPC_INTERACTIONS = {
+  messiah: {
+    yard: { scene: 'yard_messiah', name: '메시아' },
+    cafeteria: { scene: 'cafeteria_messiah', name: '메시아' },
+    default: { scene: 'talk_messiah', name: '메시아' }
+  },
+  fraudster: {
+    cafeteria: { scene: 'cafeteria_fraudster', name: '사기꾼' },
+    default: { scene: 'talk_fraudster', name: '사기꾼' }
+  },
+  arsonist: {
+    cafeteria: { scene: 'cafeteria_arsonist', name: '방화범' },
+    default: { scene: 'talk_arsonist_day', name: '방화범' }
+  },
+  wifekiller: {
+    cafeteria: { scene: 'talk_wifekiller', name: '아내 살인범' },
+    default: { scene: 'talk_wifekiller_intro', name: '아내 살인범' }
+  },
+  political: {
+    cafeteria: { scene: 'cafeteria_political', name: '정치범' },
+    default: { scene: 'talk_political', name: '정치범' }
+  },
+  groper: {
+    cafeteria: { scene: 'cafeteria_groper_event', name: '치한' },
+    default: { scene: 'talk_groper', name: '치한' }
+  },
+  pedophile: {
+    yard: { scene: 'yard_pedophile', name: '소아성폭력범' },
+    default: { scene: 'pedophile_kind', name: '소아성폭력범' }
+  },
+  guard: {
+    yard: { scene: 'yard_bow_guard', name: '간수' },
+    cafeteria: { scene: 'cafeteria_guard_friendly', name: '간수' },
+    workshop: { scene: 'guard_favor_workshop', name: '간수' },
+    default: { scene: 'guard_night_friendly', name: '간수' }
+  }
+};
+
+/**
+ * 특정 NPC의 상호작용 정보 반환
+ * @param {string} npcId - NPC ID
+ * @param {string} location - 현재 위치
+ * @returns {object|null} { scene, name } 객체 또는 null
+ */
+function getNpcInteraction(npcId, location) {
+  const interactions = NPC_INTERACTIONS[npcId];
+  if (!interactions) return null;
+
+  return interactions[location] || interactions.default || null;
+}
 
 /**
  * 특정 NPC의 위치를 반환
@@ -187,7 +243,9 @@ function getNpcDaySchedule(npc, day) {
 module.exports = {
   TIME_SLOTS,
   NPC_SCHEDULES,
+  NPC_INTERACTIONS,
   getNpcLocation,
   getNpcsAtLocation,
-  getNpcDaySchedule
+  getNpcDaySchedule,
+  getNpcInteraction
 };

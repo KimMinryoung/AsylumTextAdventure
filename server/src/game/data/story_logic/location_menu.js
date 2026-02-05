@@ -20,16 +20,16 @@ const TIME_SLOTS = {
  * 시간대별 이동 가능한 장소
  *
  * MORNING(0): 아침 - 기상 후 제한적 이동
- * LUNCH(1): 점심 - 식당으로 이동 필수
- * AFTERNOON(2): 낮 - 자유 시간
- * EVENING(3): 저녁 - 제한적 이동
+ * LUNCH(1): 점심 - 자유 시간
+ * AFTERNOON(2): 낮 - 작업/운동
+ * EVENING(3): 저녁 - 식당 포함 자유 이동
  * NIGHT(4): 밤 - 감방만 가능
  */
 const AVAILABLE_LOCATIONS = {
   [TIME_SLOTS.MORNING]: ["cell", "corridor", "yard"],
-  [TIME_SLOTS.LUNCH]: ["cafeteria"],
+  [TIME_SLOTS.LUNCH]: ["workshop", "yard", "corridor", "cell"],
   [TIME_SLOTS.AFTERNOON]: ["workshop", "yard", "corridor", "cell"],
-  [TIME_SLOTS.EVENING]: ["cell", "cafeteria", "corridor", "yard"],
+  [TIME_SLOTS.EVENING]: ["cafeteria", "cell", "corridor", "yard"],
   [TIME_SLOTS.NIGHT]: ["cell"]
 };
 
@@ -41,8 +41,11 @@ module.exports = {
     action("cell_hub", [cond.time(TIME_SLOTS.MORNING)], [eff.moveTo("corridor")]),
     action("yard", [cond.time(TIME_SLOTS.MORNING)], [eff.moveTo("yard")]),
 
-    // 점심 시간대 - 식당만 가능
-    action("cafeteria_arrival", [cond.time(TIME_SLOTS.LUNCH)], [eff.moveTo("cafeteria")]),
+    // 점심 시간대 - 자유 활동 (식당 제외)
+    action("workshop", [cond.time(TIME_SLOTS.LUNCH)], [eff.moveTo("workshop")]),
+    action("yard", [cond.time(TIME_SLOTS.LUNCH)], [eff.moveTo("yard")]),
+    action("cell_hub", [cond.time(TIME_SLOTS.LUNCH)], [eff.moveTo("corridor")]),
+    action("cell_hub", [cond.time(TIME_SLOTS.LUNCH)], [eff.moveTo("cell")]),
 
     // 낮 시간대 장소
     action("workshop", [cond.time(TIME_SLOTS.AFTERNOON)], [eff.moveTo("workshop")]),

@@ -115,9 +115,11 @@ class GameEngine {
     const hubTriggerScenes = ['yard', 'cafeteria_arrival', 'workshop', 'cell_hub'];
     const isHubEntrance = scene.isHub || hubTriggerScenes.includes(this.currentScene);
 
-    if (this.currentDay > 1 && scene.location && isHubEntrance) {
+    if (scene.location && isHubEntrance) {
       // 1. NPC 상호작용 추가
       const npcs = this.getNpcsAtCurrentLocation();
+      const { getNpcInteraction } = require('./data/schedules/npc_schedules');
+
       npcs.forEach(npcId => {
         // 이미 해당 NPC와 대화하는 액션이 있는지 확인 (중복 방지)
         const alreadyHasNpc = actions.find(a =>
@@ -126,63 +128,19 @@ class GameEngine {
         );
 
         if (!alreadyHasNpc) {
-          // NPC 및 위치별 오리지널 입장 장면 매핑
-          let nextScene = '';
-          let npcName = npcId;
+          const interaction = getNpcInteraction(npcId, this.currentLocation);
 
-          switch (npcId) {
-            case 'messiah':
-              npcName = '메시아';
-              if (this.currentLocation === 'yard') nextScene = 'yard_messiah';
-              else if (this.currentLocation === 'cafeteria') nextScene = 'cafeteria_messiah';
-              else nextScene = 'talk_messiah';
-              break;
-            case 'fraudster':
-              npcName = '사기꾼';
-              if (this.currentLocation === 'cafeteria') nextScene = 'cafeteria_fraudster';
-              else nextScene = 'talk_fraudster';
-              break;
-            case 'arsonist':
-              npcName = '방화범';
-              if (this.currentLocation === 'cafeteria') nextScene = 'cafeteria_arsonist';
-              else nextScene = 'talk_arsonist_day';
-              break;
-            case 'wifekiller':
-              npcName = '아내 살인범';
-              if (this.currentLocation === 'cafeteria') nextScene = 'talk_wifekiller';
-              else nextScene = 'talk_wifekiller_intro';
-              break;
-            case 'political':
-              npcName = '정치범';
-              if (this.currentLocation === 'cafeteria') nextScene = 'cafeteria_political';
-              else nextScene = 'talk_political';
-              break;
-            case 'groper':
-              npcName = '치한';
-              if (this.currentLocation === 'cafeteria') nextScene = 'cafeteria_groper_event';
-              else nextScene = 'talk_groper';
-              break;
-            case 'pedophile':
-              npcName = '소아성폭력범';
-              if (this.currentLocation === 'yard') nextScene = 'yard_pedophile';
-              else nextScene = 'pedophile_kind';
-              break;
-            case 'guard':
-              npcName = '간수';
-              if (this.currentLocation === 'yard') nextScene = 'yard_bow_guard';
-              else if (this.currentLocation === 'cafeteria') nextScene = 'cafeteria_guard_friendly';
-              else if (this.currentLocation === 'workshop') nextScene = 'guard_favor_workshop';
-              else nextScene = 'guard_night_friendly';
-              break;
-            default:
-              nextScene = `talk_${npcId}`;
+          if (interaction) {
+            // 1일차에는 허브 상호작용을 차단하여 서사 진행 (예외 가능하게 구조 유지)
+            // 단, 상호작용 데이터가 있고 특정 플래그가 있다면 허용하도록 확장 가능
+            if (this.currentDay === 1) return;
+
+            actions.push({
+              id: `hub_interact_${npcId}`,
+              text: `${interaction.name}에게 다가간다`,
+              nextScene: interaction.scene
+            });
           }
-
-          actions.push({
-            id: `hub_interact_${npcId}`,
-            text: `${npcName}에게 다가간다`,
-            nextScene: nextScene
-          });
         }
       });
 
