@@ -19,11 +19,11 @@ const scenes = {
   ]),
 
   ...defineScene("day_three_workshop_contempt", () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("pedophile_ignore", { effects: [eff.rel("pedophile", 4)] }, () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ])
 };
 

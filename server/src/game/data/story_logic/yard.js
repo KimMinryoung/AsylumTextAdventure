@@ -86,20 +86,20 @@ const scenes = {
     action("yard_ask_messiah_torchlight", [cond.flag("sawTorchlight"), cond.notFlag("messiahEnemy")]),
     action("warden_blackmail", [cond.flag("knowWardenWeakness")]),
     action("wall_crack_plan", [cond.flag("knowWallCrack")]),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("warden_blackmail", { effects: [eff.flag("wardenBlackmailed")] }, () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("wall_crack_plan", () => [
     action("wall_plan_set", [], [eff.flag("wallEscapePlan")]),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("wall_plan_set", () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ])
 };
 

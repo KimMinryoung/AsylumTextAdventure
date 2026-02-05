@@ -5,11 +5,11 @@ const scenes = {
     action("groper_past"),
     action("groper_info"),
     action("groper_threat"),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("groper_threat", { effects: [eff.flag("groperEnemy")] }, () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("groper_past", () => [
@@ -18,7 +18,7 @@ const scenes = {
   ]),
 
   ...defineScene("groper_info", { effects: [eff.flag("knowPatrolGap")] }, () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("cafeteria_groper_event", { effects: [eff.flag("knowGroperDanger")] }, () => [

@@ -112,7 +112,7 @@ class GameEngine {
       .map(action => ({ ...action })); // 원본 훼손 방지를 위해 복사
 
     // 허브 액션 주입: 메인 허브 장면이거나 특정 진입 장면에서만 주입 (2일차부터)
-    const hubTriggerScenes = ['yard', 'cafeteria_arrival', 'workshop', 'cell_arrival'];
+    const hubTriggerScenes = ['yard', 'cafeteria_arrival', 'workshop', 'cell_hub'];
     const isHubEntrance = scene.isHub || hubTriggerScenes.includes(this.currentScene);
 
     if (this.currentDay > 1 && scene.location && isHubEntrance) {

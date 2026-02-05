@@ -23,13 +23,13 @@ const scenes = {
   ...defineScene("fraudster_guilt", { effects: [eff.rel("fraudster")] }, () => [
     action("fraudster_comfort", [], [eff.rel("fraudster")]),
     action("fraudster_deal_talk"),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   // 위로하면 추가 관계 상승
   ...defineScene("fraudster_comfort", { effects: [eff.rel("fraudster")] }, () => [
     action("fraudster_deal_talk"),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("fraudster_deal_talk", () => [
@@ -38,17 +38,17 @@ const scenes = {
   ]),
 
   ...defineScene("fraudster_deal", { effects: [eff.rel("fraudster")] }, () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("fraudster_reject", () => [
     action("cell_introduction"),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("fraudster_suspicious", () => [
     action("fraudster_deal", [], [eff.flag("knowFraudsterPlan")]),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   // 식당 - 관계에 따라 정보 가격 차등화
@@ -161,12 +161,12 @@ const scenes = {
 
   ...defineScene("day_three_fraudster_check", () => [
     action("fraudster_catch_revealed", [cond.flag("knowPrisoners")]),
-    action("cell_arrival", [], [eff.rel("fraudster", 2), eff.advanceTime()])
+    action("cell_hub", [], [eff.rel("fraudster", 2), eff.advanceTime()])
   ]),
 
   ...defineScene("fraudster_catch_revealed", () => [
-    action("cell_arrival", [], [eff.rel("fraudster", 2), eff.advanceTime()]),
-    action("cell_arrival", [], [eff.flag("fraudsterRefused"), eff.advanceTime()])
+    action("cell_hub", [], [eff.rel("fraudster", 2), eff.advanceTime()]),
+    action("cell_hub", [], [eff.flag("fraudsterRefused"), eff.advanceTime()])
   ]),
 
   // 높은 관계에서 실질적 도움
@@ -181,11 +181,11 @@ const scenes = {
   ]),
 
   ...defineScene("fraudster_debt_favor", { effects: [eff.flag("didFraudsterFavor"), eff.unflag("owesFraudster")] }, () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("fraudster_debt_refuse", { effects: [eff.unflag("owesFraudster"), eff.flag("fraudsterEnemy")] }, () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
 };

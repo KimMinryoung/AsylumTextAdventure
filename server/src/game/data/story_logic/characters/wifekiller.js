@@ -5,20 +5,20 @@ const scenes = {
     action("gameover_wifekiller_rage"),
     action("wifekiller_story", [cond.relMin("wifekiller", 1)]),
     action("wifekiller_reject_story", [], [eff.rel("wifekiller")]),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("wifekiller_reject_story", () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("wifekiller_story", () => [
     action("wifekiller_bond"),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("wifekiller_bond", { effects: [eff.rel("wifekiller", 2)] }, () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("talk_wifekiller", () => [
@@ -36,7 +36,7 @@ const scenes = {
   ]),
 
   ...defineScene("wifekiller_final_help", { effects: [eff.flag("knowEmergencyExit")] }, () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ])
 };
 

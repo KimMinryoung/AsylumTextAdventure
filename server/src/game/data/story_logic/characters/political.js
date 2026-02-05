@@ -12,18 +12,18 @@ const scenes = {
   // 관계가 낮을 때 경계하는 반응
   ...defineScene("political_wary", () => [
     action("political_prove_trust"),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   // 신뢰를 증명하는 선택
   ...defineScene("political_prove_trust", { effects: [eff.rel("political")] }, () => [
     action("political_info"),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("political_family", () => [
     action("political_request"),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("political_request", { effects: [eff.getItem("정치범의 편지"), eff.flag("politicalPromise")] }, () => [
@@ -31,13 +31,13 @@ const scenes = {
   ]),
 
   ...defineScene("political_grateful", { effects: [eff.flag("knowWednesdayGap"), eff.rel("political", 2)] }, () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   // 관계가 있어야 탈출 정보 제공
   ...defineScene("political_advice", { effects: [eff.flag("knowSewerPath"), eff.rel("political")] }, () => [
     action("political_family", [cond.relMin("political", 2)]),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("political_info", () => [
@@ -45,28 +45,28 @@ const scenes = {
     action("political_info_wifekiller"),
     action("political_info_messiah"),
     action("political_family", [cond.relMin("political", 2)], [eff.flag("knowPrisoners"), eff.rel("political")]),
-    action("cell_arrival", [], [eff.flag("knowPrisoners"), eff.rel("political"), eff.advanceTime()])
+    action("cell_hub", [], [eff.flag("knowPrisoners"), eff.rel("political"), eff.advanceTime()])
   ]),
 
   // 사기꾼에 대한 정치범의 평가
   ...defineScene("political_info_fraudster", { effects: [eff.flag("politicalWarnFraudster")] }, () => [
     action("political_info_wifekiller"),
     action("political_info_messiah"),
-    action("cell_arrival", [], [eff.rel("political"), eff.advanceTime()])
+    action("cell_hub", [], [eff.rel("political"), eff.advanceTime()])
   ]),
 
   // 아내 살인범에 대한 정치범의 평가
   ...defineScene("political_info_wifekiller", { effects: [eff.flag("politicalKnowWifekiller")] }, () => [
     action("political_info_fraudster", [cond.notFlag("politicalWarnFraudster")]),
     action("political_info_messiah"),
-    action("cell_arrival", [], [eff.rel("political"), eff.advanceTime()])
+    action("cell_hub", [], [eff.rel("political"), eff.advanceTime()])
   ]),
 
   // 메시아에 대한 정치범의 평가
   ...defineScene("political_info_messiah", { effects: [eff.flag("politicalKnowMessiah")] }, () => [
     action("political_info_fraudster", [cond.notFlag("politicalWarnFraudster")]),
     action("political_info_wifekiller", [cond.notFlag("politicalKnowWifekiller")]),
-    action("cell_arrival", [], [eff.rel("political"), eff.advanceTime()])
+    action("cell_hub", [], [eff.rel("political"), eff.advanceTime()])
   ]),
 
   // 식당 - 관계에 따라 다른 반응

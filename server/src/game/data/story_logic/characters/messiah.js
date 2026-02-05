@@ -19,17 +19,17 @@ const scenes = {
   ]),
 
   ...defineScene("messiah_trust", () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("messiah_doubt", () => [
     action("cell_introduction"),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("messiah_reject", { effects: [eff.flag("messiahEnemy")] }, () => [
     action("talk_fraudster"),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("messiah_plan_detail", () => [
@@ -73,11 +73,11 @@ const scenes = {
   ...defineScene("messiah_listen_to_plan_detail", { effects: [eff.flag("messiahKeyMission")] }, () => [
     action("messiah_key_delivery", [cond.has("환기구 카드키")]),
     action("day_three_key_heist", [cond.notHas("환기구 카드키")]),
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ]),
 
   ...defineScene("messiah_key_delivery", { effects: [eff.drop("환기구 카드키"), eff.flag("messiahKeyDelivered"), eff.rel("messiah", 2)] }, () => [
-    action("cell_arrival", [], [eff.advanceTime()])
+    action("cell_hub", [], [eff.advanceTime()])
   ])
 };
 

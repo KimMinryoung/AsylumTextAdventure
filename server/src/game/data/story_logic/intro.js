@@ -76,6 +76,14 @@ const scenes = {
     action("talk_groper", [cond.notFlag("groperEnemy")]),
     action("talk_arsonist_day"),
     action("first_night")
+  ]),
+
+  // 감방 허브 (2일차 이후 감방으로 돌아올 때 사용)
+  ...defineScene("cell_hub", () => [
+    action("cell_introduction"),
+    action("cell_silent"),
+    action("cell_observe"),
+    action("cell_examine_structure")
   ])
 };
 
