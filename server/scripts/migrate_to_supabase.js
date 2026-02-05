@@ -66,6 +66,7 @@ const FILE_MAPPINGS = [
     { file: 'sewer_mystery.json', pathName: 'sewer_mystery' },
     { file: 'torchlight_mystery.json', pathName: 'torchlight_mystery' },
     { file: 'wall_scratching_mystery.json', pathName: 'wall_scratching_mystery' },
+    { file: 'location_menu.json', pathName: 'location_menu' },
 ];
 
 async function loadJsonFile(filePath) {
