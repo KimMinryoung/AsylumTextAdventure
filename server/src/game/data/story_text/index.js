@@ -1,61 +1,13 @@
+/**
+ * Story Text Loader (DB Only)
+ *
+ * Supabase DB를 single source of truth로 사용합니다.
+ * 로컬 JSON 파일은 더 이상 사용하지 않습니다.
+ */
+
 const supabase = require('../../../config/supabase');
 
-// Local imports for fallback
-const cafeteria = require('./cafeteria.json');
-const characters_arsonist = require('./characters/arsonist.json');
-const characters_fraudster = require('./characters/fraudster.json');
-const characters_groper = require('./characters/groper.json');
-const characters_guard = require('./characters/guard.json');
-const characters_messiah = require('./characters/messiah.json');
-const characters_pedophile = require('./characters/pedophile.json');
-const characters_political = require('./characters/political.json');
-const characters_wifekiller = require('./characters/wifekiller.json');
-const daily = require('./daily.json');
-const dungeon_entrance = require('./dungeon/entrance.json');
-const dungeon_tunnels = require('./dungeon/tunnels.json');
-const dungeon_chapel = require('./dungeon/chapel.json');
-const dungeon_endings = require('./dungeon/endings.json');
-const endings = require('./endings.json');
-const escape = require('./escape.json');
-const intro = require('./intro.json');
-const sleep = require('./sleep.json');
-const warden_office = require('./warden_office.json');
-const workshop = require('./workshop.json');
-const yard = require('./yard.json');
-const sewer_mystery = require('./sewer_mystery.json');
-const torchlight_mystery = require('./torchlight_mystery.json');
-const wall_scratching_mystery = require('./wall_scratching_mystery.json');
-const location_menu = require('./location_menu.json');
-
-const localScenes = {
-  ...cafeteria.scenes,
-  ...characters_arsonist.scenes,
-  ...characters_fraudster.scenes,
-  ...characters_groper.scenes,
-  ...characters_guard.scenes,
-  ...characters_messiah.scenes,
-  ...characters_pedophile.scenes,
-  ...characters_political.scenes,
-  ...characters_wifekiller.scenes,
-  ...daily.scenes,
-  ...dungeon_entrance.scenes,
-  ...dungeon_tunnels.scenes,
-  ...dungeon_chapel.scenes,
-  ...dungeon_endings.scenes,
-  ...endings.scenes,
-  ...escape.scenes,
-  ...intro.scenes,
-  ...sleep.scenes,
-  ...warden_office.scenes,
-  ...workshop.scenes,
-  ...yard.scenes,
-  ...sewer_mystery.scenes,
-  ...torchlight_mystery.scenes,
-  ...wall_scratching_mystery.scenes,
-  ...location_menu.scenes,
-};
-
-let scenes = localScenes;
+let scenes = {};
 let autoRefreshInterval = null;
 const REFRESH_INTERVAL_MS = 60 * 60 * 1000; // 1 hour
 
@@ -64,8 +16,8 @@ const REFRESH_INTERVAL_MS = 60 * 60 * 1000; // 1 hour
  * @returns {boolean} 로드 성공 여부
  */
 async function loadFromDB() {
-  if (process.env.USE_DB_STORY_TEXT !== 'true' || !supabase) {
-    return false;
+  if (!supabase) {
+    throw new Error('Supabase client not configured');
   }
 
   const { data, error } = await supabase
@@ -83,7 +35,7 @@ async function loadFromDB() {
         location: row.location
       };
     });
-    scenes = { ...localScenes, ...dbScenes };
+    scenes = dbScenes;
     return true;
   }
   return false;
@@ -93,22 +45,16 @@ async function loadFromDB() {
  * 초기화: DB에서 story_text를 로드
  */
 async function initialize() {
-  if (process.env.USE_DB_STORY_TEXT !== 'true' || !supabase) {
-    console.log('ℹ Loading story text from local JSON files (fallback)');
-    return;
+  if (!supabase) {
+    throw new Error('Supabase client not configured. Check SUPABASE_URL and SUPABASE_KEY environment variables.');
   }
 
-  try {
-    console.log('📡 Fetching story text from Supabase...');
-    const loaded = await loadFromDB();
-    if (loaded) {
-      console.log(`✅ Loaded ${Object.keys(scenes).length} scenes from Supabase`);
-    } else {
-      console.warn('⚠ No scenes found in DB, using local fallback');
-    }
-  } catch (err) {
-    console.error('❌ Failed to load story text from DB:', err.message);
-    console.log('ℹ Falling back to local JSON files');
+  console.log('📡 Fetching story text from Supabase...');
+  const loaded = await loadFromDB();
+  if (loaded) {
+    console.log(`✅ Loaded ${Object.keys(scenes).length} scenes from Supabase`);
+  } else {
+    throw new Error('No scenes found in DB. Please run migration script first.');
   }
 }
 
@@ -117,8 +63,8 @@ async function initialize() {
  * @param {Function} onRefresh - 갱신 완료 후 호출될 콜백 (예: storyData.reinitialize)
  */
 function startAutoRefresh(onRefresh) {
-  if (process.env.USE_DB_STORY_TEXT !== 'true' || !supabase) {
-    console.log('ℹ Auto-refresh disabled (USE_DB_STORY_TEXT is not true)');
+  if (!supabase) {
+    console.warn('⚠ Auto-refresh disabled (Supabase not configured)');
     return;
   }
 
@@ -154,8 +100,6 @@ function stopAutoRefresh() {
   }
 }
 
-// 초기 로딩 (동기적으로 require 시에는 localScenes가 먼저 노출되지만,
-// initialize() 호출 이후에는 scenes가 업데이트됨)
 module.exports = {
   get scenes() { return scenes; },
   initialize,

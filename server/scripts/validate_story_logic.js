@@ -11,7 +11,11 @@
  * 7. Hub System Validation - 동적 주입 장면 검증
  */
 
-const gameData = require('../src/game/data/story_logic');
+const path = require('path');
+
+// .env 파일 로드
+require('dotenv').config({ path: path.join(__dirname, '../../.env') });
+
 const textData = require('../src/game/data/story_text');
 
 // 유효한 캐릭터 ID 목록
@@ -32,7 +36,14 @@ const HUB_NPC_SCENES = {
   guard: { yard: 'yard_bow_guard', cafeteria: 'cafeteria_guard_friendly', workshop: 'guard_favor_workshop', default: 'guard_night_friendly' }
 };
 
-function validateStory() {
+async function validateStory() {
+  // DB에서 텍스트 데이터 로드
+  console.log('Initializing story text from DB...');
+  await textData.initialize();
+
+  // story_logic은 textData 초기화 후 로드해야 함
+  const gameData = require('../src/game/data/story_logic');
+
   const scenes = gameData.scenes;
   const sceneIds = Object.keys(scenes);
   const totalScenes = sceneIds.length;
@@ -279,4 +290,7 @@ function validateStory() {
   }
 }
 
-validateStory();
+validateStory().catch(err => {
+  console.error('Validation failed:', err.message);
+  process.exit(1);
+});
