@@ -370,6 +370,12 @@ class GameEngine {
           this.workScore = 0;
           this.educationScore = 0;
           break;
+        case 'setDay':
+          this.currentDay = effect.day;
+          break;
+        case 'setTimeSlot':
+          this.currentTimeSlot = effect.slot;
+          break;
         default:
           break;
       }

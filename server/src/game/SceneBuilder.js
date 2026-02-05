@@ -149,6 +149,8 @@ const SB = {
     advanceTime: () => ({ type: 'advanceTime' }),
     moveTo: (location) => ({ type: 'moveTo', location }),
     reset: () => ({ type: 'resetGame' }),
+    setDay: (day) => ({ type: 'setDay', day }),
+    setTimeSlot: (slot) => ({ type: 'setTimeSlot', slot }),
   },
 
   action: (nextScene, conditions = [], effects = []) => {

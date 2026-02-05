@@ -8,6 +8,7 @@
  * 4. Ending Reachability - 엔딩에 도달 가능한지
  * 5. Text-Logic Mismatch - 액션 개수 불일치
  * 6. Invalid References - 효과/조건에서 잘못된 참조
+ * 7. Hub System Validation - 동적 주입 장면 검증
  */
 
 const gameData = require('../src/game/data/story_logic');
@@ -15,6 +16,21 @@ const textData = require('../src/game/data/story_text');
 
 // 유효한 캐릭터 ID 목록
 const VALID_CHARACTERS = ['messiah', 'fraudster', 'wifekiller', 'groper', 'arsonist', 'pedophile', 'political', 'guard'];
+
+// Hub 시스템에서 동적으로 주입되는 장면들 (정적 분석에서 orphan으로 표시되지만 실제로는 도달 가능)
+const HUB_DYNAMIC_SCENES = ['location_select', 'time_advance'];
+
+// Hub 시스템이 NPC별로 주입하는 상호작용 장면들
+const HUB_NPC_SCENES = {
+  messiah: { yard: 'yard_messiah', cafeteria: 'cafeteria_messiah', default: 'talk_messiah' },
+  fraudster: { cafeteria: 'cafeteria_fraudster', default: 'talk_fraudster' },
+  arsonist: { cafeteria: 'cafeteria_arsonist', default: 'talk_arsonist_day' },
+  wifekiller: { cafeteria: 'talk_wifekiller', default: 'talk_wifekiller_intro' },
+  political: { cafeteria: 'cafeteria_political', default: 'talk_political' },
+  groper: { cafeteria: 'cafeteria_groper_event', default: 'talk_groper' },
+  pedophile: { yard: 'yard_pedophile', default: 'pedophile_kind' },
+  guard: { yard: 'yard_bow_guard', cafeteria: 'cafeteria_guard_friendly', workshop: 'guard_favor_workshop', default: 'guard_night_friendly' }
+};
 
 function validateStory() {
   const scenes = gameData.scenes;
@@ -127,10 +143,14 @@ function validateStory() {
     }
   }
 
-  // 도달 불가능한 장면 체크
+  // 도달 불가능한 장면 체크 (Hub 동적 장면 제외)
   sceneIds.forEach(id => {
     if (!reachable.has(id)) {
-      warnings.push(`[Orphan Scene] Scene '${id}' is unreachable from start`);
+      if (HUB_DYNAMIC_SCENES.includes(id)) {
+        info.push(`[Hub Dynamic] Scene '${id}' is dynamically injected by hub system`);
+      } else {
+        warnings.push(`[Orphan Scene] Scene '${id}' is unreachable from start`);
+      }
     }
   });
 
@@ -184,7 +204,39 @@ function validateStory() {
   }
 
   // ==========================================
-  // 6. 통계 정보
+  // 6. Hub 시스템 장면 검증
+  // ==========================================
+
+  // Hub 동적 장면 존재 여부 확인
+  HUB_DYNAMIC_SCENES.forEach(id => {
+    if (!scenes[id]) {
+      errors.push(`[Hub Missing] Hub dynamic scene '${id}' does not exist`);
+    }
+  });
+
+  // NPC 상호작용 장면 존재 여부 확인
+  let hubNpcSceneCount = 0;
+  let hubNpcMissing = [];
+
+  Object.entries(HUB_NPC_SCENES).forEach(([npc, locations]) => {
+    Object.entries(locations).forEach(([location, sceneId]) => {
+      hubNpcSceneCount++;
+      if (!scenes[sceneId]) {
+        hubNpcMissing.push(`${npc}@${location} -> ${sceneId}`);
+      }
+    });
+  });
+
+  if (hubNpcMissing.length > 0) {
+    hubNpcMissing.forEach(missing => {
+      errors.push(`[Hub NPC Missing] NPC interaction scene missing: ${missing}`);
+    });
+  } else {
+    info.push(`[Hub System] All ${hubNpcSceneCount} NPC interaction scenes verified`);
+  }
+
+  // ==========================================
+  // 7. 통계 정보
   // ==========================================
   const endingCount = endings.length;
   const orphanCount = sceneIds.filter(id => !reachable.has(id)).length;

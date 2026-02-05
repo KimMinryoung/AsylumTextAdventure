@@ -25,7 +25,9 @@ const scenes = {
     action("day_two_morning")
   ]),
 
-  ...defineScene("day_two_morning", () => [
+  ...defineScene("day_two_morning", {
+    effects: [eff.setDay(2), eff.setTimeSlot(0), eff.moveTo("cell")]
+  }, () => [
     action("workshop"),
     action("yard")
   ]),
@@ -58,7 +60,9 @@ const scenes = {
     action("day_two_nightmare")
   ]),
 
-  ...defineScene("day_three_morning", () => [
+  ...defineScene("day_three_morning", {
+    effects: [eff.setDay(3), eff.setTimeSlot(0), eff.moveTo("cell")]
+  }, () => [
     action("pedophile_attack", [cond.flag("helpedPedophile")]),
     action("day_three_workshop", [cond.notFlag("helpedPedophile")])
   ]),
