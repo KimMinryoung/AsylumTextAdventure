@@ -1,6 +1,10 @@
+const path = require('path');
+
+// .env 파일 로드 (프로젝트 루트)
+require('dotenv').config({ path: path.join(__dirname, '../../.env') });
+
 const express = require('express');
 const cors = require('cors');
-const path = require('path');
 const gameRoutes = require('./routes/game');
 const editorRoutes = require('./routes/editor');
 const visualEditorRoutes = require('./routes/visualEditor');

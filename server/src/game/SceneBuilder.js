@@ -42,7 +42,9 @@ const internalBake = (sceneId, options, actionsGenerator) => {
 
   // JSON에서 텍스트 데이터 가져오기
   const sceneText = textData?.scenes?.[sceneId];
-  if (!sceneText && textData) {
+  // textData.scenes가 비어있으면 아직 초기화 전이므로 경고 생략
+  const hasTextData = textData?.scenes && Object.keys(textData.scenes).length > 0;
+  if (!sceneText && hasTextData) {
     console.warn(`[SceneBuilder] Missing text data for scene: ${sceneId}`);
   }
 
@@ -55,8 +57,8 @@ const internalBake = (sceneId, options, actionsGenerator) => {
   // JSON의 액션 텍스트
   const jsonActions = sceneText?.actions || [];
 
-  // 개수 불일치 경고
-  if (textData && logicActions.length !== jsonActions.length) {
+  // 개수 불일치 경고 (초기화 전에는 생략)
+  if (hasTextData && logicActions.length !== jsonActions.length) {
     console.warn(
       `[SceneBuilder] Action count mismatch for "${sceneId}": ` +
       `JSON has ${jsonActions.length}, JS has ${logicActions.length}`
