@@ -21,6 +21,28 @@ npm run install:all      # Install deps for root, server, and client
 npm run dev              # Nodemon with auto-reload
 npm run lint             # ESLint checking
 node scripts/validate_story_logic.js  # Validate story structure, find orphan scenes
+node scripts/migrate_to_supabase.js   # Migrate local JSON to Supabase DB
+```
+
+### Scene Tool (DB-based story_text management)
+```bash
+# From /server directory
+node scripts/scene_tool.js read <scene_id>           # View scene details
+node scripts/scene_tool.js list [pattern]            # List scenes (filter by pattern)
+node scripts/scene_tool.js create <id> <json_file>   # Create new scene
+node scripts/scene_tool.js update <id> <json_file>   # Update existing scene
+node scripts/scene_tool.js delete <scene_id>         # Delete scene
+node scripts/scene_tool.js export <id> [file]        # Export to JSON
+node scripts/scene_tool.js export-all [dir]          # Backup all scenes
+```
+
+**JSON file format for create/update:**
+```json
+{
+  "script": ["대사1", "speaker: 대사2"],
+  "actions": ["선택지1", "선택지2"],
+  "location": "cell"
+}
 ```
 
 ### Client (from /client)
@@ -45,13 +67,15 @@ Story is split into logic and text for maintainability:
 - `escape.js` - Escape sequences
 - `endings.js` - All ending scenarios
 - `characters/` - NPC-specific logic (messiah, fraudster, wifekiller, groper, arsonist, pedophile, political, guard)
+- `location_menu.js` - Hub system location selection
 - `index.js` - **Main entry point**, initializes text data and exports all scenes
 
-**`/server/src/game/data/story_text/`** - Text content (JSON)
-- Matching JSON files for each logic module (e.g., `intro.json`, `characters/messiah.json`)
-- `index.js` - Merges all text JSON files
+**`/server/src/game/data/story_text/`** - Text content (Supabase DB)
+- **DB is the single source of truth** - no local JSON files
+- `index.js` - Loads text from Supabase `story_scenes` table
 
-**`/server/src/game/data/story/`** - Legacy (deprecated)
+**`/server/src/game/data/schedules/`** - NPC schedule system
+- `npc_schedules.js` - NPC locations by day/time slot
 
 ### Frontend (`/client`)
 - **App.js**: Main container with game state logic
@@ -64,6 +88,17 @@ Story is split into logic and text for maintainability:
 - **8 NPCs** with relationship tracking: messiah, fraudster, wifekiller, groper, arsonist, pedophile, political, guard
 - **9 Locations**: roof, yard, corridor, workshop, cell, cafeteria, solitary, basement, sewer
 - **Inventory, flags, visited locations, unlocked endings**
+- **Time system**: currentDay (1-4), currentTimeSlot (0-4: 아침/점심/낮/저녁/밤)
+
+### Hub System (Day 2+)
+From day 2 onwards, hub scenes (`yard`, `cafeteria_arrival`, `workshop`, `cell_arrival`) dynamically inject:
+- NPC interaction actions based on `npc_schedules.js` (who is at current location/time)
+- "다른 장소로 이동한다" action → `location_select` scene
+
+**Key effects for day transitions:**
+- `eff.setDay(n)` - Set current day
+- `eff.setTimeSlot(n)` - Set time slot (0-4)
+- `eff.advanceTime()` - Advance time (increments day when night→morning)
 
 ### Scene Definition Pattern
 Use SceneBuilder's `defineScene` for logic, with text stored separately in JSON:
