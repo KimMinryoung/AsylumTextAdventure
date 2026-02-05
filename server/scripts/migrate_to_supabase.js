@@ -25,6 +25,9 @@ const fs = require('fs');
 const path = require('path');
 const { createClient } = require('@supabase/supabase-js');
 
+// .env 파일 로드 (프로젝트 루트)
+require('dotenv').config({ path: path.join(__dirname, '../../.env') });
+
 // 환경 변수 체크
 const SUPABASE_URL = process.env.SUPABASE_URL;
 const SUPABASE_KEY = process.env.SUPABASE_KEY;
